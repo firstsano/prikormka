@@ -14,7 +14,7 @@ class Navigation
         return [
             [
                 'label'=>Yii::t('common', 'Product Categories'),
-                'url'=>['/product-category/index'],
+                'url'=>['/category/index'],
                 'icon'=>'<i class="fa fa-angle-double-right"></i>'
             ],
             [

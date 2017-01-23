@@ -1,0 +1,12 @@
+.site-error {
+  @extend .container;
+
+  h1 {
+    font-size: 20px;
+    font-weight: bold;
+  }
+
+  & .site-error__404 {
+    padding: 50px 0;
+  }
+}

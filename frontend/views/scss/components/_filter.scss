@@ -1,0 +1,27 @@
+.filter {
+
+  & .filter__section {
+    background-color: $color-application-additional;
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+
+  & .filter__a-title {
+    font-weight: bold;
+    margin-bottom: 15px;
+  }
+
+  & .filter__a-values {
+    margin-top: 20px;
+  }
+
+  hr {
+    border-color: $color-border-standart;
+    border-style: solid none none none;
+  }
+
+  & .filter__reset {
+    padding: 0 20px;
+    color: $color-application-main;
+  }
+}

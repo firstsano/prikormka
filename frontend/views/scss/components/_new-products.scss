@@ -1,0 +1,29 @@
+.new-products {
+  @extend .container;
+
+  & .new-products__layout {
+    @extend .row;
+  }
+
+  & .new-products__title {
+    //font-size: $font-size-standart;
+  }
+
+  & .new-products__link {
+    @include border-radius(30px);
+    background-color: $color-application-main;
+    color: $color-text-inverse;
+    padding: 5px 20px;
+    display: inline-block;
+    margin-top: 20px;
+  }
+
+  & .new-products__row {
+    @extend .row;
+    margin-bottom: 20px;
+  }
+
+  & .new-products__item {
+    @extend .col, .m3;
+  }
+}

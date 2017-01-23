@@ -1,0 +1,22 @@
+.trinity {
+  font-size: 0;
+
+  & .trinity__main {
+    font-size: 30px;
+    display: inline-block;
+    margin-right: 5px;
+  }
+  & .trinity__top {
+    line-height: 2.5;
+    font-size: 12px;
+    width: 0;
+    overflow: visible;
+    vertical-align: top;
+    display: inline-block;
+  }
+  & .trinity__bottom {
+    vertical-align: sub;
+    font-size: 12px;
+    display: inline-block;
+  }
+}

@@ -1,0 +1,15 @@
+.wholesale-link {
+  display: inline-block;
+  white-space: nowrap;
+
+  & .wholesale-link__image {
+  }
+
+  & .wholesale-link__text {
+    display: inline-block;
+    color: $color-text-standart;
+    font-size: $font-size-mini;
+    font-weight: bold;
+    white-space: normal;
+  }
+}

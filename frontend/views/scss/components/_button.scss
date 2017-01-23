@@ -1,0 +1,10 @@
+.button {
+  background-color: $color-application-main;
+  color: $color-text-inverse;
+  display: inline-block;
+  padding: 5px 20px;
+
+  &.button_round {
+    @include border-radius(30px);
+  }
+}

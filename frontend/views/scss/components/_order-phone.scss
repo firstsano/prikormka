@@ -1,0 +1,13 @@
+.order-phone {
+
+  & .order-phone__phone {
+    font-size: $font-size-big;
+    font-weight: bold;
+  }
+
+  & .order-phone__comment {
+    color: $color-text-background;
+    font-size: $font-size-mini;
+    text-transform: uppercase;
+  }
+}

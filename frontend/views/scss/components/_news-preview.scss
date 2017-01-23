@@ -1,0 +1,20 @@
+.news-preview {
+
+  .news-preview__date {
+    font-weight: bold;
+    color: $color-application-main;
+    margin-bottom: 10px;
+  }
+
+  .news-preview__layout {
+    @include border-radius(3px);
+    background-color: $color-application-light;
+    border: solid 1px $color-border-standart;
+    padding: 10px;
+  }
+
+  .news-preview__title {
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+}

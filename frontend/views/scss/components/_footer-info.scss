@@ -1,0 +1,33 @@
+.footer-info {
+  background-color: $color-application-main;
+  position: relative;
+
+  & .footer-info__layout-container {
+    @extend .container;
+  }
+
+  & .footer-info__layout {
+    @extend .row;
+    margin-bottom: 0;
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+
+  & .footer-info__fisher {
+    @extend .col, .m3;
+  }
+
+  & .footer-info__fisher-image {
+    bottom: 0;
+    height: 150%;
+    position: absolute;
+  }
+
+  & .footer-info__promo {
+    @extend .col, .m9;
+  }
+
+  & .footer-info__promo-block {
+    @extend .col, .m6;
+  }
+}

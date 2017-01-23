@@ -1,0 +1,19 @@
+.client-comment {
+  background-color: $color-application-light;
+  padding: 20px;
+
+  & .client-comment__client-name {
+    font-size: $font-size-big;
+    font-weight: bold;
+    margin-top: 10px;
+  }
+
+  & .client-comment__client-desc {
+    color: $color-text-background;
+  }
+
+  & .client-comment__comment {
+    color: $color-text-background;
+    margin-top: 10px;
+  }
+}

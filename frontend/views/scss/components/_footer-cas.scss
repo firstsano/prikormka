@@ -1,0 +1,24 @@
+.footer-cas {
+  @extend .container;
+
+  & .footer-cas__layout {
+    @extend .row;
+  }
+
+  & .footer-cas__copyright {
+    @extend .col, .m6;
+    color: $color-text-background;
+  }
+
+  & .footer-cas__socials {
+    @extend .col, .m6;
+    text-align: right;
+  }
+
+  & .footer-cas__social {
+    margin: 0 10px;
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}

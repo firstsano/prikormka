@@ -1,0 +1,97 @@
+$body-padding: 10px;
+$footer-height: 40px;
+
+.q-order {
+  @include border-radius(2px);
+  background-color: $color-application-light;
+  border: solid 1px $color-border-standart;
+  display: inline-block;
+
+  & .q-order__categories {
+    color: $color-text-background;
+    font-size: $font-size-small;
+  }
+
+  & .q-order__name {
+    font-weight: bold;
+  }
+
+  & .q-order__header {
+    padding: $body-padding;
+  }
+
+  & .q-order__body {
+    padding: $body-padding;
+  }
+
+  & .q-order__image {
+    vertical-align: middle;
+  }
+
+  & .q-order__price-info {
+    display: inline-block;
+  }
+
+  & .q-order__old-price {
+    color: $color-text-background;
+    font-size: $font-size-small;
+    text-decoration: line-through;
+  }
+
+  & .q-order__price {
+    @include border-radius(5px);
+    background-color: $color-application-main;
+    color: $color-text-inverse;
+    padding: 5px 10px;
+  }
+
+  & .q-order__footer {
+    border-top: solid 1px $color-border-standart;
+    height: $footer-height;
+  }
+
+  & .q-order__weight {
+    display: inline-block;
+    padding: 0 $body-padding;;
+    color: $color-text-background;
+  }
+
+  & .q-order__order-quantity {
+    background-color: rgba(black, 0.1);
+    color: $color-text-background;
+    white-space: nowrap;
+    padding: 5px 0;
+    float: right;
+    height: $footer-height;
+  }
+
+  & .q-order__add-quantity {
+    display: inline-block;
+    padding: 0 5px;
+  }
+
+  & .q-order__remove-quantity {
+    display: inline-block;
+    padding: 0 5px;
+  }
+
+  & .q-order__value-quantity {
+    @include border-radius(2px);
+    display: inline-block;
+    background-color: white;
+    color: $color-text-standart;
+    font-size: 12px;
+    padding: 5px 10px;
+  }
+
+
+
+  & .q-order__order {
+    @include size($footer-height, $footer-height);
+    display: inline-block;
+    color: $color-application-main;
+    text-align: center;
+    line-height: $footer-height;
+    float: right;
+  }
+}

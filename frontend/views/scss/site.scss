@@ -1,0 +1,34 @@
+@import "materialize/materialize.scss";
+@import "variables";
+@import "mixins";
+
+@import "components/breadcrumbs";
+@import "components/button";
+@import "components/cart";
+@import "components/client-comment";
+@import "components/filter";
+@import "components/footer-cas";
+@import "components/footer-info";
+@import "components/footer-promo";
+@import "components/footer-sitemap";
+@import "components/header-info";
+@import "components/header-menu";
+@import "components/main";
+@import "components/material-icons";
+@import "components/new-products";
+@import "components/news-preview";
+@import "components/order-phone";
+@import "components/custom-carousel";
+@import "components/carousel-promo";
+@import "components/q-order";
+@import "components/site-error";
+@import "components/site-index";
+@import "components/site-wholesale";
+@import "components/trinity";
+@import "components/w-order";
+@import "components/wholesale-link";
+
+html {
+  padding: 20px 0;
+  font-size: $font-size-standart;
+}

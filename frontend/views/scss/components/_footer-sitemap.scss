@@ -1,0 +1,42 @@
+.footer-sitemap {
+  @extend .container;
+  font-size: $font-size-standart;
+  text-transform: uppercase;
+
+  & .footer-sitemap__layout {
+    @extend .row;
+    border-color: $color-border-standart;
+    border-style: none none solid none;
+    border-width: 1px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+  }
+
+  & .footer-sitemap__menu-layout {
+    @extend .col, .m10;
+  }
+
+  & .footer-sitemap__menu {
+    @extend .row;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  & .footer-sitemap__menu-item {
+    @extend .col;
+    &:first-child {
+      padding-left: 0;
+    }
+  }
+
+  & .footer-sitemap__menu-item-link {
+    color: $color-text-standart;
+  }
+
+  & .footer-sitemap__phone {
+    @extend .col, .m2;
+    font-weight: bold;
+    text-align: right;
+  }
+}

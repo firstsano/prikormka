@@ -1,0 +1,34 @@
+$font-promo: 30px;
+$font-promo-large: 42px;
+$font-link: 18px;
+$font-weight: 300;
+
+.carousel-promo {
+  @extend .container;
+  color: $color-text-inverse;
+  font-size: $font-promo;
+  height: 100%;
+
+  & .carousel-promo__layout {
+    display: inline-block;
+    line-height: normal;
+    vertical-align: middle;
+  }
+
+  & .carousel-promo__title {
+    font-size: $font-promo;
+    font-weight: $font-weight;
+  }
+
+  & .carousel-promo__title.carousel-promo__title_large {
+    font-size: $font-promo-large;
+    font-weight: $font-weight;
+  }
+
+  & .carousel-promo__link {
+    @extend .button, .button_round;
+    font-size: $font-link;
+    margin-top: 30px;
+    padding: 10px 30px;
+  }
+}

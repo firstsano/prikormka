@@ -1,0 +1,15 @@
+.footer-promo {
+  @include border-radius(5px);
+  background-color: white;
+  max-height: 120px;
+  padding: 10px;
+
+  & .footer-promo__title {
+    font-size: $font-size-big;
+    font-weight: bold;
+  }
+
+  & .footer-promo__body {
+    color: $color-text-background;
+  }
+}

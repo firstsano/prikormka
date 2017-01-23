@@ -1,0 +1,7 @@
+.breadcrumbs {
+  color: $color-application-main;
+
+  & .breadcrumbs__separator {
+    color: $color-text-background;
+  }
+}

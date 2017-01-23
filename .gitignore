@@ -7,6 +7,9 @@ composer.phar
 ## remove in production!
 composer.lock
 
+# logs
+logs
+
 # IDE
 .idea
 nbproject

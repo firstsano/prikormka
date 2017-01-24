@@ -1,5 +1,6 @@
 <?php
 
+use trntv\filekit\widget\Upload;
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
 
@@ -14,11 +15,11 @@ use yii\bootstrap\ActiveForm;
 
     <?php echo $form->errorSummary($model); ?>
 
-    <?php echo $form->field($model, 'category_id')->textInput() ?>
-
     <?php echo $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
 
-    <?php echo $form->field($model, 'slug')->textInput(['maxlength' => true]) ?>
+    <?php echo $form->field($model, 'slug')
+        ->hint(Yii::t('backend', 'If you\'ll leave this field empty, slug will be generated automatically'))
+        ->textInput(['maxlength' => true]) ?>
 
     <?php echo $form->field($model, 'description')->textarea(['rows' => 6]) ?>
 
@@ -31,6 +32,16 @@ use yii\bootstrap\ActiveForm;
     <?php echo $form->field($model, 'min_pack_quantity')->textInput() ?>
 
     <?php echo $form->field($model, 'seasonality')->textInput(['maxlength' => true]) ?>
+
+    <?= $form->field($model, 'images')->widget(
+        Upload::className(),
+        [
+            'url' => ['/file-storage/upload'],
+            'sortable' => true,
+            'maxFileSize' => 10000000, // 10 MiB
+            'maxNumberOfFiles' => 10
+        ]
+    ) ?>
 
     <div class="form-group">
         <?php echo Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>

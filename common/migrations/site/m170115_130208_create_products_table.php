@@ -26,6 +26,10 @@ class m170115_130208_create_products_table extends Migration
             'pack_quantity' => $this->integer(),
             'min_pack_quantity' => $this->integer(),
             'seasonality' => $this->string(),
+            'created_at' => $this->integer(),
+            'updated_at' => $this->integer(),
+            'created_by' => $this->integer(),
+            'updated_by' => $this->integer()
         ]);
 
         // creates index for column `category_id`

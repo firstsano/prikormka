@@ -15,6 +15,11 @@ class m170124_083433_create_product_image_table extends Migration
      */
     public function up()
     {
+        $tableOptions = null;
+        if ($this->db->driverName === 'mysql') {
+            $tableOptions = 'CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE=InnoDB';
+        }
+        
         $this->createTable('product_images', [
             'id' => $this->primaryKey(),
             'product_id' => $this->integer()->notNull(),

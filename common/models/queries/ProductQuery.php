@@ -18,7 +18,7 @@ class ProductQuery extends \yii\db\ActiveQuery
     /**
      * @inheritdoc
      */
-    public function newOnes($db = null, $limit = self::NEW_LIMIT)
+    public function newOnes($limit = self::NEW_LIMIT)
     {
         $this
             ->addOrderBy(['created_at' => SORT_DESC])

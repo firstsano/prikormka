@@ -6,6 +6,8 @@ use yii\bootstrap\ActiveForm;
 /* @var $this yii\web\View */
 /* @var $model common\models\Category */
 /* @var $form yii\bootstrap\ActiveForm */
+/* @var $categories common\models\Category[] */
+
 ?>
 
 <div class="category-form">

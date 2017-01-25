@@ -2,6 +2,7 @@
 
 namespace backend\controllers;
 
+use common\models\Category;
 use Yii;
 use common\models\Product;
 use backend\models\search\ProductSearch;
@@ -67,6 +68,7 @@ class ProductController extends Controller
         } else {
             return $this->render('create', [
                 'model' => $model,
+                'categories' => Category::find()->all()
             ]);
         }
     }
@@ -86,6 +88,7 @@ class ProductController extends Controller
         } else {
             return $this->render('update', [
                 'model' => $model,
+                'categories' => Category::find()->all()
             ]);
         }
     }

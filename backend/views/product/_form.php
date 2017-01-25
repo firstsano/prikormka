@@ -7,6 +7,8 @@ use yii\bootstrap\ActiveForm;
 /* @var $this yii\web\View */
 /* @var $model common\models\Product */
 /* @var $form yii\bootstrap\ActiveForm */
+/* @var $categories common\models\Category[] */
+
 ?>
 
 <div class="product-form">
@@ -20,6 +22,12 @@ use yii\bootstrap\ActiveForm;
     <?php echo $form->field($model, 'slug')
         ->hint(Yii::t('backend', 'If you\'ll leave this field empty, slug will be generated automatically'))
         ->textInput(['maxlength' => true]) ?>
+
+    <?php echo $form->field($model, 'category_id')->dropDownList(\yii\helpers\ArrayHelper::map(
+        $categories,
+        'id',
+        'name'
+    ), ['prompt'=>'']) ?>
 
     <?php echo $form->field($model, 'description')->textarea(['rows' => 6]) ?>
 

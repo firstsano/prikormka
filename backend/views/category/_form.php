@@ -14,7 +14,11 @@ use yii\bootstrap\ActiveForm;
 
     <?php echo $form->errorSummary($model); ?>
 
-    <?php echo $form->field($model, 'parent_id')->textInput() ?>
+    <?php echo $form->field($model, 'parent_id')->dropDownList(\yii\helpers\ArrayHelper::map(
+        $categories,
+        'id',
+        'name'
+    ), ['prompt'=>'']) ?>
 
     <?php echo $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
 

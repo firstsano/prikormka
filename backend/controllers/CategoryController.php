@@ -67,6 +67,7 @@ class CategoryController extends Controller
         } else {
             return $this->render('create', [
                 'model' => $model,
+                'categories' => Category::find()->all(),
             ]);
         }
     }
@@ -86,6 +87,7 @@ class CategoryController extends Controller
         } else {
             return $this->render('update', [
                 'model' => $model,
+                'categories' => Category::find()->all(),
             ]);
         }
     }

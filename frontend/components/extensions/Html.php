@@ -8,13 +8,16 @@
 
 namespace frontend\components\extensions;
 
-use yii\helpers\ArrayHelper;
-
 class Html extends \yii\helpers\Html
 {
     public static function icon($name, $options = [])
     {
         static::addCssClass($options, ['material-icons', 'material-icons_inline']);
         return self::tag('i', $name, $options);
+    }
+
+    public static function textPointer($text)
+    {
+        return $text . " " . static::icon('keyboard_arrow_right');
     }
 }

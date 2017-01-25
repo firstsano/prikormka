@@ -9,10 +9,23 @@ namespace common\models\queries;
  */
 class ProductQuery extends \yii\db\ActiveQuery
 {
+    const NEW_LIMIT = 6;
     /*public function active()
     {
         return $this->andWhere('[[status]]=1');
     }*/
+
+    /**
+     * @inheritdoc
+     */
+    public function newOnes($db = null, $limit = self::NEW_LIMIT)
+    {
+        $this
+            ->addOrderBy(['created_at' => SORT_DESC])
+            ->limit($limit)
+        ;
+        return $this;
+    }
 
     /**
      * @inheritdoc

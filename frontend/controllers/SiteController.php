@@ -1,6 +1,7 @@
 <?php
 namespace frontend\controllers;
 
+use common\models\Product;
 use Yii;
 use frontend\models\ContactForm;
 use yii\web\Controller;
@@ -32,7 +33,9 @@ class SiteController extends Controller
 
     public function actionIndex()
     {
-        return $this->render('index');
+        return $this->render('index', [
+            'newProducts' => Product::find()->newOnes()->all()
+        ]);
     }
 
     public function actionContact()

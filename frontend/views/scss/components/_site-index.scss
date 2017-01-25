@@ -1,22 +1,25 @@
 .site-index {
 
-
-
   h2 {
     font-size: 20px;
     font-weight: bold;
   }
+
   & .site-index__carousel {
 
   }
+
   & .site-index__new-products {
     background-image: url('/img/assets/new-products-1.png'), url('/img/assets/new-products-2.png');
     background-repeat: no-repeat, no-repeat;
     background-position: bottom 5% left 10%, top 20% right 10%;
+    margin-bottom: 20px;
   }
+
   & .site-index__client-comments {
     background-color: $color-application-additional;
   }
+
   & .site-index__best-offer {
     @extend .container;
 
@@ -24,6 +27,7 @@
       background-color: red;
     }
   }
+
   & .site-index__news {
     background-color: $color-application-additional;
   }

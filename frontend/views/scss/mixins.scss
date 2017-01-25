@@ -8,3 +8,8 @@
   width: $width;
   height: $height;
 }
+
+@mixin header() {
+  font-size: $font-size-header;
+  font-weight: bold;
+}

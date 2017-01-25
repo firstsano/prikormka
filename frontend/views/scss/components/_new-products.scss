@@ -6,24 +6,25 @@
   }
 
   & .new-products__title {
-    //font-size: $font-size-standart;
+    @include header;
   }
 
   & .new-products__link {
-    @include border-radius(30px);
-    background-color: $color-application-main;
-    color: $color-text-inverse;
-    padding: 5px 20px;
-    display: inline-block;
-    margin-top: 20px;
+    @extend .button, .button_round;
   }
 
   & .new-products__row {
     @extend .row;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
+    margin-top: 10px;
   }
 
   & .new-products__item {
-    @extend .col, .m3;
+    @extend .col, .m4;
+  }
+
+  & .new-products__footer {
+    text-align: center;
+    padding: 20px 0;
   }
 }

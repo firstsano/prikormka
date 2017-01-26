@@ -33,6 +33,11 @@ class Product extends \yii\db\ActiveRecord
     public $images;
 
     /**
+     * @var ProductImage
+     */
+    protected $_mainImage;
+
+    /**
      * @inheritdoc
      */
     public static function tableName()
@@ -120,11 +125,26 @@ class Product extends \yii\db\ActiveRecord
     }
 
     /**
+     * @return \common\models\ProductImage
+     */
+    public function getMainImage()
+    {
+        if (!$this->_mainImage) {
+            $this->_mainImage = $this->getProductImages()
+                ->addOrderBy(['order' => SORT_ASC])
+                ->one()
+            ;
+        }
+        return $this->_mainImage;
+    }
+
+    /**
      * @inheritdoc
      * @return \common\models\queries\ProductQuery the active query used by this AR class.
      */
     public static function find()
     {
-        return new \common\models\queries\ProductQuery(get_called_class());
+        $query = new \common\models\queries\ProductQuery(get_called_class());
+        return $query->with('category');
     }
 }

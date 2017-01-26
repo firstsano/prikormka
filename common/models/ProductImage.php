@@ -17,6 +17,8 @@ use Yii;
  * @property integer $created_at
  * @property integer $order
  *
+ * @property virtual $url Return url to display image
+ *
  * @property Products $product
  */
 class ProductImage extends \yii\db\ActiveRecord
@@ -58,6 +60,14 @@ class ProductImage extends \yii\db\ActiveRecord
             'created_at' => Yii::t('common/models/product-image', 'Created At'),
             'order' => Yii::t('common/models/product-image', 'Order'),
         ];
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function getUrl()
+    {
+        return $this->base_url . DIRECTORY_SEPARATOR . $this->path;
     }
 
     /**

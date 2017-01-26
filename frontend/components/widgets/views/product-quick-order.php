@@ -22,8 +22,12 @@ use frontend\components\extensions\Html;
             'alt' => $product->name, 'class' => 'q-order__image' ]) ?>
         <div class="q-order__price-info">
             <div class="q-order__old-price"> Старая цена: 132, 00 </div>
-            <?= Trinity::widget([ 'main' => '87, 00', 'top' => 'руб', 'bottom' => '100 шт',
-                'options' => ['class' => 'q-order__price'] ]) ?>
+            <?= Trinity::widget([
+                'main' => format_f($product->price),
+                'top' => currency(),
+                'bottom' => quantity(100),
+                'options' => ['class' => 'q-order__price']
+            ]) ?>
         </div>
     </div>
     <footer class="q-order__footer">

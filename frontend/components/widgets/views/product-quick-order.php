@@ -1,6 +1,7 @@
 <?php
 
 /* @var $this yii\web\View */
+/* @var $product common\models\Product */
 
 use frontend\components\widgets\Trinity;
 use frontend\components\extensions\Html;
@@ -10,15 +11,15 @@ use frontend\components\extensions\Html;
 <div class="q-order">
     <header class="q-order__header">
         <div class="q-order__categories">
-            Спортивная прикормка AVARGARD
+            <?= $product->category->name ?>
         </div>
         <div class="q-order__name">
-            Turbo Mix прикормка для ловли карп
+            <?= $product->name ?>
         </div>
     </header>
     <div class="q-order__body">
-        <?= Html::img('@product-img/temp/prikormka.png', [
-            'alt' => 'Прикормка', 'class' => 'q-order__image' ]) ?>
+        <?= Html::img($product->mainImage->url, [
+            'alt' => $product->name, 'class' => 'q-order__image' ]) ?>
         <div class="q-order__price-info">
             <div class="q-order__old-price"> Старая цена: 132, 00 </div>
             <?= Trinity::widget([ 'main' => '87, 00', 'top' => 'руб', 'bottom' => '100 шт',

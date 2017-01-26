@@ -24,5 +24,7 @@ function currency()
 
 function quantity($quantity)
 {
-    return Yii::t('site', 'test');
+    return Yii::t('common/site', '{quantity} items', [
+        'quantity' => $quantity
+    ]);
 }

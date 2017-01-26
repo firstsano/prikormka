@@ -3,8 +3,8 @@ $config = [
     'name'=>'Yii2 Starter Kit',
     'vendorPath'=>dirname(dirname(__DIR__)).'/vendor',
     'extensions' => require(__DIR__ . '/../../vendor/yiisoft/extensions.php'),
-    'sourceLanguage'=>'en-US',
-    'language'=>'en-US',
+    'language' => 'ru-RU',
+    'sourceLanguage' => 'en-US',
     'bootstrap' => ['log'],
     'components' => [
 
@@ -83,19 +83,19 @@ $config = [
 
         'i18n' => [
             'translations' => [
-                'app'=>[
-                    'class' => 'yii\i18n\PhpMessageSource',
-                    'basePath'=>'@common/messages',
-                ],
+//                'app'=>[
+//                    'class' => 'yii\i18n\PhpMessageSource',
+//                    'basePath'=>'@common/messages',
+//                ],
                 '*'=> [
                     'class' => 'yii\i18n\PhpMessageSource',
-                    'basePath'=>'@common/messages',
-                    'fileMap'=>[
-                        'common'=>'common.php',
-                        'backend'=>'backend.php',
-                        'frontend'=>'frontend.php',
-                    ],
-                    'on missingTranslation' => ['\backend\modules\i18n\Module', 'missingTranslation']
+                    'basePath' => '@common/messages',
+//                    'fileMap'=>[
+//                        'common'=>'common.php',
+//                        'backend'=>'backend.php',
+//                        'frontend'=>'frontend.php',
+//                    ],
+//                    'on missingTranslation' => ['\backend\modules\i18n\Module', 'missingTranslation']
                 ],
                 /* Uncomment this code to use DbMessageSource
                  '*'=> [

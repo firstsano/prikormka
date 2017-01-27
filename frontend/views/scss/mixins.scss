@@ -9,7 +9,21 @@
   height: $height;
 }
 
+@mixin box-sizing($args) {
+  box-sizing: $args;
+  -moz-box-sizing: $args;
+  -webkit-box-sizing: $args;
+}
+
 @mixin header() {
   font-size: $font-size-header;
   font-weight: bold;
+}
+
+@mixin no-link() {
+  text-decoration: none;
+  color: inherit;
+  &:visited, &:hover, &:active {
+    color: inherit;
+  }
 }

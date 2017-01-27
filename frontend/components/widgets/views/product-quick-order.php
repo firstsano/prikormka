@@ -3,8 +3,9 @@
 /* @var $this yii\web\View */
 /* @var $product common\models\Product */
 
-use frontend\components\widgets\Trinity;
 use frontend\components\extensions\Html;
+use frontend\components\widgets\QuantitySetter;
+use frontend\components\widgets\Trinity;
 
 ?>
 
@@ -30,22 +31,18 @@ use frontend\components\extensions\Html;
             ]) ?>
         </div>
     </div>
+    <div>
+        <?= QuantitySetter::widget() ?>
+    </div>
     <footer class="q-order__footer">
-        <?= Trinity::widget(['main' => '5', 'top' => 'вес(г)', 'bottom' => 'объем(мл)',
-            'options' => ['class' => 'q-order__weight'] ]) ?>
+        <?= Trinity::widget([
+            'main' => $product->weight,
+            'top' => Yii::t('common/site', 'weight'),
+            'bottom' => Yii::t('common/site', 'volume'),
+            'options' => ['class' => 'q-order__weight']
+        ]) ?>
         <div class="q-order__order">
             <?= Html::icon('add') ?>
-        </div>
-        <div class="q-order__order-quantity">
-            <div class="q-order__remove-quantity">
-                <?= Html::icon('arrow_drop_up') ?>
-            </div>
-            <div class="q-order__value-quantity">
-                12
-            </div>
-            <div class="q-order__add-quantity">
-                <?= Html::icon('arrow_drop_down') ?>
-            </div>
         </div>
     </footer>
 </div>

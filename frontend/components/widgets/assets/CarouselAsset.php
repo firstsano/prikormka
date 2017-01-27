@@ -8,19 +8,13 @@
 
 namespace frontend\components\widgets\assets;
 
-class CarouselAsset extends \yii\web\AssetBundle
+class CarouselAsset extends \frontend\components\extensions\AssetBundle
 {
     public $js = [
-        'js/initialize.js'
+        'carousel.js'
     ];
 
     public $depends = [
         'frontend\assets\OwlAsset'
     ];
-
-    public function init()
-    {
-        $this->sourcePath = (__DIR__ . '/carousel');
-        parent::init();
-    }
 }

@@ -20,4 +20,10 @@ class Html extends \yii\helpers\Html
     {
         return $text . " " . static::icon('keyboard_arrow_right');
     }
+
+    public static function iconButton($icon, $url, $options)
+    {
+        $icon = static::icon($icon);
+        return static::a($icon, $url, $options);
+    }
 }

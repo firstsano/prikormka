@@ -1,12 +1,15 @@
 <?php
 
 /* @var $this yii\web\View */
+/* @var $main string */
+/* @var $top string */
+/* @var $bottom string */
+/* @var $options array */
 
-?>
+use frontend\components\extensions\Html;
 
-<div class="trinity <?= $class ?> ">
-    <div class="trinity__main"> <?= $main ?> </div>
-    <div class="trinity__top"> <?= $top ?> </div>
-    <div class="trinity__bottom"> <?= $bottom ?> </div>
-</div>
-
+echo Html::beginTag('div', $options);
+echo Html::tag('div', $main, $options['main']);
+echo Html::tag('div', $top, $options['top']);
+echo Html::tag('div', $bottom, $options['bottom']);
+echo Html::endTag('div');

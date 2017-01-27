@@ -1,0 +1,37 @@
+$height: 40px;
+
+.quantity-setter {
+  @extend .row;
+  background-color: $color-element-background;
+  color: $color-text-background;
+  height: $height;
+  margin: 0;
+  text-align: center;
+
+  & .quantity-setter__add {
+    @extend .col, .s3;
+    @include no-link;
+    height: $height;
+    line-height: $height;
+    padding: 0;
+  }
+
+  & .quantity-setter__input {
+    @extend .col, .s6;
+    @include border-radius(3px);
+    @include box-sizing(border-box);
+    border: solid 6px $color-element-background;
+    height: $height;
+    outline: none;
+    padding: 0;
+    text-align: center;
+  }
+
+  & .quantity-setter__remove {
+    @extend .col, .s3;
+    @include no-link;
+    height: $height;
+    line-height: $height;
+    padding: 0;
+  }
+}

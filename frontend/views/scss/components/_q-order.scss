@@ -48,50 +48,36 @@ $footer-height: 40px;
   & .q-order__footer {
     border-top: solid 1px $color-border-standart;
     height: $footer-height;
+    padding-left: $body-padding;
+    text-align: right;
+    white-space: nowrap;
   }
 
   & .q-order__weight {
-    display: inline-block;
-    padding: 0 $body-padding;;
     color: $color-text-background;
-  }
-
-  & .q-order__order-quantity {
-    background-color: rgba(black, 0.1);
-    color: $color-text-background;
-    white-space: nowrap;
-    padding: 5px 0;
-    float: right;
+    float: left;
     height: $footer-height;
+    line-height: $footer-height;
+    overflow: hidden;
   }
 
-  & .q-order__add-quantity {
+  & .q-order__quantity {
+    @include size(40%, $footer-height);
     display: inline-block;
-    padding: 0 5px;
+    overflow: hidden;
   }
-
-  & .q-order__remove-quantity {
-    display: inline-block;
-    padding: 0 5px;
-  }
-
-  & .q-order__value-quantity {
-    @include border-radius(2px);
-    display: inline-block;
-    background-color: white;
-    color: $color-text-standart;
-    font-size: 12px;
-    padding: 5px 10px;
-  }
-
-
 
   & .q-order__order {
     @include size($footer-height, $footer-height);
     display: inline-block;
+    overflow: hidden;
+  }
+
+  & .q-order__order-button {
+    @include size(100%, 100%);
     color: $color-application-main;
-    text-align: center;
+    display: block;
     line-height: $footer-height;
-    float: right;
+    text-align: center;
   }
 }

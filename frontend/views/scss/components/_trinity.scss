@@ -1,22 +1,27 @@
+$font-size-main: 26px;
+$font-size-asides: $font-size-main * 0.45;
+
 .trinity {
-  font-size: 0;
+  font-size: $font-size-main;
 
   & .trinity__main {
-    font-size: 30px;
     display: inline-block;
-    margin-right: 5px;
+    line-height: normal;
   }
+
   & .trinity__top {
-    line-height: 2.5;
-    font-size: 12px;
-    width: 0;
+    display: inline-block;
+    font-size: $font-size-asides;
+    line-height: normal;
+    margin-left: 5px;
     overflow: visible;
     vertical-align: top;
-    display: inline-block;
+    width: 0;
   }
+
   & .trinity__bottom {
-    vertical-align: sub;
-    font-size: 12px;
     display: inline-block;
+    font-size: $font-size-asides;
+    line-height: normal;
   }
 }

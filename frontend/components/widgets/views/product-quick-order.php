@@ -31,18 +31,19 @@ use frontend\components\widgets\Trinity;
             ]) ?>
         </div>
     </div>
-    <div>
-        <?= QuantitySetter::widget() ?>
-    </div>
     <footer class="q-order__footer">
-        <?= Trinity::widget([
-            'main' => $product->weight,
-            'top' => Yii::t('common/site', 'weight'),
-            'bottom' => Yii::t('common/site', 'volume'),
-            'options' => ['class' => 'q-order__weight']
-        ]) ?>
-        <div class="q-order__order">
-            <?= Html::icon('add') ?>
+        <div class="q-order__weight">
+            <?= Trinity::widget([
+                'main' => $product->weight,
+                'top' => Yii::t('common/site', 'weight'),
+                'bottom' => Yii::t('common/site', 'volume'),
+            ]) ?>
+        </div>
+        <div class="q-order__quantity">
+            <?= QuantitySetter::widget() ?>
+        </div><!--
+        --><div class="q-order__order">
+            <?= Html::iconButton('add', '#', ['class' => 'q-order__order-button']) ?>
         </div>
     </footer>
 </div>

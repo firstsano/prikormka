@@ -84,3 +84,9 @@ $footer-height: 40px;
     text-align: center;
   }
 }
+
+.q-order.q-order_best-offer {
+  & .q-order__price {
+    background-color: $color-application-contrast;
+  }
+}

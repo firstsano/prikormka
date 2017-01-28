@@ -1,9 +1,13 @@
 .news-preview {
 
   .news-preview__date {
-    font-weight: bold;
     color: $color-application-main;
+    font-weight: bold;
     margin-bottom: 10px;
+  }
+
+  .news-preview__aside-date {
+    color: $color-text-background;
   }
 
   .news-preview__layout {

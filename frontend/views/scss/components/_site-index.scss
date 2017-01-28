@@ -1,14 +1,4 @@
 .site-index {
-
-  h2 {
-    font-size: 20px;
-    font-weight: bold;
-  }
-
-  & .site-index__carousel {
-
-  }
-
   & .site-index__new-products {
     background-image: url('/img/assets/new-products-1.png'), url('/img/assets/new-products-2.png');
     background-repeat: no-repeat, no-repeat;
@@ -23,10 +13,7 @@
 
   & .site-index__best-offer {
     @extend .container;
-
-    .trinity.q-order__price {
-      background-color: red;
-    }
+    margin-bottom: 20px;
   }
 
   & .site-index__news {

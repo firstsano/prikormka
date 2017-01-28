@@ -8,15 +8,30 @@
 
 namespace frontend\components\widgets;
 
+use frontend\components\extensions\Html;
 
 class ProductQuickOrder extends \frontend\components\extensions\Widget
 {
     public $product;
+    public $options;
 
+    /**
+     * @inheritdoc
+     */
+    public function init()
+    {
+        parent::init();
+        Html::addCssClass($this->options, ['q-order']);
+    }
+
+    /**
+     * @inheritdoc
+     */
     protected function renderParams()
     {
         return [
-            'product' => $this->product
+            'product' => $this->product,
+            'options' => $this->options
         ];
     }
 }

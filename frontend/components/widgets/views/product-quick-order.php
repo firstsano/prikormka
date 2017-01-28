@@ -2,6 +2,7 @@
 
 /* @var $this yii\web\View */
 /* @var $product common\models\Product */
+/* @var $options array */
 
 use frontend\components\extensions\Html;
 use frontend\components\widgets\QuantitySetter;
@@ -9,7 +10,7 @@ use frontend\components\widgets\Trinity;
 
 ?>
 
-<div class="q-order">
+<?= Html::beginTag('div', $options) ?>
     <header class="q-order__header">
         <div class="q-order__categories">
             <?= $product->category->name ?>
@@ -46,5 +47,5 @@ use frontend\components\widgets\Trinity;
             <?= Html::iconButton('add', '#', ['class' => 'q-order__order-button']) ?>
         </div>
     </footer>
-</div>
+<?= Html::endTag('div') ?>
 

@@ -7,8 +7,16 @@ use frontend\components\widgets\Trinity;
 ?>
 
 <div class="news-preview">
-    <?= Trinity::widget(['main' => '08.12', 'top' => 'москва', 'bottom' => '08 декабря 2016г',
-        'options' => ['class' => 'news-preview__date']]) ?>
+    <?= Trinity::widget([
+        'main' => '08.12',
+        'top' => 'москва',
+        'bottom' => '08 декабря 2016г',
+        'options' => [
+            'class' => 'news-preview__date',
+            'top' => ['class' => 'news-preview__aside-date'],
+            'bottom' => ['class' => 'news-preview__aside-date']
+        ]
+    ]) ?>
     <article class="news-preview__layout">
         <header class="news-preview__title"> Конкурс на лучший отчет о рыбалке </header>
         <div class="news-preview__body">

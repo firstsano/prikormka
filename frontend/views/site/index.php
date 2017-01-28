@@ -1,6 +1,8 @@
 <?php
 
 /* @var $this yii\web\View */
+/* @var $newProducts common\models\Product[] */
+/* @var $bestOffers common\models\Product[] */
 
 $this->title = 'My Yii Application';
 
@@ -43,83 +45,65 @@ use frontend\components\widgets\ProductQuickOrder;
         <div class="new-products">
             <h2 class="new-products__title"> Новинки </h2>
             <div class="new-products__row">
-                <?
-                    for($i = 0; $i < 3; $i++)  {
-                        echo Html::beginTag('div', ['class' => 'col s4']);
-                        echo ProductQuickOrder::widget();
-                        echo Html::endTag('div');
-                    }
-                ?>
+                <? foreach($newProducts as $newProduct)  {
+                    echo Html::tag(
+                        'div',
+                        ProductQuickOrder::widget([ 'product' => $newProduct ]),
+                        ['class' => 'new-products__item']
+                    );
+                } ?>
             </div>
             <div class="new-products__row">
-                <?
-                    for($i = 0; $i < 3; $i++)  {
-                        echo Html::beginTag('div', ['class' => 'col s4']);
-                        echo ProductQuickOrder::widget();
-                        echo Html::endTag('div');
-                    }
-                ?>
+                <? foreach($newProducts as $newProduct)  {
+                    echo Html::tag(
+                        'div',
+                        ProductQuickOrder::widget([ 'product' => $newProduct ]),
+                        ['class' => 'new-products__item']
+                    );
+                } ?>
             </div>
-            <div class="center">
-                <? $icon = Html::icon('keyboard_arrow_right') ?>
-                <?= Html::a('Смотреть все товары ' . $icon, '#', ['class' => 'new-products__link']); ?>
-            </div>
+            <footer class="new-products__footer">
+                <?= Html::a(Html::textPointer('Смотреть все товары'), '#', ['class' => 'new-products__link']); ?>
+            </footer>
         </div>
-        <br />
-        <br />
     </section>
     <section class="site-index__client-comments">
-        <div class="container">
-            <div class="row">
-                <div class="col s12">
-                    <h2> Клиенты о нас </h2>
-                    <div class="row">
-                        <div class="col s6"> <?= ClientComment::widget([]) ?> </div>
-                        <div class="col s6"> <?= ClientComment::widget([]) ?> </div>
-                    </div>
-                </div>
+        <div class="client-comments">
+            <h2 class="client-comments__title"> Клиенты о нас </h2>
+            <div class="client-comments__layout">
+                <div class="client-comments__item"> <?= ClientComment::widget([]) ?> </div>
+                <div class="client-comments__item"> <?= ClientComment::widget([]) ?> </div>
             </div>
         </div>
-        <br />
-        <br />
     </section>
     <section class="site-index__best-offer">
-        <div class="row">
-            <div class="col s12">
-                <h2> Лучшее предложение </h2>
+        <div class="best-offers">
+            <h2 class="best-offers__title"> Лучшее предложение </h2>
+            <div class="best-offers__row">
+                <? foreach($bestOffers as $offer)  {
+                    echo Html::tag(
+                        'div',
+                        ProductQuickOrder::widget(['product' => $offer, 'options' => [
+                            'class' => 'q-order_best-offer'
+                        ]]),
+                        ['class' => 'best-offers__item']
+                    );
+                } ?>
             </div>
-            <? for($i = 0; $i < 3; $i++)  {
-                echo Html::beginTag('div', ['class' => 'col s4']);
-                echo ProductQuickOrder::widget();
-                echo Html::endTag('div');
-            } ?>
+            <footer class="best-offers__footer">
+                <?= Html::a(Html::textPointer('Смотреть все акции'), '#', ['class' => 'best-offers__link']); ?>
+            </footer>
         </div>
-        <br />
-        <div class="center">
-            <?= Html::a('Смотреть все акции ' . Html::icon('keyboard_arrow_right'), '#', ['class' => 'button_circle']) ?>
-        </div>
-        <br />
-        <br />
     </section>
     <section class="site-index__news">
-        <div class="container">
-            <div class="row">
-                <div class="col s12">
-                    <h2> Новости и статьи </h2>
-                    <div class="row">
-                        <div class="col s4"> <?= NewsPreview::widget([]) ?> </div>
-                        <div class="col s4"> <?= NewsPreview::widget([]) ?> </div>
-                        <div class="col s4"> <?= NewsPreview::widget([]) ?> </div>
-                    </div>
-                </div>
+        <div class="news-previews">
+            <h2 class="news-previews__title"> Новости и статьи </h2>
+            <div class="news-previews__row">
+                <div class="news-previews__item"> <?= NewsPreview::widget([]) ?> </div>
+                <div class="news-previews__item"> <?= NewsPreview::widget([]) ?> </div>
+                <div class="news-previews__item"> <?= NewsPreview::widget([]) ?> </div>
+                <div class="news-previews__item"> <?= NewsPreview::widget([]) ?> </div>
             </div>
         </div>
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
     </section>
 </div>

@@ -1,0 +1,22 @@
+.best-offers {
+  .best-offers__title {
+    @include header;
+  }
+
+  .best-offers__item {
+    @extend .col, .s4;
+  }
+
+  .best-offers__row {
+    @extend .row;
+  }
+
+  .best-offers__footer {
+    text-align: center;
+    padding: 20px 0;
+  }
+
+  .best-offers__link {
+    @extend .button, .button_round;
+  }
+}

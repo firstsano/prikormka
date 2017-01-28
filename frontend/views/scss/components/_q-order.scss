@@ -14,14 +14,17 @@ $footer-height: 40px;
 
   & .q-order__name {
     font-weight: bold;
+    font-size: $font-size-standart;
+    height: $font-size-standart * 3.5;
   }
 
   & .q-order__header {
     padding: $body-padding;
+    padding-bottom: 0;
   }
 
   & .q-order__body {
-    padding: $body-padding;
+    padding: 0 $body-padding;
   }
 
   & .q-order__image {
@@ -48,9 +51,9 @@ $footer-height: 40px;
   & .q-order__footer {
     border-top: solid 1px $color-border-standart;
     height: $footer-height;
+    margin-top: $body-padding;
     padding-left: $body-padding;
     text-align: right;
-    white-space: nowrap;
   }
 
   & .q-order__weight {

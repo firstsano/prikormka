@@ -2,13 +2,26 @@
   background-color: $color-application-light;
   padding: 20px;
 
+  & .client-comment__client-info {
+    @extend .row;
+  }
+
+  & .client-comment__client-image {
+    @extend .col, .s3;
+    text-align: center;
+  }
+
+  & .client-comment__client-desc {
+    @extend .col, .s9;
+  }
+
   & .client-comment__client-name {
     font-size: $font-size-big;
     font-weight: bold;
     margin-top: 10px;
   }
 
-  & .client-comment__client-desc {
+  & .client-comment__client-experience {
     color: $color-text-background;
   }
 

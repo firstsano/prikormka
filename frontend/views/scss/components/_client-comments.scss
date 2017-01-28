@@ -1,0 +1,16 @@
+.client-comments {
+  @extend .container;
+
+  & .client-comments__title {
+    @include header;
+    margin-top: 0;
+  }
+
+  & .client-comments__layout {
+    @extend .row;
+  }
+
+  & .client-comments__item {
+    @extend .col, .s6;
+  }
+}

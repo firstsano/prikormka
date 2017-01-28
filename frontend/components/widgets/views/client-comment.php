@@ -7,18 +7,17 @@ use frontend\components\extensions\Html;
 ?>
 
 <div class="client-comment">
-    <header class="row">
-        <div class="col s3 center">
+    <header class="client-comment__client-info">
+        <div class="client-comment__client-image">
             <?= Html::img('@img/assets/temp1.png', [
                 'alt' => 'Артем Симохин',
-                'class' => 'client-comment__image'
             ]) ?>
         </div>
-        <div class="col s9">
+        <div class="client-comment__client-desc">
             <div class="client-comment__client-name">
                 Артем Симохин
             </div>
-            <div class="client-comment__client-desc">
+            <div class="client-comment__client-experience">
                 Рыбалов-любитель
             </div>
         </div>

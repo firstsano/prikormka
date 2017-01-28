@@ -29,6 +29,14 @@ class ProductQuery extends \yii\db\ActiveQuery
 
     /**
      * @inheritdoc
+     */
+    public function bestOffers()
+    {
+        return $this;
+    }
+
+    /**
+     * @inheritdoc
      * @return \common\models\Product[]|array
      */
     public function all($db = null)

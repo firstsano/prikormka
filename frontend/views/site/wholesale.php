@@ -1,62 +1,41 @@
 <?php
 
 /* @var $this \yii\web\View */
+/* @var $products \common\models\Product[] */
 
-use app\components\extensions\Html;
-use app\components\widgets\ProductWholesaleOrder;
+use frontend\components\extensions\Breadcrumbs;
+use frontend\components\extensions\Html;
+use frontend\components\widgets\Filter;
+use frontend\components\widgets\ProductWholesaleOrder;
+
+$this->title = Yii::t('frontend/site', 'All products');
+$this->params['breadcrumbs'][] = $this->title;
 
 ?>
 
 <div class="site-wholesale">
-    <div class="container">
-        <div class="row">
-            <div class="col s12">
-                <div class="breadcrumbs">
-                    Главная <?= Html::icon('keyboard_arrow_right', ['class' => 'breadcrumbs__separator']) ?>
-                </div>
-                <h1> Все товары </h1>
-                <div class="display-settings">
+    <?= Breadcrumbs::widget([
+        'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
+    ]) ?>
 
-                </div>
-                <div class="row">
-                    <div class="col s3">
-                        <div class="filter">
-                            <div class="filter__section">
-                                <div class="filter__a-title">
-                                    Сезоны
-                                </div>
-                                <hr />
-                                <div class="filter__a-values">
-                                    <input type="checkbox" class="filled-in" id="test5" />
-                                    <label for="test5">лето</label>
-                                    <br />
-                                    <input type="checkbox" class="filled-in" id="test7" />
-                                    <label for="test7">зима</label>
-                                    <br />
-                                    <input type="checkbox" class="filled-in" id="test6" />
-                                    <label for="test6">вне сезона</label>
-                                </div>
-                            </div>
-                            <div class="filter__section">
-                                <div class="filter__a-title">
-                                    Вес
-                                </div>
-                                <hr />
-                            </div>
-                            <div class="filter__reset">
-                                <?= Html::icon('replay') ?>
-                                Сбросить
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col s9">
-                        <?= ProductWholesaleOrder::widget([]) ?>
-                        <?= ProductWholesaleOrder::widget([]) ?>
-                        <?= ProductWholesaleOrder::widget([]) ?>
-                        <?= ProductWholesaleOrder::widget([]) ?>
-                    </div>
-                </div>
-            </div>
+    <h1 class="site-wholesale__title"><?= Html::encode($this->title) ?></h1>
+
+    <div class="site-wholesale__layout">
+        <div class="site-wholesale__filter">
+            <?= Filter::widget([]) ?>
+        </div>
+        <div class="site-wholesale__products">
+            <? foreach ($products as $product) {
+                echo ProductWholesaleOrder::widget(['product' => $product]);
+            } ?>
+
+            <? foreach ($products as $product) {
+                echo ProductWholesaleOrder::widget(['product' => $product]);
+            } ?>
+
+            <? foreach ($products as $product) {
+                echo ProductWholesaleOrder::widget(['product' => $product]);
+            } ?>
         </div>
     </div>
 </div>

@@ -1,20 +1,28 @@
 $height: 100px;
+$padding: 10px;
+$border: 1px;
+$real-height: $height - $padding * 2 - $border * 2;
 
 .w-order {
-  @include border-radius(2px);
-  border: solid 1px $color-border-standart;
+  @include slightly-border-radius;
+  border: solid $border $color-border-standart;
   height: $height;
-  padding: 10px;
+  line-height: $real-height;
+  padding: $padding;
 
   & .w-order__product-image {
     @include size(auto, 100%);
     display: inline-block;
+    vertical-align: middle;
   }
 
   & .w-order__product-info {
+    @include size(40%, $real-height);
     display: inline-block;
-    max-height: $height;
+    line-height: normal;
     overflow: hidden;
+    position: relative;
+    vertical-align: middle;
   }
 
   & .w-order__product-categories {
@@ -27,59 +35,35 @@ $height: 100px;
   }
 
   & .w-order__product-weight {
+    bottom: 0;
     color: $color-text-background;
-    display: inline-block;
+    position: absolute;
   }
 
   & .w-order__product-price {
-    display: inline-block;
-    @include border-radius(5px);
+    @include slightly-border-radius;
     background-color: $color-application-main;
     color: $color-text-inverse;
+    display: inline-block;
+    line-height: normal;
     padding: 5px 10px;
-    position: relative;
-    top: -15px;
-    overflow: hidden;
+    vertical-align: middle;
+  }
+
+  & .w-order__order-quantity {
+    display: inline-block;
+    margin: 0 5px;
+    vertical-align: middle;
+    width: 20%;
   }
 
   & .w-order__order {
     display: inline-block;
-    height: 100%;
-    overflow: hidden;
-    font-size: 45px;
-    i {
-      font-size: 30px;
-      color: $color-application-main;
-    }
+    float: right;
+    vertical-align: middle;
   }
 
-  & .w-order__order-value {
-    background-color: rgba(black, 0.1);
-    border: solid 1px $color-border-standart;
-    display: inline-block;
-    overflow: hidden;
-    white-space: nowrap;
-    position: relative;
-    top: -25px;
-    color: $color-text-background;
+  & .w-order__order-button {
+    color: $color-application-main;
   }
-
-  & .w-order__remove-value {
-    display: inline-block;
-    padding: 7px 10px;
-  }
-
-  & .w-order__add-value {
-    display: inline-block;
-    padding: 7px 10px;
-  }
-
-  & .w-order__value {
-    display: inline-block;
-    background-color: white;
-    padding: 5px 10px;
-    margin-bottom: 1px;
-    text-align: center;
-  }
-
 }

@@ -1,5 +1,6 @@
 <?php
 
 return [
-    'Contact' => 'Контакты'
+    'Contact' => 'Контакты',
+    'All products' => 'Все продукты'
 ];

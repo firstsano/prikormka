@@ -13,4 +13,8 @@ class QuantitySetterAsset extends \frontend\components\extensions\AssetBundle
     public $js = [
         'quantity-setter.js'
     ];
+
+    public $depends = [
+        'yii\web\JqueryAsset'
+    ];
 }

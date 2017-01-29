@@ -1,39 +1,42 @@
 <?php
 
 /* @var $this \yii\web\View */
+/* @var $product \common\models\Product */
 
 use frontend\components\widgets\Trinity;
 use frontend\components\extensions\Html;
+use frontend\components\widgets\QuantitySetter;
+use yii\helpers\StringHelper;
 
 ?>
 
 <div class="w-order">
-    <?= Html::img('@product-img/temp/prikormka.png',
-        ['class' => 'w-order__product-image']) ?>
-        <div class="w-order__product-info">
-            <div class="w-order__product-categories">
-                Спортивная прикормка AVARGARD
-            </div>
-            <div class="w-order__product-name">
-                Turbo Mix прикормка для ловли карп
-            </div>
-            <?= Trinity::widget(['main' => '5', 'top' => 'вес(г)', 'bottom' => 'объем(мл)',
-                'options' => ['class' => 'w-order__product-weight']]) ?>
+    <?= Html::img($product->mainImage->url, ['class' => 'w-order__product-image']) ?>
+    <div class="w-order__product-info">
+        <div class="w-order__product-categories">
+            <?= $product->category->name ?>
         </div>
-        <div class="w-order__order-value">
-            <div class="w-order__remove-value">
-                <?= Html::icon('arrow_drop_down') ?>
-            </div>
-            <div class="w-order__value">
-                12
-            </div>
-            <div class="w-order__add-value">
-                <?= Html::icon('arrow_drop_up') ?>
-            </div>
+        <div class="w-order__product-name">
+            <?= StringHelper::truncate($product->name, 30) ?>
         </div>
-        <?= Trinity::widget(['main' => '87, 00', 'top' => 'руб', 'bottom' => '100 шт',
-            'options' => ['class' => 'w-order__product-price']]) ?>
-        <div class="w-order__order">
-            <?= Html::icon('add') ?>
-        </div>
+        <?= Trinity::widget([
+            'main' => $product->weight,
+            'top' => Yii::t('common/site', 'weight'),
+            'bottom' => Yii::t('common/site', 'volume'),
+            'options' => ['class' => 'w-order__product-weight']
+        ]) ?>
+    </div>
+    <div class="w-order__order-quantity">
+        <?= QuantitySetter::widget([]) ?>
+    </div>
+    <div class="w-order__product-price">
+        <?= Trinity::widget([
+            'main' => format_f($product->price),
+            'top' => currency(),
+            'bottom' => quantity(100),
+        ]) ?>
+    </div>
+    <div class="w-order__order">
+        <?= Html::iconButton('add', '#', ['class' => 'w-order__order-button']) ?>
+    </div>
 </div>

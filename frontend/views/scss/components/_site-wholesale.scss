@@ -1,8 +1,20 @@
 .site-wholesale {
-  padding: 20px 0;
+  @extend .container;
 
-  h1 {
-    font-size: 20px;
-    font-weight: bold;
+  .site-wholesale__title {
+    @include header;
+  }
+
+  .site-wholesale__layout {
+    @extend .row;
+    margin-bottom: 40px;
+  }
+
+  .site-wholesale__filter {
+    @extend .col, .s3;
+  }
+
+  .site-wholesale__products {
+    @extend .col, .s9;
   }
 }

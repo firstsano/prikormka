@@ -4,6 +4,10 @@
   -webkit-border-radius: $args;
 }
 
+@mixin slightly-border-radius() {
+  @include border-radius(3px);
+}
+
 @mixin size($width, $height) {
   width: $width;
   height: $height;

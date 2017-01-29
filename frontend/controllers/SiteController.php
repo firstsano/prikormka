@@ -35,6 +35,13 @@ class SiteController extends Controller
         ]);
     }
 
+    public function actionWholesale()
+    {
+        return $this->render('wholesale', [
+            'products' => Product::find()->all(),
+        ]);
+    }
+
     public function actionContact()
     {
         $model = new ContactForm();

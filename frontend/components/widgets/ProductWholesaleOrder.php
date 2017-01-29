@@ -11,5 +11,15 @@ namespace frontend\components\widgets;
 
 class ProductWholesaleOrder extends \frontend\components\extensions\Widget
 {
+    public $product;
 
+    /**
+     * @inheritdoc
+     */
+    protected function renderParams()
+    {
+        return [
+            'product' => $this->product
+        ];
+    }
 }

@@ -1,0 +1,20 @@
+.site-contact {
+  @extend .container;
+
+  & .site-contact__title {
+    @include header;
+  }
+
+  & .site-contact__layout {
+    @extend .row;
+    margin-bottom: 40px;
+  }
+
+  & .site-contact__info {
+    @extend .col, .s7;
+  }
+
+  & .site-contact__form {
+    @extend .col, .s5;
+  }
+}

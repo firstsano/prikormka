@@ -25,7 +25,7 @@ class Navigation
             ],
             [
                 'label' => 'контакты',
-                'url' => [ 'site/dummy' ]
+                'url' => [ 'site/contact' ]
             ],
             [
                 'label' => 'блог',

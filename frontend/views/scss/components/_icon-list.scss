@@ -1,0 +1,14 @@
+.icon-list {
+  margin: 0;
+
+  & .icon-list__item {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+
+  & .icon-list__icon {
+    color: $color-application-main;
+    margin-right: 5px;
+  }
+}

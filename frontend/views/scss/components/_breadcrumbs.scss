@@ -1,6 +1,14 @@
 .breadcrumbs {
   color: $color-application-main;
 
+  & .breadcrumbs__item {
+    display: inline-block;
+
+    &.breadcrumbs__item_active {
+      color: $color-text-background;
+    }
+  }
+
   & .breadcrumbs__separator {
     color: $color-text-background;
   }

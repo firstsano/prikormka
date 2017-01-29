@@ -1,10 +1,17 @@
 .button {
+  @include border-radius(3px);
   background-color: $color-application-main;
+  border: none;
   color: $color-text-inverse;
   display: inline-block;
   padding: 5px 20px;
 
   &.button_round {
     @include border-radius(30px);
+  }
+
+  &.button_block {
+    display: block;
+    width: 100%;
   }
 }

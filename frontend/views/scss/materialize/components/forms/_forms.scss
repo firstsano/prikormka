@@ -8,10 +8,10 @@ button:focus {
   background-color: $button-background-focus;
 }
 
-label {
-  font-size: $label-font-size;
-  color: $input-border-color;
-}
+//label {
+//  font-size: $label-font-size;
+//  color: $input-border-color;
+//}
 
 //@import 'input-fields';
 @import 'radio-buttons';

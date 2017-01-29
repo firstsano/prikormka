@@ -1,0 +1,34 @@
+.standart-form {
+  background-color: $color-application-additional;
+  padding: 20px;
+
+  & .standart-form__form-input {
+    margin-bottom: 10px;
+  }
+
+  & .standart-form__label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: $font-size-small;
+    color: $color-text-standart;
+  }
+
+  & .standart-form__input {
+    @include border-radius(3px);
+    display: block;
+    color: $color-text-background;
+    padding: 5px 10px;
+    border: solid 2px $color-border-standart;
+    width: 100%;
+  }
+
+  & .standart-form__error {
+    font-size: $font-size-mini;
+    color: $color-text-background;
+  }
+
+  & .standart-form__submit {
+    @extend .button, .button_block;
+    padding: 10px;
+  }
+}

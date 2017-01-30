@@ -13,42 +13,42 @@ class Navigation
     {
         return [
             [
-                'label'=>Yii::t('common', 'Product Categories'),
+                'label'=>Yii::t('common/site', 'Product categories'),
                 'url'=>['/category/index'],
                 'icon'=>'<i class="fa fa-angle-double-right"></i>'
             ],
             [
-                'label'=>Yii::t('common', 'Products'),
+                'label'=>Yii::t('common/site', 'Products'),
                 'url'=>['/product/index'],
                 'icon'=>'<i class="fa fa-angle-double-right"></i>'
             ],
             [
-                'label'=>Yii::t('backend', 'Static pages'),
+                'label'=>Yii::t('backend/site', 'Static pages'),
                 'url'=>['/page/index'],
                 'icon'=>'<i class="fa fa-angle-double-right"></i>'
             ],
             [
-                'label'=>Yii::t('backend', 'Articles'),
+                'label'=>Yii::t('backend/site', 'Articles'),
                 'url'=>['/article/index'],
                 'icon'=>'<i class="fa fa-angle-double-right"></i>'
             ],
             [
-                'label'=>Yii::t('backend', 'Article Categories'),
+                'label'=>Yii::t('backend/site', 'Article categories'),
                 'url'=>['/article-category/index'],
                 'icon'=>'<i class="fa fa-angle-double-right"></i>'
             ],
             [
-                'label'=>Yii::t('backend', 'Text Widgets'),
+                'label'=>Yii::t('backend/site', 'Text widgets'),
                 'url'=>['/widget-text/index'],
                 'icon'=>'<i class="fa fa-angle-double-right"></i>'
             ],
             [
-                'label'=>Yii::t('backend', 'Menu Widgets'),
+                'label'=>Yii::t('backend/site', 'Menu widgets'),
                 'url'=>['/widget-menu/index'],
                 'icon'=>'<i class="fa fa-angle-double-right"></i>'
             ],
             [
-                'label'=>Yii::t('backend', 'Carousel Widgets'),
+                'label'=>Yii::t('backend/site', 'Carousel widgets'),
                 'url'=>['/widget-carousel/index'],
                 'icon'=>'<i class="fa fa-angle-double-right"></i>'
             ],

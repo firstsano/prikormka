@@ -1,10 +1,10 @@
 <?php
 namespace frontend\controllers;
 
-use common\models\Product;
 use Yii;
-use frontend\models\ContactForm;
 use yii\web\Controller;
+use frontend\models\ContactForm;
+use frontend\models\Product;
 
 /**
  * Site controller

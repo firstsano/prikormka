@@ -78,14 +78,15 @@ class Product extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-//            [['category_id', 'pack_quantity', 'min_pack_quantity'], 'integer'],
-            [['name'], 'required'],
+            [['name', 'weight', 'price', 'images', 'pack_quantity'], 'required'],
             [['slug'], 'unique'],
             [['description'], 'string'],
             [['price', 'weight'], 'number'],
+            [['pack_quantity', 'min_pack_quantity'], 'integer',
+                'integerOnly' => true, 'min' => 1],
+            [['min_pack_quantity'], 'default', 'value' => 1],
             [['name', 'slug', 'seasonality'], 'string', 'max' => 255],
             [['category_id'], 'exist', 'skipOnError' => true, 'targetClass' => Category::className(), 'targetAttribute' => ['category_id' => 'id']],
-            [['images'], 'safe']
         ];
     }
 
@@ -96,7 +97,7 @@ class Product extends \yii\db\ActiveRecord
     {
         return [
             'id' => Yii::t('common/models/product', 'ID'),
-            'category_id' => Yii::t('common/models/product', 'Category ID'),
+            'category_id' => Yii::t('common/models/product', 'Category'),
             'name' => Yii::t('common/models/product', 'Name'),
             'slug' => Yii::t('common/models/product', 'Slug'),
             'description' => Yii::t('common/models/product', 'Description'),
@@ -105,6 +106,7 @@ class Product extends \yii\db\ActiveRecord
             'pack_quantity' => Yii::t('common/models/product', 'Pack Quantity'),
             'min_pack_quantity' => Yii::t('common/models/product', 'Min Pack Quantity'),
             'seasonality' => Yii::t('common/models/product', 'Seasonality'),
+            'images' => Yii::t('common/models/product', 'Images'),
         ];
     }
 

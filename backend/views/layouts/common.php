@@ -42,33 +42,11 @@ $bundle = BackendAsset::register($this);
                             </a>
                         </li>
                         <!-- Notifications: style can be found in dropdown.less -->
+                        <?php if (Yii::$app->user->can('viewAdminPanel')): ?>
                         <li id="log-dropdown" class="dropdown notifications-menu">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                <i class="fa fa-warning"></i>
-                            <span class="label label-danger">
-                                <?php echo \backend\models\SystemLog::find()->count() ?>
-                            </span>
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li class="header"><?php echo Yii::t('backend', 'You have {num} log items', ['num'=>\backend\models\SystemLog::find()->count()]) ?></li>
-                                <li>
-                                    <!-- inner menu: contains the actual data -->
-                                    <ul class="menu">
-                                        <?php foreach(\backend\models\SystemLog::find()->orderBy(['log_time'=>SORT_DESC])->limit(5)->all() as $logEntry): ?>
-                                            <li>
-                                                <a href="<?php echo Yii::$app->urlManager->createUrl(['/log/view', 'id'=>$logEntry->id]) ?>">
-                                                    <i class="fa fa-warning <?php echo $logEntry->level == \yii\log\Logger::LEVEL_ERROR ? 'text-red' : 'text-yellow' ?>"></i>
-                                                    <?php echo $logEntry->category ?>
-                                                </a>
-                                            </li>
-                                        <?php endforeach; ?>
-                                    </ul>
-                                </li>
-                                <li class="footer">
-                                    <?php echo Html::a(Yii::t('backend', 'View all'), ['/log/index']) ?>
-                                </li>
-                            </ul>
+                            <?= $this->render('header/log') ?>
                         </li>
+                        <?php endif; ?>
                         <!-- User Account: style can be found in dropdown.less -->
                         <li class="dropdown user user-menu">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -129,70 +107,7 @@ $bundle = BackendAsset::register($this);
                     'linkTemplate' => '<a href="{url}">{icon}<span>{label}</span>{right-icon}{badge}</a>',
                     'submenuTemplate'=>"\n<ul class=\"treeview-menu\">\n{items}\n</ul>\n",
                     'activateParents'=>true,
-                    'items'=>[
-                        [
-                            'label'=>Yii::t('backend', 'Main'),
-                            'options' => ['class' => 'header']
-                        ],
-                        [
-                            'label'=>Yii::t('backend', 'Timeline'),
-                            'icon'=>'<i class="fa fa-bar-chart-o"></i>',
-                            'url'=>['/timeline-event/index'],
-                            'badge'=> TimelineEvent::find()->today()->count(),
-                            'badgeBgClass'=>'label-success',
-                        ],
-                        [
-                            'label'=>Yii::t('backend', 'Content'),
-                            'url' => '#',
-                            'icon'=>'<i class="fa fa-edit"></i>',
-                            'options'=>['class'=>'treeview'],
-                            'items'=> Navigation::items()
-                        ],
-                        [
-                            'label'=>Yii::t('backend', 'System'),
-                            'options' => ['class' => 'header']
-                        ],
-                        [
-                            'label'=>Yii::t('backend', 'Users'),
-                            'icon'=>'<i class="fa fa-users"></i>',
-                            'url'=>['/user/index'],
-                            'visible'=>Yii::$app->user->can('administrator')
-                        ],
-                        [
-                            'label'=>Yii::t('backend', 'Other'),
-                            'url' => '#',
-                            'icon'=>'<i class="fa fa-cogs"></i>',
-                            'options'=>['class'=>'treeview'],
-                            'items'=>[
-                                [
-                                    'label'=>Yii::t('backend', 'i18n'),
-                                    'url' => '#',
-                                    'icon'=>'<i class="fa fa-flag"></i>',
-                                    'options'=>['class'=>'treeview'],
-                                    'items'=>[
-                                        ['label'=>Yii::t('backend', 'i18n Source Message'), 'url'=>['/i18n/i18n-source-message/index'], 'icon'=>'<i class="fa fa-angle-double-right"></i>'],
-                                        ['label'=>Yii::t('backend', 'i18n Message'), 'url'=>['/i18n/i18n-message/index'], 'icon'=>'<i class="fa fa-angle-double-right"></i>'],
-                                    ]
-                                ],
-                                ['label'=>Yii::t('backend', 'Key-Value Storage'), 'url'=>['/key-storage/index'], 'icon'=>'<i class="fa fa-angle-double-right"></i>'],
-                                ['label'=>Yii::t('backend', 'File Storage'), 'url'=>['/file-storage/index'], 'icon'=>'<i class="fa fa-angle-double-right"></i>'],
-                                ['label'=>Yii::t('backend', 'Cache'), 'url'=>['/cache/index'], 'icon'=>'<i class="fa fa-angle-double-right"></i>'],
-                                ['label'=>Yii::t('backend', 'File Manager'), 'url'=>['/file-manager/index'], 'icon'=>'<i class="fa fa-angle-double-right"></i>'],
-                                [
-                                    'label'=>Yii::t('backend', 'System Information'),
-                                    'url'=>['/system-information/index'],
-                                    'icon'=>'<i class="fa fa-angle-double-right"></i>'
-                                ],
-                                [
-                                    'label'=>Yii::t('backend', 'Logs'),
-                                    'url'=>['/log/index'],
-                                    'icon'=>'<i class="fa fa-angle-double-right"></i>',
-                                    'badge'=>\backend\models\SystemLog::find()->count(),
-                                    'badgeBgClass'=>'label-danger',
-                                ],
-                            ]
-                        ]
-                    ]
+                    'items' => Navigation::items()
                 ]) ?>
             </section>
             <!-- /.sidebar -->

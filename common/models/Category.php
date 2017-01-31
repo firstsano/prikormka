@@ -62,7 +62,7 @@ class Category extends \yii\db\ActiveRecord
     {
         return [
             'id' => Yii::t('common/models/category', 'ID'),
-            'parent_id' => Yii::t('common/models/category', 'Parent ID'),
+            'parent_id' => Yii::t('common/models/category', 'Parent'),
             'name' => Yii::t('common/models/category', 'Name'),
             'slug' => Yii::t('common/models/category', 'Slug'),
             'description' => Yii::t('common/models/category', 'Description'),

@@ -31,28 +31,41 @@ use yii\bootstrap\ActiveForm;
 
     <?php echo $form->field($model, 'description')->textarea(['rows' => 6]) ?>
 
-    <?php echo $form->field($model, 'price')->textInput() ?>
+    <div class="row">
+        <div class="col-xs-3">
+            <?= $form->field($model, 'weight')->textInput() ?>
+        </div>
+        <div class="col-xs-3">
+            <?= $form->field($model, 'price')->textInput() ?>
+        </div>
+        <div class="col-xs-3">
+            <?= $form->field($model, 'pack_quantity')->textInput() ?>
+        </div>
+        <div class="col-xs-3">
+            <?= $form->field($model, 'min_pack_quantity')->textInput() ?>
+        </div>
+    </div>
 
-    <?php echo $form->field($model, 'weight')->textInput() ?>
 
-    <?php echo $form->field($model, 'pack_quantity')->textInput() ?>
+    <?= $form->field($model, 'seasonality')->textInput(['maxlength' => true]) ?>
 
-    <?php echo $form->field($model, 'min_pack_quantity')->textInput() ?>
-
-    <?php echo $form->field($model, 'seasonality')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'images')->widget(
-        Upload::className(),
-        [
-            'url' => ['/file-storage/upload'],
-            'sortable' => true,
-            'maxFileSize' => 10000000, // 10 MiB
-            'maxNumberOfFiles' => 10
-        ]
-    ) ?>
+    <?= $form->field($model, 'images')
+        ->hint(Yii::t('backend/models/product', 'product.images.hint'))
+        ->widget(
+            Upload::className(),
+            [
+                'url' => ['/file-storage/upload'],
+                'sortable' => true,
+                'maxFileSize' => 10000000, // 10 MiB
+                'maxNumberOfFiles' => 10
+            ]
+        ) ?>
 
     <div class="form-group">
-        <?php echo Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+        <?php echo Html::submitButton($model->isNewRecord ?
+            Yii::t('common/actions', 'Create') :
+            Yii::t('common/actions', 'Update'),
+            ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

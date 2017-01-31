@@ -1,13 +1,12 @@
 <?php
 $config = [
-    'name'=>'Yii2 Starter Kit',
+    'name' => 'Мечта Рыболова',
     'vendorPath'=>dirname(dirname(__DIR__)).'/vendor',
     'extensions' => require(__DIR__ . '/../../vendor/yiisoft/extensions.php'),
     'language' => 'ru-RU',
     'sourceLanguage' => 'en-US',
     'bootstrap' => ['log'],
     'components' => [
-
         'authManager' => [
             'class' => 'yii\rbac\DbManager',
             'itemTable' => '{{%rbac_auth_item}}',

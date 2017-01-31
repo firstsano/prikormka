@@ -29,7 +29,10 @@ use yii\bootstrap\ActiveForm;
     <?php echo $form->field($model, 'description')->textarea(['rows' => 6]) ?>
 
     <div class="form-group">
-        <?php echo Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+        <?php echo Html::submitButton($model->isNewRecord ?
+            Yii::t('common/actions', 'Create') :
+            Yii::t('common/actions', 'Update'),
+            ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

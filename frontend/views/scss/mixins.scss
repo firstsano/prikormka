@@ -13,6 +13,10 @@
   height: $height;
 }
 
+@mixin square($size) {
+  @include size($size, $size);
+}
+
 @mixin box-sizing($args) {
   box-sizing: $args;
   -moz-box-sizing: $args;

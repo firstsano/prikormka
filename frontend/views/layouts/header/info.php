@@ -33,8 +33,9 @@ use yii\helpers\Url;
         <div class="header-info__cart">
             <div class="cart">
                 <?= Html::img('@icons/bag.png', ['class' => 'cart__image']) ?>
+                <div class="cart__count"> <?= Yii::$app->cart->count ?> </div>
                 <div class="cart__total">
-                    12000
+                    <?= Yii::$app->cart->cost ?>
                     <sub class="cart__units">руб</sub>
                 </div>
             </div>

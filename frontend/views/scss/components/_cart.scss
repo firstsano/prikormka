@@ -1,16 +1,31 @@
 .cart {
+  position: relative;
 
-  .cart__image {
+  & .cart__image {
     margin-right: 5px;
     vertical-align: text-bottom;
   }
 
-  .cart__total {
+  & .cart__total {
     display: inline-block;
     font-weight: bold;
   }
 
-  .cart__units {
+  & .cart__units {
     font-weight: normal;
+  }
+
+  & .cart__count {
+    @include border-radius(50%);
+    background-color: $color-application-main;
+    color: $color-text-inverse;
+    font-size: $font-size-mini;
+    font-weight: bold;
+    left: 0;
+    margin-left: -5px;
+    margin-top: -9px;
+    padding: 2px 5px;
+    position: absolute;
+    top: 100%;
   }
 }

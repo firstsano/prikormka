@@ -21,23 +21,27 @@
         this.$input = $(el).closest(selectors.widget).find(selectors.input);
         this.options = $.extend({}, defaults, options);
     };
+    quantitySetter.prototype.changeValue = function(newValue) {
+        this.$input.val(newValue);
+        this.$input.trigger('quantity-changed');
+    };
     quantitySetter.prototype.increment = function () {
         var inputValue = parseInt(this.$input.val()) + this.options.step;
-        this.$input.val(inputValue);
+        this.changeValue(inputValue);
     };
     quantitySetter.prototype.decrement = function () {
         var inputValue = parseInt(this.$input.val());
         if (inputValue > this.options.minQuantity) {
             inputValue -= this.options.step;
         }
-        this.$input.val(inputValue);
+        this.changeValue(inputValue);
     };
     quantitySetter.prototype.filterInput = function () {
         var integerValue = parseInt(this.$input.val());
         if (isNaN(integerValue)) {
             integerValue = this.options.minQuantity;
         }
-        this.$input.val(integerValue);
+        this.changeValue(integerValue);
     };
 
     var initialize = function () {

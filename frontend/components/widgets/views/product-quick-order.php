@@ -8,6 +8,8 @@ use frontend\components\extensions\Html;
 use frontend\components\widgets\QuantitySetter;
 use frontend\components\widgets\Trinity;
 
+\frontend\components\widgets\assets\ProductQuickOrderAsset::register($this);
+
 ?>
 
 <?= Html::beginTag('div', $options) ?>
@@ -41,16 +43,26 @@ use frontend\components\widgets\Trinity;
             ]) ?>
         </div>
         <div class="q-order__quantity">
-            <?= QuantitySetter::widget() ?>
+            <?= QuantitySetter::widget(['options' => [
+                'input' => [
+                    'data' => [
+                        'product-quantity' => true
+                    ]
+                ]
+            ]]) ?>
         </div><!--
         --><div class="q-order__order">
-            <?= Html::a('add',
+            <?= Html::iconButton('add',
                 ['/site/add-product-to-cart'],
                 [
                     'class' => 'q-order__order-button',
                     'data' => [
                         'method' => 'POST',
-                        'params' => ['id' => $product->id],
+                        'product-order' => true,
+                        'params' => [
+                            'id' => $product->id,
+                            'quantity' => 1
+                        ],
                     ]
                 ]
             ) ?>

@@ -8,7 +8,18 @@
 
 namespace frontend\components\widgets;
 
+use frontend\components\extensions\Html;
+
 class QuantitySetter extends \frontend\components\extensions\Widget
 {
+    public $options;
 
+    protected function renderParams()
+    {
+        $inputOptions = $this->options['input'];
+        Html::addCssClass($inputOptions, ['quantity-setter__input']);
+        return [
+            'inputOptions' => $inputOptions
+        ];
+    }
 }

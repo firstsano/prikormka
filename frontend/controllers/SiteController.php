@@ -62,9 +62,9 @@ class SiteController extends Controller
     {
         $request = Yii::$app->request;
         $product = Product::findOne($request->post('id'));
-        Yii::$app->cart->put($product, 1);
+        Yii::$app->cart->put($product, $request->post('quantity', 1));
         if (!$request->isAjax) {
-            return $this->goBack(['/site']);
+            return $this->goBack(['/site/index']);
         }
         return 1;
 

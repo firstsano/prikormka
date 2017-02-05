@@ -8,6 +8,8 @@ use frontend\components\extensions\Html;
 use frontend\components\widgets\QuantitySetter;
 use yii\helpers\StringHelper;
 
+\frontend\components\widgets\assets\ProductWholesaleOrderAsset::register($this);
+
 ?>
 
 <div class="w-order">
@@ -29,7 +31,13 @@ use yii\helpers\StringHelper;
         ]) ?>
     </div>
     <div class="w-order__order-quantity">
-        <?= QuantitySetter::widget([]) ?>
+        <?= QuantitySetter::widget(['options' => [
+            'input' => [
+                'data' => [
+                    'product-quantity' => true
+                ]
+            ]
+        ]]) ?>
     </div>
     <div class="w-order__product-price">
         <?= Trinity::widget([
@@ -39,6 +47,19 @@ use yii\helpers\StringHelper;
         ]) ?>
     </div>
     <div class="w-order__order">
-        <?= Html::iconButton('add', '#', ['class' => 'w-order__order-button']) ?>
+        <?= Html::iconButton('add',
+            ['/site/add-product-to-cart'],
+            [
+                'class' => 'w-order__order-button',
+                'data' => [
+                    'method' => 'POST',
+                    'product-order' => true,
+                    'params' => [
+                        'id' => $product->id,
+                        'quantity' => 1
+                    ],
+                ]
+            ]
+        ) ?>
     </div>
 </div>

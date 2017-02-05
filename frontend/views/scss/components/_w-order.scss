@@ -10,10 +10,15 @@ $real-height: $height - $padding * 2 - $border * 2;
   line-height: $real-height;
   padding: $padding;
 
-  & .w-order__product-image {
-    @include size(auto, 100%);
+  & .w-order__product-image-container {
+    @include size(10%, 100%);
     display: inline-block;
+    text-align: center;
     vertical-align: middle;
+  }
+
+  & .w-order__product-image {
+    @include max-size(100%, 100%);
   }
 
   & .w-order__product-info {

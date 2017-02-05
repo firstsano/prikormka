@@ -13,6 +13,11 @@
   height: $height;
 }
 
+@mixin max-size($width, $height) {
+  max-width: $width;
+  max-height: $height;
+}
+
 @mixin square($size) {
   @include size($size, $size);
 }

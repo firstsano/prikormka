@@ -11,7 +11,9 @@ use yii\helpers\StringHelper;
 ?>
 
 <div class="w-order">
-    <?= Html::img($product->mainImage->url, ['class' => 'w-order__product-image']) ?>
+    <div class="w-order__product-image-container">
+        <?= Html::img($product->mainImage->url, ['class' => 'w-order__product-image']) ?>
+    </div>
     <div class="w-order__product-info">
         <div class="w-order__product-categories">
             <?= $product->category->name ?>

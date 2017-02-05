@@ -44,7 +44,16 @@ use frontend\components\widgets\Trinity;
             <?= QuantitySetter::widget() ?>
         </div><!--
         --><div class="q-order__order">
-            <?= Html::iconButton('add', '#', ['class' => 'q-order__order-button']) ?>
+            <?= Html::a('add',
+                ['/site/add-product-to-cart'],
+                [
+                    'class' => 'q-order__order-button',
+                    'data' => [
+                        'method' => 'POST',
+                        'params' => ['id' => $product->id],
+                    ]
+                ]
+            ) ?>
         </div>
     </footer>
 <?= Html::endTag('div') ?>

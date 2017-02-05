@@ -3,6 +3,7 @@ namespace frontend\controllers;
 
 use Yii;
 use yii\web\Controller;
+use yii\filters\VerbFilter;
 use frontend\models\ContactForm;
 use frontend\models\Product;
 
@@ -27,6 +28,21 @@ class SiteController extends Controller
         ];
     }
 
+    /**
+     * @inheritdoc
+     */
+    public function behaviors()
+    {
+        return [
+            'verbs' => [
+                'class' => VerbFilter::className(),
+                'actions' => [
+                    'add-product-to-cart' => ['post'],
+                ],
+            ],
+        ];
+    }
+
     public function actionIndex()
     {
         return $this->render('index', [
@@ -40,6 +56,18 @@ class SiteController extends Controller
         return $this->render('wholesale', [
             'products' => Product::find()->all(),
         ]);
+    }
+
+    public function actionAddProductToCart()
+    {
+        $request = Yii::$app->request;
+        $product = Product::findOne($request->post('id'));
+        Yii::$app->cart->put($product, 1);
+        if (!$request->isAjax) {
+            return $this->goBack(['/site']);
+        }
+        return 1;
+
     }
 
     public function actionContact()

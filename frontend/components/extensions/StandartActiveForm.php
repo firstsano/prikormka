@@ -35,7 +35,7 @@ class StandartActiveForm extends \yii\widgets\ActiveForm
     /**
      * Renders submit button
      */
-    public function submit($message, $options)
+    public function submit($message, $options = [])
     {
         Html::addCssClass($options, 'standart-form__submit');
         return Html::submitButton(

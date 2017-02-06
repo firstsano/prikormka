@@ -2,5 +2,7 @@
 
 return [
     'Contact' => 'Контакты',
-    'All products' => 'Все продукты'
+    'All products' => 'Все продукты',
+
+    'Log in' => 'Войти'
 ];

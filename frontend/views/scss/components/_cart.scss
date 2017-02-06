@@ -1,5 +1,8 @@
 .cart {
+  display: block;
   position: relative;
+  color: $color-text-standart;
+  text-decoration: none;
 
   & .cart__image {
     margin-right: 5px;

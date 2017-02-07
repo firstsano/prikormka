@@ -16,7 +16,7 @@ foreach (Yii::$app->session->allFlashes as $message) {
         'delay' => ArrayHelper::getValue($message, 'delay', 1),
         'pluginOptions' => [
             'showProgressbar' => ArrayHelper::getValue($message, 'progressBar', true),
-            'delay' => ArrayHelper::getValue($message, 'duration', 3000),
+            'delay' => ArrayHelper::getValue($message, 'duration', 5000),
             'placement' => [
                 'from' => ArrayHelper::getValue($message, 'positonY', 'top'),
                 'align' => ArrayHelper::getValue($message, 'positonX', 'right'),

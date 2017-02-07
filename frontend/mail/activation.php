@@ -1,7 +1,14 @@
 <?php
+
 /**
  * @var $this \yii\web\View
  * @var $url \common\models\User
  */
-?>
-<?php echo Yii::t('frontend', 'Your activation link: {url}', ['url' => Yii::$app->formatter->asUrl($url)]) ?>
+
+use frontend\components\extensions\Html;
+
+echo Yii::t('frontend/site', 'Your activation link')
+    . ":"
+    . Html::tag('br')
+    . Yii::$app->formatter->asUrl($url)
+;

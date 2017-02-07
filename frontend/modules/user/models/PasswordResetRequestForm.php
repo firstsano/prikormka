@@ -4,6 +4,7 @@ namespace frontend\modules\user\models;
 use cheatsheet\Time;
 use common\commands\SendEmailCommand;
 use common\models\UserToken;
+use himiklab\yii2\recaptcha\ReCaptchaValidator;
 use Yii;
 use common\models\User;
 use yii\base\Model;
@@ -17,6 +18,10 @@ class PasswordResetRequestForm extends Model
      * @var user email
      */
     public $email;
+    /**
+     * @var
+     */
+    public $reCaptcha;
 
     /**
      * @inheritdoc
@@ -32,6 +37,8 @@ class PasswordResetRequestForm extends Model
                 'filter' => ['status' => User::STATUS_ACTIVE],
                 'message' => 'There is no user with such email.'
             ],
+
+            [['reCaptcha'], ReCaptchaValidator::className()],
         ];
     }
 
@@ -53,7 +60,10 @@ class PasswordResetRequestForm extends Model
             if ($user->save()) {
                 return Yii::$app->commandBus->handle(new SendEmailCommand([
                     'to' => $this->email,
-                    'subject' => Yii::t('frontend', 'Password reset for {name}', ['name'=>Yii::$app->name]),
+                    'subject' => Yii::t('frontend/site',
+                        'Password reset for {name}',
+                        ['name' => Yii::$app->name]
+                    ),
                     'view' => 'passwordResetToken',
                     'params' => [
                         'user' => $user,
@@ -72,7 +82,8 @@ class PasswordResetRequestForm extends Model
     public function attributeLabels()
     {
         return [
-            'email'=>Yii::t('frontend', 'E-mail')
+            'email' => Yii::t('frontend/models/reset-password', 'E-mail'),
+            'reCaptcha' => Yii::t('frontend/models/reset-password', 'Re Captcha')
         ];
     }
 }

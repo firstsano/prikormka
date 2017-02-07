@@ -102,7 +102,7 @@ class SignupForm extends Model
                     Time::SECONDS_IN_A_DAY
                 );
                 Yii::$app->commandBus->handle(new SendEmailCommand([
-                    'subject' => Yii::t('frontend', 'Activation email'),
+                    'subject' => Yii::t('frontend/site', 'Activation email'),
                     'view' => 'activation',
                     'to' => $this->email,
                     'params' => [

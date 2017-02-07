@@ -80,7 +80,7 @@ class ResetPasswordForm extends Model
     public function attributeLabels()
     {
         return [
-            'password'=>Yii::t('frontend', 'Password')
+            'password' => Yii::t('frontend/models/reset-password', 'Password')
         ];
     }
 }

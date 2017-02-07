@@ -2,7 +2,7 @@
 
 /* @var $this yii\web\View */
 
-use yii\helpers\Html;
+use frontend\components\extensions\Html;
 use yii\helpers\Url;
 
 ?>
@@ -27,21 +27,31 @@ use yii\helpers\Url;
                 <div class="order-phone__comment"> телефон для заказа </div>
             </div>
         </div>
-        <div class="header-info__search">
-            <?= Html::img('@icons/search.png') ?>
-        </div>
         <div class="header-info__cart">
-            <div class="cart">
+            <a href="<?= Url::to(['/site/cart']) ?>" class="cart">
                 <?= Html::img('@icons/bag.png', ['class' => 'cart__image']) ?>
                 <div class="cart__count"> <?= Yii::$app->cart->count ?> </div>
                 <div class="cart__total">
                     <?= Yii::$app->cart->cost ?>
                     <sub class="cart__units">руб</sub>
                 </div>
-            </div>
+            </a>
         </div>
         <div class="header-info__lk">
-            <?= Html::a('Личный кабинет', ['site/lk'], ['class' => 'button']) ?>
+            <?php
+                echo Html::a('Личный кабинет', Yii::$app->user->loginUrl, [
+                    'class' => 'button button_block center'
+                ]);
+                if (!Yii::$app->user->isGuest) {
+                    echo Html::tag('br');
+                    $link = Yii::$app->user->identity->publicIdentity .
+                        Html::icon('exit_to_app');
+                    echo Html::a($link, ['/user/sign-in/logout'], [
+                        'class' => 'button button_block center',
+                        'data' => ['method' => 'POST']
+                    ]);
+                }
+            ?>
         </div>
     </div>
 </div>

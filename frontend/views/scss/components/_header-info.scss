@@ -18,16 +18,11 @@
     @extend .col, .m3;
   }
 
-  & .header-info__search {
-    @extend .col, .m1;
-    text-align: right;
-  }
-
   & .header-info__cart {
     @extend .col, .m2;
   }
 
   & .header-info__lk {
-    @extend .col, .m2;
+    @extend .col, .m3;
   }
 }

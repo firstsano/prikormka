@@ -38,7 +38,7 @@ class SignupForm extends Model
             ['username', 'filter', 'filter' => 'trim'],
             ['username', 'required'],
             ['username', 'unique',
-                'targetClass'=>'\common\models\User',
+                'targetClass' => '\common\models\User',
                 'message' => Yii::t('frontend', 'This username has already been taken.')
             ],
             ['username', 'string', 'min' => 2, 'max' => 255],
@@ -77,10 +77,11 @@ class SignupForm extends Model
     {
         if ($this->validate()) {
             $shouldBeActivated = $this->shouldBeActivated();
-            $user = new User();
-            $user->username = $this->username;
-            $user->email = $this->email;
-            $user->status = $shouldBeActivated ? User::STATUS_NOT_ACTIVE : User::STATUS_ACTIVE;
+            $user = new User([
+                'username' => $this->username,
+                'email' => $this->email,
+                'status' => $shouldBeActivated ? User::STATUS_NOT_ACTIVE : User::STATUS_ACTIVE
+            ]);
             $user->setPassword($this->password);
             if(!$user->save()) {
                 throw new Exception("User couldn't be  saved");

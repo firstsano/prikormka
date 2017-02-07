@@ -4,6 +4,7 @@
 /* @var $content string */
 
 use yii\helpers\Html;
+use frontend\components\extensions\Breadcrumbs;
 
 \frontend\assets\AppAsset::register($this);
 ?>
@@ -23,6 +24,11 @@ use yii\helpers\Html;
 <?php $this->beginBody() ?>
     <?= $this->render('header') ?>
     <main class="main">
+        <div class="main__breadcrumbs">
+            <?= Breadcrumbs::widget([
+                'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
+            ]) ?>
+        </div>
         <?= $content ?>
     </main>
     <?= $this->render('footer') ?>

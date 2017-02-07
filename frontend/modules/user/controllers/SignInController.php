@@ -30,19 +30,6 @@ class SignInController extends \yii\web\Controller
     /**
      * @return array
      */
-    public function actions()
-    {
-        return [
-            'oauth' => [
-                'class' => 'yii\authclient\AuthAction',
-                'successCallback' => [$this, 'successOAuthCallback']
-            ]
-        ];
-    }
-
-    /**
-     * @return array
-     */
     public function behaviors()
     {
         return [
@@ -51,19 +38,19 @@ class SignInController extends \yii\web\Controller
                 'rules' => [
                     [
                         'actions' => [
-                            'signup', 'login', 'request-password-reset', 'reset-password', 'oauth', 'activation'
+                            'signup', 'login', 'request-password-reset', 'reset-password', 'activation'
                         ],
                         'allow' => true,
                         'roles' => ['?']
                     ],
                     [
                         'actions' => [
-                            'signup', 'login', 'request-password-reset', 'reset-password', 'oauth', 'activation'
+                            'signup', 'login', 'request-password-reset', 'reset-password', 'activation'
                         ],
                         'allow' => false,
                         'roles' => ['@'],
                         'denyCallback' => function () {
-                            return Yii::$app->controller->redirect(['/user/default/index']);
+                            return $this->goHome();
                         }
                     ],
                     [
@@ -157,8 +144,8 @@ class SignInController extends \yii\web\Controller
             'status' => User::STATUS_ACTIVE
         ]);
         $token->delete();
-        Yii::$app->getUser()->login($user);
-        Yii::$app->getSession()->setFlash('alert', [
+        Yii::$app->user->login($user);
+        Yii::$app->session->setFlash('alert', [
             'body' => Yii::t('frontend', 'Your account has been successfully activated.'),
             'options' => ['class'=>'alert-success']
         ]);
@@ -217,84 +204,5 @@ class SignInController extends \yii\web\Controller
         return $this->render('resetPassword', [
             'model' => $model,
         ]);
-    }
-
-    /**
-     * @param $client \yii\authclient\BaseClient
-     * @return bool
-     * @throws Exception
-     */
-    public function successOAuthCallback($client)
-    {
-        // use BaseClient::normalizeUserAttributeMap to provide consistency for user attribute`s names
-        $attributes = $client->getUserAttributes();
-        $user = User::find()->where([
-                'oauth_client'=>$client->getName(),
-                'oauth_client_user_id'=>ArrayHelper::getValue($attributes, 'id')
-            ])
-            ->one();
-        if (!$user) {
-            $user = new User();
-            $user->scenario = 'oauth_create';
-            $user->username = ArrayHelper::getValue($attributes, 'login');
-            $user->email = ArrayHelper::getValue($attributes, 'email');
-            $user->oauth_client = $client->getName();
-            $user->oauth_client_user_id = ArrayHelper::getValue($attributes, 'id');
-            $password = Yii::$app->security->generateRandomString(8);
-            $user->setPassword($password);
-            if ($user->save()) {
-                $profileData = [];
-                if ($client->getName() === 'facebook') {
-                    $profileData['firstname'] = ArrayHelper::getValue($attributes, 'first_name');
-                    $profileData['lastname'] = ArrayHelper::getValue($attributes, 'last_name');
-                }
-                $user->afterSignup($profileData);
-                $sentSuccess = Yii::$app->commandBus->handle(new SendEmailCommand([
-                    'view' => 'oauth_welcome',
-                    'params' => ['user'=>$user, 'password'=>$password],
-                    'subject' => Yii::t('frontend', '{app-name} | Your login information', ['app-name'=>Yii::$app->name]),
-                    'to' => $user->email
-                ]));
-                if ($sentSuccess) {
-                    Yii::$app->session->setFlash(
-                        'alert',
-                        [
-                            'options'=>['class'=>'alert-success'],
-                            'body'=>Yii::t('frontend', 'Welcome to {app-name}. Email with your login information was sent to your email.', [
-                                'app-name'=>Yii::$app->name
-                            ])
-                        ]
-                    );
-                }
-
-            } else {
-                // We already have a user with this email. Do what you want in such case
-                if ($user->email && User::find()->where(['email'=>$user->email])->count()) {
-                    Yii::$app->session->setFlash(
-                        'alert',
-                        [
-                            'options'=>['class'=>'alert-danger'],
-                            'body'=>Yii::t('frontend', 'We already have a user with email {email}', [
-                                'email'=>$user->email
-                            ])
-                        ]
-                    );
-                } else {
-                    Yii::$app->session->setFlash(
-                        'alert',
-                        [
-                            'options'=>['class'=>'alert-danger'],
-                            'body'=>Yii::t('frontend', 'Error while oauth process.')
-                        ]
-                    );
-                }
-
-            };
-        }
-        if (Yii::$app->user->login($user, 3600 * 24 * 30)) {
-            return true;
-        } else {
-            throw new Exception('OAuth error');
-        }
     }
 }

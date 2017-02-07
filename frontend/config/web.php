@@ -8,7 +8,7 @@ $config = [
     'modules' => [
         'user' => [
             'class' => 'frontend\modules\user\Module',
-            //'shouldBeActivated' => true
+            'shouldBeActivated' => true
         ],
         'api' => [
             'class' => 'frontend\modules\api\Module',

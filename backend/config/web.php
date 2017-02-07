@@ -78,6 +78,13 @@ $config = [
             [
                 'allow' => true,
                 'roles' => ['manager'],
+            ],
+            [
+                'allow' => false,
+                'denyCallback' => function() {
+                    $frontend = Yii::getAlias('@frontendUrl');
+                    return Yii::$app->controller->redirect($frontend);
+                }
             ]
         ]
     ]

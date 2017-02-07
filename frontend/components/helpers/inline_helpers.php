@@ -1,7 +1,5 @@
 <?php
 
-use Yii;
-
 function get_base_class_name($object)
 {
     return (new \ReflectionClass($object))->getShortName();
@@ -14,17 +12,17 @@ function camelcase_to_snake_case($string)
 
 function format_f($float)
 {
-    return Yii::$app->formatter->asDecimal($float, 2);
+    return \Yii::$app->formatter->asDecimal($float, 2);
 }
 
 function currency()
 {
-    return Yii::$app->params['currency'];
+    return \Yii::$app->params['currency'];
 }
 
 function quantity($quantity)
 {
-    return Yii::t('common/site', '{quantity} items', [
+    return \Yii::t('common/site', '{quantity} items', [
         'quantity' => $quantity
     ]);
 }

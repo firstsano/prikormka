@@ -108,12 +108,11 @@ class SignInController extends \yii\web\Controller
             $user = $model->signup();
             if ($user) {
                 if ($model->shouldBeActivated()) {
-                    Yii::$app->getSession()->setFlash('alert', [
-                        'body' => Yii::t(
-                            'frontend',
-                            'Your account has been successfully created. Check your email for further instructions.'
-                        ),
-                        'options' => ['class'=>'alert-success']
+                    Yii::$app->session->setFlash('success', [
+                        'type' => 'success',
+                        'duration' => 5000,
+                        'title' => Yii::t('frontend/site', 'verify.title'),
+                        'message' => Yii::t('frontend/site', 'verify.message'),
                     ]);
                 } else {
                     Yii::$app->getUser()->login($user);
@@ -145,9 +144,11 @@ class SignInController extends \yii\web\Controller
         ]);
         $token->delete();
         Yii::$app->user->login($user);
-        Yii::$app->session->setFlash('alert', [
-            'body' => Yii::t('frontend', 'Your account has been successfully activated.'),
-            'options' => ['class'=>'alert-success']
+        Yii::$app->session->setFlash('success', [
+            'type' => 'success',
+            'duration' => 5000,
+            'title' => Yii::t('frontend/site', 'activated.title'),
+            'message' => Yii::t('frontend/site', 'activated.message'),
         ]);
 
         return $this->goHome();

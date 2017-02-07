@@ -31,6 +31,13 @@ $config = [
             ]
         ],
 
+        'reCaptcha' => [
+            'name' => 'reCaptcha',
+            'class' => 'himiklab\yii2\recaptcha\ReCaptcha',
+            'siteKey' => env('RECAPTCHA_KEY'),
+            'secret' => env('RECAPTCHA_SECRET'),
+        ],
+
         'formatter'=>[
             'class'=>'yii\i18n\Formatter'
         ],
@@ -46,7 +53,6 @@ $config = [
 
         'mailer' => [
             'class' => 'yii\swiftmailer\Mailer',
-            //'useFileTransport' => true,
             'messageConfig' => [
                 'charset' => 'UTF-8',
                 'from' => env('ADMIN_EMAIL')
@@ -82,30 +88,10 @@ $config = [
 
         'i18n' => [
             'translations' => [
-//                'app'=>[
-//                    'class' => 'yii\i18n\PhpMessageSource',
-//                    'basePath'=>'@common/messages',
-//                ],
                 '*'=> [
                     'class' => 'yii\i18n\PhpMessageSource',
                     'basePath' => '@common/messages',
-//                    'fileMap'=>[
-//                        'common'=>'common.php',
-//                        'backend'=>'backend.php',
-//                        'frontend'=>'frontend.php',
-//                    ],
-//                    'on missingTranslation' => ['\backend\modules\i18n\Module', 'missingTranslation']
-                ],
-                /* Uncomment this code to use DbMessageSource
-                 '*'=> [
-                    'class' => 'yii\i18n\DbMessageSource',
-                    'sourceMessageTable'=>'{{%i18n_source_message}}',
-                    'messageTable'=>'{{%i18n_message}}',
-                    'enableCaching' => YII_ENV_DEV,
-                    'cachingDuration' => 3600,
-                    'on missingTranslation' => ['\backend\modules\i18n\Module', 'missingTranslation']
-                ],
-                */
+                ]
             ],
         ],
 

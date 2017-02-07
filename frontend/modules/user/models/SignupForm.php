@@ -6,6 +6,7 @@ use common\commands\SendEmailCommand;
 use common\models\User;
 use common\models\UserToken;
 use frontend\modules\user\Module;
+use \himiklab\yii2\recaptcha\ReCaptchaValidator;
 use yii\base\Exception;
 use yii\base\Model;
 use Yii;
@@ -28,6 +29,10 @@ class SignupForm extends Model
      * @var
      */
     public $password;
+    /**
+     * @var
+     */
+    public $reCaptcha;
 
     /**
      * @inheritdoc
@@ -53,6 +58,8 @@ class SignupForm extends Model
 
             ['password', 'required'],
             ['password', 'string', 'min' => 6],
+
+            [['reCaptcha'], ReCaptchaValidator::className()],
         ];
     }
 
@@ -62,9 +69,10 @@ class SignupForm extends Model
     public function attributeLabels()
     {
         return [
-            'username'=>Yii::t('frontend', 'Username'),
-            'email'=>Yii::t('frontend', 'E-mail'),
-            'password'=>Yii::t('frontend', 'Password'),
+            'username' => Yii::t('frontend/models/sign-up', 'Username'),
+            'email' => Yii::t('frontend/models/sign-up', 'E-mail'),
+            'password' => Yii::t('frontend/models/sign-up', 'Password'),
+            'reCaptcha' => Yii::t('frontend/models/sign-up', 'Re Captcha'),
         ];
     }
 

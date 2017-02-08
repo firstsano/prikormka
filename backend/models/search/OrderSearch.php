@@ -20,7 +20,7 @@ class OrderSearch extends Order
         return [
             [['id', 'user_id'], 'integer'],
             [['price', 'correction', 'total'], 'number'],
-            [['correction_description', 'status'], 'safe'],
+            [['correction_description', 'status', 'user_name', 'user_email', 'user_phone', 'user_address'], 'safe'],
         ];
     }
 
@@ -44,14 +44,21 @@ class OrderSearch extends Order
     {
         $query = Order::find();
 
+        // add conditions that should always apply here
+
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
         ]);
 
-        if (!($this->load($params) && $this->validate())) {
+        $this->load($params);
+
+        if (!$this->validate()) {
+            // uncomment the following line if you do not want to return any records when validation fails
+            // $query->where('0=1');
             return $dataProvider;
         }
 
+        // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
             'user_id' => $this->user_id,
@@ -61,7 +68,11 @@ class OrderSearch extends Order
         ]);
 
         $query->andFilterWhere(['like', 'correction_description', $this->correction_description])
-            ->andFilterWhere(['like', 'status', $this->status]);
+            ->andFilterWhere(['like', 'status', $this->status])
+            ->andFilterWhere(['like', 'user_name', $this->user_name])
+            ->andFilterWhere(['like', 'user_email', $this->user_email])
+            ->andFilterWhere(['like', 'user_phone', $this->user_phone])
+            ->andFilterWhere(['like', 'user_address', $this->user_address]);
 
         return $dataProvider;
     }

@@ -6,15 +6,15 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model common\models\Order */
 
-$this->title = Yii::t('backend', 'Create {modelClass}', [
-    'modelClass' => 'Order',
-]);
-$this->params['breadcrumbs'][] = ['label' => Yii::t('backend', 'Orders'), 'url' => ['index']];
+$this->title = Yii::t('backend\models\order', 'Create Order');
+$this->params['breadcrumbs'][] = ['label' => Yii::t('backend\models\order', 'Orders'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="order-create">
 
-    <?php echo $this->render('_form', [
+    <h1><?= Html::encode($this->title) ?></h1>
+
+    <?= $this->render('_form', [
         'model' => $model,
     ]) ?>
 

@@ -14,9 +14,13 @@ use Yii;
  * @property string $correction_description
  * @property double $total
  * @property string $status
+ * @property string $user_name
+ * @property string $user_email
+ * @property string $user_phone
+ * @property string $user_address
  *
+ * @property OrderProducts[] $orderProducts
  * @property User $user
- * @property ProductOrder[] $productOrders
  */
 class Order extends \yii\db\ActiveRecord
 {
@@ -37,7 +41,8 @@ class Order extends \yii\db\ActiveRecord
             [['user_id'], 'integer'],
             [['price', 'correction', 'total'], 'number'],
             [['status'], 'required'],
-            [['correction_description', 'status'], 'string', 'max' => 255],
+            [['user_address'], 'string'],
+            [['correction_description', 'status', 'user_name', 'user_email', 'user_phone'], 'string', 'max' => 255],
             [['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['user_id' => 'id']],
         ];
     }
@@ -55,7 +60,19 @@ class Order extends \yii\db\ActiveRecord
             'correction_description' => Yii::t('common/models/order', 'Correction Description'),
             'total' => Yii::t('common/models/order', 'Total'),
             'status' => Yii::t('common/models/order', 'Status'),
+            'user_name' => Yii::t('common/models/order', 'User Name'),
+            'user_email' => Yii::t('common/models/order', 'User Email'),
+            'user_phone' => Yii::t('common/models/order', 'User Phone'),
+            'user_address' => Yii::t('common/models/order', 'User Address'),
         ];
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getOrderProducts()
+    {
+        return $this->hasMany(OrderProducts::className(), ['order_id' => 'id']);
     }
 
     /**
@@ -64,14 +81,6 @@ class Order extends \yii\db\ActiveRecord
     public function getUser()
     {
         return $this->hasOne(User::className(), ['id' => 'user_id']);
-    }
-
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getProductOrders()
-    {
-        return $this->hasMany(ProductOrder::className(), ['order_id' => 'id']);
     }
 
     /**

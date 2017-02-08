@@ -7,23 +7,25 @@ use yii\widgets\DetailView;
 /* @var $model common\models\Order */
 
 $this->title = $model->id;
-$this->params['breadcrumbs'][] = ['label' => Yii::t('backend', 'Orders'), 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => Yii::t('backend\models\order', 'Orders'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="order-view">
 
+    <h1><?= Html::encode($this->title) ?></h1>
+
     <p>
-        <?php echo Html::a(Yii::t('backend', 'Update'), ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        <?php echo Html::a(Yii::t('backend', 'Delete'), ['delete', 'id' => $model->id], [
+        <?= Html::a(Yii::t('backend\models\order', 'Update'), ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a(Yii::t('backend\models\order', 'Delete'), ['delete', 'id' => $model->id], [
             'class' => 'btn btn-danger',
             'data' => [
-                'confirm' => Yii::t('backend', 'Are you sure you want to delete this item?'),
+                'confirm' => Yii::t('backend\models\order', 'Are you sure you want to delete this item?'),
                 'method' => 'post',
             ],
         ]) ?>
     </p>
 
-    <?php echo DetailView::widget([
+    <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
             'id',
@@ -33,6 +35,10 @@ $this->params['breadcrumbs'][] = $this->title;
             'correction_description',
             'total',
             'status',
+            'user_name',
+            'user_email:email',
+            'user_phone',
+            'user_address:ntext',
         ],
     ]) ?>
 

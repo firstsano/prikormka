@@ -1,11 +1,11 @@
 <?php
 
 use yii\helpers\Html;
-use yii\bootstrap\ActiveForm;
+use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
 /* @var $model backend\models\search\OrderSearch */
-/* @var $form yii\bootstrap\ActiveForm */
+/* @var $form yii\widgets\ActiveForm */
 ?>
 
 <div class="order-search">
@@ -15,23 +15,31 @@ use yii\bootstrap\ActiveForm;
         'method' => 'get',
     ]); ?>
 
-    <?php echo $form->field($model, 'id') ?>
+    <?= $form->field($model, 'id') ?>
 
-    <?php echo $form->field($model, 'user_id') ?>
+    <?= $form->field($model, 'user_id') ?>
 
-    <?php echo $form->field($model, 'price') ?>
+    <?= $form->field($model, 'price') ?>
 
-    <?php echo $form->field($model, 'correction') ?>
+    <?= $form->field($model, 'correction') ?>
 
-    <?php echo $form->field($model, 'correction_description') ?>
+    <?= $form->field($model, 'correction_description') ?>
 
     <?php // echo $form->field($model, 'total') ?>
 
     <?php // echo $form->field($model, 'status') ?>
 
+    <?php // echo $form->field($model, 'user_name') ?>
+
+    <?php // echo $form->field($model, 'user_email') ?>
+
+    <?php // echo $form->field($model, 'user_phone') ?>
+
+    <?php // echo $form->field($model, 'user_address') ?>
+
     <div class="form-group">
-        <?php echo Html::submitButton(Yii::t('backend', 'Search'), ['class' => 'btn btn-primary']) ?>
-        <?php echo Html::resetButton(Yii::t('backend', 'Reset'), ['class' => 'btn btn-default']) ?>
+        <?= Html::submitButton(Yii::t('backend\models\order', 'Search'), ['class' => 'btn btn-primary']) ?>
+        <?= Html::resetButton(Yii::t('backend\models\order', 'Reset'), ['class' => 'btn btn-default']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

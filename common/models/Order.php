@@ -9,11 +9,8 @@ use Yii;
  *
  * @property integer $id
  * @property integer $user_id
- * @property double $price
- * @property double $correction
- * @property string $correction_description
  * @property double $total
- * @property string $status
+ * @property integer $status
  * @property string $user_name
  * @property string $user_email
  * @property string $user_phone
@@ -24,6 +21,12 @@ use Yii;
  */
 class Order extends \yii\db\ActiveRecord
 {
+    const STATUS_NEW = 1;
+    const STATUS_PAYED = 2;
+    const STATUS_SHIPPED = 3;
+    const STATUS_COMPLETE = 4;
+
+
     /**
      * @inheritdoc
      */
@@ -39,11 +42,14 @@ class Order extends \yii\db\ActiveRecord
     {
         return [
             [['user_id'], 'integer'],
-            [['price', 'correction', 'total'], 'number'],
-            [['status'], 'required'],
-            [['user_address'], 'string'],
-            [['correction_description', 'status', 'user_name', 'user_email', 'user_phone'], 'string', 'max' => 255],
+            [['total'], 'number'],
+            [['status'], 'default', 'value' => static::STATUS_NEW],
+            [['status'], 'integer'],
+            [['user_name', 'user_email', 'user_phone', 'user_address'], 'string'],
             [['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['user_id' => 'id']],
+            [['user_name', 'user_email', 'user_phone', 'user_address'], 'required', 'when' => function($model) {
+                return empty($model->user_id);
+            }]
         ];
     }
 
@@ -55,9 +61,6 @@ class Order extends \yii\db\ActiveRecord
         return [
             'id' => Yii::t('common/models/order', 'ID'),
             'user_id' => Yii::t('common/models/order', 'User ID'),
-            'price' => Yii::t('common/models/order', 'Price'),
-            'correction' => Yii::t('common/models/order', 'Correction'),
-            'correction_description' => Yii::t('common/models/order', 'Correction Description'),
             'total' => Yii::t('common/models/order', 'Total'),
             'status' => Yii::t('common/models/order', 'Status'),
             'user_name' => Yii::t('common/models/order', 'User Name'),
@@ -68,11 +71,25 @@ class Order extends \yii\db\ActiveRecord
     }
 
     /**
+     * Returns order statuses list
+     * @return array|mixed
+     */
+    public static function statuses()
+    {
+        return [
+            self::STATUS_NEW => Yii::t('common/models/order', 'status.new'),
+            self::STATUS_PAYED => Yii::t('common/models/order', 'status.payed'),
+            self::STATUS_SHIPPED => Yii::t('common/models/order', 'status.shipped'),
+            self::STATUS_COMPLETE => Yii::t('common/models/order', 'status.complete')
+        ];
+    }
+
+    /**
      * @return \yii\db\ActiveQuery
      */
     public function getOrderProducts()
     {
-        return $this->hasMany(OrderProducts::className(), ['order_id' => 'id']);
+        return $this->hasMany(OrderProduct::className(), ['order_id' => 'id']);
     }
 
     /**

@@ -18,11 +18,8 @@ class m170131_133532_create_orders_table extends Migration
         $this->createTable('orders', [
             'id' => $this->primaryKey(),
             'user_id' => $this->integer(),
-            'price' => $this->float(2),
-            'correction' => $this->float(2)->defaultValue(0),
-            'correction_description' => $this->string(),
             'total' => $this->float(2),
-            'status' => $this->string()->notNull(),
+            'status' => $this->integer()->notNull(),
         ]);
 
         // creates index for column `user_id`

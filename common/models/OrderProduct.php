@@ -18,8 +18,8 @@ use Yii;
  * @property integer $order_id
  * @property integer $source_product_id
  *
- * @property Products $sourceProduct
- * @property Orders $order
+ * @property Product $sourceProduct
+ * @property Order $order
  */
 class OrderProduct extends \yii\db\ActiveRecord
 {
@@ -40,9 +40,23 @@ class OrderProduct extends \yii\db\ActiveRecord
             [['price', 'weight'], 'number'],
             [['pack_quantity', 'quantity', 'order_id', 'source_product_id'], 'integer'],
             [['category', 'name', 'description'], 'string', 'max' => 255],
-            [['source_product_id'], 'exist', 'skipOnError' => true, 'targetClass' => Products::className(), 'targetAttribute' => ['source_product_id' => 'id']],
-            [['order_id'], 'exist', 'skipOnError' => true, 'targetClass' => Orders::className(), 'targetAttribute' => ['order_id' => 'id']],
+            [['source_product_id'], 'exist', 'skipOnError' => true, 'targetClass' => Product::className(), 'targetAttribute' => ['source_product_id' => 'id']],
+            [['order_id'], 'exist', 'skipOnError' => true, 'targetClass' => Order::className(), 'targetAttribute' => ['order_id' => 'id']],
         ];
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function fromProduct($product)
+    {
+        foreach (['name', 'description', 'price', 'weight',
+             'pack_quantity'] as $attribute) {
+            $this->$attribute = $product->$attribute;
+        }
+        $this->category = $product->category->name;
+        $this->source_product_id = $product->id;
+        return $this;
     }
 
     /**
@@ -69,7 +83,7 @@ class OrderProduct extends \yii\db\ActiveRecord
      */
     public function getSourceProduct()
     {
-        return $this->hasOne(Products::className(), ['id' => 'source_product_id']);
+        return $this->hasOne(Product::className(), ['id' => 'source_product_id']);
     }
 
     /**
@@ -77,6 +91,6 @@ class OrderProduct extends \yii\db\ActiveRecord
      */
     public function getOrder()
     {
-        return $this->hasOne(Orders::className(), ['id' => 'order_id']);
+        return $this->hasOne(Order::className(), ['id' => 'order_id']);
     }
 }

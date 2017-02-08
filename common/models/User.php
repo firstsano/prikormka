@@ -284,4 +284,14 @@ class User extends ActiveRecord implements IdentityInterface
         }
         return $this->email;
     }
+
+    /**
+     * Returns custom user. This user is used
+     * for generating tokens for unsigned users.
+     * @return User|null
+     */
+    public static function getCustomUser()
+    {
+        return static::findByLogin('user');
+    }
 }

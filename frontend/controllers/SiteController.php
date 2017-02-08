@@ -69,13 +69,6 @@ class SiteController extends Controller
         return 1;
     }
 
-    public function actionCart()
-    {
-        return $this->render('cart', [
-            'products' => Yii::$app->cart->positions
-        ]);
-    }
-
     public function actionContact()
     {
         $model = new ContactForm();

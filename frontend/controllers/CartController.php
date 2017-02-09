@@ -1,13 +1,14 @@
 <?php
+
 namespace frontend\controllers;
 
-use common\commands\CreateOrderCommand;
 use Yii;
 use yii\web\Controller;
-use frontend\models\OrderForm;
-use common\models\UserToken;
 use yii\web\BadRequestHttpException;
-use common\models\Order;
+use common\commands\CreateOrderCommand;
+use common\models\UserToken;
+use frontend\models\OrderForm;
+
 
 /**
  * Cart controller
@@ -28,6 +29,12 @@ class CartController extends Controller
                         'type' => 'warning',
                         'title' => Yii::t('frontend/site', 'order-activate.title'),
                         'message' => Yii::t('frontend/site', 'order-activate-error.message'),
+                    ]);
+                } else {
+                    Yii::$app->session->setFlash('success', [
+                        'type' => 'success',
+                        'title' => Yii::t('frontend/site', 'order-activate.title'),
+                        'message' => Yii::t('frontend/site', 'order-activate-verify.message'),
                     ]);
                 }
                 return $this->goHome();
@@ -67,6 +74,7 @@ class CartController extends Controller
         $orderCreated = Yii::$app->commandBus->handle(new CreateOrderCommand([
             'total' => 0,
             'user' => [
+                'session' => Yii::$app->session->id,
                 'name' => Yii::$app->user->name,
                 'email' => Yii::$app->user->email,
                 'phone' => Yii::$app->user->phone,
@@ -74,7 +82,7 @@ class CartController extends Controller
             ],
             'products' => $products
         ]));
-        if (!$orderCreated) {
+        if ($orderCreated === false) {
             Yii::$app->session->setFlash('alert', [
                 'type' => 'warning',
                 'title' => Yii::t('frontend/site', 'order-activate.title'),
@@ -82,6 +90,11 @@ class CartController extends Controller
             ]);
             return $this->goHome();
         }
-        return $this->redirect(['/order/unsigned']);
+
+        Yii::$app->cart->removeAll();
+        return $this->redirect([
+            '/order/view',
+            'id' => $orderCreated->id
+        ]);
     }
 }

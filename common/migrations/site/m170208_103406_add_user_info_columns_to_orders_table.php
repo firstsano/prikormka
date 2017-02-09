@@ -12,6 +12,7 @@ class m170208_103406_add_user_info_columns_to_orders_table extends Migration
      */
     public function up()
     {
+        $this->addColumn('orders', 'user_session', $this->string());
         $this->addColumn('orders', 'user_name', $this->string());
         $this->addColumn('orders', 'user_email', $this->string());
         $this->addColumn('orders', 'user_phone', $this->string());
@@ -27,5 +28,6 @@ class m170208_103406_add_user_info_columns_to_orders_table extends Migration
         $this->dropColumn('orders', 'user_phone');
         $this->dropColumn('orders', 'user_email');
         $this->dropColumn('orders', 'user_name');
+        $this->dropColumn('orders', 'user_session');
     }
 }

@@ -79,6 +79,14 @@ class OrderProduct extends \yii\db\ActiveRecord
     }
 
     /**
+     * @return float
+     */
+    public function getTotalPrice()
+    {
+        return $this->price * $this->quantity;
+    }
+
+    /**
      * @return \yii\db\ActiveQuery
      */
     public function getSourceProduct()

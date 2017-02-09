@@ -46,6 +46,7 @@ class CreateOrderCommand extends Object implements SelfHandlingCommand
                 $order->user_id = $command->user->id;
             } elseif (is_array($command->user)) {
                 $order->setAttributes([
+                    'user_session' => $command->user['session'],
                     'user_name' => $command->user['name'],
                     'user_email' => $command->user['email'],
                     'user_phone' => $command->user['phone'],
@@ -62,11 +63,11 @@ class CreateOrderCommand extends Object implements SelfHandlingCommand
                 $order->link('orderProducts', $orderProduct);
             }
             $transaction->commit();
+            return $order;
         } catch (Exception $e) {
             $transaction->rollBack();
             Yii::error($e->getMessage(), 'common.commands');
-            return false;
         }
-        return true;
+        return false;
     }
 }

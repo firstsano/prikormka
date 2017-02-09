@@ -14,21 +14,25 @@ use yii\helpers\Url;
 class OrderForm extends Model
 {
     /**
-     * @var
+     * @var string
      */
     public $name;
+
     /**
-     * @var
+     * @var string
      */
     public $email;
+
     /**
-     * @var
+     * @var string
      */
     public $phone;
+
     /**
-     * @var
+     * @var string
      */
     public $address;
+
     /**
      * @var
      */
@@ -44,8 +48,7 @@ class OrderForm extends Model
             [['name', 'address'], 'filter', 'filter' => 'strip_tags'],
             [['name', 'email', 'phone', 'address'], 'filter', 'filter' => 'trim'],
             ['email', 'email'],
-//            [['reCaptcha'], ReCaptchaValidator::className()],
-
+            [['reCaptcha'], ReCaptchaValidator::className()],
         ];
     }
 

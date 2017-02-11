@@ -5,6 +5,7 @@ namespace frontend\controllers;
 
 use Yii;
 use yii\web\Controller;
+use frontend\models\Product;
 
 
 class CatalogController extends Controller
@@ -14,8 +15,8 @@ class CatalogController extends Controller
      */
     public function actionIndex()
     {
-
         return $this->render('index', [
+            'products' => Product::find()->all(),
             'sortOptions' => $this->sortOptions(),
             'paginationOptions' => [15, 30, 50]
         ]);

@@ -4,4 +4,22 @@
   & .catalog-index__title {
     @include header;
   }
+
+  & .catalog-index__body {
+    @extend .row;
+    padding-bottom: 30px;
+    padding-top: 30px;
+  }
+
+  & .catalog-index__filter {
+    @extend .col, .s4;
+  }
+
+  & .catalog-index__products {
+    @extend .col, .s8;
+  }
+
+  & .catalog-index__product {
+    @extend .col, .s6;
+  }
 }

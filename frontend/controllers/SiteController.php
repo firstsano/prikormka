@@ -3,6 +3,7 @@ namespace frontend\controllers;
 
 use Yii;
 use yii\web\Controller;
+use yii\web\Response;
 use yii\filters\VerbFilter;
 use frontend\models\ContactForm;
 use frontend\models\Product;
@@ -63,12 +64,20 @@ class SiteController extends Controller
     public function actionAddProductToCart()
     {
         $request = Yii::$app->request;
+        $cart = Yii::$app->cart;
         $product = Product::findOne($request->post('id'));
-        Yii::$app->cart->put($product, $request->post('quantity', 1));
+        $cart->put($product, $request->post('quantity', 1));
         if (!$request->isAjax) {
             return $this->goBack(['/site/index']);
         }
-        return 1;
+
+        Yii::$app->response->format = Response::FORMAT_JSON;
+        return [
+            'cart' => [
+                'count' => $cart->count,
+                'cost' => $cart->cost
+            ]
+        ];
     }
 
     public function actionDelivery()

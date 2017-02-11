@@ -2,8 +2,9 @@
 
 /* @var $this yii\web\View */
 
-use frontend\components\extensions\Html;
 use yii\helpers\Url;
+use frontend\components\extensions\Html;
+use frontend\components\widgets\Cart;
 
 ?>
 
@@ -28,14 +29,11 @@ use yii\helpers\Url;
             </div>
         </div>
         <div class="header-info__cart">
-            <a href="<?= Url::to(['/order/new']) ?>" class="cart">
-                <?= Html::img('@icons/bag.png', ['class' => 'cart__image']) ?>
-                <div class="cart__count"> <?= Yii::$app->cart->count ?> </div>
-                <div class="cart__total">
-                    <?= Yii::$app->cart->cost ?>
-                    <sub class="cart__units">руб</sub>
-                </div>
-            </a>
+            <?= Cart::widget([
+                'url' => Url::to(['/order/new']),
+                'count' => Yii::$app->cart->count,
+                'cost' => Yii::$app->cart->cost,
+            ]) ?>
         </div>
         <div class="header-info__lk">
             <?php

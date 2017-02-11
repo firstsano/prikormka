@@ -57,11 +57,13 @@ use frontend\components\widgets\Trinity;
                 [
                     'class' => 'q-order__order-button',
                     'data' => [
-                        'method' => 'POST',
                         'product-order' => true,
-                        'params' => [
-                            'id' => $product->id,
-                            'quantity' => 1
+                        'product-add' => [
+                            'method' => 'POST',
+                            'params' => [
+                                'id' => $product->id,
+                                'quantity' => 1
+                            ],
                         ],
                     ]
                 ]

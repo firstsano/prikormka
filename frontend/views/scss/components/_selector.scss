@@ -1,0 +1,41 @@
+$padding: 5px;
+$chevron-padding-size: 60px;
+$chevron-padding-label: 20px;
+
+.selector {
+  @include border-radius(30px);
+  border: solid 1px $color-border-standart;
+  display: inline-block;
+  position: relative;
+
+  & .selector__auto-size {
+    background: transparent;
+    color: transparent;
+    padding: $padding;
+    padding-right: $chevron-padding-size;
+    position: relative;
+    z-index: 1;
+  }
+
+  & .selector__label {
+    @include size(100%, 100%);
+    background: url('/img/assets/select-down.png') right 10px center no-repeat;
+    color: $color-application-main;
+    left: 0;
+    padding: $padding;
+    padding-right: $chevron-padding-label;
+    position: absolute;
+    text-align: center;
+    top: 0;
+    z-index: 1;
+  }
+
+  & .selector__select {
+    @include size(100%, 100%);
+    left: 0;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    z-index: 2;
+  }
+}

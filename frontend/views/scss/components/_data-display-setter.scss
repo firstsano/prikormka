@@ -1,0 +1,16 @@
+.data-display-setter {
+  @extend .row;
+
+  & .data-display-setter__sorting {
+    @extend .col, .s4;
+  }
+
+  & .data-display-setter__pagination {
+    @extend .col, .s6;
+  }
+
+  & .data-display-setter__label {
+    color: $color-text-background;
+    margin-right: 10px;
+  }
+}

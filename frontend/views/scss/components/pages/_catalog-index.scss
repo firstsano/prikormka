@@ -1,0 +1,7 @@
+.catalog-index {
+  @extend .container;
+
+  & .catalog-index__title {
+    @include header;
+  }
+}

@@ -13,7 +13,7 @@ class Navigation
             ],
             [
                 'label' => 'каталог',
-                'url' => [ 'site/dummy' ]
+                'url' => [ 'catalog/index' ]
             ],
             [
                 'label' => 'оптовый заказ',

@@ -6,6 +6,11 @@ return [
     'Cart' => 'Ваш заказ',
     'Your order' => 'Ваш заказ',
 
+    'selector.no' => 'Нет',
+    'selector.price' => 'Цена',
+    'selector.title' => 'Название',
+    'selector.category' => 'Категория',
+
     'Forgot password' => 'Забыли пароль',
     'Signing up' => 'Регистрация аккаунта',
     'Activation email' => 'Активация аккаунта',

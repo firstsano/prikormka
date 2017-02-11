@@ -39,7 +39,7 @@ class OrderProduct extends \yii\db\ActiveRecord
         return [
             [['price', 'weight'], 'number'],
             [['pack_quantity', 'quantity', 'order_id', 'source_product_id'], 'integer'],
-            [['category', 'name', 'description'], 'string', 'max' => 255],
+            [['category', 'name'], 'string', 'max' => 255],
             [['source_product_id'], 'exist', 'skipOnError' => true, 'targetClass' => Product::className(), 'targetAttribute' => ['source_product_id' => 'id']],
             [['order_id'], 'exist', 'skipOnError' => true, 'targetClass' => Order::className(), 'targetAttribute' => ['order_id' => 'id']],
         ];

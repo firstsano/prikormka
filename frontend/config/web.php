@@ -33,7 +33,7 @@ $config = [
             'as afterLogin' => 'common\behaviors\LoginTimestampBehavior'
         ],
         'cart' => [
-            'class' => 'yz\shoppingcart\ShoppingCart',
+            'class' => 'frontend\extensions\ShoppingCart',
             'cartId' => 'prikormkaCart',
         ]
     ]

@@ -15,83 +15,55 @@ class User extends \yii\web\User
     /**
      * @var
      */
-    private $_name;
-
-    /**
-     * @var
-     */
-    private $_email;
-
-    /**
-     * @var
-     */
-    private $_phone;
-
-    /**
-     * @var
-     */
-    private $_address;
+    private $_orders;
 
     /**
      * @inheritdoc
      */
-    public function getName() {
-        return $this->getCachedValue('name');
+    public function getOrders()
+    {
+        $orders = $this->getCachedValue('orders');
+        if ($orders === false) {
+            return [];
+        }
+        return $orders;
     }
 
     /**
      * @inheritdoc
      */
-    public function getEmail() {
-        return $this->getCachedValue('email');
+    public function setOrders($value)
+    {
+        $this->setCachedValue('orders', $value);
     }
 
     /**
      * @inheritdoc
      */
-    public function getPhone() {
-        return $this->getCachedValue('phone');
+    public function addOrder($orderId)
+    {
+        $orders = $this->orders;
+        if (!in_array($orderId, $orders)) {
+            $orders[] = $orderId;
+            $this->orders = $orders;
+            return true;
+        }
+        return false;
     }
 
     /**
      * @inheritdoc
      */
-    public function getAddress() {
-        return $this->getCachedValue('address');
+    public function hasOrder($orderId)
+    {
+        return in_array($orderId, $this->orders);
     }
 
     /**
      * @inheritdoc
      */
-    public function setName($value) {
-        $this->setCachedValue('name', $value);
-    }
-
-    /**
-     * @inheritdoc
-     */
-    public function setEmail($value) {
-        $this->setCachedValue('email', $value);
-    }
-
-    /**
-     * @inheritdoc
-     */
-    public function setPhone($value) {
-        $this->setCachedValue('phone', $value);
-    }
-
-    /**
-     * @inheritdoc
-     */
-    public function setAddress($value) {
-        $this->setCachedValue('address', $value);
-    }
-
-    /**
-     * @inheritdoc
-     */
-    protected function getCachedValue($attribute) {
+    protected function getCachedValue($attribute)
+    {
         $value = $this->{"_$attribute"};
         if (isset($value)) {
             return $value;
@@ -106,7 +78,8 @@ class User extends \yii\web\User
     /**
      * @inheritdoc
      */
-    protected function setCachedValue($attribute, $value) {
+    protected function setCachedValue($attribute, $value)
+    {
         $this->{"_$attribute"} = $value;
         Yii::$app->session->set($this->getSessionKey($attribute), $value);
     }
@@ -114,7 +87,8 @@ class User extends \yii\web\User
     /**
      * @inheritdoc
      */
-    protected function getSessionKey($attribute) {
+    protected function getSessionKey($attribute)
+    {
         return "user.$attribute";
     }
 }

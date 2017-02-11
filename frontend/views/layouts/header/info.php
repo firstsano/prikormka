@@ -28,7 +28,7 @@ use yii\helpers\Url;
             </div>
         </div>
         <div class="header-info__cart">
-            <a href="<?= Url::to(['/cart/view']) ?>" class="cart">
+            <a href="<?= Url::to(['/order/new']) ?>" class="cart">
                 <?= Html::img('@icons/bag.png', ['class' => 'cart__image']) ?>
                 <div class="cart__count"> <?= Yii::$app->cart->count ?> </div>
                 <div class="cart__total">

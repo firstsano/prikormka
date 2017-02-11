@@ -5,14 +5,13 @@ namespace frontend\models;
 use Yii;
 use yii\base\Model;
 use himiklab\yii2\recaptcha\ReCaptchaValidator;
-use common\models\UserToken;
-use common\models\User;
-use cheatsheet\Time;
-use common\commands\SendEmailCommand;
-use yii\helpers\Url;
+use common\commands\CreateOrderCommand;
 
 class OrderForm extends Model
 {
+    const SCENARIO_USER = 'user';
+    const SCENARIO_GUEST = 'guest';
+
     /**
      * @var string
      */
@@ -44,11 +43,11 @@ class OrderForm extends Model
     public function rules()
     {
         return [
-            [['name', 'email', 'phone', 'address'], 'required'],
-            [['name', 'address'], 'filter', 'filter' => 'strip_tags'],
-            [['name', 'email', 'phone', 'address'], 'filter', 'filter' => 'trim'],
-            ['email', 'email'],
-            [['reCaptcha'], ReCaptchaValidator::className()],
+            [['name', 'phone'], 'required', 'on' => static::SCENARIO_GUEST],
+            [['name', 'address'], 'filter', 'filter' => 'strip_tags', 'on' => static::SCENARIO_GUEST],
+            [['name', 'email', 'phone', 'address'], 'filter', 'filter' => 'trim', 'on' => static::SCENARIO_GUEST],
+            ['email', 'email', 'on' => static::SCENARIO_GUEST],
+            [['reCaptcha'], ReCaptchaValidator::className(), 'on' => static::SCENARIO_GUEST],
         ];
     }
 
@@ -67,26 +66,37 @@ class OrderForm extends Model
     }
 
     /**
-     * Loads user data to session
+     * Returns user scenarios list
+     * @return array|mixed
      */
-    public function verifyUser()
+    public static function orderScenarios()
     {
-        foreach(['name', 'email', 'phone', 'address'] as $attribute) {
-            Yii::$app->user->$attribute = $this->$attribute;
+        return [
+            self::SCENARIO_USER => Yii::t('common/models/order-form', 'User'),
+            self::SCENARIO_GUEST => Yii::t('common/models/order-form', 'Guest'),
+        ];
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function createOrder($params = [])
+    {
+        if (!$this->validate()) {
+            return false;
         }
-        $token = UserToken::create(
-            User::getCustomUser()->id,
-            UserToken::TYPE_CONFIRMATION,
-            Time::SECONDS_IN_A_DAY
-        );
-        Yii::$app->commandBus->handle(new SendEmailCommand([
-            'subject' => Yii::t('frontend/site', 'Confirmation email'),
-            'view' => 'confirmation',
-            'to' => $this->email,
-            'params' => [
-                'url' => Url::to(['/cart/verify-order', 'token' => $token->token], true)
-            ]
+        if ($this->scenario === static::SCENARIO_GUEST) {
+            $params['user'] = [
+                'name' => $this->name,
+                'email' => $this->email,
+                'phone' => $this->phone,
+                'address' => $this->address,
+            ];
+        }
+        return Yii::$app->commandBus->handle(new CreateOrderCommand([
+            'total' => $params['total'],
+            'user' => $params['user'],
+            'products' => $params['products']
         ]));
-        return $token;
     }
 }

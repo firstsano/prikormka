@@ -11,7 +11,6 @@ use Yii;
  * @property integer $user_id
  * @property double $total
  * @property integer $status
- * @property string $user_session
  * @property string $user_name
  * @property string $user_email
  * @property string $user_phone
@@ -46,9 +45,9 @@ class Order extends \yii\db\ActiveRecord
             [['total'], 'number'],
             [['status'], 'default', 'value' => static::STATUS_NEW],
             [['status'], 'integer'],
-            [['user_session', 'user_name', 'user_email', 'user_phone', 'user_address'], 'string'],
+            [['user_name', 'user_email', 'user_phone', 'user_address'], 'string'],
             [['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['user_id' => 'id']],
-            [['user_session', 'user_name', 'user_email', 'user_phone', 'user_address'], 'required', 'when' => function($model) {
+            [['user_name', 'user_phone'], 'required', 'when' => function($model) {
                 return empty($model->user_id);
             }]
         ];

@@ -30,7 +30,7 @@ class CreateOrderCommand extends Object implements SelfHandlingCommand
     public $products;
 
     /**
-     * @param CreateSessionOrderCommand $command
+     * @param CreateOrderCommand $command
      * @throws Exception
      * @return bool
      */
@@ -46,7 +46,6 @@ class CreateOrderCommand extends Object implements SelfHandlingCommand
                 $order->user_id = $command->user->id;
             } elseif (is_array($command->user)) {
                 $order->setAttributes([
-                    'user_session' => $command->user['session'],
                     'user_name' => $command->user['name'],
                     'user_email' => $command->user['email'],
                     'user_phone' => $command->user['phone'],
@@ -59,7 +58,9 @@ class CreateOrderCommand extends Object implements SelfHandlingCommand
             foreach ($this->products as $productArray) {
                 $orderProduct = (new OrderProduct())->fromProduct($productArray['product']);
                 $orderProduct->quantity = $productArray['quantity'];
-                $orderProduct->save();
+                if (!$orderProduct->save()) {
+                    throw new Exception('Product validation failed');
+                };
                 $order->link('orderProducts', $orderProduct);
             }
             $transaction->commit();

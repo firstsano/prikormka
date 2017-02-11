@@ -1,0 +1,20 @@
+.site-delivery {
+  @extend .container;
+
+  & .site-delivery__title {
+    @include header;
+  }
+
+  & .site-delivery__layout {
+    @extend .row;
+    margin-bottom: 40px;
+  }
+
+  & .site-delivery__info {
+    @extend .col, .s7;
+  }
+
+  & .site-delivery__contact-form {
+    @extend .col, .s5;
+  }
+}

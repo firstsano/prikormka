@@ -5,6 +5,8 @@ return [
     'All products' => 'Все продукты',
     'Cart' => 'Ваш заказ',
     'Your order' => 'Ваш заказ',
+    'Delivery' => 'Доставка и оплата',
+    'Blog' => 'Блог',
 
     'selector.no' => 'Нет',
     'selector.price' => 'Цена',

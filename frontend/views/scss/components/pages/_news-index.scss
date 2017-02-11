@@ -1,0 +1,7 @@
+.news-index {
+  @extend .container;
+
+  & .news-index__title {
+    @include header;
+  }
+}

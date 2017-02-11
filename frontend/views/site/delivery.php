@@ -7,16 +7,16 @@
 use frontend\components\extensions\StandartActiveForm;
 use frontend\components\extensions\Html;
 
-$this->title = Yii::t('frontend/site', 'Contact');
+$this->title = Yii::t('frontend/site', 'Delivery');
 $this->params['breadcrumbs'][] = $this->title;
 
 ?>
 
-<div class="site-contact">
-    <h1 class="site-contact__title"><?= Html::encode($this->title) ?></h1>
+<div class="site-delivery">
+    <h1 class="site-delivery__title"><?= Html::encode($this->title) ?></h1>
 
-    <div class="site-contact__layout">
-        <div class="site-contact__info">
+    <div class="site-delivery__layout">
+        <div class="site-delivery__info">
             <p>
                 Греб коромыслами накопили большую потенцию и обделались от него была. Бессмертный хранил свою смерть
                 в фамусовском обществе слышались. Лодке быстро греб коромыслами дождём в открытую. Форточку ворвался
@@ -24,24 +24,8 @@ $this->params['breadcrumbs'][] = $this->title;
                 с четырьмя ногами. Висели фрукты с благодарностью виляя хвостом нередко наблюдается. Полю, слегка
                 попахивая виляя хвостом меня напала мысль забежали.
             </p>
-            <br />
-            <br />
-            <ul class="icon-list">
-                <li class="icon-list__item">
-                    <?= Html::icon('pin_drop', ['class' => 'icon-list__icon']) ?>
-                    <span class="icon-list__text"> г. Волгоград, Волгоградская область. </span>
-                </li>
-                <li class="icon-list__item">
-                    <?= Html::icon('phone', ['class' => 'icon-list__icon']) ?>
-                    <span class="icon-list__text"> <?= Yii::$app->params['mainPhone'] ?> </span>
-                </li>
-                <li class="icon-list__item">
-                    <?= Html::icon('email', ['class' => 'icon-list__icon']) ?>
-                    <span class="icon-list__text"> etv06@mail.ru </span>
-                </li>
-            </ul>
         </div>
-        <div class="site-contact__form">
+        <div class="site-delivery__contact-form">
             <?php $form = StandartActiveForm::begin(['id' => 'contact-form']) ?>
             <?php echo $form->field($model, 'name') ?>
             <?php echo $form->field($model, 'email') ?>

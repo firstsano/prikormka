@@ -21,7 +21,7 @@ class Navigation
             ],
             [
                 'label' => 'доставка и оплата',
-                'url' => [ 'site/dummy' ]
+                'url' => [ 'site/delivery' ]
             ],
             [
                 'label' => 'контакты',
@@ -29,7 +29,7 @@ class Navigation
             ],
             [
                 'label' => 'блог',
-                'url' => [ 'site/dummy' ]
+                'url' => [ 'news/index' ]
             ]
         ];
     }

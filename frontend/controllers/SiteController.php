@@ -71,6 +71,14 @@ class SiteController extends Controller
         return 1;
     }
 
+    public function actionDelivery()
+    {
+        $model = new ContactForm();
+        return $this->render('delivery', [
+            'model' => $model
+        ]);
+    }
+
     public function actionContact()
     {
         $model = new ContactForm();

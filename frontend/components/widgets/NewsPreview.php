@@ -11,5 +11,17 @@ namespace frontend\components\widgets;
 
 class NewsPreview extends \frontend\components\extensions\Widget
 {
+    public $newsItem;
+    public $options = [
+        'length' => 200,
+        'suffix' => '...'
+    ];
 
+    protected function renderParams()
+    {
+        return [
+            'newsItem' => $this->newsItem,
+            'options' => $this->options
+        ];
+    }
 }

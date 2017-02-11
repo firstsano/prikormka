@@ -9,6 +9,7 @@
 namespace common\models\query;
 
 use common\models\Article;
+use common\models\ArticleCategory;
 use yii\db\ActiveQuery;
 
 class ArticleQuery extends ActiveQuery
@@ -17,6 +18,23 @@ class ArticleQuery extends ActiveQuery
     {
         $this->andWhere(['status' => Article::STATUS_PUBLISHED]);
         $this->andWhere(['<', '{{%article}}.published_at', time()]);
+        return $this;
+    }
+
+    public function news()
+    {
+        $newsCategory = ArticleCategory::find()
+            ->active()
+            ->news()
+            ->one()
+        ;
+        $this->andWhere(['category_id' => $newsCategory->id]);
+        return $this;
+    }
+
+    public function newOnes($limit)
+    {
+        $this->addOrderBy(['published_at' => SORT_DESC])->limit($limit);
         return $this;
     }
 }

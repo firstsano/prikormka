@@ -51,6 +51,12 @@ use yii\helpers\Url;
                         'data' => ['method' => 'POST']
                     ]);
                 }
+                if (Yii::$app->user->can('administrator')) {
+                    echo Html::tag('br');
+                    echo Html::a('Админка', ['/admin'], [
+                        'class' => 'button button_block center',
+                    ]);
+                }
             ?>
         </div>
     </div>

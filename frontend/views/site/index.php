@@ -1,8 +1,9 @@
 <?php
 
-/* @var $this yii\web\View */
-/* @var $newProducts common\models\Product[] */
-/* @var $bestOffers common\models\Product[] */
+/* @var $this \yii\web\View */
+/* @var $newProducts \common\models\Product[] */
+/* @var $bestOffers \common\models\Product[] */
+/* @var $latestNews \common\models\Article[] */
 
 $this->title = 'My Yii Application';
 
@@ -99,10 +100,13 @@ use frontend\components\widgets\ProductQuickOrder;
         <div class="news-previews">
             <h2 class="news-previews__title"> Новости и статьи </h2>
             <div class="news-previews__row">
-                <div class="news-previews__item"> <?= NewsPreview::widget([]) ?> </div>
-                <div class="news-previews__item"> <?= NewsPreview::widget([]) ?> </div>
-                <div class="news-previews__item"> <?= NewsPreview::widget([]) ?> </div>
-                <div class="news-previews__item"> <?= NewsPreview::widget([]) ?> </div>
+                <div class="news-previews__item">
+                    <?php foreach($latestNews as $newsItem) {
+                        echo NewsPreview::widget([
+                            'newsItem' => $newsItem
+                        ]);
+                    } ?>
+                </div>
             </div>
         </div>
     </section>

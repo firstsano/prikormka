@@ -24,6 +24,8 @@ class ArticleCategory extends ActiveRecord
     const STATUS_ACTIVE = 1;
     const STATUS_DRAFT = 0;
 
+    const NAME_CATEGORY_NEWS = 'News';
+
     /**
      * @inheritdoc
      */

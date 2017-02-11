@@ -32,4 +32,14 @@ class ArticleCategoryQuery extends ActiveQuery
 
         return $this;
     }
+
+    /**
+     * @inheritdoc
+     */
+    public function news()
+    {
+        $this->andWhere(['title' => ArticleCategory::NAME_CATEGORY_NEWS]);
+
+        return $this;
+    }
 }

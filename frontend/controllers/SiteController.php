@@ -6,6 +6,7 @@ use yii\web\Controller;
 use yii\filters\VerbFilter;
 use frontend\models\ContactForm;
 use frontend\models\Product;
+use common\models\Article;
 
 /**
  * Site controller
@@ -47,7 +48,8 @@ class SiteController extends Controller
     {
         return $this->render('index', [
             'newProducts' => Product::find()->newOnes(3)->all(),
-            'bestOffers' => Product::find()->bestOffers()->all()
+            'bestOffers' => Product::find()->bestOffers()->all(),
+            'latestNews' => Article::find()->published()->news()->newOnes(4)->all()
         ]);
     }
 

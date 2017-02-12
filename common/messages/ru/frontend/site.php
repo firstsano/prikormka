@@ -7,6 +7,10 @@ return [
     'Your order' => 'Ваш заказ',
     'Delivery' => 'Доставка и оплата',
     'Blog' => 'Блог',
+    'User profile' => 'Данные пользователя',
+
+    'Female' => 'Женский',
+    'Male' => 'Мужской',
 
     'selector.no' => 'Нет',
     'selector.price' => 'Цена',
@@ -14,17 +18,21 @@ return [
     'selector.category' => 'Категория',
 
     'Forgot password' => 'Забыли пароль',
+    'Personal cab' => 'Личный кабинет',
+    'Admin area' => 'Админка',
     'Signing up' => 'Регистрация аккаунта',
     'Activation email' => 'Активация аккаунта',
     'Confirmation email' => 'Подтверждение заказа',
     'Your activation link' => 'Ссылка для активации аккаунта',
     'Your confirmation link' => 'Ссылка для подтверждения заказа',
     'Password reset for {name}' => '{name} - Сброс пароля',
+    'Edit profile' => 'Редактировать профиль',
 
     'Form order' => 'Оформить заказ',
     'Reset password' => 'Сбросить пароль',
     'Sign up' => 'Зарегистрироваться',
     'Log in' => 'Войти',
+    'Save' => 'Сохранить',
 
     'activated.title' => 'Подтверждение аккаунта',
     'activated.message' => 'Ваш аккаунт успешно подтвержден.',

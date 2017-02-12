@@ -6,6 +6,9 @@ $config = [
     'homeUrl' => '/',
     'bootstrap' => ['maintenance'],
     'modules' => [
+        'cab' => [
+            'class' => 'frontend\modules\cab\Module',
+        ],
         'user' => [
             'class' => 'frontend\modules\user\Module',
             'shouldBeActivated' => true

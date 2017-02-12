@@ -15,10 +15,11 @@
 
   & .standart-form__input {
     @include border-radius(3px);
-    display: block;
-    color: $color-text-background;
-    padding: 5px 10px;
+    background-color: $color-application-light;
     border: solid 2px $color-border-standart;
+    color: $color-text-background;
+    display: block;
+    padding: 5px 10px;
     width: 100%;
   }
 

@@ -5,6 +5,7 @@
 use yii\helpers\Url;
 use frontend\components\extensions\Html;
 use frontend\components\widgets\Cart;
+use frontend\components\widgets\Login;
 
 ?>
 
@@ -36,26 +37,16 @@ use frontend\components\widgets\Cart;
             ]) ?>
         </div>
         <div class="header-info__lk">
-            <?php
-                echo Html::a('Личный кабинет', Yii::$app->user->loginUrl, [
-                    'class' => 'button button_block center'
-                ]);
-                if (!Yii::$app->user->isGuest) {
-                    echo Html::tag('br');
-                    $link = Yii::$app->user->identity->publicIdentity .
-                        Html::icon('exit_to_app');
-                    echo Html::a($link, ['/user/sign-in/logout'], [
-                        'class' => 'button button_block center',
-                        'data' => ['method' => 'POST']
-                    ]);
-                }
-                if (Yii::$app->user->can('administrator')) {
-                    echo Html::tag('br');
-                    echo Html::a('Админка', ['/admin'], [
-                        'class' => 'button button_block center',
-                    ]);
-                }
-            ?>
+            <?= Login::widget([
+                'isGuest' => Yii::$app->user->isGuest,
+                'isAdmin' => Yii::$app->user->can('administrator'),
+                'username' => Yii::$app->user->identity ?
+                    Yii::$app->user->identity->publicIdentity : "",
+                'loginUrl' => Yii::$app->user->loginUrl,
+                'logoutUrl' => ['/user/sign-in/logout'],
+                'adminUrl' => ['/admin'],
+                'cabUrl' => ['/cab']
+            ]) ?>
         </div>
     </div>
 </div>

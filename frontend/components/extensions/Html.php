@@ -16,9 +16,14 @@ class Html extends \yii\helpers\Html
         return self::tag('i', $name, $options);
     }
 
+    public static function textIcon($text, $icon)
+    {
+        return $text . " " . static::icon($icon);
+    }
+
     public static function textPointer($text)
     {
-        return $text . " " . static::icon('keyboard_arrow_right');
+        static::textIcon($text, 'keyboard_arrow_right');
     }
 
     public static function iconButton($icon, $url, $options)

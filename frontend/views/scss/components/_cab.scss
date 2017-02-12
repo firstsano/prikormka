@@ -1,0 +1,15 @@
+.cab {
+  @extend .container;
+
+  & .cab__layout {
+    @extend .row;
+  }
+
+  & .cab__controls {
+    @extend .col, .s4;
+  }
+
+  & .cab__content {
+    @extend .col, .s8;
+  }
+}

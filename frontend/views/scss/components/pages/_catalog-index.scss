@@ -19,7 +19,17 @@
     @extend .col, .s8;
   }
 
+  & .catalog-index__products-row {
+    @extend .row;
+  }
+
   & .catalog-index__product {
     @extend .col, .s6;
+  }
+
+  & .catalog-index__pagination {
+    padding-bottom: 20px;
+    padding-top: 20px;
+    text-align: center;
   }
 }

@@ -10,5 +10,9 @@ return [
     'Pack Quantity' => 'Кол-во в упаковке',
     'Min Pack Quantity' => 'Минимальное кол-во упаковок',
     'Seasonality' => 'Сезонность',
-    'Images' => 'Изображения'
+    'Images' => 'Изображения',
+    'Status' => 'Статус',
+
+    'status.published' => 'Опубликовано',
+    'status.draft' => 'Не опубликовано',
 ];

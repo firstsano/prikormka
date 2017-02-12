@@ -27,6 +27,9 @@ use yii\behaviors\TimestampBehavior;
  */
 class Product extends \yii\db\ActiveRecord
 {
+    const STATUS_PUBLISHED = 1;
+    const STATUS_DRAFT = 0;
+
     /**
      * @var array
      */
@@ -82,9 +85,11 @@ class Product extends \yii\db\ActiveRecord
             [['slug'], 'unique'],
             [['description'], 'string'],
             [['price', 'weight'], 'number'],
+            [['status'], 'integer'],
             [['pack_quantity', 'min_pack_quantity'], 'integer',
                 'integerOnly' => true, 'min' => 1],
             [['min_pack_quantity'], 'default', 'value' => 1],
+            [['status'], 'default', 'value' => static::STATUS_DRAFT],
             [['name', 'slug', 'seasonality'], 'string', 'max' => 255],
             [['category_id'], 'exist', 'skipOnError' => true, 'targetClass' => Category::className(), 'targetAttribute' => ['category_id' => 'id']],
         ];
@@ -99,6 +104,7 @@ class Product extends \yii\db\ActiveRecord
             'id' => Yii::t('common/models/product', 'ID'),
             'category_id' => Yii::t('common/models/product', 'Category'),
             'name' => Yii::t('common/models/product', 'Name'),
+            'status' => Yii::t('common/models/product', 'Status'),
             'slug' => Yii::t('common/models/product', 'Slug'),
             'description' => Yii::t('common/models/product', 'Description'),
             'price' => Yii::t('common/models/product', 'Price'),
@@ -107,6 +113,17 @@ class Product extends \yii\db\ActiveRecord
             'min_pack_quantity' => Yii::t('common/models/product', 'Min Pack Quantity'),
             'seasonality' => Yii::t('common/models/product', 'Seasonality'),
             'images' => Yii::t('common/models/product', 'Images'),
+        ];
+    }
+
+    /**
+     * @return array
+     */
+    public static function statuses()
+    {
+        return [
+            self::STATUS_PUBLISHED => Yii::t('common/models/product', 'status.published'),
+            self::STATUS_DRAFT => Yii::t('common/models/product', 'status.draft'),
         ];
     }
 

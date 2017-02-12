@@ -2,6 +2,7 @@
 
 /* @var $this \yii\web\View */
 /* @var $products \frontend\models\Product[] */
+/* @var $pages \yii\data\Pagination */
 /* @var $sortOptions array */
 /* @var $paginationOptions array */
 
@@ -9,6 +10,7 @@ use frontend\components\widgets\DataDisplaySetter;
 use frontend\components\widgets\ProductQuickOrder;
 use frontend\components\widgets\Filter;
 use frontend\components\extensions\Html;
+use yii\widgets\LinkPager;
 
 $this->title = Yii::t('frontend/site', 'All products');
 $this->params['breadcrumbs'][] = $this->title;
@@ -21,10 +23,12 @@ $this->params['breadcrumbs'][] = $this->title;
         <?= DataDisplaySetter::widget([
             'options' => [
                 'sort' => [
-                    'options' => $sortOptions
+                    'selected' => $sortOptions['selected'],
+                    'options' => $sortOptions['collection']
                 ],
                 'pagination' => [
-                    'options' => $paginationOptions
+                    'selected' => $paginationOptions['selected'],
+                    'options' => $paginationOptions['collection']
                 ]
             ]
         ]) ?>
@@ -34,11 +38,21 @@ $this->params['breadcrumbs'][] = $this->title;
             <?= Filter::widget([]) ?>
         </div>
         <div class="catalog-index__products">
-            <?php foreach($products as $product) {
-                echo Html::beginTag('div', ['class' => 'catalog-index__product']);
-                echo ProductQuickOrder::widget(['product' => $product]);
-                echo Html::endTag('div');
-            } ?>
+            <div class="catalog-index__products-row">
+                <?php foreach($products as $product) {
+                    echo Html::beginTag('div', ['class' => 'catalog-index__product']);
+                    echo ProductQuickOrder::widget(['product' => $product]);
+                    echo Html::endTag('div');
+                } ?>
+            </div>
+            <div class="catalog-index__pagination">
+                <?= LinkPager::widget([
+                    'pagination' => $pages,
+                    'prevPageLabel' => Html::icon('chevron_left'),
+                    'nextPageLabel' => Html::icon('chevron_right'),
+                    'pageCssClass' => 'waves-effect'
+                ]) ?>
+            </div>
         </div>
     </div>
 </div>

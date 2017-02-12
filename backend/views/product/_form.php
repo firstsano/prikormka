@@ -1,6 +1,7 @@
 <?php
 
 use trntv\filekit\widget\Upload;
+use common\models\Product;
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
 
@@ -46,6 +47,7 @@ use yii\bootstrap\ActiveForm;
         </div>
     </div>
 
+    <?= $form->field($model, 'status')->dropDownlist(Product::statuses()) ?>
 
     <?= $form->field($model, 'seasonality')->textInput(['maxlength' => true]) ?>
 

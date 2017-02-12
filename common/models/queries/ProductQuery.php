@@ -2,6 +2,8 @@
 
 namespace common\models\queries;
 
+use common\models\Product;
+
 /**
  * This is the ActiveQuery class for [[\common\models\Product]].
  *
@@ -20,10 +22,16 @@ class ProductQuery extends \yii\db\ActiveQuery
      */
     public function newOnes($limit = self::NEW_LIMIT)
     {
-        $this
-            ->addOrderBy(['created_at' => SORT_DESC])
-            ->limit($limit)
-        ;
+        $this->addOrderBy(['created_at' => SORT_DESC])->limit($limit);
+        return $this;
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function published()
+    {
+        $this->andWhere(['status' => Product::STATUS_PUBLISHED]);
         return $this;
     }
 

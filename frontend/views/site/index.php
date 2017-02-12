@@ -64,7 +64,7 @@ use frontend\components\widgets\ProductQuickOrder;
                 } ?>
             </div>
             <footer class="new-products__footer">
-                <?= Html::a(Html::textPointer('Смотреть все товары'), '#', ['class' => 'new-products__link']); ?>
+                <?= Html::a(Html::textPointer('Смотреть все товары'), ['catalog/index'], ['class' => 'new-products__link']); ?>
             </footer>
         </div>
     </section>

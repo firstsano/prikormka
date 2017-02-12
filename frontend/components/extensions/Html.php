@@ -23,7 +23,7 @@ class Html extends \yii\helpers\Html
 
     public static function textPointer($text)
     {
-        static::textIcon($text, 'keyboard_arrow_right');
+        return static::textIcon($text, 'keyboard_arrow_right');
     }
 
     public static function iconButton($icon, $url, $options)

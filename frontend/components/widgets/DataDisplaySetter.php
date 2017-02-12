@@ -30,7 +30,7 @@ class DataDisplaySetter extends \frontend\components\extensions\Widget
     {
         return [
             'sort' => [
-                'name' => 'sort',
+                'name' => 'sort-by',
                 'selected' => null,
                 'options' => [],
                 'htmlOptions' => []

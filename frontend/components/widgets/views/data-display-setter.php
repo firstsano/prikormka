@@ -40,5 +40,8 @@ Html::addCssClass($sortOptions['htmlOptions'], 'data-display-setter__sorting-sel
             ]
         ]) ?>
     </div>
+    <div class="data-display-setter__submit">
+        <?= Html::submitInput('Показать', ['class' => 'button']) ?>
+    </div>
     <?= Html::endForm() ?>
 </div>

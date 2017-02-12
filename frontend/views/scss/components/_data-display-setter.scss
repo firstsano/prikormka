@@ -9,6 +9,11 @@
     @extend .col, .s6;
   }
 
+  & .data-display-setter__submit {
+    @extend  .col, .s2;
+    text-align: right;
+  }
+
   & .data-display-setter__label {
     color: $color-text-background;
     margin-right: 10px;

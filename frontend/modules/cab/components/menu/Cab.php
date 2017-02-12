@@ -13,7 +13,7 @@ class Cab
             ],
             [
                 'label' => 'Заказы',
-                'url' => ['profile/orders']
+                'url' => ['order/index']
             ],
         ];
     }

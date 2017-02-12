@@ -42,17 +42,14 @@ class CreateOrderCommand extends Object implements SelfHandlingCommand
                 'total' => $command->total,
                 'status' => $command->status,
             ]);
-            if ($command->user instanceof User) {
-                $order->user_id = $command->user->id;
-            } elseif (is_array($command->user)) {
-                $order->setAttributes([
-                    'user_name' => $command->user['name'],
-                    'user_email' => $command->user['email'],
-                    'user_phone' => $command->user['phone'],
-                    'user_address' => $command->user['address'],
-                ]);
-            } else {
-                throw new Exception('User object or array is required');
+            $order->setAttributes([
+                'user_name' => $command->user['name'],
+                'user_email' => $command->user['email'],
+                'user_phone' => $command->user['phone'],
+                'user_address' => $command->user['address'],
+            ]);
+            if (key_exists('id', $command->user)) {
+                $order->user_id = $command->user['id'];
             }
             $order->save();
             foreach ($this->products as $productArray) {

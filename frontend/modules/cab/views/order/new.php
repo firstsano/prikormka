@@ -5,7 +5,6 @@
 /* @var $model \frontend\models\OrderForm */
 
 use frontend\components\extensions\StandartActiveForm;
-use himiklab\yii2\recaptcha\ReCaptcha;
 
 $this->title = Yii::t('frontend/site', 'Cart');
 $this->params['breadcrumbs'][] = $this->title;
@@ -28,7 +27,6 @@ $this->params['breadcrumbs'][] = $this->title;
             echo $form->field($model, 'phone');
             echo $form->field($model, 'address');
             echo $form->field($model, 'email');
-            echo $form->field($model, 'reCaptcha')->widget(ReCaptcha::className());
             echo $form->submit(Yii::t('frontend/site', 'Form order'));
             StandartActiveForm::end();
         } ?>

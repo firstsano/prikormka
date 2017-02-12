@@ -14,6 +14,11 @@ use yii\db\ActiveRecord;
  * @property string $firstname
  * @property string $middlename
  * @property string $lastname
+ * @property string $phone
+ * @property string $site
+ * @property string $organization
+ * @property string $birthday
+ * @property string $address
  * @property string $picture
  * @property string $avatar
  * @property string $avatar_path

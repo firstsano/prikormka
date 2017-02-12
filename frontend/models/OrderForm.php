@@ -6,6 +6,7 @@ use Yii;
 use yii\base\Model;
 use himiklab\yii2\recaptcha\ReCaptchaValidator;
 use common\commands\CreateOrderCommand;
+use yii\helpers\ArrayHelper;
 
 class OrderForm extends Model
 {
@@ -43,10 +44,10 @@ class OrderForm extends Model
     public function rules()
     {
         return [
-            [['name', 'phone'], 'required', 'on' => static::SCENARIO_GUEST],
-            [['name', 'address'], 'filter', 'filter' => 'strip_tags', 'on' => static::SCENARIO_GUEST],
-            [['name', 'email', 'phone', 'address'], 'filter', 'filter' => 'trim', 'on' => static::SCENARIO_GUEST],
-            ['email', 'email', 'on' => static::SCENARIO_GUEST],
+            [['name', 'phone'], 'required'],
+            [['name', 'address'], 'filter', 'filter' => 'strip_tags'],
+            [['name', 'email', 'phone', 'address'], 'filter', 'filter' => 'trim'],
+            ['email', 'email'],
             [['reCaptcha'], ReCaptchaValidator::className(), 'on' => static::SCENARIO_GUEST],
         ];
     }
@@ -85,14 +86,14 @@ class OrderForm extends Model
         if (!$this->validate()) {
             return false;
         }
-        if ($this->scenario === static::SCENARIO_GUEST) {
-            $params['user'] = [
+        $params = ArrayHelper::merge($params, [
+            'user' => [
                 'name' => $this->name,
                 'email' => $this->email,
                 'phone' => $this->phone,
                 'address' => $this->address,
-            ];
-        }
+            ]
+        ]);
         return Yii::$app->commandBus->handle(new CreateOrderCommand([
             'total' => $params['total'],
             'user' => $params['user'],

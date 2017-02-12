@@ -1,6 +1,6 @@
 <?php
 
-namespace frontend\controllers;
+namespace frontend\modules\cab\controllers;
 
 use Yii;
 use yii\filters\VerbFilter;
@@ -12,6 +12,12 @@ use common\models\Order;
 
 class OrderController extends \yii\web\Controller
 {
+    /**
+     * @var string
+     */
+    public $defaultAction = 'new';
+
+
     /**
      * @inheritdoc
      */
@@ -30,13 +36,27 @@ class OrderController extends \yii\web\Controller
     /**
      * @inheritdoc
      */
+    public function actionIndex()
+    {
+        return $this->render('index', [
+            'orders' => Order::findAll(['user_id' => Yii::$app->user->identity])
+        ]);
+    }
+
+    /**
+     * @inheritdoc
+     */
     public function actionView($id)
     {
-        if (!Yii::$app->user->hasOrder($id)) {
-            throw new NotFoundHttpException(404);
+        $order = Order::findOne([
+            'user_id' => Yii::$app->user->identity,
+            'id' => $id
+        ]);
+        if (!$order) {
+            throw new NotFoundHttpException();
         }
         return $this->render('view', [
-            'model' => Order::findOne(['id' => $id])
+            'model' => $order
         ]);
     }
 
@@ -46,6 +66,13 @@ class OrderController extends \yii\web\Controller
     public function actionNew()
     {
         $model = new OrderForm();
+        $user = Yii::$app->user->identity;
+        $model->setAttributes([
+            'name' => $user->publicIdentity,
+            'phone' => $user->userProfile->phone,
+            'address' => $user->userProfile->address,
+            'email' => $user->email
+        ]);
         return $this->render('new', $this->orderFormParams([
             'model' => $model,
         ]));
@@ -58,13 +85,13 @@ class OrderController extends \yii\web\Controller
     {
         $app = Yii::$app;
         $cart = $app->cart;
-        $user = $app->user;
-        $model = new OrderForm(['scenario' => OrderForm::SCENARIO_GUEST]);
+        $model = new OrderForm();
         if (!$model->load($app->request->post())) {
             throw new BadRequestHttpException();
         }
         $orderCreated = $model->createOrder([
             'total' => $cart->cost,
+            'user' => ['id' => $app->user->identity->id],
             'products' => $cart->positionsWithQuantities
         ]);
         if ($orderCreated === false) {
@@ -77,10 +104,8 @@ class OrderController extends \yii\web\Controller
                 'model' => $model,
             ]));
         }
-        $orderId = $orderCreated->id;
         $cart->removeAll();
-        $user->addOrder($orderId);
-        return $this->redirect(['/order/view', 'id' => $orderId]);
+        return $this->redirect(['order/view', 'id' => $orderCreated->id]);
     }
 
     /**

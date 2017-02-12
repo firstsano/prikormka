@@ -4,7 +4,7 @@
 /* @var $form yii\widgets\ActiveForm */
 /* @var $model \frontend\modules\user\models\LoginForm */
 
-use frontend\components\extensions\Breadcrumbs;
+use himiklab\yii2\recaptcha\ReCaptcha;
 use frontend\components\extensions\Html;
 use frontend\components\extensions\StandartActiveForm;
 
@@ -18,6 +18,7 @@ $this->params['breadcrumbs'][] = $this->title;
     ]) ?>
         <?= $form->field($model, 'identity') ?>
         <?= $form->field($model, 'password')->passwordInput() ?>
+        <?= $form->field($model, 'reCaptcha')->widget(ReCaptcha::className()) ?>
         <?= $form->submit(Yii::t('frontend/site', 'Log in')) ?>
         <div class="login-form__other-links">
             <?= Html::a(Yii::t('frontend/site', 'Forgot password') . "?",

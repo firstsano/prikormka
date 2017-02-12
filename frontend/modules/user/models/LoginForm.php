@@ -3,6 +3,7 @@ namespace frontend\modules\user\models;
 
 use cheatsheet\Time;
 use common\models\User;
+use himiklab\yii2\recaptcha\ReCaptchaValidator;
 use Yii;
 use yii\base\Model;
 
@@ -13,6 +14,7 @@ class LoginForm extends Model
 {
     public $identity;
     public $password;
+    public $reCaptcha;
     public $rememberMe = true;
 
     private $user = false;
@@ -29,6 +31,7 @@ class LoginForm extends Model
             ['rememberMe', 'boolean'],
             // password is validated by validatePassword()
             ['password', 'validatePassword'],
+            [['reCaptcha'], ReCaptchaValidator::className()],
         ];
     }
 

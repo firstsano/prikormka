@@ -10,9 +10,15 @@ function camelcase_to_snake_case($string)
     return strtolower(preg_replace('/([a-z])([A-Z])/', '$1-$2', $string));
 }
 
-function format_f($float)
+function format_f($float, $precision = 2)
 {
-    return \Yii::$app->formatter->asDecimal($float, 2);
+    return \Yii::$app->formatter->asDecimal($float, $precision);
+}
+
+function decimals($float)
+{
+    $float = 100 * ($float - round($float, 0, PHP_ROUND_HALF_DOWN));
+    return sprintf("%02d", format_f($float, 0));
 }
 
 function format_d($timestamp, $format = 'short')

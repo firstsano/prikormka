@@ -1,0 +1,19 @@
+.catalog-view {
+  @extend .container;
+
+  & .catalog-view__title {
+    @include header;
+  }
+
+  & .catalog-view__product {
+    @extend .row;
+  }
+
+  & .catalog-view__images {
+    @extend .col, .s6;
+  }
+
+  & .catalog-view__info {
+    @extend .col, .s6;
+  }
+}

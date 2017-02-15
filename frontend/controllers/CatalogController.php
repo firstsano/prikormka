@@ -19,13 +19,7 @@ class CatalogController extends Controller
     public function actionIndex()
     {
         if (Yii::$app->request->post()) {
-            return $this->redirect(
-                ArrayHelper::merge(
-                    [''],
-                    $this->filterKeys(Yii::$app->request->get()),
-                    $this->filterKeys(Yii::$app->request->post())
-                )
-            );
+            $this->redirectWithFilters();
         }
         $perPage = Yii::$app->request->get('per-page', 15);
         $sortBy = Yii::$app->request->get('sort-by', 'no');
@@ -47,6 +41,30 @@ class CatalogController extends Controller
                 'products' => $products,
                 'pages' => $pages
             ], $this->dataParams())
+        );
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function actionView($id)
+    {
+        return $this->render('view', [
+            'model' => Product::find()->published()->where(['id' => $id])->one()
+        ]);
+    }
+
+    /**
+     * @inheritdoc
+     */
+    protected function redirectWithFilters()
+    {
+        return $this->redirect(
+            ArrayHelper::merge(
+                [''],
+                $this->filterKeys(Yii::$app->request->get()),
+                $this->filterKeys(Yii::$app->request->post())
+            )
         );
     }
 

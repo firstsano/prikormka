@@ -18,7 +18,7 @@ use frontend\components\widgets\Trinity;
             <?= $product->category->name ?>
         </div>
         <div class="q-order__name">
-            <?= $product->name ?>
+            <?= Html::a($product->name, ['catalog/view', 'id' => $product->id]) ?>
         </div>
     </header>
     <div class="q-order__body">

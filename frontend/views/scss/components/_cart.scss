@@ -48,3 +48,12 @@ $cart-size: 40px;
     top: 0;
   }
 }
+
+.cart.pinned {
+  @extend .z-depth-1;
+  background-color: $color-application-light;
+  padding: 30px 50px;
+  right: 0;
+  top: 0;
+  z-index: 50;
+}

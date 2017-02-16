@@ -17,7 +17,11 @@ class AppAsset extends AssetBundle
 {
     public $basePath = '@webroot';
     public $baseUrl = '@web';
-    public $js = [];
+    public $js = [
+        'vendor/materialize/js/initial.js',
+        'vendor/materialize/js/global.js',
+        'vendor/materialize/js/pushpin.js'
+    ];
     public $css = [
         'css/site.css'
     ];

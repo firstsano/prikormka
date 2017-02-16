@@ -12,7 +12,8 @@ namespace frontend\components\widgets\assets;
 class CartAsset extends \frontend\components\extensions\AssetBundle
 {
     public $js = [
-        'cart.js'
+        'cart/controls.js',
+        'cart/pushpin.js'
     ];
 
     public $depends = [

@@ -1,0 +1,29 @@
+.cart-details {
+  border: solid 1px $color-border-standart;
+  color: $color-text-standart;
+  width: 100%;
+
+  & .cart-details__header {
+    background-color: $color-border-standart;
+  }
+
+  & .cart-details__product-image {
+    @include max-size(50px, 80px);
+  }
+
+  & .cart-details__header-cell {
+    font-weight: 300;
+    padding: 5px 10px;
+  }
+
+  & .cart-details__body-row {
+    border-bottom: solid 1px $color-border-standart;
+  }
+
+  & .cart-details__body-cell {
+    border: none;
+    padding: 10px;
+    text-align: center;
+    vertical-align: middle;
+  }
+}

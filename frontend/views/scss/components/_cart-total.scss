@@ -1,0 +1,29 @@
+.cart-total {
+  padding: 20px 0;
+
+  & .cart-total__info {
+    border-bottom: 2px solid $color-application-main;
+    display: inline-block;
+  }
+
+  & .cart-total__count {
+    color: $color-application-main;
+    margin: 0 5px;
+  }
+
+  & .cart-total__clear {
+    @include border-radius(3px);
+    float: right;
+    color: $color-text-background;
+    border: solid 1px $color-border-standart;
+    padding: 5px 10px;
+  }
+
+  & .cart-total__clear-icon {
+    font-size: 12px;
+  }
+
+  & .cart-total__price {
+    text-align: right;
+  }
+}

@@ -1,12 +1,8 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: riky
- * Date: 19.01.17
- * Time: 12:41
- */
 
 namespace frontend\components\extensions;
+
+use yii\helpers\ArrayHelper;
 
 class Html extends \yii\helpers\Html
 {
@@ -16,12 +12,10 @@ class Html extends \yii\helpers\Html
         return self::tag('i', $name, $options);
     }
 
-    public static function textIcon($text, $icon, $right = true)
+    public static function textIcon($text, $icon, $right = true, $options = [])
     {
-        if ($right) {
-            return $text . " " . static::icon($icon);
-        }
-        return static::icon($icon) . " " . $text;
+        $icon = static::icon($icon, $options);
+        return ($right) ? "$text $icon" : "$icon $text";
     }
 
     public static function textPointer($text)

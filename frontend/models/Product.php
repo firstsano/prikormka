@@ -27,6 +27,14 @@ class Product extends BaseProduct implements CartPositionInterface
     }
 
     /**
+     * @return float
+     */
+    public function getTotalPrice()
+    {
+        return $this->price * $this->quantity;
+    }
+
+    /**
      * @inheritdoc
      */
     public static function find()

@@ -1,3 +1,7 @@
 .order-new {
   @extend .container;
+
+  & .order-new__title {
+    @include header;
+  }
 }

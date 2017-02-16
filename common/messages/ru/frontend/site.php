@@ -11,6 +11,7 @@ return [
     'My orders' => 'Мои заказы',
     'Personal cab' => 'Личный кабинет',
     'Guest' => 'Гость',
+    'Forming order' => 'Оформление заказа',
 
     'Female' => 'Женский',
     'Male' => 'Мужской',

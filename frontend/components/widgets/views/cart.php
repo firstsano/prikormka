@@ -5,7 +5,6 @@
 /* @var $count integer */
 /* @var $cost integer */
 
-use Yii;
 use frontend\components\extensions\Html;
 
 \frontend\components\widgets\assets\CartAsset::register($this);
@@ -19,6 +18,6 @@ use frontend\components\extensions\Html;
     </div>
     <div class="cart__info">
         <div class="cart__title"><?= Yii::t('frontend/site', 'Cart') ?></div>
-        <div class="cart__total"> <?= $cost ?> руб. </div>
+        <div class="cart__total"> <span class="cart__cost"> <?= $cost ?> </span> руб. </div>
     </div>
 </a>

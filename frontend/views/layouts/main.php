@@ -29,7 +29,9 @@ use frontend\components\extensions\Breadcrumbs;
                 'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
             ]) ?>
         </div>
-        <?= $this->render('flash-messages') ?>
+        <div class="container">
+            <?= Yii::$app->flash->renderFlash() ?>
+        </div>
         <?= $content ?>
     </main>
     <?= $this->render('footer') ?>

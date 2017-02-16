@@ -1,11 +1,12 @@
 <?php
 
 /* @var $this \yii\web\View */
+/* @var $messages array */
 
 use yii\helpers\ArrayHelper;
 use frontend\components\extensions\Html;
 
-foreach (Yii::$app->session->allFlashes as $message) {
+foreach ($messages as $message) {
     $type = ArrayHelper::getValue($message, 'type', 'info');
     $title = ArrayHelper::getValue($message, 'title');
     $messageBody = ArrayHelper::getValue($message, 'message');

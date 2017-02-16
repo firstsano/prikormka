@@ -38,7 +38,10 @@ $config = [
         'cart' => [
             'class' => 'frontend\extensions\ShoppingCart',
             'cartId' => 'prikormkaCart',
-        ]
+        ],
+        'flash' => [
+            'class' => 'frontend\components\FlashController',
+        ],
     ]
 ];
 

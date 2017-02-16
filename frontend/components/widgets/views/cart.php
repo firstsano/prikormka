@@ -5,6 +5,7 @@
 /* @var $count integer */
 /* @var $cost integer */
 
+use Yii;
 use frontend\components\extensions\Html;
 
 \frontend\components\widgets\assets\CartAsset::register($this);
@@ -12,10 +13,12 @@ use frontend\components\extensions\Html;
 ?>
 
 <a href="<?= $url ?>" class="cart">
-    <?= Html::img('@icons/bag.png', ['class' => 'cart__image']) ?>
-    <div class="cart__count"> <?= $count ?> </div>
-    <div class="cart__total">
-        <span class="cart__cost"> <?= $cost ?> </span>
-        <sub class="cart__units">руб</sub>
+    <div class="cart__image-layout">
+        <?= Html::icon('shopping_cart', ['class' => 'cart__image']) ?>
+        <div class="cart__count"> <?= $count ?> </div>
+    </div>
+    <div class="cart__info">
+        <div class="cart__title"><?= Yii::t('frontend/site', 'Cart') ?></div>
+        <div class="cart__total"> <?= $cost ?> руб. </div>
     </div>
 </a>

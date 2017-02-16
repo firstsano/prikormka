@@ -2,27 +2,31 @@
   @extend .container;
 
   & .header-info__layout {
-    @extend .row;
+    align-items: flex-end;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
     margin-bottom: 20px;
   }
 
+  & .header-info__logotype-layout {
+    width: 10%;
+  }
+
   & .header-info__logotype {
-    @extend .col, .m2;
+    width: 70px;
   }
 
-  & .header-info__wholesale {
-    @extend .col, .m2;
+  & .header-info__order-phones {
+    width: 30%;
   }
 
-  & .header-info__order-phone {
-    @extend .col, .m3;
+  & .header-info__controls {
+    white-space: nowrap;
   }
 
-  & .header-info__cart {
-    @extend .col, .m2;
-  }
-
-  & .header-info__lk {
-    @extend .col, .m3;
+  & .header-info__controls-item {
+    display: inline-block;
+    margin-left: 20px;
   }
 }

@@ -34,6 +34,11 @@ class OrderForm extends Model
     public $address;
 
     /**
+     * @var string
+     */
+    public $comment;
+
+    /**
      * @var
      */
     public $reCaptcha;
@@ -45,8 +50,8 @@ class OrderForm extends Model
     {
         return [
             [['name', 'phone'], 'required'],
-            [['name', 'address'], 'filter', 'filter' => 'strip_tags'],
-            [['name', 'email', 'phone', 'address'], 'filter', 'filter' => 'trim'],
+            [['name', 'address', 'comment'], 'filter', 'filter' => 'strip_tags'],
+            [['name', 'email', 'phone', 'address', 'comment'], 'filter', 'filter' => 'trim'],
             ['email', 'email'],
             [['reCaptcha'], ReCaptchaValidator::className(), 'on' => static::SCENARIO_GUEST],
         ];
@@ -62,6 +67,7 @@ class OrderForm extends Model
             'email' => Yii::t('frontend/models/order-form', 'Email'),
             'phone' => Yii::t('frontend/models/order-form', 'Phone'),
             'address' => Yii::t('frontend/models/order-form', 'Address'),
+            'comment' => Yii::t('frontend/models/order-form', 'Comment'),
             'reCaptcha' => Yii::t('frontend/models/order-form', 'Re Captcha')
         ];
     }

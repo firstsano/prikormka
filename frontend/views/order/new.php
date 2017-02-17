@@ -55,29 +55,17 @@ $this->params['breadcrumbs'][] = $this->title;
         <br />
         <br />
 
-        <div class="cart-total">
-            <div class="cart-total__info">
-                В заказе
-                <?= Html::tag('span', Yii::$app->cart->count, [
-                    'class' => 'cart-total__count'
-                ]) ?>
-                позиций
-            </div>
-            <?= Html::a(Html::textIcon('Очистить', 'clear', true, ['class' => 'cart-total__clear-icon']),
-                '#', ['class' => 'cart-total__clear']) ?>
-        </div>
-
+        <div> Состав заказа </div>
+        <br />
         <table class="cart-details">
             <thead class="cart-details__header">
                 <tr>
                     <th width="10%" class="cart-details__header-cell"></th>
-                    <th width="30%" class="cart-details__header-cell"> Наименование </th>
+                    <th width="40%" class="cart-details__header-cell"> Наименование </th>
                     <th width="*" class="cart-details__header-cell"> Цена за единицу </th>
                     <th width="*" class="cart-details__header-cell"> В упаковке </th>
-                    <th width="*" class="cart-details__header-cell"> Количество </th>
                     <th width="*" class="cart-details__header-cell"> Вес </th>
                     <th width="*" class="cart-details__header-cell"> Сумма </th>
-                    <th width="1px" class="cart-details__header-cell"></th>
                 </tr>
             </thead>
             <tbody class="cart-details__body">
@@ -91,12 +79,18 @@ $this->params['breadcrumbs'][] = $this->title;
                         <td class="cart-details__body-cell">
                             <?= Html::a($product->name, ['catalog/view', 'id' => $product->id]) ?>
                         </td>
-                        <td class="cart-details__body-cell"> <?= $product->price ?> руб. </td>
-                        <td class="cart-details__body-cell"> <?= $product->pack_quantity ?> шт. </td>
-                        <td class="cart-details__body-cell"> <?= $product->quantity ?> </td>
-                        <td class="cart-details__body-cell"> <?= $product->weight ?> г. </td>
-                        <td class="cart-details__body-cell"> <?= $product->totalPrice ?> руб. </td>
-                        <td class="cart-details__body-cell"> <?= Html::icon('clear') ?> </td>
+                        <td class="cart-details__body-cell">
+                            <?= $product->price ?> руб.
+                        </td>
+                        <td class="cart-details__body-cell">
+                            <?= $product->pack_quantity ?> шт.
+                        </td>
+                        <td class="cart-details__body-cell">
+                            <?= $product->weight ?> г.
+                        </td>
+                        <td class="cart-details__body-cell">
+                            <?= $product->totalPrice ?> руб.
+                        </td>
                     </tr>
                 <?php endforeach; ?>
             </tbody>
@@ -107,6 +101,13 @@ $this->params['breadcrumbs'][] = $this->title;
                 Итого: <?= Yii::$app->cart->cost ?> руб.
             </div>
         </div>
+
+        <?= $form->field($model, 'comment', [
+            'options' => [
+                'class' => 'simple-form__form-input ' .
+                    'simple-form__form-input_blocked '
+            ]
+        ])->textarea(['rows' => 4]) ?>
 
         <?= Html::beginTag('div', ['class' => 'simple-form__actions']) ?>
         <?= $form->submit(Yii::t('frontend/site', 'Form order')) ?>

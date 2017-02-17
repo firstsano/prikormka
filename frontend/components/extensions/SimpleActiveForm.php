@@ -2,7 +2,7 @@
 
 namespace frontend\components\extensions;
 
-use frontend\components\extensions\Html;
+use yii\helpers\ArrayHelper;
 
 class SimpleActiveForm extends \yii\widgets\ActiveForm
 {
@@ -13,7 +13,7 @@ class SimpleActiveForm extends \yii\widgets\ActiveForm
     {
         parent::init();
         Html::addCssClass($this->options, ['simple-form']);
-        $this->fieldConfig = array_merge(
+        $this->fieldConfig = ArrayHelper::merge(
             $this->fieldConfig,
             [
                 'options' => [

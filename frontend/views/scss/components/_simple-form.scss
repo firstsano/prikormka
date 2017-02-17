@@ -35,3 +35,19 @@
     padding: 10px 40px;
   }
 }
+
+.simple-form {
+  & .simple-form__form-input.simple-form__form-input_blocked {
+
+    .simple-form__label {
+      display: block;
+      margin-bottom: 10px;
+      width: 100%;
+    }
+
+    .simple-form__input {
+      display: block;
+      width: 100%;
+    }
+  }
+}

@@ -5,6 +5,7 @@
 ?>
 
 <header class="header">
+    <?= $this->render('header/top-menu') ?>
     <?= $this->render('header/info') ?>
     <?= $this->render('header/menu') ?>
 </header>

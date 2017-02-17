@@ -8,27 +8,55 @@ class Navigation
     {
         return [
             [
-                'label' => 'главная',
-                'url' => [ '/' ]
+                'label' => 'Новинки',
+                'url' => [ '/' ],
+                'class' => ['header-menu__item-link_highlight_1']
             ],
             [
-                'label' => 'каталог',
-                'url' => [ 'catalog/index' ]
+                'label' => 'Оптовый каталог',
+                'url' => [ 'catalog/index' ],
+                'class' => ['header-menu__item-link_highlight_2']
             ],
             [
-                'label' => 'оптовый заказ',
+                'label' => 'Общий каталог',
                 'url' => [ 'site/wholesale' ]
             ],
             [
-                'label' => 'доставка и оплата',
-                'url' => [ 'site/delivery' ]
-            ],
-            [
-                'label' => 'контакты',
+                'label' => 'Готовые прикормки',
                 'url' => [ 'site/contact' ]
             ],
             [
-                'label' => 'блог',
+                'label' => 'Универсальные',
+                'url' => [ 'news/index' ]
+            ],
+            [
+                'label' => 'Новости',
+                'url' => [ 'news/index' ]
+            ]
+        ];
+    }
+
+    public static function topMenuItems()
+    {
+        return [
+            [
+                'label' => 'О компании',
+                'url' => [ '/' ],
+            ],
+            [
+                'label' => 'Сотрудничество',
+                'url' => [ 'catalog/index' ],
+            ],
+            [
+                'label' => 'Доставка и оплата',
+                'url' => [ 'site/wholesale' ]
+            ],
+            [
+                'label' => 'Контакты',
+                'url' => [ 'site/contact' ]
+            ],
+            [
+                'label' => 'Отзывы',
                 'url' => [ 'news/index' ]
             ]
         ];

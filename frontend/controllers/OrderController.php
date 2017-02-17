@@ -63,7 +63,8 @@ class OrderController extends \yii\web\Controller
         $app = Yii::$app;
         $cart = $app->cart;
         $user = $app->user;
-        $model = new OrderForm(['scenario' => OrderForm::SCENARIO_GUEST]);
+//        $model = new OrderForm(['scenario' => OrderForm::SCENARIO_GUEST]);
+        $model = new OrderForm();
         if (!$model->load($app->request->post())) {
             throw new BadRequestHttpException();
         }

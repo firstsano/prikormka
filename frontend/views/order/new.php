@@ -44,7 +44,6 @@ $this->params['breadcrumbs'][] = $this->title;
                 <?= $form->field($model, 'name') ?>
                 <?= $form->field($model, 'phone') ?>
                 <?= $form->field($model, 'email') ?>
-                <?php //echo $form->field($model, 'reCaptcha')->widget(ReCaptcha::className()) ?>
             </div>
             <div class="order-new__section-title"> Данные для отправки: </div>
             <div class="order-new__section">
@@ -110,6 +109,7 @@ $this->params['breadcrumbs'][] = $this->title;
         ])->textarea(['rows' => 4]) ?>
 
         <?= Html::beginTag('div', ['class' => 'simple-form__actions']) ?>
+<!--            --><?php // $form->field($model, 'reCaptcha')->widget(ReCaptcha::className())->label(false) ?>
         <?= $form->submit(Yii::t('frontend/site', 'Form order')) ?>
         <?= Html::endTag('div') ?>
         <?php SimpleActiveForm::end() ?>

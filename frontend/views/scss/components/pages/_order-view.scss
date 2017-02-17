@@ -1,3 +1,7 @@
 .order-view {
   @extend .container;
+
+  & .order-view__title {
+    @include header;
+  }
 }

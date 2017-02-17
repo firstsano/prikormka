@@ -53,7 +53,7 @@ class OrderForm extends Model
             [['name', 'address', 'comment'], 'filter', 'filter' => 'strip_tags'],
             [['name', 'email', 'phone', 'address', 'comment'], 'filter', 'filter' => 'trim'],
             ['email', 'email'],
-            [['reCaptcha'], ReCaptchaValidator::className(), 'on' => static::SCENARIO_GUEST],
+//            [['reCaptcha'], ReCaptchaValidator::className(), 'on' => static::SCENARIO_GUEST],
         ];
     }
 

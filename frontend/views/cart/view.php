@@ -32,7 +32,7 @@ $this->params['breadcrumbs'][] = $this->title;
             echo Html::a($icon, ['/site/remove-all-from-cart'], [
                 'class' => 'cart-total__clear',
                 'data' => [
-                    'method' => 'post',
+                    'method' => 'POST',
                 ]
             ]);
         ?>
@@ -83,7 +83,17 @@ $this->params['breadcrumbs'][] = $this->title;
                 <td class="cart-details__body-cell"> <?= $product->weight ?> г. </td>
                 <td class="cart-details__body-cell"> <?= $product->totalPrice ?> руб. </td>
                 <td class="cart-details__body-cell">
-                    <?= Html::icon('clear', ['class' => 'cart-details__action']) ?>
+                    <?php
+                        $icon = Html::icon('clear', ['class' => 'cart-details__action']);
+                        echo Html::a($icon, ['/site/remove-product-from-cart'], [
+                            'data' => [
+                                'method' => 'POST',
+                                'params' => [
+                                    'id' => $product->id
+                                ]
+                            ]
+                        ]);
+                    ?>
                 </td>
             </tr>
         <?php endforeach; ?>

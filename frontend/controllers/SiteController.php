@@ -8,6 +8,7 @@ use yii\filters\VerbFilter;
 use frontend\models\ContactForm;
 use frontend\models\Product;
 use common\models\Article;
+use Exception;
 
 /**
  * Site controller
@@ -85,6 +86,28 @@ class SiteController extends Controller
     {
         Yii::$app->cart->removeAll();
         return $this->redirect(['/cart/view']);
+    }
+
+    public function actionRemoveProductFromCart()
+    {
+        $request = Yii::$app->request;
+        $cart = Yii::$app->cart;
+        try {
+            $cart->removeById($request->post('id'));
+        } catch (Exception $e) {
+            // ignore
+        }
+        if (!$request->isAjax) {
+            return $this->goBack(['/site/index']);
+        }
+
+        Yii::$app->response->format = Response::FORMAT_JSON;
+        return [
+            'cart' => [
+                'count' => $cart->count,
+                'cost' => $cart->cost
+            ]
+        ];
     }
 
     public function actionDelivery()

@@ -4,4 +4,19 @@
   & .order-new__title {
     @include header;
   }
+
+  & .order-new__form {
+    border: solid 1px $color-border-standart;
+    padding: 20px 40px;
+  }
+
+  & .order-new__section-title {
+    margin-bottom: 20px;
+  }
+
+  & .order-new__section {
+    &:not(:last-child) {
+      margin-bottom: 60px;
+    }
+  }
 }

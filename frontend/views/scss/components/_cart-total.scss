@@ -26,4 +26,19 @@
   & .cart-total__price {
     text-align: right;
   }
+
+  & .cart-total__controls {
+    text-align: right;
+  }
+
+  & .cart-total__control {
+    @extend .button;
+    margin-left: 10px;
+
+    &.cart-total__control_filtered {
+      background-color: $color-application-light;
+      border: solid 1px $color-border-standart;
+      color: $color-text-background;
+    }
+  }
 }

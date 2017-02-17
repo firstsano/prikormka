@@ -37,8 +37,7 @@ use frontend\components\widgets\Login;
             </div>
             <div class="header-info__controls-item">
                 <?= Cart::widget([
-                    'url' => Yii::$app->user->isGuest ?
-                        Url::to(['/order/new']) : Url::to(['/cab/order/new']),
+                    'url' => Url::to(['/cart/view']),
                     'count' => Yii::$app->cart->count,
                     'cost' => Yii::$app->cart->cost,
                 ]) ?>

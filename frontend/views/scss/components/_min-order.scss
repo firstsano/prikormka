@@ -1,0 +1,17 @@
+.min-order {
+  & .min-order__required {
+    font-weight: bold;
+  }
+
+  & .min-order__cart-sum {
+    font-weight: 300;
+  }
+
+  & .min-order__cart-sum-value {
+    color: $color-application-main;
+  }
+
+  & .min-order__min-sum {
+    font-weight: bold;
+  }
+}

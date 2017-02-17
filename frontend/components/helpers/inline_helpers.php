@@ -10,6 +10,11 @@ function camelcase_to_snake_case($string)
     return strtolower(preg_replace('/([a-z])([A-Z])/', '$1-$2', $string));
 }
 
+function format_fl($float)
+{
+    return number_format($float, 0, '', ' ');
+}
+
 function format_f($float, $precision = 2)
 {
     return \Yii::$app->formatter->asDecimal($float, $precision);

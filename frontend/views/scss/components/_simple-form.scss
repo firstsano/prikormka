@@ -1,0 +1,37 @@
+.simple-form {
+
+  & .simple-form__form-input {
+    margin-bottom: 20px;
+    white-space: nowrap;
+  }
+
+  & .simple-form__label {
+    display: inline-block;
+    color: $color-text-background;
+    width: 20%;
+  }
+
+  & .simple-form__input {
+    display: inline-block;
+    background-color: $color-application-additional;
+    border: none;
+    color: $color-text-background;
+    padding: 10px;
+    width: 80%;
+  }
+
+  & .simple-form__error {
+    font-size: $font-size-mini;
+    color: $color-text-background;
+    display: block;
+  }
+
+  & .simple-form__actions {
+    text-align: right;
+  }
+
+  & .simple-form__submit {
+    @extend .button;
+    padding: 10px 40px;
+  }
+}

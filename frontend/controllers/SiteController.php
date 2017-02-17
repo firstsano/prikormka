@@ -2,11 +2,11 @@
 namespace frontend\controllers;
 
 use Yii;
-use yii\web\Controller;
 use yii\web\Response;
 use yii\filters\VerbFilter;
 use frontend\models\ContactForm;
 use frontend\models\Product;
+use frontend\extensions\Controller;
 use common\models\Article;
 use Exception;
 

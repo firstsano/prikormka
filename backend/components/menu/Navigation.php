@@ -58,12 +58,17 @@ class Navigation
     {
         return [
             [
-                'label'=>Yii::t('common/site', 'Product categories'),
+                'label'=>Yii::t('backend/site', 'Orders'),
+                'url'=>['/order/index'],
+                'icon'=>'<i class="fa fa-angle-double-right"></i>'
+            ],
+            [
+                'label'=>Yii::t('backend/site', 'Product categories'),
                 'url'=>['/category/index'],
                 'icon'=>'<i class="fa fa-angle-double-right"></i>'
             ],
             [
-                'label'=>Yii::t('common/site', 'Products'),
+                'label'=>Yii::t('backend/site', 'Products'),
                 'url'=>['/product/index'],
                 'icon'=>'<i class="fa fa-angle-double-right"></i>'
             ],

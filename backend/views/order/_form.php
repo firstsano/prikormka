@@ -14,15 +14,9 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'user_id')->textInput() ?>
 
-    <?= $form->field($model, 'price')->textInput() ?>
-
-    <?= $form->field($model, 'correction')->textInput() ?>
-
-    <?= $form->field($model, 'correction_description')->textInput(['maxlength' => true]) ?>
-
     <?= $form->field($model, 'total')->textInput() ?>
 
-    <?= $form->field($model, 'status')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'status')->textInput() ?>
 
     <?= $form->field($model, 'user_name')->textInput(['maxlength' => true]) ?>
 

@@ -19,17 +19,11 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'user_id') ?>
 
-    <?= $form->field($model, 'price') ?>
+    <?= $form->field($model, 'total') ?>
 
-    <?= $form->field($model, 'correction') ?>
+    <?= $form->field($model, 'status') ?>
 
-    <?= $form->field($model, 'correction_description') ?>
-
-    <?php // echo $form->field($model, 'total') ?>
-
-    <?php // echo $form->field($model, 'status') ?>
-
-    <?php // echo $form->field($model, 'user_name') ?>
+    <?= $form->field($model, 'user_name') ?>
 
     <?php // echo $form->field($model, 'user_email') ?>
 

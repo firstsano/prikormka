@@ -40,6 +40,7 @@ class SiteController extends Controller
                 'class' => VerbFilter::className(),
                 'actions' => [
                     'add-product-to-cart' => ['post'],
+                    'remove-all-from-cart' => ['post'],
                 ],
             ],
         ];
@@ -78,6 +79,12 @@ class SiteController extends Controller
                 'cost' => $cart->cost
             ]
         ];
+    }
+
+    public function actionRemoveAllFromCart()
+    {
+        Yii::$app->cart->removeAll();
+        return $this->redirect(['/cart/view']);
     }
 
     public function actionDelivery()

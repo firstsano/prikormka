@@ -25,8 +25,17 @@ $this->params['breadcrumbs'][] = $this->title;
             ]) ?>
             позиций
         </div>
-        <?= Html::a(Html::textIcon('Очистить', 'clear', true, ['class' => 'cart-total__clear-icon']),
-            '#', ['class' => 'cart-total__clear']) ?>
+        <?php
+            $icon = Html::textIcon('Очистить', 'clear', true, [
+                'class' => 'cart-total__clear-icon'
+            ]);
+            echo Html::a($icon, ['/site/remove-all-from-cart'], [
+                'class' => 'cart-total__clear',
+                'data' => [
+                    'method' => 'post',
+                ]
+            ]);
+        ?>
     </div>
 
     <?= FlashMessages::widget([

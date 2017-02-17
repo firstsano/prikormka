@@ -10,6 +10,7 @@
         $(document).ready(function(){
             $(selectors.cart).pushpin({
                 top: topOffset,
+                offset: 20
             });
         });
     };

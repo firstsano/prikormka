@@ -45,10 +45,14 @@ class OrderController extends \yii\web\Controller
      */
     public function actionNew()
     {
-        $model = new OrderForm();
-        return $this->render('new', $this->orderFormParams([
-            'model' => $model,
-        ]));
+        $positions = Yii::$app->cart->positions;
+        if (!empty($positions)) {
+            $model = new OrderForm();
+            return $this->render('new', $this->orderFormParams([
+                'model' => $model,
+            ]));
+        }
+        return $this->render('/cart/empty');
     }
 
     /**

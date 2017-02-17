@@ -12,11 +12,11 @@ class CartController extends \yii\web\Controller
     public function actionView()
     {
         $positions = Yii::$app->cart->positions;
-        if (empty($positions)) {
-            return $this->render('empty');
+        if (!empty($positions)) {
+            return $this->render('view', [
+                'products' => $positions
+            ]);
         }
-        return $this->render('view', [
-            'products' => $positions
-        ]);
+        return $this->render('/cart/empty');
     }
 }

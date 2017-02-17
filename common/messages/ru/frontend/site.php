@@ -4,6 +4,7 @@ return [
     'Contact' => 'Контакты',
     'All products' => 'Все продукты',
     'Cart' => 'Корзина',
+    'Empty cart' => 'Пустая корзина',
     'Your order' => 'Ваш заказ',
     'Delivery' => 'Доставка и оплата',
     'Blog' => 'Блог',

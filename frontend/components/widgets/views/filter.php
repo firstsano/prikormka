@@ -57,9 +57,11 @@ use frontend\components\widgets\RangeSlider;
         </div>
     </div>
     <div class="filter__reset">
-        <?= Html::submitButton(Yii::t('frontend/site', 'Apply filter'), ['class' => 'button']) ?>
-        <br />
-        <?= Html::icon('replay') ?>
-        Сбросить
+        <?php
+            echo Html::submitButton(Yii::t('frontend/site', 'Apply filter'), ['class' => 'button button_block']);
+            echo Html::tag('br');
+            $icon = Html::textIcon('Сбросить', 'replay', false);
+            echo Html::a($icon, ['/catalog/index'], ['class' => 'button button_block button_filtered'])
+        ?>
     </div>
 <?= Html::endForm() ?>

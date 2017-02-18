@@ -40,7 +40,7 @@ $config = [
             'cartId' => 'prikormkaCart',
         ],
         'flash' => [
-            'class' => 'frontend\components\FlashController',
+            'class' => 'frontend\components\application\FlashController',
         ],
     ]
 ];

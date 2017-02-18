@@ -6,7 +6,7 @@
  * Time: 20:13
  */
 
-namespace frontend\components;
+namespace frontend\components\application;
 
 use Yii;
 use frontend\components\widgets\FlashMessages;

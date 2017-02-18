@@ -5,6 +5,7 @@
 
 use frontend\components\extensions\Html;
 use common\models\Product;
+use frontend\components\widgets\RangeSlider;
 
 ?>
 
@@ -34,6 +35,26 @@ use common\models\Product;
             Цена
         </div>
         <hr />
+        <div class="filter__a-values">
+            <?php
+                echo Html::activeHiddenInput($model, 'priceMin', ['id' => 'product-min-price']);
+                echo Html::activeHiddenInput($model, 'priceMax', ['id' => 'product-max-price']);
+                $ranges = Product::priceRanges();
+                echo RangeSlider::widget([
+                    'inputs' => [
+                        'min' => "#product-min-price",
+                        'max' => "#product-max-price"
+                    ],
+                    'range' => [
+                        'start' => $model->priceMin,
+                        'end' => $model->priceMax,
+                    ],
+                    'min' => $ranges['min'],
+                    'max' => $ranges['max'],
+                    'step' => 1
+                ])
+            ?>
+        </div>
     </div>
     <div class="filter__reset">
         <?= Html::submitButton(Yii::t('frontend/site', 'Apply filter'), ['class' => 'button']) ?>

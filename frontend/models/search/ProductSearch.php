@@ -17,6 +17,14 @@ class ProductSearch extends Product
      */
     public $sortBy = 'name';
     /**
+     * @var float
+     */
+    public $priceMin;
+    /**
+     * @var float
+     */
+    public $priceMax;
+    /**
      * @var array
      */
     public $seasons = [];
@@ -31,6 +39,9 @@ class ProductSearch extends Product
                 'in', 'range' => array_keys(static::seasons())]
             ],
             ['perPage', 'in', 'range' => static::perPageOptions()],
+            [['priceMin', 'priceMax'], 'number'],
+            ['priceMax', 'compare', 'compareAttribute' => 'priceMin',
+                'operator' => '>=', 'type' => 'number'],
             ['sortBy', 'in', 'range' => array_keys(static::sortByOptions())]
         ];
     }
@@ -61,6 +72,9 @@ class ProductSearch extends Product
         ]);
 
         $query->andFilterWhere(['in', 'season', $this->seasons]);
+        $query->andFilterWhere(['>=', 'price', $this->priceMin]);
+        $query->andFilterWhere(['<=', 'price', $this->priceMax]);
+
 
         return $dataProvider;
     }

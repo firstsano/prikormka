@@ -21,7 +21,7 @@ use yii\behaviors\TimestampBehavior;
  * @property double $weight
  * @property integer $pack_quantity
  * @property integer $min_pack_quantity
- * @property string $seasonality
+ * @property integer $season
  *
  * @property Categories $category
  */
@@ -29,6 +29,10 @@ class Product extends \yii\db\ActiveRecord
 {
     const STATUS_PUBLISHED = 1;
     const STATUS_DRAFT = 0;
+
+    const SEASON_NO_SEASON = 0;
+    const SEASON_SUMMER = 1;
+    const SEASON_WINTER = 2;
 
     /**
      * @var array
@@ -85,12 +89,14 @@ class Product extends \yii\db\ActiveRecord
             [['slug'], 'unique'],
             [['description'], 'string'],
             [['price', 'weight'], 'number'],
-            [['status'], 'integer'],
+            [['status', 'season'], 'integer'],
+            ['season', 'in', 'range' => array_keys(static::seasons()) ],
             [['pack_quantity', 'min_pack_quantity'], 'integer',
                 'integerOnly' => true, 'min' => 1],
             [['min_pack_quantity'], 'default', 'value' => 1],
+            [['season'], 'default', 'value' => static::SEASON_NO_SEASON],
             [['status'], 'default', 'value' => static::STATUS_DRAFT],
-            [['name', 'slug', 'seasonality'], 'string', 'max' => 255],
+            [['name', 'slug'], 'string', 'max' => 255],
             [['category_id'], 'exist', 'skipOnError' => true, 'targetClass' => Category::className(), 'targetAttribute' => ['category_id' => 'id']],
         ];
     }
@@ -111,7 +117,7 @@ class Product extends \yii\db\ActiveRecord
             'weight' => Yii::t('common/models/product', 'Weight'),
             'pack_quantity' => Yii::t('common/models/product', 'Pack Quantity'),
             'min_pack_quantity' => Yii::t('common/models/product', 'Min Pack Quantity'),
-            'seasonality' => Yii::t('common/models/product', 'Seasonality'),
+            'season' => Yii::t('common/models/product', 'Season'),
             'images' => Yii::t('common/models/product', 'Images'),
         ];
     }
@@ -124,6 +130,18 @@ class Product extends \yii\db\ActiveRecord
         return [
             self::STATUS_PUBLISHED => Yii::t('common/models/product', 'status.published'),
             self::STATUS_DRAFT => Yii::t('common/models/product', 'status.draft'),
+        ];
+    }
+
+    /**
+     * @return array
+     */
+    public static function seasons()
+    {
+        return [
+            self::SEASON_NO_SEASON => Yii::t('common/models/product', 'season.no-season'),
+            self::SEASON_SUMMER => Yii::t('common/models/product', 'season.summer'),
+            self::SEASON_WINTER => Yii::t('common/models/product', 'season.winter'),
         ];
     }
 

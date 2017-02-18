@@ -12,7 +12,10 @@ use frontend\components\widgets\Login;
 <div class="header-info">
     <div class="header-info__layout">
         <div class="header-info__logotype-layout">
-            <?= Html::img('@img/logo/logo.png', ['class' => 'header-info__logotype']) ?>
+            <?php
+                $img = Html::img('@img/logo/logo.png', ['class' => 'header-info__logotype']);
+                echo Html::a($img, Yii::$app->homeUrl);
+            ?>
         </div>
         <div class="header-info__order-phones">
             <div class="header-info__order-phone">

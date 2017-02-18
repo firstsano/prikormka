@@ -1,4 +1,3 @@
-$body-padding: 10px;
 $footer-height: 40px;
 
 .q-order {
@@ -6,88 +5,66 @@ $footer-height: 40px;
   background-color: $color-application-light;
   border: solid 1px $color-border-standart;
   display: inline-block;
-
-  & .q-order__categories {
-    color: $color-text-background;
-    font-size: $font-size-small;
-  }
-
-  & .q-order__name {
-    font-weight: bold;
-    font-size: $font-size-standart;
-    height: $font-size-standart * 3.5;
-  }
+  padding: 10px 20px;
 
   & .q-order__header {
-    padding: $body-padding;
-    padding-bottom: 0;
+    color: $color-text-background;
+    font-size: $font-size-standart-small;
   }
 
-  & .q-order__body {
-    padding: 0 $body-padding;
+  & .q-order__info {
+    @extend .row;
+    padding-bottom: 10px;
+    padding-top: 10px;
+  }
+
+  & .q-order__image-section {
+    @extend .col, .s5;
+  }
+
+  & .q-order__info-section {
+    @extend .col, .s7;
   }
 
   & .q-order__image {
-    max-width: 40%;
-    vertical-align: middle;
+    width: 100%;
   }
 
-  & .q-order__price-info {
-    display: inline-block;
+  & .q-order__name {
+    @include no-link($color-text-standart);
+    color: $color-text-standart;
+    font-weight: 500;
+    line-height: $font-size-standart;
   }
 
-  & .q-order__old-price {
-    color: $color-text-background;
-    font-size: $font-size-small;
-    text-decoration: line-through;
+  & .q-order__price-layout {
+    margin-bottom: 20px;
+    margin-top: 20px;
   }
 
   & .q-order__price {
-    @include border-radius(5px);
-    background-color: $color-application-main;
-    color: $color-text-inverse;
-    padding: 5px 10px;
+    color: $color-application-main;
+    font-weight: bold;
+  }
+
+  & .q-order__price-details {
+    color: $color-text-background;
   }
 
   & .q-order__footer {
-    border-top: solid 1px $color-border-standart;
-    height: $footer-height;
-    margin-top: $body-padding;
-    padding-left: $body-padding;
-    text-align: right;
+    @extend .row;
   }
 
-  & .q-order__weight {
-    color: $color-text-background;
-    float: left;
-    height: $footer-height;
-    line-height: $footer-height;
-    overflow: hidden;
-  }
-
-  & .q-order__quantity {
-    @include size(40%, $footer-height);
-    display: inline-block;
-    overflow: hidden;
-  }
-
-  & .q-order__order {
-    @include size($footer-height, $footer-height);
-    display: inline-block;
-    overflow: hidden;
+  & .q-order__footer-section {
+    @extend .col, .s6;
   }
 
   & .q-order__order-button {
-    @include size(100%, 100%);
-    color: $color-application-main;
-    display: block;
+    @extend .button, .button_block;
+    height: $footer-height;
     line-height: $footer-height;
+    padding-bottom: 0;
+    padding-top: 0;
     text-align: center;
-  }
-}
-
-.q-order.q-order_best-offer {
-  & .q-order__price {
-    background-color: $color-application-contrast;
   }
 }

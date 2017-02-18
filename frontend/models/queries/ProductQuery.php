@@ -26,6 +26,17 @@ class ProductQuery extends BaseQuery
     /**
      * @inheritdoc
      */
+    public function applyFilters($filters)
+    {
+        foreach ($filters as $filter) {
+            $filter->apply($this);
+        }
+        return $this;
+    }
+
+    /**
+     * @inheritdoc
+     */
     public static function sortableFields()
     {
         return ['price', 'title'];

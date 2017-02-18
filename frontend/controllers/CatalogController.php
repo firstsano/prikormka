@@ -3,6 +3,7 @@
 
 namespace frontend\controllers;
 
+use frontend\components\filters\SeasonFilter;
 use Yii;
 use yii\helpers\ArrayHelper;
 use yii\web\Controller;
@@ -23,7 +24,11 @@ class CatalogController extends Controller
         }
         $perPage = Yii::$app->request->get('per-page', 15);
         $sortBy = Yii::$app->request->get('sort-by', 'no');
-        $query = Product::find()->published()->sortBy($sortBy);
+        $query = Product::find()
+            ->published()
+            ->applyFilters($this->productFilters())
+            ->sortBy($sortBy)
+        ;
 
         $countQuery = clone $query;
         $pages = new Pagination([
@@ -52,6 +57,17 @@ class CatalogController extends Controller
         return $this->render('view', [
             'model' => Product::find()->published()->where(['id' => $id])->one()
         ]);
+    }
+
+    /**
+     * @inheritdoc
+     */
+    protected function productFilters()
+    {
+        $getParams = Yii::$app->request->get();
+        return [
+            new SeasonFilter(['request' => $getParams])
+        ];
     }
 
     /**

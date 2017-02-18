@@ -15,4 +15,8 @@ return [
 
     'status.published' => 'Опубликовано',
     'status.draft' => 'Не опубликовано',
+
+    'season.no-season' => 'Вне сезона',
+    'season.summer' => 'Лето',
+    'season.winter' => 'Зима',
 ];

@@ -1,15 +1,15 @@
 <?php
 
 /* @var $this \yii\web\View */
+/* @var $search \frontend\models\search\ProductSearch */
 /* @var $products \frontend\models\Product[] */
 /* @var $pages \yii\data\Pagination */
-/* @var $sortOptions array */
-/* @var $paginationOptions array */
 
 use frontend\components\widgets\DataDisplaySetter;
 use frontend\components\widgets\ProductQuickOrder;
 use frontend\components\widgets\Filter;
 use frontend\components\extensions\Html;
+use frontend\models\search\ProductSearch;
 use yii\widgets\LinkPager;
 
 $this->title = Yii::t('frontend/site', 'All products');
@@ -23,19 +23,23 @@ $this->params['breadcrumbs'][] = $this->title;
         <?= DataDisplaySetter::widget([
             'options' => [
                 'sort' => [
-                    'selected' => $sortOptions['selected'],
-                    'options' => $sortOptions['collection']
+                    'name' => 'sortBy',
+                    'selected' => Yii::$app->request->get('sortBy'),
+                    'options' => ProductSearch::sortByOptions()
                 ],
                 'pagination' => [
-                    'selected' => $paginationOptions['selected'],
-                    'options' => $paginationOptions['collection']
+                    'name' => 'perPage',
+                    'selected' => Yii::$app->request->get('perPage'),
+                    'options' => ProductSearch::perPageOptions()
                 ]
             ]
         ]) ?>
     </div>
     <div class="catalog-index__body">
         <div class="catalog-index__filter">
-            <?= Filter::widget([]) ?>
+            <?= Filter::widget([
+                'model' => $search
+            ]) ?>
         </div>
         <div class="catalog-index__products">
             <div class="catalog-index__products-row">

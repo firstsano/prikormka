@@ -3,13 +3,10 @@
 
 namespace frontend\controllers;
 
-use frontend\components\filters\SeasonFilter;
 use Yii;
 use yii\helpers\ArrayHelper;
 use yii\web\Controller;
-use yii\data\Pagination;
-use frontend\models\Product;
-use frontend\models\queries\ProductQuery;
+use frontend\models\search\ProductSearch;
 
 
 class CatalogController extends Controller
@@ -22,31 +19,18 @@ class CatalogController extends Controller
         if (Yii::$app->request->post()) {
             $this->redirectWithFilters();
         }
-        $perPage = Yii::$app->request->get('per-page', 15);
-        $sortBy = Yii::$app->request->get('sort-by', 'no');
-        $query = Product::find()
-            ->published()
-            ->applyFilters($this->productFilters())
-            ->sortBy($sortBy)
+        $params = Yii::$app->request->get();
+        $searchModel = new ProductSearch();
+        $dataProvider = $searchModel->load($params)
+            ->load($params, '')
+            ->search()
         ;
 
-        $countQuery = clone $query;
-        $pages = new Pagination([
-            'pageSize' => $perPage,
-            'totalCount' => $countQuery->count()
+        return $this->render('index', [
+            'search' => $searchModel,
+            'products' => $dataProvider->models,
+            'pages' => $dataProvider->pagination
         ]);
-        $products = $query
-            ->offset($pages->offset)
-            ->limit($pages->limit)
-            ->all()
-        ;
-
-        return $this->render('index',
-            ArrayHelper::merge([
-                'products' => $products,
-                'pages' => $pages
-            ], $this->dataParams())
-        );
     }
 
     /**
@@ -59,15 +43,9 @@ class CatalogController extends Controller
         ]);
     }
 
-    /**
-     * @inheritdoc
-     */
-    protected function productFilters()
+    protected function filterKeys()
     {
-        $getParams = Yii::$app->request->get();
-        return [
-            new SeasonFilter(['request' => $getParams])
-        ];
+        return ['ProductSearch', 'perPage', 'sortBy'];
     }
 
     /**
@@ -75,66 +53,16 @@ class CatalogController extends Controller
      */
     protected function redirectWithFilters()
     {
-        return $this->redirect(
-            ArrayHelper::merge(
-                [''],
-                $this->filterKeys(Yii::$app->request->get()),
-                $this->filterKeys(Yii::$app->request->post())
-            )
+        $mergedParams = array_merge(
+            Yii::$app->request->get(),
+            Yii::$app->request->post()
         );
-    }
-
-    /**
-     * @inheritdoc
-     */
-    protected function filterKeys($array)
-    {
-        $filterKeys = ['per-page', 'sort-by'];
-        return array_intersect_key(
-            $array,
-            array_flip($filterKeys)
-        );
-    }
-
-    /**
-     * @inheritdoc
-     */
-    protected function dataParams()
-    {
-        $sortOptions = $this->sortOptions();
-        $paginationOptions = $this->paginationOptions();
-        $perPage = Yii::$app->request->get('per-page',
-            array_keys($sortOptions)[0]);
-        $sortBy = Yii::$app->request->get('sort-by',
-            array_keys($paginationOptions)[0]);
-        return [
-            'sortOptions' => [
-                'selected' => $sortBy,
-                'collection' => $sortOptions
-            ],
-            'paginationOptions' => [
-                'selected' => $perPage,
-                'collection' => $paginationOptions
-            ]
-        ];
-    }
-
-    protected function paginationOptions()
-    {
-        $values = [1, 15, 30, 50];
-        return array_combine($values, $values);
-    }
-
-    /**
-     * @inheritdoc
-     */
-    protected function sortOptions()
-    {
-        $sortOptions = [];
-        $options = ArrayHelper::merge(['no'], ProductQuery::sortableFields());
-        foreach ($options as $option) {
-            $sortOptions[$option] = Yii::t('frontend/site', 'selector.' . $option);
+        $params = [];
+        foreach ($mergedParams as $key => $value) {
+            if (in_array($key, $this->filterKeys())) {
+                $params[$key] = $value;
+            }
         }
-        return $sortOptions;
+        return $this->redirect(ArrayHelper::merge([''], $params));
     }
 }

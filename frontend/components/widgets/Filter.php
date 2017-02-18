@@ -10,5 +10,12 @@ namespace frontend\components\widgets;
 
 class Filter extends \frontend\components\extensions\Widget
 {
+    public $model;
 
+    protected function renderParams()
+    {
+        return [
+            'model' => $this->model
+        ];
+    }
 }

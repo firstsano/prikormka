@@ -1,36 +1,44 @@
 <?php
 
 /* @var $this \yii\web\View */
+/* @var $model \frontend\models\search\ProductSearch */
 
 use frontend\components\extensions\Html;
+use common\models\Product;
 
 ?>
 
-<div class="filter">
+<?= Html::beginForm('', 'post', ['class' => 'filter']) ?>
     <div class="filter__section">
         <div class="filter__a-title">
             Сезоны
         </div>
         <hr />
         <div class="filter__a-values">
-            <input type="checkbox" class="filled-in" id="test5" />
-            <label for="test5">лето</label>
-            <br />
-            <input type="checkbox" class="filled-in" id="test7" />
-            <label for="test7">зима</label>
-            <br />
-            <input type="checkbox" class="filled-in" id="test6" />
-            <label for="test6">вне сезона</label>
+            <?= Html::activeCheckboxList($model, 'seasons', Product::seasons(), [
+                'item' => function($index, $label, $name, $checked, $value) {
+                    $id = "$name-$index";
+                    return Html::checkbox($name, $checked, [
+                        'id' => $id,
+                        'class' => 'filled-in',
+                        'value' => $value
+                    ]) .
+                    Html::label($label, $id) .
+                    Html::tag('br');
+                }
+            ]) ?>
         </div>
     </div>
     <div class="filter__section">
         <div class="filter__a-title">
-            Вес
+            Цена
         </div>
         <hr />
     </div>
     <div class="filter__reset">
+        <?= Html::submitButton(Yii::t('frontend/site', 'Apply filter'), ['class' => 'button']) ?>
+        <br />
         <?= Html::icon('replay') ?>
         Сбросить
     </div>
-</div>
+<?= Html::endForm() ?>

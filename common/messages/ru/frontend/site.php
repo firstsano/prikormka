@@ -13,6 +13,7 @@ return [
     'Personal cab' => 'Личный кабинет',
     'Guest' => 'Гость',
     'Forming order' => 'Оформление заказа',
+    'Apply filter' => 'Применить фильтр',
 
     'Female' => 'Женский',
     'Male' => 'Мужской',

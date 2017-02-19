@@ -51,4 +51,5 @@ return [
     'reset-password.message' => 'Проверьте свою почту для дальнейших инструкций',
     'reset-password-error.message' => 'Извините, сброс пароля для данного аккаунта невозможен',
     'reset-password-success.message' => 'Новый пароль был успешно сохранен',
+    'mail-order.new' => 'У вас появился новый заказ',
 ];

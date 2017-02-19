@@ -108,12 +108,36 @@ class OrderForm extends Model
                 'address' => $this->address,
             ]
         ]);
-        return Yii::$app->commandBus->handle(new CreateOrderCommand([
+        $order = Yii::$app->commandBus->handle(new CreateOrderCommand([
             'total' => $params['total'],
             'user' => $params['user'],
             'comment' => $this->comment,
             'delivery' => $this->delivery,
             'products' => $params['products']
         ]));
+        if ($order !== false) {
+            $this->sendNotifications();
+        }
+        return $order;
+    }
+
+    private function sendNotifications()
+    {
+        $this->notifyAdmin();
+        $this->notifyUser();
+    }
+
+    private function notifyAdmin()
+    {
+        Yii::$app->commandBus->handle(new SendEmailCommand([
+            'to' => Yii::$app->params['orderEmails'],
+            'subject' => Yii::t('frontend/site', 'mail-order.new'),
+            'body' => Yii::t('frontend/site', 'mail-order.new'),
+        ]));
+    }
+
+    private function notifyUser()
+    {
+        return false;
     }
 }

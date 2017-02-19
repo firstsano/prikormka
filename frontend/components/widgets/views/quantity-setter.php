@@ -2,19 +2,24 @@
 
 /* @var $this \yii\web\View */
 /* @var $inputOptions array */
+/* @var $widgetOptions array */
+/* @var $startValue integer */
 
 use frontend\components\extensions\Html;
 
 \frontend\components\widgets\assets\QuantitySetterAsset::register($this);
 
-echo Html::beginTag('div', ['class' => 'quantity-setter']);
+echo Html::beginTag('div', [
+    'data' => $widgetOptions,
+    'class' => 'quantity-setter'
+]);
 echo Html::iconButton('remove', '#', [
     'icon' => [
         'class' => 'quantity-setter__action-icon',
     ],
     'class' => 'quantity-setter__remove'
 ]);
-echo Html::input('text', 'randomName', 0, $inputOptions);
+echo Html::textInput($this->context->id, $startValue, $inputOptions);
 echo Html::iconButton('add', '#', [
     'icon' => [
         'class' => 'quantity-setter__action-icon',

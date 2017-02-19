@@ -57,13 +57,16 @@ use frontend\components\widgets\Trinity;
 
     <footer class="q-order__footer">
         <div class="q-order__footer-section">
-            <?= QuantitySetter::widget(['options' => [
-                'input' => [
-                    'data' => [
-                        'product-quantity' => true
-                    ]
+            <?= QuantitySetter::widget([
+                'startValue' => 1,
+                'options' => [
+                    'widget' => [
+                        'step' => 1,
+                        'min-quantity' => 1
+                    ],
+                    'input' => [ 'data-product-quantity' => true ]
                 ]
-            ]]) ?>
+            ]) ?>
         </div>
         <div class="q-order__footer-section">
             <?= Html::a('В корзину',

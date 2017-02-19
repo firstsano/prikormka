@@ -2,7 +2,7 @@
 
     var defaults = {
         step: 1,
-        minQuantity: 0
+        minQuantity: 1
     };
 
     var selectors = {
@@ -31,8 +31,10 @@
     };
     quantitySetter.prototype.decrement = function () {
         var inputValue = parseInt(this.$input.val());
-        if (inputValue > this.options.minQuantity) {
+        if ((inputValue - this.options.step) > this.options.minQuantity) {
             inputValue -= this.options.step;
+        } else {
+            inputValue = this.options.minQuantity;
         }
         this.changeValue(inputValue);
     };

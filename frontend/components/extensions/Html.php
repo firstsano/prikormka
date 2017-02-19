@@ -26,6 +26,7 @@ class Html extends \yii\helpers\Html
     public static function iconButton($icon, $url, $options = [])
     {
         $icon = static::icon($icon, ArrayHelper::getValue($options, 'icon', []));
+        unset($options['icon']);
         return static::a($icon, $url, $options);
     }
 }

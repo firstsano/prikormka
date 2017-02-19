@@ -8,6 +8,9 @@ use frontend\models\Product;
 
 class ProductSearch extends Product
 {
+    const SCENARIO_SIMPLE = 'simple';
+    const SCENARIO_WHOLESALE = 'wholesale';
+
     /**
      * @var int
      */
@@ -28,6 +31,10 @@ class ProductSearch extends Product
      * @var array
      */
     public $seasons = [];
+    /**
+     * @var string
+     */
+    public $filter;
 
     /**
      * @inheritdoc
@@ -35,14 +42,18 @@ class ProductSearch extends Product
     public function rules()
     {
         return [
-            ['seasons', 'each', 'rule' => [
-                'in', 'range' => array_keys(static::seasons())]
-            ],
-            ['perPage', 'in', 'range' => static::perPageOptions()],
-            [['priceMin', 'priceMax'], 'number'],
+            // Simple Scenario
+            [['seasons'], 'each', 'rule' => [
+                'in', 'range' => array_keys(static::seasons())
+            ], 'on' => [static::SCENARIO_SIMPLE, static::SCENARIO_DEFAULT]],
+            [['perPage'], 'in', 'range' => static::perPageOptions(), 'on' => [static::SCENARIO_SIMPLE, static::SCENARIO_DEFAULT]],
+            [['priceMin', 'priceMax'], 'number', 'on' => [static::SCENARIO_SIMPLE, static::SCENARIO_DEFAULT]],
             ['priceMax', 'compare', 'compareAttribute' => 'priceMin',
-                'operator' => '>=', 'type' => 'number'],
-            ['sortBy', 'in', 'range' => array_keys(static::sortByOptions())]
+                'operator' => '>=', 'type' => 'number', 'on' => [static::SCENARIO_SIMPLE, static::SCENARIO_DEFAULT]],
+            ['sortBy', 'in', 'range' => array_keys(static::sortByOptions()), 'on' => [static::SCENARIO_SIMPLE, static::SCENARIO_DEFAULT]],
+
+            // Wholesale Scenario
+            [['filter'], 'string', 'on' => static::SCENARIO_WHOLESALE]
         ];
     }
 
@@ -57,6 +68,18 @@ class ProductSearch extends Product
             return new ActiveDataProvider([]);
         }
 
+        switch ($this->scenario) {
+            case static::SCENARIO_SIMPLE:
+                return $this->simpleSearch();
+            case static::SCENARIO_WHOLESALE:
+                return $this->wholesaleSearch();
+            default:
+                return $this->simpleSearch();
+        }
+    }
+
+    public function simpleSearch()
+    {
         $query = Product::find()->published();
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
@@ -75,6 +98,28 @@ class ProductSearch extends Product
         $query->andFilterWhere(['>=', 'price', $this->priceMin]);
         $query->andFilterWhere(['<=', 'price', $this->priceMax]);
 
+        return $dataProvider;
+    }
+
+    public function wholesaleSearch()
+    {
+        $query = Product::find()->published();
+        $dataProvider = new ActiveDataProvider([
+            'query' => $query,
+            'pagination' => [
+                'pageSizeParam' => 'perPage',
+                'pageSize' => $this->perPage,
+            ],
+            'sort' => [
+                'defaultOrder' => [
+                    $this->sortBy => SORT_ASC,
+                ]
+            ],
+        ]);
+
+        $query->andFilterWhere(['in', 'season', $this->seasons]);
+        $query->andFilterWhere(['>=', 'price', $this->priceMin]);
+        $query->andFilterWhere(['<=', 'price', $this->priceMax]);
 
         return $dataProvider;
     }

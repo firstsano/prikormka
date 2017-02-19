@@ -9,15 +9,21 @@
     };
 
     var defaultOptions = {
-        method: 'POST'
+        method: 'POST',
     };
 
     var getOptionsFromElement = function ($el) {
         var data = $el.data('product-add');
+        var $storage = $el.closest(data.storage);
+        var storageData = $storage.data('storage');
+        var params = {
+            id: data.product,
+            quantity: storageData.quantity
+        };
         return {
             url: $el.attr('href'),
             method: data.method,
-            params: data.params
+            params: params
         };
     };
 

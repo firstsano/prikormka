@@ -16,14 +16,23 @@
         $widget = $(el).closest(selectors.widget);
         var options = {
             step: $widget.data('step'),
-            minQuantity: $widget.data('min-quantity')
+            minQuantity: $widget.data('min-quantity'),
+            storage: $widget.data('storage')
         };
         this.$input = $(el).closest(selectors.widget).find(selectors.input);
+        this.$storage = $(el).closest(options.storage);
         this.options = $.extend({}, defaults, options);
     };
     quantitySetter.prototype.changeValue = function(newValue) {
         this.$input.val(newValue);
+        this.updateStorage({quantity: newValue});
         this.$input.trigger('quantity-changed');
+    };
+    quantitySetter.prototype.initializeStorage = function() {
+        this.$storage.data('storage', {quantity: this.$input.val()});
+    };
+    quantitySetter.prototype.updateStorage = function(data) {
+        this.$storage.data('storage', data);
     };
     quantitySetter.prototype.increment = function () {
         var inputValue = parseInt(this.$input.val()) + this.options.step;
@@ -57,6 +66,9 @@
         });
         $(selectors.input).on('blur change keyup', function(e) {
             (new quantitySetter(this)).filterInput();
+        });
+        $(selectors.input).each(function(i, el) {
+            (new quantitySetter(el)).initializeStorage();
         });
     };
 

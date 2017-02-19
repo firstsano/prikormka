@@ -8,8 +8,6 @@ use frontend\components\extensions\Html;
 use frontend\components\widgets\QuantitySetter;
 use yii\helpers\StringHelper;
 
-\frontend\components\widgets\assets\ProductWholesaleOrderAsset::register($this);
-
 ?>
 
 <div class="w-order">

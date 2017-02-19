@@ -6,9 +6,7 @@
 
 use frontend\components\extensions\Html;
 use frontend\components\widgets\QuantitySetter;
-use frontend\components\widgets\Trinity;
-
-\frontend\components\widgets\assets\ProductQuickOrderAsset::register($this);
+use frontend\components\widgets\AddToCart;
 
 ?>
 
@@ -62,29 +60,25 @@ use frontend\components\widgets\Trinity;
                 'options' => [
                     'widget' => [
                         'step' => 1,
-                        'min-quantity' => 1
+                        'min-quantity' => 1,
+                        'storage' => '.q-order'
                     ],
                     'input' => [ 'data-product-quantity' => true ]
                 ]
             ]) ?>
         </div>
         <div class="q-order__footer-section">
-            <?= Html::a('В корзину',
-                ['/site/add-product-to-cart'],
-                [
-                    'class' => 'q-order__order-button',
-                    'data' => [
-                        'product-order' => true,
-                        'product-add' => [
-                            'method' => 'POST',
-                            'params' => [
-                                'id' => $product->id,
-                                'quantity' => 1
-                            ],
-                        ],
+            <?= AddToCart::widget([
+                'label' => 'В корзину',
+                'options' => [
+                    'link' => ['class' => 'q-order__order-button'],
+                    'widget' =>  [
+                        'method' => 'POST',
+                        'storage' => '.q-order',
+                        'product' => $product->id,
                     ]
                 ]
-            ) ?>
+            ]) ?>
         </div>
     </footer>
 <?= Html::endTag('div') ?>

@@ -14,12 +14,12 @@ class Navigation
             ],
             [
                 'label' => 'Оптовый каталог',
-                'url' => [ 'catalog/index' ],
+                'url' => [ 'wholesale-catalog/index' ],
                 'class' => ['header-menu__item-link_highlight_2']
             ],
             [
                 'label' => 'Общий каталог',
-                'url' => [ 'site/wholesale' ]
+                'url' => [ 'catalog/index' ]
             ],
             [
                 'label' => 'Готовые прикормки',

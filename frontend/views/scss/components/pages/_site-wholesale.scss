@@ -1,20 +1,21 @@
 .site-wholesale {
   @extend .container;
 
-  .site-wholesale__title {
+  & .site-wholesale__title {
     @include header;
   }
 
-  .site-wholesale__layout {
+  & .site-wholesale__layout {
     @extend .row;
     margin-bottom: 40px;
   }
 
-  .site-wholesale__filter {
-    @extend .col, .s3;
+  & .site-wholesale__products {
+    @extend .col, .s12;
   }
 
-  .site-wholesale__products {
-    @extend .col, .s9;
+  & .site-wholesale__filter {
+    @extend .col, .s12;
+    margin-bottom: 20px;
   }
 }

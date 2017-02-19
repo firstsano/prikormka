@@ -117,9 +117,13 @@ class ProductSearch extends Product
             ],
         ]);
 
-        $query->andFilterWhere(['in', 'season', $this->seasons]);
-        $query->andFilterWhere(['>=', 'price', $this->priceMin]);
-        $query->andFilterWhere(['<=', 'price', $this->priceMax]);
+        $query->andFilterWhere([
+            'or',
+            ['like', 'name', $this->filter],
+            ['like', 'description', $this->filter],
+            ['like', 'slug', $this->filter],
+//            ['like', 'category.name', $this->filter],
+        ]);
 
         return $dataProvider;
     }

@@ -1,0 +1,11 @@
+.search {
+  @include border-radius(3px);
+  background-image: url('/img/icons/search.png');
+  background-position: center left 10px;
+  background-repeat: no-repeat;
+  background-size: 20px 20px;
+  border: solid 1px $color-border-standart;
+  color: $color-text-standart;
+  padding: 10px 10px 10px 40px;
+  width: 100%;
+}

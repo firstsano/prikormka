@@ -56,15 +56,15 @@
     };
 
     var initialize = function () {
-        $(selectors.add).on('click', function(e) {
+        $('body').on('click', selectors.add, function(e) {
             e.preventDefault();
             (new quantitySetter(this)).increment();
         });
-        $(selectors.remove).on('click', function(e) {
+        $('body').on('click', selectors.remove, function(e) {
             e.preventDefault();
             (new quantitySetter(this)).decrement();
         });
-        $(selectors.input).on('blur change keyup', function(e) {
+        $('body').on('blur change keyup', selectors.input, function(e) {
             (new quantitySetter(this)).filterInput();
         });
         $(selectors.input).each(function(i, el) {

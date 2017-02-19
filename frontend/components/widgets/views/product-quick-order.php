@@ -63,7 +63,6 @@ use frontend\components\widgets\AddToCart;
                         'min-quantity' => 1,
                         'storage' => '.q-order'
                     ],
-                    'input' => [ 'data-product-quantity' => true ]
                 ]
             ]) ?>
         </div>

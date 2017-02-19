@@ -6,6 +6,7 @@
 use frontend\components\widgets\Trinity;
 use frontend\components\extensions\Html;
 use frontend\components\widgets\QuantitySetter;
+use frontend\components\widgets\AddToCart;
 use yii\helpers\StringHelper;
 
 ?>
@@ -29,13 +30,16 @@ use yii\helpers\StringHelper;
         ]) ?>
     </div>
     <div class="w-order__order-quantity">
-        <?= QuantitySetter::widget(['options' => [
-            'input' => [
-                'data' => [
-                    'product-quantity' => true
-                ]
+        <?= QuantitySetter::widget([
+            'startValue' => 1,
+            'options' => [
+                'widget' => [
+                    'step' => 1,
+                    'min-quantity' => 1,
+                    'storage' => '.w-order'
+                ],
             ]
-        ]]) ?>
+        ]) ?>
     </div>
     <div class="w-order__product-price">
         <?= Trinity::widget([
@@ -45,19 +49,16 @@ use yii\helpers\StringHelper;
         ]) ?>
     </div>
     <div class="w-order__order">
-        <?= Html::iconButton('add',
-            ['/site/add-product-to-cart'],
-            [
-                'class' => 'w-order__order-button',
-                'data' => [
+        <?= AddToCart::widget([
+            'label' => Html::icon('add'),
+            'options' => [
+                'link' => ['class' => 'w-order__order-button'],
+                'widget' =>  [
                     'method' => 'POST',
-                    'product-order' => true,
-                    'params' => [
-                        'id' => $product->id,
-                        'quantity' => 1
-                    ],
+                    'storage' => '.w-order',
+                    'product' => $product->id,
                 ]
             ]
-        ) ?>
+        ]) ?>
     </div>
 </div>

@@ -35,7 +35,7 @@ use frontend\components\widgets\Login;
             <div class="header-info__controls-item">
                 <?= Login::widget([
                     'isGuest' => Yii::$app->user->isGuest,
-                    'isAdmin' => Yii::$app->user->can('administrator'),
+                    'isAdmin' => Yii::$app->user->can('manager'),
                     'username' => Yii::$app->user->identity ?
                         Yii::$app->user->identity->publicIdentity : "",
                     'loginUrl' => Yii::$app->user->loginUrl,

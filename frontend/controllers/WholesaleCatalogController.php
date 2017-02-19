@@ -15,19 +15,15 @@ class WholesaleCatalogController extends Controller
      */
     public function actionIndex()
     {
+        $request = Yii::$app->request;
         $searchModel = new ProductSearch([
             'scenario' => ProductSearch::SCENARIO_WHOLESALE
         ]);
-        $params = Yii::$app->request->get();
-        $dataProvider = $searchModel->load($params, '')->search();
-
-        if (Yii::$app->request->isAjax) {
-            return $this->renderAjax('index', [
-                'search' => $searchModel,
-                'products' => $dataProvider->models,
-                'pages' => $dataProvider->pagination
-            ]);
-        }
+        $dataProvider = $searchModel
+            ->load($request->get(), '')
+            ->load($request->post(), '')
+            ->search()
+        ;
 
         return $this->render('index', [
             'search' => $searchModel,

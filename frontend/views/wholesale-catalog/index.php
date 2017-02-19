@@ -4,6 +4,8 @@
 /* @var $products \common\models\Product[] */
 /* @var $search \frontend\models\search\ProductSearch */
 
+use yii\widgets\LinkPager;
+use yii\widgets\Pjax;
 use frontend\components\extensions\Html;
 use frontend\components\widgets\ProductWholesaleOrder;
 use frontend\components\widgets\RemoteSearch;
@@ -17,10 +19,13 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="site-wholesale">
     <h1 class="site-wholesale__title"><?= Html::encode($this->title) ?></h1>
     <div class="site-wholesale__layout">
+        <?php Pjax::begin([
+            'id' => 'wholesale-products',
+            'enablePushState' => false,
+        ]) ?>
         <div class="site-wholesale__filter">
             <?= RemoteSearch::widget([
                 'value' => $search->filter,
-                'container' => '.site-wholesale__products'
             ]) ?>
         </div>
         <div class="site-wholesale__products">
@@ -40,7 +45,13 @@ $this->params['breadcrumbs'][] = $this->title;
                     ]);
                 }
             ?>
+            <?= LinkPager::widget([
+                'pagination' => $pages,
+                'prevPageLabel' => Html::icon('chevron_left'),
+                'nextPageLabel' => Html::icon('chevron_right'),
+                'pageCssClass' => 'waves-effect'
+            ]) ?>
         </div>
+        <?php Pjax::end() ?>
     </div>
 </div>
-

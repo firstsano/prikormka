@@ -11,6 +11,8 @@ class ProductSearch extends Product
     const SCENARIO_SIMPLE = 'simple';
     const SCENARIO_WHOLESALE = 'wholesale';
 
+    const WHOLESALE_PER_PAGE = 20;
+
     /**
      * @var int
      */
@@ -108,7 +110,7 @@ class ProductSearch extends Product
             'query' => $query,
             'pagination' => [
                 'pageSizeParam' => 'perPage',
-                'pageSize' => $this->perPage,
+                'pageSize' => static::WHOLESALE_PER_PAGE,
             ],
             'sort' => [
                 'defaultOrder' => [

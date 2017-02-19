@@ -113,9 +113,17 @@ $this->params['breadcrumbs'][] = $this->title;
             <?= Html::a('Продолжить покупки', ['catalog/index'], [
                 'class' => 'cart-total__control cart-total__control_filtered'
             ]) ?>
-            <?= Html::a(Yii::t('frontend/site', 'Form order'), ['order/new'], [
-                'class' => 'cart-total__control'
-            ]) ?>
+            <?php
+                if (Yii::$app->cart->canBeOrdered) {
+                    echo Html::a(Yii::t('frontend/site', 'Form order'), ['order/new'], [
+                        'class' => 'cart-total__control'
+                    ]);
+                } else {
+                    echo Html::a(Yii::t('frontend/site', 'Form order'), '#', [
+                        'class' => 'cart-total__control cart-total__control_filtered'
+                    ]);
+                }
+            ?>
         </div>
     </div>
 

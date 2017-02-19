@@ -7,6 +7,7 @@ use yii\base\Model;
 use himiklab\yii2\recaptcha\ReCaptchaValidator;
 use common\commands\CreateOrderCommand;
 use yii\helpers\ArrayHelper;
+use common\models\Order;
 
 class OrderForm extends Model
 {
@@ -29,6 +30,11 @@ class OrderForm extends Model
     public $phone;
 
     /**
+     * @var integer
+     */
+    public $delivery;
+
+    /**
      * @var string
      */
     public $address;
@@ -49,10 +55,11 @@ class OrderForm extends Model
     public function rules()
     {
         return [
-            [['name', 'phone'], 'required'],
+            [['name', 'phone', 'delivery'], 'required'],
             [['name', 'address', 'comment'], 'filter', 'filter' => 'strip_tags'],
             [['name', 'email', 'phone', 'address', 'comment'], 'filter', 'filter' => 'trim'],
             ['email', 'email'],
+            [['delivery'], 'in', 'range' => array_keys(Order::deliveries())],
 //            [['reCaptcha'], ReCaptchaValidator::className(), 'on' => static::SCENARIO_GUEST],
         ];
     }
@@ -68,6 +75,7 @@ class OrderForm extends Model
             'phone' => Yii::t('frontend/models/order-form', 'Phone'),
             'address' => Yii::t('frontend/models/order-form', 'Address'),
             'comment' => Yii::t('frontend/models/order-form', 'Comment'),
+            'delivery' => Yii::t('frontend/models/order-form', 'Delivery'),
             'reCaptcha' => Yii::t('frontend/models/order-form', 'Re Captcha')
         ];
     }
@@ -103,6 +111,8 @@ class OrderForm extends Model
         return Yii::$app->commandBus->handle(new CreateOrderCommand([
             'total' => $params['total'],
             'user' => $params['user'],
+            'comment' => $this->comment,
+            'delivery' => $this->delivery,
             'products' => $params['products']
         ]));
     }

@@ -21,6 +21,14 @@ class CreateOrderCommand extends Object implements SelfHandlingCommand
      */
     public $status;
     /**
+     * @var integer
+     */
+    public $delivery;
+    /**
+     * @var text
+     */
+    public $comment;
+    /**
      * @var \common\models\User|array
      */
     public $user;
@@ -41,6 +49,8 @@ class CreateOrderCommand extends Object implements SelfHandlingCommand
             $order = new Order([
                 'total' => $command->total,
                 'status' => $command->status,
+                'comment' => $command->comment,
+                'delivery' => $command->delivery
             ]);
             $order->setAttributes([
                 'user_name' => $command->user['name'],

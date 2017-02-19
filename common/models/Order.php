@@ -11,6 +11,8 @@ use Yii;
  * @property integer $user_id
  * @property double $total
  * @property integer $status
+ * @property text $comment
+ * @property integer $delivery
  * @property string $user_name
  * @property string $user_email
  * @property string $user_phone
@@ -26,6 +28,8 @@ class Order extends \yii\db\ActiveRecord
     const STATUS_SHIPPED = 3;
     const STATUS_COMPLETE = 4;
 
+    const DELIVERY_TRANSPORT_COMPANY = 1;
+    const DELIVERY_RUSSIA_MAIL = 2;
 
     /**
      * @inheritdoc
@@ -44,12 +48,15 @@ class Order extends \yii\db\ActiveRecord
             [['user_id'], 'integer'],
             [['total'], 'number'],
             [['status'], 'default', 'value' => static::STATUS_NEW],
-            [['status'], 'integer'],
+            [['status', 'delivery'], 'integer'],
+            [['delivery'], 'in', 'range' => array_keys(static::deliveries())],
+            [['comment'], 'string'],
             [['user_name', 'user_email', 'user_phone', 'user_address'], 'string'],
             [['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['user_id' => 'id']],
             [['user_name', 'user_phone'], 'required', 'when' => function($model) {
                 return empty($model->user_id);
-            }]
+            }],
+            [['total'], 'compare', 'operator' => '>=', 'compareValue' => Yii::$app->params['minOrder']]
         ];
     }
 
@@ -83,6 +90,18 @@ class Order extends \yii\db\ActiveRecord
             self::STATUS_COMPLETE => Yii::t('common/models/order', 'status.complete')
         ];
     }
+
+    /**
+     * @return array
+     */
+    public static function deliveries()
+    {
+        return [
+            self::DELIVERY_TRANSPORT_COMPANY => Yii::t('common/models/order', 'delivery.tc'),
+            self::DELIVERY_RUSSIA_MAIL => Yii::t('common/models/order', 'delivery.rm'),
+        ];
+    }
+
 
     /**
      * @return \yii\db\ActiveQuery

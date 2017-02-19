@@ -7,6 +7,7 @@
 use frontend\components\extensions\Html;
 use frontend\components\widgets\FlashMessages;
 use frontend\components\extensions\SimpleActiveForm;
+use common\models\Order;
 use himiklab\yii2\recaptcha\ReCaptcha;
 
 $this->title = Yii::t('frontend/site', 'Forming order');
@@ -48,6 +49,18 @@ $this->params['breadcrumbs'][] = $this->title;
             <div class="order-new__section-title"> Данные для отправки: </div>
             <div class="order-new__section">
                 <?= $form->field($model, 'address') ?>
+                <?= $form->field($model, 'delivery')->radioList(Order::deliveries(), [
+                    'class' => 'simple-form__radiolist',
+                    'item' => function($index, $label, $name, $checked, $value) {
+                        $id = "$name-$index";
+                        $input = Html::radio($name, $checked, [
+                            'id' => $id,
+                            'value' => $value
+                        ]);
+                        $input .= Html::label($label, $id);
+                        return Html::tag('div', $input, ['class' => 'simple-form__radiolist-item']);
+                    }
+                ]) ?>
             </div>
         </div>
 

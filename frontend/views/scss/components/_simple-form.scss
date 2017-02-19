@@ -26,6 +26,16 @@
     display: block;
   }
 
+  & .simple-form__radiolist {
+    display: inline-block;
+    font-weight: 100;
+  }
+
+  & .simple-form__radiolist-item {
+    display: inline-block;
+    margin-right: 20px;
+  }
+
   & .simple-form__actions {
     text-align: right;
   }

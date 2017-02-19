@@ -17,7 +17,8 @@ $this->params['breadcrumbs'][] = $this->title;
     <table class="cart-details">
         <thead class="cart-details__header">
         <tr>
-            <th width="30%" class="cart-details__header-cell"> Наименование </th>
+            <th width="10%" class="cart-details__header-cell"></th>
+            <th width="20%" class="cart-details__header-cell"> Наименование </th>
             <th width="*" class="cart-details__header-cell"> Цена за единицу </th>
             <th width="*" class="cart-details__header-cell"> В упаковке </th>
             <th width="*" class="cart-details__header-cell"> Количество </th>
@@ -28,6 +29,11 @@ $this->params['breadcrumbs'][] = $this->title;
         <tbody class="cart-details__body">
         <?php foreach ($model->orderProducts as $product): ?>
             <tr class="cart-details__body-row">
+                <td class="cart-details__body-cell">
+                    <?= Html::img($product->sourceProduct->mainImage->url, [
+                        'class' => 'cart-details__product-image'
+                    ]) ?>
+                </td>
                 <td class="cart-details__body-cell">
                     <?= Html::a($product->name, ['catalog/view', 'id' => $product->id]) ?>
                 </td>

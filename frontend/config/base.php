@@ -9,6 +9,5 @@ return [
     'params' => [
         'mainPhone' => '+7 (960) 88 222 22',
         'currency' => 'руб',
-        'minOrder' => 20000,
     ]
 ];

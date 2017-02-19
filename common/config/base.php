@@ -138,6 +138,7 @@ $config = [
         'availableLocales' => [
             'ru-RU' => 'Русский (РФ)',
         ],
+        'minOrder' => 20000,
     ],
 ];
 

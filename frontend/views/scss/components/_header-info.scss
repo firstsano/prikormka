@@ -11,15 +11,38 @@
   }
 
   & .header-info__logotype-layout {
-    width: 10%;
   }
 
   & .header-info__logotype {
-    width: 70px;
+    width: 100px;
   }
 
   & .header-info__order-phones {
-    width: 30%;
+    flex-grow: 2;
+    padding-left: 20px;
+  }
+
+  & .header-info__order-work-times {
+    color: $color-text-background;
+    font-size: $font-size-standart-small;
+    margin-top: 5px;
+  }
+
+  & .header-info__order-work-time {
+    &.header-info__order-work-time_highlight {
+      color: $color-application-main;
+    }
+  }
+
+  & .header-info__order-location {
+    color: $color-text-background;
+    display: inline-block;
+    width: 70px;
+  }
+
+  & .header-info__order-phone {
+    font-size: $font-size-standart-big;
+    color: $color-text-standart;
   }
 
   & .header-info__controls {

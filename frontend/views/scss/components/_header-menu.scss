@@ -32,6 +32,7 @@
 
   & .header-menu__item-link {
     @include size(100%, 100%);
+    @include transition(all 0.5s);
     color: $color-text-standart;
     display: block;
     padding: 10px 20px;
@@ -66,6 +67,10 @@
     color: $color-text-inverse;
     display: block;
     padding: 20px;
+    &:hover {
+      background-color: $color-application-light;
+      color: $color-menu-inverse;
+    }
   }
 
   & .header-menu__item:first-child .header-menu__item-link {
@@ -87,5 +92,8 @@
     @include size(100%, 100%);
     display: block;
     padding: 5px 10px;
+    &:hover {
+      text-decoration: underline;
+    }
   }
 }

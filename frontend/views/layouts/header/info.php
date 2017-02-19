@@ -18,11 +18,17 @@ use frontend\components\widgets\Login;
             ?>
         </div>
         <div class="header-info__order-phones">
-            <div class="header-info__order-phone">
-                Москва: 8 (903) 104-29-95
+            <div>
+                <span class="header-info__order-location">Москва: </span>
+                <span class="header-info__order-phone"> 8 (903) 104-29-95 </span>
             </div>
-            <div class="header-info__order-phone">
-                Регионы: 8 (960) 882-22-22
+            <div>
+                <span class="header-info__order-location">Регионы: </span>
+                <span class="header-info__order-phone"> 8 (960) 882-22-22 </span>
+            </div>
+            <div class="header-info__order-work-times">
+                <span class="header-info__order-work-time"> Время работы </span>
+                <span class="header-info__order-work-time header-info__order-work-time_highlight"> с 8:00 до 20:00 </span>
             </div>
         </div>
         <div class="header-info__controls">

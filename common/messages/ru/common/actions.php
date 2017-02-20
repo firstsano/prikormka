@@ -3,9 +3,13 @@
 return [
     'Create' => 'Создать',
     'Update' => 'Обновить',
+    'Delete' => 'Удалить',
 
     'Create category' => 'Создать категорию',
     'Update category' => 'Обновить категорию',
+
+    'Create order' => 'Создать заказ',
+    'Update order' => 'Обновить заказ',
 
     'Create product' => 'Создать товар',
 ];

@@ -9,6 +9,7 @@ use backend\models\search\ProductSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\helpers\ArrayHelper;
 
 /**
  * ProductController implements the CRUD actions for Product model.
@@ -39,6 +40,7 @@ class ProductController extends Controller
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
+            'categories' => ArrayHelper::map(Category::find()->all(), 'id', 'name')
         ]);
     }
 
@@ -51,6 +53,7 @@ class ProductController extends Controller
     {
         return $this->render('view', [
             'model' => $this->findModel($id),
+            'categories' => ArrayHelper::map(Category::find()->all(), 'id', 'name')
         ]);
     }
 

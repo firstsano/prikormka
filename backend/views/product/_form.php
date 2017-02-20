@@ -1,14 +1,14 @@
 <?php
 
-use trntv\filekit\widget\Upload;
-use common\models\Product;
-use yii\helpers\Html;
-use yii\bootstrap\ActiveForm;
-
 /* @var $this yii\web\View */
 /* @var $model common\models\Product */
 /* @var $form yii\bootstrap\ActiveForm */
 /* @var $categories common\models\Category[] */
+
+use trntv\filekit\widget\Upload;
+use common\models\Product;
+use yii\helpers\Html;
+use yii\bootstrap\ActiveForm;
 
 ?>
 
@@ -49,7 +49,7 @@ use yii\bootstrap\ActiveForm;
 
     <?= $form->field($model, 'status')->dropDownlist(Product::statuses()) ?>
 
-    <?= $form->field($model, 'seasonality')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'season')->dropDownlist(Product::seasons()) ?>
 
     <?= $form->field($model, 'images')
         ->hint(Yii::t('backend/models/product', 'product.images.hint'))

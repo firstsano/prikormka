@@ -5,7 +5,7 @@
 
 use yii\helpers\Html;
 
-$this->title = Yii::t('backend\site', 'Create order');
+$this->title = Yii::t('common\actions', 'Create order');
 $this->params['breadcrumbs'][] = ['label' => Yii::t('backend\site', 'Orders'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>

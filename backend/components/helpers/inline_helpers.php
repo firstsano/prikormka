@@ -25,6 +25,11 @@ function format_currency($float)
     return format_f($float) . " " . currency();
 }
 
+function format_weight($float)
+{
+    return format_f($float, 0) . " " . \Yii::$app->params['weight'];
+}
+
 function decimals($float)
 {
     $float = 100 * ($float - round($float, 0, PHP_ROUND_HALF_DOWN));

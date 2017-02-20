@@ -9,7 +9,7 @@ return [
     'Weight' => 'Вес',
     'Pack Quantity' => 'Кол-во в упаковке',
     'Min Pack Quantity' => 'Минимальное кол-во упаковок',
-    'Seasonality' => 'Сезонность',
+    'Season' => 'Сезонность',
     'Images' => 'Изображения',
     'Status' => 'Статус',
 

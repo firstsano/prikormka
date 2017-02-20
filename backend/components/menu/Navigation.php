@@ -79,6 +79,11 @@ class Navigation
                 'url'=>['/order/index'],
                 'icon' => '<i class="fa fa-first-order"></i>',
             ],
+            [
+                'label'=>Yii::t('backend/site', 'Product categories'),
+                'url'=>['/category/index'],
+                'icon'=>'<i class="fa fa-tags"></i>'
+            ],
         ];
     }
 

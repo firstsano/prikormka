@@ -1,18 +1,18 @@
 <?php
 
-use yii\helpers\Html;
-use yii\grid\GridView;
-
 /* @var $this yii\web\View */
 /* @var $searchModel backend\models\search\CategorySearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
+/* @var $categories common\models\Category[] */
+
+use yii\helpers\Html;
+use yii\grid\GridView;
+use yii\helpers\ArrayHelper;
 
 $this->title = Yii::t('common/site', 'Product categories');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="category-index">
-
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
         <?php echo Html::a(Yii::t('common/actions', 'Create category'),
@@ -25,8 +25,17 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
-            'parent_id',
+            [
+                'attribute' => 'id',
+                'options' => ['width' => 50]
+            ],
+            [
+                'attribute' => 'parent_id',
+                'filter' => $categories,
+                'value' => function($model) use($categories) {
+                    return @$categories[$model->parent_id];
+                }
+            ],
             'name',
             'slug',
             'description:ntext',

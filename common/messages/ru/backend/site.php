@@ -7,6 +7,7 @@ return [
 
     'Static pages' => 'Статические страницы',
     'Orders' => 'Заказы',
+    'Categories' => 'Категории товара',
     'Products' => 'Товар',
     'Product categories' => 'Категории товара',
     'Articles' => 'Статьи',

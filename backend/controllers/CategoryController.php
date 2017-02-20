@@ -7,6 +7,7 @@ use common\models\Category;
 use backend\models\search\CategorySearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
+use yii\helpers\ArrayHelper;
 use yii\filters\VerbFilter;
 
 /**
@@ -38,6 +39,7 @@ class CategoryController extends Controller
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
+            'categories' => ArrayHelper::map(Category::find()->all(), 'id', 'name'),
         ]);
     }
 

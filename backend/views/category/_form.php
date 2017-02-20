@@ -1,12 +1,12 @@
 <?php
 
-use yii\helpers\Html;
-use yii\bootstrap\ActiveForm;
-
 /* @var $this yii\web\View */
 /* @var $model common\models\Category */
 /* @var $form yii\bootstrap\ActiveForm */
 /* @var $categories common\models\Category[] */
+
+use yii\helpers\Html;
+use yii\bootstrap\ActiveForm;
 
 ?>
 
@@ -24,7 +24,9 @@ use yii\bootstrap\ActiveForm;
 
     <?php echo $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
 
-    <?php echo $form->field($model, 'slug')->textInput(['maxlength' => true]) ?>
+    <?php echo $form->field($model, 'slug')
+        ->hint(Yii::t('backend', 'If you\'ll leave this field empty, slug will be generated automatically'))
+        ->textInput(['maxlength' => true]) ?>
 
     <?php echo $form->field($model, 'description')->textarea(['rows' => 6]) ?>
 

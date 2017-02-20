@@ -43,7 +43,7 @@ use frontend\components\widgets\AddToCart;
         </div>
     </div>
 
-    <div>
+    <div class="q-order__name-layout">
         <?= Html::a($product->name, ['catalog/view', 'id' => $product->id],
             ['class' => 'q-order__name']) ?>
     </div>

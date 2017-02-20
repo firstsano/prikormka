@@ -22,12 +22,12 @@ $footer-height: 40px;
     @extend .col, .s5;
   }
 
-  & .q-order__info-section {
-    @extend .col, .s7;
+  & .q-order__image {
+    @include size(90, 120);
   }
 
-  & .q-order__image {
-    width: 100%;
+  & .q-order__info-section {
+    @extend .col, .s7;
   }
 
   & .q-order__name {
@@ -35,6 +35,12 @@ $footer-height: 40px;
     color: $color-text-standart;
     font-weight: 500;
     line-height: $font-size-standart;
+  }
+
+  & .q-order__name-layout {
+    font-size: $font-size-standart;
+    line-height: $font-size-standart * 1.1;
+    height: $font-size-standart * 1.1 * 2;
   }
 
   & .q-order__price-layout {

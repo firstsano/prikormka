@@ -50,13 +50,11 @@ $bundle = BackendAsset::register($this);
                         <!-- User Account: style can be found in dropdown.less -->
                         <li class="dropdown user user-menu">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                <img src="<?php echo Yii::$app->user->identity->userProfile->getAvatar($this->assetManager->getAssetUrl($bundle, 'img/anonymous.jpg')) ?>" class="user-image">
                                 <span><?php echo Yii::$app->user->identity->username ?> <i class="caret"></i></span>
                             </a>
                             <ul class="dropdown-menu">
                                 <!-- User image -->
                                 <li class="user-header light-blue">
-                                    <img src="<?php echo Yii::$app->user->identity->userProfile->getAvatar($this->assetManager->getAssetUrl($bundle, 'img/anonymous.jpg')) ?>" class="img-circle" alt="User Image" />
                                     <p>
                                         <?php echo Yii::$app->user->identity->username ?>
                                         <small>
@@ -88,19 +86,6 @@ $bundle = BackendAsset::register($this);
         <aside class="main-sidebar">
             <!-- sidebar: style can be found in sidebar.less -->
             <section class="sidebar">
-                <!-- Sidebar user panel -->
-                <div class="user-panel">
-                    <div class="pull-left image">
-                        <img src="<?php echo Yii::$app->user->identity->userProfile->getAvatar($this->assetManager->getAssetUrl($bundle, 'img/anonymous.jpg')) ?>" class="img-circle" />
-                    </div>
-                    <div class="pull-left info">
-                        <p><?php echo Yii::t('backend', 'Hello, {username}', ['username'=>Yii::$app->user->identity->getPublicIdentity()]) ?></p>
-                        <a href="<?php echo Url::to(['/sign-in/profile']) ?>">
-                            <i class="fa fa-circle text-success"></i>
-                            <?php echo Yii::$app->formatter->asDatetime(time()) ?>
-                        </a>
-                    </div>
-                </div>
                 <!-- sidebar menu: : style can be found in sidebar.less -->
                 <?php echo Menu::widget([
                     'options'=>['class'=>'sidebar-menu'],

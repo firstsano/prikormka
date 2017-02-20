@@ -1,22 +1,23 @@
 <?php
 
-use yii\helpers\Html;
-use yii\grid\GridView;
-use yii\widgets\Pjax;
 /* @var $this yii\web\View */
 /* @var $searchModel backend\models\search\OrderSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = Yii::t('backend\models\order', 'Orders');
+use yii\helpers\Html;
+use yii\grid\GridView;
+use yii\widgets\Pjax;
+use common\models\Order;
+
+$this->title = Yii::t('backend\site', 'Orders');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="order-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a(Yii::t('backend\models\order', 'Create Order'), ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a(Yii::t('backend\site', 'Create order'), ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 <?php Pjax::begin(); ?>    <?= GridView::widget([
         'dataProvider' => $dataProvider,
@@ -24,14 +25,22 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
-            'user_id',
+            [
+                'attribute' => 'id',
+                'options' => ['width' => 50]
+            ],
             'total',
-            'status',
+            [
+                'attribute' => 'status',
+                'filter' => Order::statuses(),
+                'value' => function($model) {
+                    return Order::statuses()[$model->status];
+                },
+            ],
             'user_name',
-            // 'user_email:email',
-            // 'user_phone',
-            // 'user_address:ntext',
+            'user_email:email',
+            'user_phone',
+            'user_address',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

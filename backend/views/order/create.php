@@ -1,13 +1,12 @@
 <?php
 
-use yii\helpers\Html;
-
-
 /* @var $this yii\web\View */
 /* @var $model common\models\Order */
 
-$this->title = Yii::t('backend\models\order', 'Create Order');
-$this->params['breadcrumbs'][] = ['label' => Yii::t('backend\models\order', 'Orders'), 'url' => ['index']];
+use yii\helpers\Html;
+
+$this->title = Yii::t('backend\site', 'Create order');
+$this->params['breadcrumbs'][] = ['label' => Yii::t('backend\site', 'Orders'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="order-create">

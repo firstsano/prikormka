@@ -135,10 +135,12 @@ $config = [
     'params' => [
         'adminEmail' => env('ADMIN_EMAIL'),
         'robotEmail' => env('ROBOT_EMAIL'),
+        'orderEmails' => explode(' ', env('ORDER_EMAILS')),
         'availableLocales' => [
             'ru-RU' => 'Русский (РФ)',
         ],
         'minOrder' => 20000,
+        'currency' => 'руб.',
     ],
 ];
 

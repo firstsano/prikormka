@@ -20,4 +20,6 @@ $config = \yii\helpers\ArrayHelper::merge(
     require(__DIR__ . '/../config/web.php')
 );
 
+require(__DIR__ . '/../components/helpers/inline_helpers.php');
+
 (new yii\web\Application($config))->run();

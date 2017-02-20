@@ -4,6 +4,7 @@ namespace backend\components\menu;
 
 use \Yii;
 use common\models\TimelineEvent;
+use yii\helpers\ArrayHelper;
 
 class Navigation
 {
@@ -12,28 +13,32 @@ class Navigation
      */
     public static function items()
     {
-        return [
+        $menu = [
             [
                 'label' => Yii::t('backend', 'Main'),
-                'options' => ['class' => 'header']
+                'options' => ['class' => 'header'],
+                'visible' => Yii::$app->user->can('administrator')
             ],
             [
-                'label' => Yii::t('backend', 'Timeline'),
+                'label' => Yii::t('backend/site', 'Timeline'),
                 'icon' => '<i class="fa fa-bar-chart-o"></i>',
                 'url' => ['/timeline-event/index'],
                 'badge'=> TimelineEvent::find()->today()->count(),
                 'badgeBgClass'=>'label-success',
+                'visible' => Yii::$app->user->can('administrator')
             ],
             [
                 'label' => Yii::t('backend', 'Content'),
                 'url' => '#',
                 'icon' => '<i class="fa fa-edit"></i>',
                 'options' => ['class'=>'treeview'],
-                'items' => static::mainItems()
+                'items' => static::mainItems(),
+                'visible' => Yii::$app->user->can('administrator')
             ],
             [
                 'label' => Yii::t('backend', 'System'),
-                'options' => ['class' => 'header']
+                'options' => ['class' => 'header'],
+                'visible' => Yii::$app->user->can('administrator')
             ],
             [
                 'label' => Yii::t('backend', 'Users'),
@@ -46,8 +51,34 @@ class Navigation
                 'url' => '#',
                 'icon' => '<i class="fa fa-cogs"></i>',
                 'options' => ['class'=>'treeview'],
-                'items' => Navigation::otherItems()
+                'items' => Navigation::otherItems(),
+                'visible' => Yii::$app->user->can('administrator')
             ]
+        ];
+        if (Yii::$app->user->can('manager')) {
+            $menu = ArrayHelper::merge($menu, static::managerMenu());
+        }
+        return $menu;
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public static function managerMenu()
+    {
+        return [
+            [
+                'label' => Yii::t('backend/site', 'Timeline'),
+                'icon' => '<i class="fa fa-bar-chart-o"></i>',
+                'url' => ['/timeline-event/index'],
+                'badge'=> TimelineEvent::find()->today()->count(),
+                'badgeBgClass'=>'label-success',
+            ],
+            [
+                'label'=>Yii::t('backend/site', 'Orders'),
+                'url'=>['/order/index'],
+                'icon' => '<i class="fa fa-first-order"></i>',
+            ],
         ];
     }
 

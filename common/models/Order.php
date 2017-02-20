@@ -70,6 +70,8 @@ class Order extends \yii\db\ActiveRecord
             'user_id' => Yii::t('common/models/order', 'User ID'),
             'total' => Yii::t('common/models/order', 'Total'),
             'status' => Yii::t('common/models/order', 'Status'),
+            'comment' => Yii::t('common/models/order', 'Comment'),
+            'delivery' => Yii::t('common/models/order', 'Delivery'),
             'user_name' => Yii::t('common/models/order', 'User Name'),
             'user_email' => Yii::t('common/models/order', 'User Email'),
             'user_phone' => Yii::t('common/models/order', 'User Phone'),

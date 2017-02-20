@@ -141,6 +141,8 @@ $config = [
         ],
         'minOrder' => 20000,
         'currency' => 'руб.',
+        'quantity' => 'шт',
+        'weight' => 'г',
     ],
 ];
 

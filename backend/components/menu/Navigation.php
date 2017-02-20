@@ -89,6 +89,16 @@ class Navigation
                 'url'=>['/product/index'],
                 'icon'=>'<i class="fa fa-shopping-cart"></i>'
             ],
+            [
+                'label'=>Yii::t('backend/site', 'Articles'),
+                'url'=>['/article/index'],
+                'icon'=>'<i class="fa fa-newspaper-o"></i>'
+            ],
+            [
+                'label'=>Yii::t('backend/site', 'Article categories'),
+                'url'=>['/article-category/index'],
+                'icon'=>'<i class="fa fa-file-text"></i>'
+            ],
         ];
     }
 

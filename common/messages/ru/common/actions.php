@@ -12,4 +12,10 @@ return [
     'Update order' => 'Обновить заказ',
 
     'Create product' => 'Создать товар',
+
+    'Create article' => 'Создать статью',
+    'Update article' => 'Обновить статью',
+
+    'Create article category' => 'Создать категорию статьи',
+    'Update article category' => 'Обновить категорию статьи',
 ];

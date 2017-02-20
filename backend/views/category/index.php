@@ -7,7 +7,6 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
-use yii\helpers\ArrayHelper;
 
 $this->title = Yii::t('common/site', 'Product categories');
 $this->params['breadcrumbs'][] = $this->title;

@@ -50,25 +50,22 @@ use yii\bootstrap\ActiveForm;
         ]);
     ?>
 
-    <?php echo $form->field($model, 'attachments')->widget(
-        Upload::className(),
-        [
-            'url' => ['/file-storage/upload'],
-            'sortable' => true,
-            'maxFileSize' => 10000000, // 10 MiB
-            'maxNumberOfFiles' => 10
-        ]);
-    ?>
+<!--    --><?php //echo $form->field($model, 'attachments')->widget(
+//        Upload::className(),
+//        [
+//            'url' => ['/file-storage/upload'],
+//            'sortable' => true,
+//            'maxFileSize' => 10000000, // 10 MiB
+//            'maxNumberOfFiles' => 10
+//        ]);
+//    ?>
 
     <?php echo $form->field($model, 'view')->textInput(['maxlength' => true]) ?>
 
     <?php echo $form->field($model, 'status')->checkbox() ?>
 
     <?php echo $form->field($model, 'published_at')->widget(
-        DateTimeWidget::className(),
-        [
-            'phpDatetimeFormat' => 'yyyy-MM-dd\'T\'HH:mm:ssZZZZZ'
-        ]
+        DateTimeWidget::className(), []
     ) ?>
 
     <div class="form-group">

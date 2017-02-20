@@ -1,11 +1,10 @@
 <?php
+
 /* @var $this yii\web\View */
 /* @var $model common\models\ArticleCategory */
 /* @var $categories common\models\ArticleCategory[] */
 
-$this->title = Yii::t('backend', 'Create {modelClass}', [
-    'modelClass' => 'Article Category',
-]);
+$this->title = Yii::t('common\actions', 'Create article category');
 $this->params['breadcrumbs'][] = ['label' => Yii::t('backend', 'Article Categories'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>

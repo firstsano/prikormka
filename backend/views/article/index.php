@@ -1,25 +1,23 @@
 <?php
 
+/* @var $this yii\web\View */
+/* @var $searchModel backend\models\search\ArticleSearch */
+/* @var $dataProvider yii\data\ActiveDataProvider */
+
 use common\grid\EnumColumn;
 use common\models\ArticleCategory;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\grid\GridView;
 
-/* @var $this yii\web\View */
-/* @var $searchModel backend\models\search\ArticleSearch */
-/* @var $dataProvider yii\data\ActiveDataProvider */
-
 $this->title = Yii::t('backend', 'Articles');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="article-index">
 
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
-
     <p>
         <?= Html::a(
-            Yii::t('backend', 'Create {modelClass}', ['modelClass' => 'Article']),
+            Yii::t('common\actions', 'Create article'),
             ['create'],
             ['class' => 'btn btn-success']) ?>
     </p>
@@ -31,7 +29,10 @@ $this->params['breadcrumbs'][] = $this->title;
         ],
         'columns' => [
 
-            'id',
+            [
+                'attribute' => 'id',
+                'options' => ['width' => 50]
+            ],
             'slug',
             'title',
             [

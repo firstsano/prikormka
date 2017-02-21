@@ -38,7 +38,8 @@ $this->params['breadcrumbs'][] = $this->title;
     <div class="catalog-index__body">
         <div class="catalog-index__filter">
             <?= Filter::widget([
-                'model' => $search
+                'model' => $search,
+                'params' => Yii::$app->request->get()
             ]) ?>
         </div>
         <div class="catalog-index__products">

@@ -2,6 +2,7 @@
 
 namespace frontend\models\search;
 
+use common\models\Category;
 use Yii;
 use yii\data\ActiveDataProvider;
 use frontend\models\Product;
@@ -33,6 +34,10 @@ class ProductSearch extends Product
      * @var array
      */
     public $seasons = [];
+    /**
+     * @var array
+     */
+    public $filterCategories = [];
     /**
      * @var string
      */
@@ -96,7 +101,11 @@ class ProductSearch extends Product
             ],
         ]);
 
+        $query->innerJoin(Category::tableName(),
+            Product::tableName() . ".category_id = " . Category::tableName() . ".id"
+        );
         $query->andFilterWhere(['in', 'season', $this->seasons]);
+        $query->andFilterWhere(['in', Category::tableName() . '.slug', $this->filterCategories]);
         $query->andFilterWhere(['>=', 'price', $this->priceMin]);
         $query->andFilterWhere(['<=', 'price', $this->priceMax]);
 

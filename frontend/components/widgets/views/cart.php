@@ -13,7 +13,7 @@ use frontend\components\extensions\Html;
 
 <a href="<?= $url ?>" class="cart">
     <div class="cart__image-layout">
-        <?= Html::icon('shopping_cart', ['class' => 'cart__image']) ?>
+        <?= Html::img('@img/icons/add-to-cart.png', ['class' => 'cart__image']) ?>
         <div class="cart__count"> <?= $count ?> </div>
     </div>
     <div class="cart__info">

@@ -2,9 +2,12 @@
 
 /* @var $this \yii\web\View */
 /* @var $model \frontend\models\search\ProductSearch */
+/* @var $params array */
 
 use frontend\components\extensions\Html;
 use common\models\Product;
+use yii\helpers\ArrayHelper;
+use common\models\Category;
 use frontend\components\widgets\RangeSlider;
 
 ?>
@@ -16,18 +19,41 @@ use frontend\components\widgets\RangeSlider;
         </div>
         <hr />
         <div class="filter__a-values">
-            <?= Html::activeCheckboxList($model, 'seasons', Product::seasons(), [
+            <?= Html::checkboxList('seasons[]', @$params['seasons'], Product::seasons(), [
                 'item' => function($index, $label, $name, $checked, $value) {
                     $id = "$name-$index";
                     return Html::checkbox($name, $checked, [
-                        'id' => $id,
-                        'class' => 'filled-in',
-                        'value' => $value
-                    ]) .
-                    Html::label($label, $id) .
-                    Html::tag('br');
+                            'id' => $id,
+                            'class' => 'filled-in',
+                            'value' => $value
+                        ]) .
+                        Html::label($label, $id) .
+                        Html::tag('br');
                 }
             ]) ?>
+        </div>
+    </div>
+    <div class="filter__section">
+        <div class="filter__a-title">
+            Категория
+        </div>
+        <hr />
+        <div class="filter__a-values">
+            <?= Html::checkboxList('categories[]', @$params['categories'],
+                ArrayHelper::map(Category::find()->all(), 'slug', 'name'),
+                [
+                    'item' => function($index, $label, $name, $checked, $value) {
+                        $id = "$name-$index";
+                        return Html::checkbox($name, $checked, [
+                                'id' => $id,
+                                'class' => 'filled-in',
+                                'value' => $value
+                            ]) .
+                            Html::label($label, $id) .
+                            Html::tag('br');
+                    }
+                ])
+            ?>
         </div>
     </div>
     <div class="filter__section">
@@ -37,8 +63,8 @@ use frontend\components\widgets\RangeSlider;
         <hr />
         <div class="filter__a-values">
             <?php
-                echo Html::activeHiddenInput($model, 'priceMin', ['id' => 'product-min-price']);
-                echo Html::activeHiddenInput($model, 'priceMax', ['id' => 'product-max-price']);
+                echo Html::hiddenInput('priceMin', @params['priceMin'], ['id' => 'product-min-price']);
+                echo Html::hiddenInput('priceMax', @params['priceMax'], ['id' => 'product-max-price']);
                 $ranges = Product::priceRanges();
                 echo RangeSlider::widget([
                     'inputs' => [

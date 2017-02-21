@@ -11,11 +11,13 @@ namespace frontend\components\widgets;
 class Filter extends \frontend\components\extensions\Widget
 {
     public $model;
+    public $params;
 
     protected function renderParams()
     {
         return [
-            'model' => $this->model
+            'model' => $this->model,
+            'params' => $this->params
         ];
     }
 }

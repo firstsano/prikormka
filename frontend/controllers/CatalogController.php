@@ -21,6 +21,7 @@ class CatalogController extends Controller
         }
         $params = Yii::$app->request->get();
         $searchModel = new ProductSearch();
+        $searchModel->filterCategories = $params['categories'];
         $dataProvider = $searchModel->load($params)
             ->load($params, '')
             ->search()
@@ -45,7 +46,10 @@ class CatalogController extends Controller
 
     protected function filterKeys()
     {
-        return ['ProductSearch', 'perPage', 'sortBy'];
+        return [
+            'seasons', 'perPage', 'sortBy',
+            'priceMin', 'priceMax', 'categories'
+        ];
     }
 
     /**

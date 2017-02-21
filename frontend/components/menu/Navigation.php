@@ -2,10 +2,13 @@
 
 namespace frontend\components\menu;
 
+use common\models\Category;
+
 class Navigation
 {
     public static function items()
     {
+        $someCategories = Category::find()->one();
         return [
             [
                 'label' => 'Новинки',
@@ -22,17 +25,13 @@ class Navigation
                 'url' => [ 'catalog/index' ]
             ],
             [
-                'label' => 'Готовые прикормки',
-                'url' => [ 'site/contact' ]
-            ],
-            [
-                'label' => 'Универсальные',
-                'url' => [ 'news/index' ]
-            ],
-            [
                 'label' => 'Новости',
                 'url' => [ 'news/index' ]
-            ]
+            ],
+            [
+                'label' => 'Готовые прикормки',
+                'url' => [ 'catalog/index', 'categories[]' => $someCategories->slug ]
+            ],
         ];
     }
 

@@ -9,7 +9,7 @@ class Cab
         return [
             [
                 'label' => 'Профиль',
-                'url' => ['profile']
+                'url' => ['profile/view']
             ],
             [
                 'label' => 'Заказы',

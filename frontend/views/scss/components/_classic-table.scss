@@ -1,0 +1,12 @@
+.classic-table {
+  @include border-radius(3px);
+  width: 100%;
+  td, th {
+    border: solid 1px $color-border-standart;
+    text-align: center;
+    padding: 10px;
+  }
+  td {
+    color: $color-text-background;
+  }
+}

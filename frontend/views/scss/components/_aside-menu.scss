@@ -6,6 +6,12 @@
 
   & .aside-menu__item {
     display: block;
+    &.aside-menu__item_active {
+      .aside-menu__item-link {
+        background-color: rgba(0, 0, 255, 0.1);
+        border-right: solid 4px $color-application-main;
+      }
+    }
   }
 
   & .aside-menu__item-link {

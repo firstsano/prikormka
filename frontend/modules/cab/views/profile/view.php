@@ -10,6 +10,9 @@ $this->title = Yii::t('frontend/site', 'User profile');
 $this->params['breadcrumbs'][] = $this->title;
 
 echo DetailView::widget([
+    'options' => [
+        'class' => 'classic-table'
+    ],
     'model' => $model,
     'attributes' => [
         'email',
@@ -17,7 +20,6 @@ echo DetailView::widget([
         'userProfile.firstname',
         'userProfile.middlename',
         'userProfile.lastname',
-        'userProfile.birthday',
         'userProfile.gender',
         'userProfile.phone',
         'userProfile.address',
@@ -26,6 +28,8 @@ echo DetailView::widget([
     ],
 ]);
 
+echo Html::tag('br');
+echo Html::tag('br');
 echo Html::a(
     Yii::t('frontend/site', 'Edit profile'),
     ['profile/edit'],

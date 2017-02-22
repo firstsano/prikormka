@@ -17,7 +17,6 @@ $form = StandartActiveForm::begin([
 echo $form->field($model, 'firstname')->textInput();
 echo $form->field($model, 'middlename')->textInput();
 echo $form->field($model, 'lastname')->textInput();
-echo $form->field($model, 'birthday')->textInput();
 echo $form->field($model, 'gender')->dropDownlist([
     UserProfile::GENDER_FEMALE => Yii::t('frontend/site', 'Female'),
     UserProfile::GENDER_MALE => Yii::t('frontend/site', 'Male')

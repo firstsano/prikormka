@@ -90,6 +90,10 @@ class UserProfile extends ActiveRecord
             'locale' => Yii::t('common', 'Locale'),
             'picture' => Yii::t('common', 'Picture'),
             'gender' => Yii::t('common', 'Gender'),
+            'address' => Yii::t('common', 'Address'),
+            'organization' => Yii::t('common', 'Organization'),
+            'site' => Yii::t('common', 'Site'),
+            'phone' => Yii::t('common', 'Phone'),
         ];
     }
 

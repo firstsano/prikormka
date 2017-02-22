@@ -1,0 +1,7 @@
+.site-about {
+  @extend .container;
+
+  & .site-about__title {
+    @include header;
+  }
+}

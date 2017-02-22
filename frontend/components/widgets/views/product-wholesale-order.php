@@ -24,23 +24,23 @@ use yii\helpers\StringHelper;
             В упаковке <?= $product->pack_quantity ?> шт.
         </div>
     </div>
-    <div class="w-order__order-quantity">
-        <?= QuantitySetter::widget([
-            'startValue' => $product->min_pack_quantity,
-            'options' => [
-                'widget' => ['class' => 'quantity-setter_height_30'],
-                'client' => [
-                    'step' => 1,
-                    'min-quantity' => $product->min_pack_quantity,
-                    'storage' => '.w-order'
-                ],
-            ]
-        ]) ?>
-    </div>
-    <div class="w-order__product-price">
-        <?= format_f($product->price) ?> руб./шт.
-    </div>
-    <div class="w-order__order">
+    <div class="w-order__cart-info">
+        <div class="w-order__order-quantity">
+            <?= QuantitySetter::widget([
+                'startValue' => $product->min_pack_quantity,
+                'options' => [
+                    'widget' => ['class' => 'quantity-setter_height_30'],
+                    'client' => [
+                        'step' => 1,
+                        'min-quantity' => $product->min_pack_quantity,
+                        'storage' => '.w-order'
+                    ],
+                ]
+            ]) ?>
+        </div>
+        <div class="w-order__product-price">
+            <?= format_f($product->price) ?> руб./шт.
+        </div>
         <?= AddToCart::widget([
             'label' => 'В корзину',
             'options' => [

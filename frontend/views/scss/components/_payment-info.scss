@@ -1,0 +1,35 @@
+.payment-info {
+
+  & .payment-info__section {
+    margin-bottom: 20px;
+  }
+
+  & .payment-info__title {
+    font-size: $font-size-big;
+    font-weight: 500;
+    padding-left: 50px;
+    position: relative;
+    &:after {
+      @include size(40px, 26px);
+      background-image: url('/img/icons/credit-card.png');
+      background-repeat: no-repeat;
+      background-size: contain;
+      content: "";
+      left: 0;
+      margin-top: -13px;
+      position: absolute;
+      top: 50%;
+    }
+
+    &.payment-info__title_info {
+      &:after {
+        background-image: url('/img/icons/information.png');
+      }
+    }
+  }
+
+  & .payment-info__article {
+    padding: 20px 0;
+    font-weight: 300;
+  }
+}

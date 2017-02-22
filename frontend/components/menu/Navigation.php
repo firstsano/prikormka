@@ -17,20 +17,20 @@ class Navigation
             ],
             [
                 'label' => 'Оптовый каталог',
-                'url' => [ 'wholesale-catalog/index' ],
+                'url' => [ '/wholesale-catalog/index' ],
                 'class' => ['header-menu__item-link_highlight_2']
             ],
             [
                 'label' => 'Общий каталог',
-                'url' => [ 'catalog/index' ]
+                'url' => [ '/catalog/index' ]
             ],
             [
                 'label' => 'Новости',
-                'url' => [ 'news/index' ]
+                'url' => [ '/news/index' ]
             ],
             [
                 'label' => $someCategories->name,
-                'url' => [ 'catalog/index', 'categories[]' => $someCategories->slug ]
+                'url' => [ '/catalog/index', 'categories[]' => $someCategories->slug ]
             ],
         ];
     }
@@ -40,19 +40,19 @@ class Navigation
         return [
             [
                 'label' => 'О компании',
-                'url' => [ 'site/about' ],
+                'url' => [ '/site/about' ],
             ],
             [
                 'label' => 'Сотрудничество',
-                'url' => [ 'site/cooperate' ],
+                'url' => [ '/site/cooperate' ],
             ],
             [
                 'label' => 'Доставка и оплата',
-                'url' => [ 'site/delivery' ]
+                'url' => [ '/site/delivery' ]
             ],
             [
                 'label' => 'Контакты',
-                'url' => [ 'site/contact' ]
+                'url' => [ '/site/contact' ]
             ]
         ];
     }

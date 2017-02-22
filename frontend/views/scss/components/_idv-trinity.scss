@@ -25,3 +25,31 @@ $font-bottom: 18px;
     line-height: $font-bottom;
   }
 }
+
+
+$font-top: 10px;
+$font-bottom: 18px;
+.idv-trinity.idv-trinity_product {
+  & .idv-trinity__image {
+    height: $font-top + $font-bottom;
+    margin-right: 15px;
+    vertical-align: middle;
+  }
+
+  & .idv-trinity__info {
+    color: $color-text-standart;
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  & .idv-trinity__description {
+    font-size: $font-top;
+    line-height: $font-top;
+    text-transform: uppercase;
+  }
+
+  & .idv-trinity__value {
+    font-size: $font-bottom;
+    line-height: $font-bottom;
+  }
+}

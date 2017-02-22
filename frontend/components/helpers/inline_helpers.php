@@ -20,6 +20,11 @@ function format_f($float, $precision = 2)
     return \Yii::$app->formatter->asDecimal($float, $precision);
 }
 
+function format_currency($float)
+{
+    return format_f($float) . " " . currency();
+}
+
 function decimals($float)
 {
     $float = 100 * ($float - round($float, 0, PHP_ROUND_HALF_DOWN));

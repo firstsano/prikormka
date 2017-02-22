@@ -30,7 +30,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'id',
             [
                 'attribute' => 'parent_id',
-                'value' => Category::findOne(['id' => $model->parent_id])->name
+                'value' => @Category::findOne(['id' => $model->parent_id])->name
             ],
             'name',
             'slug',

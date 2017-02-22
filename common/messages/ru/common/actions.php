@@ -13,9 +13,9 @@ return [
 
     'Create product' => 'Создать товар',
 
-    'Create article' => 'Создать статью',
-    'Update article' => 'Обновить статью',
+    'Create article' => 'Создать новость',
+    'Update article' => 'Обновить новость',
 
-    'Create article category' => 'Создать категорию статьи',
-    'Update article category' => 'Обновить категорию статьи',
+    'Create article category' => 'Создать категорию новости',
+    'Update article category' => 'Обновить категорию новости',
 ];

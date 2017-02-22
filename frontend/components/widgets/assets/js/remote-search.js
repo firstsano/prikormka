@@ -9,7 +9,7 @@
             var previousValue = $(this).data('prev');
             var currentValue = $(this).val();
             if (previousValue != currentValue) {
-                // $(this).closest('form').submit();
+                $(this).closest('form').submit();
             }
         })
     };

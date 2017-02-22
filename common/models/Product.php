@@ -145,6 +145,9 @@ class Product extends \yii\db\ActiveRecord
         ];
     }
 
+    /**
+     * @inheritdoc
+     */
     public static function priceRanges()
     {
         $priceQuery = static::find()->select('price');
@@ -152,6 +155,14 @@ class Product extends \yii\db\ActiveRecord
             'max' => $priceQuery->max('price'),
             'min' => $priceQuery->min('price')
         ];
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function getItemPrice()
+    {
+        return $this->price / $this->pack_quantity;
     }
 
     /**

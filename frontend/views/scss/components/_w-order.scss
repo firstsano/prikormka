@@ -1,7 +1,8 @@
-$height: 100px;
-$padding: 10px;
+$height: 50px;
+$padding: 5px;
 $border: 1px;
 $real-height: $height - $padding * 2 - $border * 2;
+$quantity-width: 80px;
 
 .w-order {
   @include slightly-border-radius;
@@ -30,13 +31,14 @@ $real-height: $height - $padding * 2 - $border * 2;
     vertical-align: middle;
   }
 
-  & .w-order__product-categories {
+  & .w-order__product-pack {
     font-size: $font-size-small;
     color: $color-text-background;
   }
 
   & .w-order__product-name {
-    font-weight: bold;
+    @include no-link($color-text-standart);
+    font-weight: 500;
   }
 
   & .w-order__product-weight {
@@ -47,11 +49,9 @@ $real-height: $height - $padding * 2 - $border * 2;
 
   & .w-order__product-price {
     @include slightly-border-radius;
-    background-color: $color-application-main;
-    color: $color-text-inverse;
+    color: $color-text-standart;
     display: inline-block;
     line-height: normal;
-    padding: 5px 10px;
     vertical-align: middle;
   }
 
@@ -59,16 +59,16 @@ $real-height: $height - $padding * 2 - $border * 2;
     display: inline-block;
     margin: 0 5px;
     vertical-align: middle;
-    width: 20%;
+    width: $quantity-width;
   }
 
   & .w-order__order {
-    display: inline-block;
     float: right;
     vertical-align: middle;
   }
 
   & .w-order__order-button {
-    color: $color-application-main;
+    @extend .button;
+    padding: 0 20px;
   }
 }

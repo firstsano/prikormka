@@ -42,6 +42,10 @@ class ProductSearch extends Product
      * @var string
      */
     public $filter;
+    /**
+     * @var string
+     */
+    public $filterCategory;
 
     /**
      * @inheritdoc
@@ -128,12 +132,21 @@ class ProductSearch extends Product
             ],
         ]);
 
+        $query->innerJoin(
+            Category::tableName(),
+            Product::tableName() . ".category_id = " .
+                Category::tableName() . ".id"
+        );
+
         $query->andFilterWhere([
             'or',
-            ['like', 'name', $this->filter],
-            ['like', 'description', $this->filter],
-            ['like', 'slug', $this->filter],
-//            ['like', 'category.name', $this->filter],
+            ['like', Product::tableName() . '.name', $this->filter],
+            ['like', Product::tableName() . '.description', $this->filter],
+            ['like', Product::tableName() . '.slug', $this->filter],
+        ]);
+
+        $query->andFilterWhere([
+            Category::tableName() . '.slug' => $this->filterCategory
         ]);
 
         return $dataProvider;

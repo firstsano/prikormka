@@ -31,4 +31,13 @@ class CategoryQuery extends \yii\db\ActiveQuery
     {
         return parent::one($db);
     }
+
+    /**
+     * @inheritdoc
+     */
+    public function root()
+    {
+        $this->andWhere(['parent_id' => null]);
+        return $this;
+    }
 }

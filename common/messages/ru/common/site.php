@@ -1,6 +1,8 @@
 <?php
 
 return [
+    'Articles' => 'Новости',
+    'Article categories' => 'Категории новостей',
     'Products' => 'Товар',
     'Product categories' => 'Категории товара',
 

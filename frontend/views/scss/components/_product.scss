@@ -2,22 +2,42 @@
   @extend .row;
 
   & .product__images {
-    @extend .col, .s6;
+    @extend .col, .s4;
+    border: solid 1px $color-border-standart;
   }
 
   & .product__info {
-    @extend .col, .s6;
-    border: solid 1px $color-border-standart;
-    padding: 20px;
+    @extend .col, .s8;
   }
 
   & .product__price {
-    display: inline-block;
+    font-size: $font-size-large;
+    margin-bottom: (-1) * $font-size-large / 4;
+  }
+
+  & .product__item-price {
+    font-size: $font-size-big;
+    margin-bottom: (-1) * $font-size-big / 4;
+  }
+
+  & .product__info-layout {
+    @extend .row;
+  }
+
+  & .product__main-info {
+    @extend .col, .s6;
   }
 
   & .product__price-info {
-    font-weight: 900;
+    font-weight: 400;
     font-size: $font-size-large;
+  }
+
+  & .product__attribute-label {
+    color: $color-text-background;
+    font-size: $font-size-standart-small;
+    line-height: $font-size-standart-small;
+    margin-bottom: 10px;
   }
 
   & .product__weight {
@@ -60,5 +80,27 @@
   & .product__description {
     font-size: $font-size-standart;
     margin-top: 10px;
+  }
+
+  & .product__description-title {
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+
+  & .product__additional-info {
+    @extend .col, .s6;
+    background-color: $color-border-standart;
+  }
+
+  & .product__additional-info-title {
+    font-size: $font-size-big;
+    font-weight: 500;
+    text-align: center;
+    margin-bottom: 20px;
+    line-height: $font-size-big;
+  }
+
+  & .product__additional-info-layout {
+    padding: 20px;
   }
 }

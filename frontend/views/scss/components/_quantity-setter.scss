@@ -42,3 +42,24 @@ $height: 40px;
     padding: 0;
   }
 }
+
+
+$height: 30px;
+
+.quantity-setter.quantity-setter_height_30 {
+  height: $height;
+
+  & .quantity-setter__add {
+    height: $height;
+    line-height: $height;
+  }
+
+  & .quantity-setter__input {
+    height: $height;
+  }
+
+  & .quantity-setter__remove {
+    height: $height;
+    line-height: $height;
+  }
+}

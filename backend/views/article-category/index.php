@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel backend\models\search\ArticleCategorySearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = Yii::t('backend', 'Article Categories');
+$this->title = Yii::t('common\site', 'Article categories');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="article-category-index">

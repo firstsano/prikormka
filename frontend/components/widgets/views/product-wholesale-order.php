@@ -3,7 +3,6 @@
 /* @var $this \yii\web\View */
 /* @var $product \common\models\Product */
 
-use frontend\components\widgets\Trinity;
 use frontend\components\extensions\Html;
 use frontend\components\widgets\QuantitySetter;
 use frontend\components\widgets\AddToCart;
@@ -16,41 +15,34 @@ use yii\helpers\StringHelper;
         <?= Html::img($product->mainImage->url, ['class' => 'w-order__product-image']) ?>
     </div>
     <div class="w-order__product-info">
-        <div class="w-order__product-categories">
-            <?= $product->category->name ?>
+        <?= Html::a(
+            StringHelper::truncate($product->name, 30),
+            ['/catalog/view', 'id' => $product->id],
+            ['class' => 'w-order__product-name']
+        ) ?>
+        <div class="w-order__product-pack">
+            В упаковке <?= $product->pack_quantity ?> шт.
         </div>
-        <div class="w-order__product-name">
-            <?= StringHelper::truncate($product->name, 30) ?>
-        </div>
-        <?= Trinity::widget([
-            'main' => $product->weight,
-            'top' => Yii::t('common/site', 'weight'),
-            'bottom' => Yii::t('common/site', 'volume'),
-            'options' => ['class' => 'w-order__product-weight']
-        ]) ?>
     </div>
     <div class="w-order__order-quantity">
         <?= QuantitySetter::widget([
-            'startValue' => 1,
+            'startValue' => $product->min_pack_quantity,
             'options' => [
-                'widget' => [
+                'widget' => ['class' => 'quantity-setter_height_30'],
+                'client' => [
                     'step' => 1,
-                    'min-quantity' => 1,
+                    'min-quantity' => $product->min_pack_quantity,
                     'storage' => '.w-order'
                 ],
             ]
         ]) ?>
     </div>
     <div class="w-order__product-price">
-        <?= Trinity::widget([
-            'main' => format_f($product->price),
-            'top' => currency(),
-            'bottom' => quantity(100),
-        ]) ?>
+        <?= format_f($product->price) ?> руб./шт.
     </div>
     <div class="w-order__order">
         <?= AddToCart::widget([
-            'label' => Html::icon('add'),
+            'label' => 'В корзину',
             'options' => [
                 'link' => ['class' => 'w-order__order-button'],
                 'widget' =>  [

@@ -10,11 +10,15 @@
     margin-bottom: 40px;
   }
 
-  & .site-wholesale__products {
-    @extend .col, .s12;
+  & .site-wholesale__filter {
+    @extend .col, .m4, .l3;
   }
 
-  & .site-wholesale__filter {
+  & .site-wholesale__products {
+    @extend .col, .m8, .l9;
+  }
+
+  & .site-wholesale__search {
     @extend .col, .s12;
     margin-bottom: 20px;
   }

@@ -19,12 +19,18 @@ class QuantitySetter extends \frontend\components\extensions\Widget
     protected function renderParams()
     {
         $inputOptions = ArrayHelper::getValue($this->options, 'input', []);
-        $widgetOptions = ArrayHelper::getValue($this->options, 'widget', []);
+        $clientOptions = ArrayHelper::getValue($this->options, 'client', []);
+        $htmlOptions = ArrayHelper::getValue($this->options, 'widget', []);
+        $widgetOptions = ArrayHelper::merge(
+            $htmlOptions,
+            ['data' => $clientOptions]
+        );
+        Html::addCssClass($widgetOptions, ['quantity-setter']);
         Html::addCssClass($inputOptions, ['quantity-setter__input']);
         return [
             'startValue' => $this->startValue,
             'inputOptions' => $inputOptions,
-            'widgetOptions' => $widgetOptions
+            'widgetOptions' => $widgetOptions,
         ];
     }
 }

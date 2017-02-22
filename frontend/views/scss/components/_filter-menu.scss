@@ -1,0 +1,12 @@
+.filter-menu {
+
+  & .active {
+    text-decoration: underline;
+  }
+
+  & .filter-menu__submenu {
+    display: none;
+    padding-left: 10px;
+  }
+
+}

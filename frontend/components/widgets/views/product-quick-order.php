@@ -58,7 +58,7 @@ use frontend\components\widgets\AddToCart;
             <?= QuantitySetter::widget([
                 'startValue' => 1,
                 'options' => [
-                    'widget' => [
+                    'client' => [
                         'step' => 1,
                         'min-quantity' => 1,
                         'storage' => '.q-order'

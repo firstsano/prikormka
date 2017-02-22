@@ -9,10 +9,7 @@ use frontend\components\extensions\Html;
 
 \frontend\components\widgets\assets\QuantitySetterAsset::register($this);
 
-echo Html::beginTag('div', [
-    'data' => $widgetOptions,
-    'class' => 'quantity-setter'
-]);
+echo Html::beginTag('div', $widgetOptions);
 echo Html::iconButton('remove', '#', [
     'icon' => [
         'class' => 'quantity-setter__action-icon',

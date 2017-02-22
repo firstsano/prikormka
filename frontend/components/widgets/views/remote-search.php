@@ -8,7 +8,7 @@ use frontend\components\extensions\Html;
 
 \frontend\components\widgets\assets\RemoteSearchAsset::register($this);
 
-echo Html::beginForm('', 'post', [
+echo Html::beginForm('', 'get', [
     'data-pjax' => 1
 ]);
 echo Html::textInput('filter', $value, [

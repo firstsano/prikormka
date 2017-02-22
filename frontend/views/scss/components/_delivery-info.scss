@@ -1,0 +1,35 @@
+.delivery-info {
+
+  & .delivery-info__section {
+    margin-bottom: 20px;
+  }
+
+  & .delivery-info__title {
+    font-size: $font-size-big;
+    font-weight: 500;
+    padding-left: 50px;
+    position: relative;
+    &:after {
+      @include size(40px, 26px);
+      background-image: url('/img/icons/trucking.png');
+      background-repeat: no-repeat;
+      background-size: contain;
+      content: "";
+      left: 0;
+      margin-top: -13px;
+      position: absolute;
+      top: 50%;
+    }
+
+    &.delivery-info__title_info {
+      &:after {
+        background-image: url('/img/icons/information.png');
+      }
+    }
+  }
+
+  & .delivery-info__article {
+    padding: 20px 0;
+    font-weight: 300;
+  }
+}

@@ -63,6 +63,21 @@ class SiteController extends Controller
         ]);
     }
 
+    public function actionCooperate()
+    {
+        return $this->render('cooperate');
+    }
+
+    public function actionPayment()
+    {
+        return $this->render('payment');
+    }
+
+    public function actionDelivery()
+    {
+        return $this->render('delivery');
+    }
+
     public function actionAddProductToCart()
     {
         $request = Yii::$app->request;
@@ -108,14 +123,6 @@ class SiteController extends Controller
                 'cost' => $cart->cost
             ]
         ];
-    }
-
-    public function actionDelivery()
-    {
-        $model = new ContactForm();
-        return $this->render('delivery', [
-            'model' => $model
-        ]);
     }
 
     public function actionContact()

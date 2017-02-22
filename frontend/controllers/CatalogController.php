@@ -21,7 +21,7 @@ class CatalogController extends Controller
         }
         $params = Yii::$app->request->get();
         $searchModel = new ProductSearch();
-        $searchModel->filterCategories = $params['categories'];
+        $searchModel->filterCategories = @$params['categories'];
         $dataProvider = $searchModel->load($params)
             ->load($params, '')
             ->search()

@@ -29,7 +29,7 @@ class Navigation
                 'url' => [ 'news/index' ]
             ],
             [
-                'label' => 'Готовые прикормки',
+                'label' => $someCategories->name,
                 'url' => [ 'catalog/index', 'categories[]' => $someCategories->slug ]
             ],
         ];
@@ -40,23 +40,19 @@ class Navigation
         return [
             [
                 'label' => 'О компании',
-                'url' => [ '/' ],
+                'url' => [ 'site/about' ],
             ],
             [
                 'label' => 'Сотрудничество',
-                'url' => [ 'catalog/index' ],
+                'url' => [ 'site/cooperate' ],
             ],
             [
                 'label' => 'Доставка и оплата',
-                'url' => [ 'site/wholesale' ]
+                'url' => [ 'site/delivery' ]
             ],
             [
                 'label' => 'Контакты',
                 'url' => [ 'site/contact' ]
-            ],
-            [
-                'label' => 'Отзывы',
-                'url' => [ 'news/index' ]
             ]
         ];
     }

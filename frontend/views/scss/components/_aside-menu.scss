@@ -1,0 +1,21 @@
+.aside-menu {
+  background-color: $color-flash-info;
+  display: block;
+  margin: 0;
+  padding: 0;
+
+  & .aside-menu__item {
+    display: block;
+  }
+
+  & .aside-menu__item-link {
+    @include no-link;
+    display: block;
+    padding: 15px 0 15px 15px;
+
+    &.aside-menu__item-link_active {
+      background-color: rgba(0, 0, 255, 0.1);
+      border-right: solid 4px $color-application-main;
+    }
+  }
+}

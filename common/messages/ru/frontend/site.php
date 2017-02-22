@@ -8,6 +8,10 @@ return [
     'Your order' => 'Ваш заказ',
     'Delivery' => 'Доставка и оплата',
     'Blog' => 'Блог',
+    'Delivery service' => 'Условия доставки',
+    'Payment' => 'Оплата',
+    'Cooperation' => 'Сотрудничество',
+
     'User profile' => 'Данные пользователя',
     'My orders' => 'Мои заказы',
     'Personal cab' => 'Личный кабинет',

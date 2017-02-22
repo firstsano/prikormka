@@ -11,10 +11,10 @@
   }
 
   & .site-delivery__info {
-    @extend .col, .s7;
+    @extend .col, .s9;
   }
 
-  & .site-delivery__contact-form {
-    @extend .col, .s5;
+  & .site-delivery__menu {
+    @extend .col, .s3;
   }
 }

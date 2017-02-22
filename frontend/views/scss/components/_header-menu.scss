@@ -60,6 +60,10 @@
     &.header-menu__item-link_highlight_2 {
       background-color: $color-menu-highlight-2;
     }
+    &.header-menu__item-link_active {
+      color: $color-menu-inverse;
+      background-color: $color-text-inverse;
+    }
   }
 
   & .header-menu__item-link {

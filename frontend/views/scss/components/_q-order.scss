@@ -19,7 +19,7 @@ $footer-height: 40px;
   }
 
   & .q-order__image-section {
-    @extend .col, .s5;
+    @extend .col-xs-5;
     text-align: center;
   }
 
@@ -35,7 +35,7 @@ $footer-height: 40px;
   }
 
   & .q-order__info-section {
-    @extend .col, .s7;
+    @extend .col-xs-7;
   }
 
   & .q-order__name {
@@ -70,7 +70,7 @@ $footer-height: 40px;
   }
 
   & .q-order__footer-section {
-    @extend .col, .s6;
+    @extend .col-xs-6;
   }
 
   & .q-order__order-button {

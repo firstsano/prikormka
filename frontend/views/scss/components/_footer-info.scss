@@ -14,7 +14,7 @@
   }
 
   & .footer-info__fisher {
-    @extend .col, .m3;
+    @extend .col-xs-3;
   }
 
   & .footer-info__fisher-image {
@@ -24,10 +24,10 @@
   }
 
   & .footer-info__promo {
-    @extend .col, .m9;
+    @extend .col-xs-9;
   }
 
   & .footer-info__promo-block {
-    @extend .col, .m6;
+    @extend .col-xs-6;
   }
 }

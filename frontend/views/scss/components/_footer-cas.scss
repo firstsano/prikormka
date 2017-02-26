@@ -6,12 +6,12 @@
   }
 
   & .footer-cas__copyright {
-    @extend .col, .m6;
+    @extend .col-xs-6;
     color: $color-text-background;
   }
 
   & .footer-cas__socials {
-    @extend .col, .m6;
+    @extend .col-xs-6;
     text-align: right;
   }
 

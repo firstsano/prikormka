@@ -10,10 +10,10 @@
   }
 
   & .catalog-view__images {
-    @extend .col, .s6;
+    @extend .col-xs-6;
   }
 
   & .catalog-view__info {
-    @extend .col, .s6;
+    @extend .col-xs-6;
   }
 }

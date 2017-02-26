@@ -20,7 +20,7 @@
   }
 
   & .new-products__item {
-    @extend .col, .m4;
+    @extend .col-xs-3;
   }
 
   & .new-products__footer {

@@ -7,12 +7,12 @@
   }
 
   & .client-comment__client-image {
-    @extend .col, .s3;
+    @extend .col-xs-3;
     text-align: center;
   }
 
   & .client-comment__client-desc {
-    @extend .col, .s9;
+    @extend .col-xs-9;
   }
 
   & .client-comment__client-name {

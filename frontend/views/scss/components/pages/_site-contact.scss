@@ -11,10 +11,10 @@
   }
 
   & .site-contact__info {
-    @extend .col, .s7;
+    @extend .col-xs-7;
   }
 
   & .site-contact__form {
-    @extend .col, .s5;
+    @extend .col-xs-5;
   }
 }

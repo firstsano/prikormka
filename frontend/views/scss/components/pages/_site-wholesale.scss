@@ -11,15 +11,36 @@
   }
 
   & .site-wholesale__filter {
-    @extend .col, .m4, .l3;
+    @extend .col-xs-4;
   }
 
   & .site-wholesale__products {
-    @extend .col, .m8, .l9;
+    @extend .col-xs-8;
   }
 
   & .site-wholesale__search {
-    @extend .col, .s12;
+    @extend .col-xs-12;
     margin-bottom: 20px;
+  }
+
+  & .site-wholesale__notice {
+    @extend .col-xs-9;
+  }
+
+  & .site-wholesale__excel-img {
+    height: 80px;
+    vertical-align: middle;
+  }
+
+  & .site-wholesale__excel-price {
+    @extend .col-xs-3;
+  }
+
+  & .site-wholesale__excel-info {
+    display: inline-block;
+    white-space: normal;
+    vertical-align: middle;
+    color: forestgreen;
+    text-decoration: underline;
   }
 }

@@ -6,10 +6,10 @@
   }
 
   & .cab__controls {
-    @extend .col, .s4;
+    @extend .col-xs-4;
   }
 
   & .cab__content {
-    @extend .col, .s8;
+    @extend .col-xs-8;
   }
 }

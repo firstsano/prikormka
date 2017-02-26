@@ -11,6 +11,6 @@
   }
 
   & .client-comments__item {
-    @extend .col, .s6;
+    @extend .col-xs-6;
   }
 }

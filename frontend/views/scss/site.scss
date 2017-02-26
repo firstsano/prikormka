@@ -1,7 +1,21 @@
-@import "materialize/materialize.scss";
-@import "variables";
-@import "mixins";
+@charset "UTF-8";
 
+// Include material icons and font
+@import "materialize/components/mixins";
+@import "materialize/components/color";
+@import "materialize/components/variables";
+@import "materialize/components/icons-material-design";
+@import "materialize/components/roboto";
+
+// Grid framework
+@import "bootstrap/bootstrap";
+
+// Core variables and mixins
+@import "mixins";
+@import "helpers";
+@import "variables";
+
+// Include components
 @import "components/best-offers";
 @import "components/breadcrumbs";
 @import "components/button";
@@ -55,6 +69,7 @@
 @import "components/w-order";
 @import "components/wholesale-link";
 
-html {
+html, body {
   font-size: $font-size-standart;
+  font-family: "Roboto";
 }

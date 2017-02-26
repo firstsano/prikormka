@@ -11,10 +11,10 @@
   }
 
   & .site-delivery__info {
-    @extend .col, .s9;
+    @extend .col-xs-9;
   }
 
   & .site-delivery__menu {
-    @extend .col, .s3;
+    @extend .col-xs-3;
   }
 }

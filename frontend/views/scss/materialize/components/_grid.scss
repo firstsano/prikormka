@@ -3,14 +3,22 @@
   max-width: 1280px;
   width: 90%;
 }
+@media #{$small-and-up} {
+  .container {
+    width: 540px;
+    max-width: 100%;
+  }
+}
 @media #{$medium-and-up} {
   .container {
-    width: 85%;
+    width: 960px;
+    max-width: 100%;
   }
 }
 @media #{$large-and-up} {
   .container {
-    width: 70%;
+    width: 1140px;
+    max-width: 100%;
   }
 }
 

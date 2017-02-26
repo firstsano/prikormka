@@ -13,6 +13,6 @@
   }
 
   & .news-previews__item {
-    @extend .col, .s3;
+    @extend .col-xs-3;
   }
 }

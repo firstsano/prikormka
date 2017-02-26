@@ -2,7 +2,7 @@
   @extend .row;
 
   & .product__info {
-    @extend .col, .s8;
+    @extend .col-xs-8;
   }
 
   & .product__price {
@@ -20,7 +20,7 @@
   }
 
   & .product__main-info {
-    @extend .col, .s6;
+    @extend .col-xs-6;
   }
 
   & .product__price-info {
@@ -53,7 +53,7 @@
   }
 
   & .product__images {
-    @extend .col, .s4;
+    @extend .col-xs-4;
     border: solid 1px $color-border-standart;
     height: 250px;
     line-height: 250px;
@@ -85,7 +85,7 @@
   }
 
   & .product__additional-info {
-    @extend .col, .s6;
+    @extend .col-xs-6;
     background-color: $color-border-standart;
   }
 

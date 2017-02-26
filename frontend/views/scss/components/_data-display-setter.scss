@@ -2,15 +2,15 @@
   @extend .row;
 
   & .data-display-setter__sorting {
-    @extend .col, .s4;
+    @extend .col-xs-4;
   }
 
   & .data-display-setter__pagination {
-    @extend .col, .s6;
+    @extend .col-xs-6;
   }
 
   & .data-display-setter__submit {
-    @extend  .col, .s2;
+    @extend .col-xs-2;
     text-align: right;
   }
 

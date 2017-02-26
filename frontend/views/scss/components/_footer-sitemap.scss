@@ -14,7 +14,7 @@
   }
 
   & .footer-sitemap__menu-layout {
-    @extend .col, .m10;
+    @extend .col-xs-10;
   }
 
   & .footer-sitemap__menu {
@@ -24,7 +24,6 @@
   }
 
   & .footer-sitemap__menu-item {
-    @extend .col;
     &:first-child {
       padding-left: 0;
     }
@@ -35,7 +34,7 @@
   }
 
   & .footer-sitemap__phone {
-    @extend .col, .m2;
+    @extend .col-xs-2;
     font-weight: bold;
     text-align: right;
   }

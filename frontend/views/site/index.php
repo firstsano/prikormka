@@ -54,15 +54,6 @@ use frontend\components\widgets\ProductQuickOrder;
                     );
                 } ?>
             </div>
-            <div class="new-products__row">
-                <? foreach($newProducts as $newProduct)  {
-                    echo Html::tag(
-                        'div',
-                        ProductQuickOrder::widget([ 'product' => $newProduct ]),
-                        ['class' => 'new-products__item']
-                    );
-                } ?>
-            </div>
             <footer class="new-products__footer">
                 <?= Html::a(Html::textPointer('Смотреть все товары'), ['catalog/index'], ['class' => 'new-products__link']); ?>
             </footer>

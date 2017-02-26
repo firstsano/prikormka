@@ -23,7 +23,7 @@ $quantity-width: 80px;
   }
 
   & .w-order__product-info {
-    @include size(40%, $real-height);
+    @include size(50%, $real-height);
     display: inline-block;
     line-height: normal;
     overflow: hidden;
@@ -37,6 +37,7 @@ $quantity-width: 80px;
   }
 
   & .w-order__product-name {
+    font-size: $font-size-standart-small;
     @include no-link($color-text-standart);
     font-weight: 500;
   }
@@ -62,7 +63,7 @@ $quantity-width: 80px;
   }
 
   & .w-order__order-button {
-    @extend .button;
-    padding: 0 20px;
+    color: $color-application-main;
+    padding: 0 5px 0 15px;
   }
 }

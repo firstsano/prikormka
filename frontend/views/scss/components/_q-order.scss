@@ -20,10 +20,18 @@ $footer-height: 40px;
 
   & .q-order__image-section {
     @extend .col, .s5;
+    text-align: center;
+  }
+
+  & .q-order__image-layout {
+    @include size(90px, 120px);
+    text-align: center;
+    line-height: 120px;
   }
 
   & .q-order__image {
-    @include size(90, 120);
+    @include max-size(100%, 100%);
+    vertical-align: middle;
   }
 
   & .q-order__info-section {

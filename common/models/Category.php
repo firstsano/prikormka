@@ -4,6 +4,7 @@ namespace common\models;
 
 use Yii;
 use yii\behaviors\SluggableBehavior;
+use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "categories".
@@ -85,12 +86,44 @@ class Category extends \yii\db\ActiveRecord
         return $this->hasMany(Category::className(), ['parent_id' => 'id']);
     }
 
+    public function getCategoriesIds()
+    {
+        return $this->getCategories()->select('id')->column();
+    }
+
     /**
      * @return \yii\db\ActiveQuery
      */
     public function getProducts()
     {
         return $this->hasMany(Product::className(), ['category_id' => 'id']);
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function getSubcategoriesIds()
+    {
+        $allCategories = static::find()->all();
+        $oldCategoriesIds = [];
+        $newCategoriesIds = $this->categoriesIds;
+        while(!empty(array_diff($newCategoriesIds, $oldCategoriesIds))) {
+            $oldCategoriesIds = array_merge($oldCategoriesIds, $newCategoriesIds);
+            $children = array_filter($allCategories, function($category) use($newCategoriesIds) {
+                return in_array($category->parent_id, $newCategoriesIds);
+            });
+            $childrenIds = array_map(function($category) { return $category->id; }, $children);
+            $newCategoriesIds = array_merge($newCategoriesIds, $childrenIds);
+        }
+        return array_unique($oldCategoriesIds);
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function getTreeIds()
+    {
+        return array_merge([$this->id], $this->subcategoriesIds);
     }
 
     /**

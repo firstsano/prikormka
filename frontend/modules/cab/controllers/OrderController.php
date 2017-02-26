@@ -9,6 +9,7 @@ use yii\web\NotFoundHttpException;
 use yii\web\BadRequestHttpException;
 use frontend\models\OrderForm;
 use common\models\Order;
+use yii\filters\AccessControl;
 
 class OrderController extends \yii\web\Controller
 {
@@ -30,6 +31,15 @@ class OrderController extends \yii\web\Controller
                     'create' => ['post'],
                 ],
             ],
+            'access' => [
+                'class' => AccessControl::className(),
+                'rules' => [
+                    [
+                        'allow' => true,
+                        'roles' => ['@']
+                    ]
+                ]
+            ]
         ];
     }
 

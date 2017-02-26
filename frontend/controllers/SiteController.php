@@ -50,8 +50,8 @@ class SiteController extends Controller
     public function actionIndex()
     {
         return $this->render('index', [
-            'newProducts' => Product::find()->newOnes(3)->all(),
-            'bestOffers' => Product::find()->bestOffers()->all(),
+            'newProducts' => Product::find()->newOnes(6)->all(),
+            'bestOffers' => Product::find()->bestOffers()->limit(6)->all(),
             'latestNews' => Article::find()->published()->news()->newOnes(4)->all()
         ]);
     }

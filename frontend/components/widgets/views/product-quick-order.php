@@ -17,8 +17,10 @@ use frontend\components\widgets\AddToCart;
 
     <div class="q-order__info">
         <div class="q-order__image-section">
-            <?= Html::img($product->mainImage->url, [
-                'alt' => $product->name, 'class' => 'q-order__image' ]) ?>
+            <div class="q-order__image-layout">
+                <?= Html::img($product->mainImage->url, [
+                    'alt' => $product->name, 'class' => 'q-order__image' ]) ?>
+            </div>
         </div>
         <div class="q-order__info-section">
             <div class="q-order__description idv-trinity">

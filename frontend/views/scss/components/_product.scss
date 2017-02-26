@@ -1,11 +1,6 @@
 .product {
   @extend .row;
 
-  & .product__images {
-    @extend .col, .s4;
-    border: solid 1px $color-border-standart;
-  }
-
   & .product__info {
     @extend .col, .s8;
   }
@@ -58,14 +53,16 @@
   }
 
   & .product__images {
-    align-items: center;
-    display: flex;
+    @extend .col, .s4;
+    border: solid 1px $color-border-standart;
     height: 250px;
-    justify-content: center;
+    line-height: 250px;
+    text-align: center;
   }
 
   & .product__main-image {
     @include max-size(100%, 100%);
+    vertical-align: middle;
   }
 
   & .product__add-to-cart {

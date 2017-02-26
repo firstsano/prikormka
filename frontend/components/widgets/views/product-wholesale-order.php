@@ -16,13 +16,10 @@ use yii\helpers\StringHelper;
     </div>
     <div class="w-order__product-info">
         <?= Html::a(
-            StringHelper::truncate($product->name, 30),
+            $product->name,
             ['/catalog/view', 'id' => $product->id],
             ['class' => 'w-order__product-name']
         ) ?>
-        <div class="w-order__product-pack">
-            В упаковке <?= $product->pack_quantity ?> шт.
-        </div>
     </div>
     <div class="w-order__cart-info">
         <div class="w-order__order-quantity">
@@ -39,10 +36,13 @@ use yii\helpers\StringHelper;
             ]) ?>
         </div>
         <div class="w-order__product-price">
-            <?= format_f($product->price) ?> руб./шт.
+            <?= format_f($product->price) ?> руб./уп.
+            <div class="w-order__product-pack">
+                В упаковке <?= $product->pack_quantity ?> шт.
+            </div>
         </div>
         <?= AddToCart::widget([
-            'label' => 'В корзину',
+            'label' => Html::icon('shopping_basket'),
             'options' => [
                 'link' => ['class' => 'w-order__order-button'],
                 'widget' =>  [

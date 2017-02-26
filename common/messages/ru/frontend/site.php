@@ -11,6 +11,7 @@ return [
     'Blog' => 'Блог',
     'Delivery service' => 'Условия доставки',
     'Payment' => 'Оплата',
+    'Wholesale catalog' => 'Оптовый каталог',
     'Cooperation' => 'Сотрудничество',
 
     'User profile' => 'Данные пользователя',

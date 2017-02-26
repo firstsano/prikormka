@@ -7,6 +7,7 @@ use yii\web\Controller;
 use yii\filters\VerbFilter;
 use yii\web\BadRequestHttpException;
 use frontend\modules\cab\models\ProfileForm;
+use yii\filters\AccessControl;
 
 class ProfileController extends Controller
 {
@@ -22,6 +23,15 @@ class ProfileController extends Controller
                     'update' => ['put'],
                 ],
             ],
+            'access' => [
+                'class' => AccessControl::className(),
+                'rules' => [
+                    [
+                        'allow' => true,
+                        'roles' => ['@']
+                    ]
+                ]
+            ]
         ];
     }
 

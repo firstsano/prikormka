@@ -13,13 +13,32 @@ use frontend\components\widgets\RemoteSearch;
 use frontend\components\widgets\FlashMessages;
 use frontend\components\widgets\CategoryFilter;
 
-$this->title = Yii::t('frontend/site', 'All products');
+$this->title = Yii::t('frontend/site', 'Wholesale catalog');
 $this->params['breadcrumbs'][] = $this->title;
 
 ?>
 
 <div class="site-wholesale">
     <h1 class="site-wholesale__title"><?= Html::encode($this->title) ?></h1>
+    <div class="site-wholesale__layout">
+        <div class="site-wholesale__notice">
+            <?= FlashMessages::widget([
+                'messages' => [
+                    [
+                        'title' => 'Уважаемый покупатель!',
+                        'message' => "Обращаем ваше внимание, что минимальная сумма общего заказа " .
+                            "должна быть не меньше 20 000 руб."
+                    ]
+                ]
+            ]) ?>
+        </div>
+        <div class="site-wholesale__excel-price">
+            <?= Html::beginTag('a', ['href' => '/price.xls', 'style' => 'white-space:nowrap;']) ?>
+            <?= Html::img('@img/icons/excel.png', ['class' => 'site-wholesale__excel-img']) ?>
+            <div class="site-wholesale__excel-info">Скачать прайс-лист<br /> в формате Excel</div>
+            <?= Html::endTag('a') ?>
+        </div>
+    </div>
     <div class="site-wholesale__layout">
         <?php Pjax::begin([
             'id' => 'wholesale-products',

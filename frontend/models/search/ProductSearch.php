@@ -132,22 +132,30 @@ class ProductSearch extends Product
             ],
         ]);
 
-        $query->innerJoin(
-            Category::tableName(),
-            Product::tableName() . ".category_id = " .
-                Category::tableName() . ".id"
-        );
+        $category = Category::find()
+            ->where(['slug' => $this->filterCategory])
+            ->one()
+        ;
+        if ($category) {
+            $query->andFilterWhere(['in', 'category_id', $category->treeIds]);
+        }
+
+//        $query->innerJoin(
+//            Category::tableName(),
+//            Product::tableName() . ".category_id = " .
+//                Category::tableName() . ".id"
+//        );
 
         $query->andFilterWhere([
             'or',
-            ['like', Product::tableName() . '.name', $this->filter],
-            ['like', Product::tableName() . '.description', $this->filter],
-            ['like', Product::tableName() . '.slug', $this->filter],
+            ['like', 'name', $this->filter],
+            ['like', 'description', $this->filter],
+            ['like', 'slug', $this->filter],
         ]);
 
-        $query->andFilterWhere([
-            Category::tableName() . '.slug' => $this->filterCategory
-        ]);
+//        $query->andFilterWhere([
+//            Category::tableName() . '.slug' => $this->filterCategory
+//        ]);
 
         return $dataProvider;
     }

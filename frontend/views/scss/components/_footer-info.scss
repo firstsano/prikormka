@@ -15,6 +15,7 @@
 
   & .footer-info__fisher {
     @extend .col-xs-3;
+    position: static;
   }
 
   & .footer-info__fisher-image {

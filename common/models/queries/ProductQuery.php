@@ -11,7 +11,7 @@ use common\models\Product;
  */
 class ProductQuery extends \yii\db\ActiveQuery
 {
-    const NEW_LIMIT = 6;
+    const DEFAULT_LIMIT = 8;
     /*public function active()
     {
         return $this->andWhere('[[status]]=1');
@@ -20,7 +20,7 @@ class ProductQuery extends \yii\db\ActiveQuery
     /**
      * @inheritdoc
      */
-    public function newOnes($limit = self::NEW_LIMIT)
+    public function newOnes($limit = self::DEFAULT_LIMIT)
     {
         $this->addOrderBy(['created_at' => SORT_DESC])->limit($limit);
         return $this;
@@ -38,8 +38,9 @@ class ProductQuery extends \yii\db\ActiveQuery
     /**
      * @inheritdoc
      */
-    public function bestOffers()
+    public function bestOffers($limit = self::DEFAULT_LIMIT)
     {
+        $this->limit($limit);
         return $this;
     }
 

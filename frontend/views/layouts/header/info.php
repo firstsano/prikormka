@@ -33,18 +33,6 @@ use frontend\components\widgets\Login;
         </div>
         <div class="header-info__controls">
             <div class="header-info__controls-item">
-                <?= Login::widget([
-                    'isGuest' => Yii::$app->user->isGuest,
-                    'isAdmin' => Yii::$app->user->can('manager'),
-                    'username' => Yii::$app->user->identity ?
-                        Yii::$app->user->identity->publicIdentity : "",
-                    'loginUrl' => Yii::$app->user->loginUrl,
-                    'logoutUrl' => ['/user/sign-in/logout'],
-                    'adminUrl' => ['/admin'],
-                    'cabUrl' => ['/cab']
-                ]) ?>
-            </div>
-            <div class="header-info__controls-item">
                 <?= Cart::widget([
                     'url' => Url::to(['/cart/view']),
                     'count' => Yii::$app->cart->count,

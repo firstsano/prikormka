@@ -2,6 +2,7 @@
 
 namespace frontend\components\menu;
 
+use Yii;
 use common\models\Category;
 
 class Navigation
@@ -43,10 +44,6 @@ class Navigation
                 'url' => [ '/site/about' ],
             ],
             [
-                'label' => 'Сотрудничество',
-                'url' => [ '/site/cooperate' ],
-            ],
-            [
                 'label' => 'Доставка и оплата',
                 'url' => [ '/site/delivery' ]
             ],
@@ -54,6 +51,38 @@ class Navigation
                 'label' => 'Контакты',
                 'url' => [ '/site/contact' ]
             ]
+        ];
+    }
+
+    public static function signInItems()
+    {
+        return [
+            [
+                'label' => 'Вход',
+                'url' => [ '/user/sign-in/login' ],
+                'visible' => Yii::$app->user->isGuest,
+            ],
+            [
+                'label' => 'Регистрация',
+                'url' => [ '/user/sign-in/signup' ],
+                'visible' => Yii::$app->user->isGuest,
+            ],
+            [
+                'label' => 'Админка',
+                'url' => [ '/admin' ],
+                'visible' => Yii::$app->user->can('manager'),
+            ],
+            [
+                'label' => 'Личный кабинет',
+                'url' => [ '/cab' ],
+                'visible' => !Yii::$app->user->isGuest,
+            ],
+            [
+                'label' => 'Выход',
+                'url' => [ '/user/sign-in/logout' ],
+                'data' => ['method' => 'POST'],
+                'visible' => !Yii::$app->user->isGuest,
+            ],
         ];
     }
 }

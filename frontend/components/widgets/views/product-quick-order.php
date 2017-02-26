@@ -70,7 +70,7 @@ use frontend\components\widgets\AddToCart;
         </div>
         <div class="q-order__footer-section">
             <?= AddToCart::widget([
-                'label' => 'В корзину',
+                'label' => Html::icon('shopping_basket'),
                 'options' => [
                     'link' => ['class' => 'q-order__order-button'],
                     'widget' =>  [

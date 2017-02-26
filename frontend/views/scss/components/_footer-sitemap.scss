@@ -18,12 +18,14 @@
   }
 
   & .footer-sitemap__menu {
-    @extend .row;
     margin-top: 0;
     margin-bottom: 0;
+    padding-left: 0;
   }
 
   & .footer-sitemap__menu-item {
+    display: inline-block;
+    padding: 0 20px;
     &:first-child {
       padding-left: 0;
     }

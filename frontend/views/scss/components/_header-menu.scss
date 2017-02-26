@@ -100,4 +100,13 @@
       text-decoration: underline;
     }
   }
+
+  & .header-menu__layout {
+    &_half {
+      @extend .col-xs-6;
+    }
+    &_right {
+      text-align: right;
+    }
+  }
 }

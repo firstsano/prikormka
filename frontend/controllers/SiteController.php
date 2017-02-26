@@ -50,8 +50,8 @@ class SiteController extends Controller
     public function actionIndex()
     {
         return $this->render('index', [
-            'newProducts' => Product::find()->newOnes(6)->all(),
-            'bestOffers' => Product::find()->bestOffers()->limit(6)->all(),
+            'newProducts' => Product::find()->newOnes()->all(),
+            'bestOffers' => Product::find()->bestOffers()->all(),
             'latestNews' => Article::find()->published()->news()->newOnes(4)->all()
         ]);
     }
@@ -61,11 +61,6 @@ class SiteController extends Controller
         return $this->render('wholesale', [
             'products' => Product::find()->all(),
         ]);
-    }
-
-    public function actionCooperate()
-    {
-        return $this->render('cooperate');
     }
 
     public function actionPayment()

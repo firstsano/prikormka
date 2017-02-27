@@ -1,7 +1,7 @@
 <?php
 
 /* @var $this \yii\web\View */
-/* @var $items array Each object may contain: img, title, promo, url */
+/* @var $items \common\models\WidgetCarouselItem */
 
 use frontend\components\extensions\Html;
 
@@ -11,21 +11,15 @@ use frontend\components\extensions\Html;
 
 <div class="owl-carousel owl-theme custom-carousel">
     <? foreach ($items as $item): ?>
-        <div class="custom-carousel__item" data-src="<?= $item['img'] ?>">
+        <div class="custom-carousel__item" data-src="<?= @$item->imageUrl ?>">
             <div class="carousel-promo">
                 <div class="carousel-promo__layout">
-                    <?
-                        if (@$item['title']) {
-                            echo Html::tag('div', $item['title'], ['class' => 'carousel-promo__title']);
-                        }
-                        if (@$item['promo']) {
-                            echo Html::tag('div', $item['promo'],
-                                ['class' => 'carousel-promo__title carousel-promo__title_large']);
-                        }
-                        if (@$item['url']) {
-                            $link = Html::a('Подробнее', $item['url'], ['class' => 'carousel-promo__link']);
-                            echo Html::tag('div', $link);
-                        }
+                    <?php
+                        echo Html::tag('div', @$item->caption, ['class' => 'carousel-promo__title']);
+                        echo Html::tag('div', @$item->promo,
+                            ['class' => 'carousel-promo__title carousel-promo__title_large']);
+                        echo Html::tag('div',
+                            Html::a('Подробнее', @$item->url, ['class' => 'carousel-promo__link']));
                     ?>
                 </div>
             </div>

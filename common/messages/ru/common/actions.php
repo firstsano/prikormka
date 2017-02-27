@@ -18,4 +18,7 @@ return [
 
     'Create article category' => 'Создать категорию новости',
     'Update article category' => 'Обновить категорию новости',
+
+    'Create carousel item' => 'Создать слайд',
+    'Update carousel item' => 'Обновить слайд',
 ];

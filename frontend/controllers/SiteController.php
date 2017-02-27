@@ -8,6 +8,7 @@ use frontend\models\ContactForm;
 use frontend\models\Product;
 use frontend\extensions\Controller;
 use common\models\Article;
+use common\models\WidgetCarousel;
 use Exception;
 
 /**
@@ -50,6 +51,7 @@ class SiteController extends Controller
     public function actionIndex()
     {
         return $this->render('index', [
+            'carouselItems' => @WidgetCarousel::find()->where(['key' => 'index'])->one()->activeItems,
             'newProducts' => Product::find()->newOnes()->all(),
             'bestOffers' => Product::find()->bestOffers()->all(),
             'latestNews' => Article::find()->published()->news()->newOnes(4)->all()
@@ -66,11 +68,6 @@ class SiteController extends Controller
     public function actionPayment()
     {
         return $this->render('payment');
-    }
-
-    public function actionAbout()
-    {
-        return $this->render('about');
     }
 
     public function actionDelivery()

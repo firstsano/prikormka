@@ -1,11 +1,13 @@
 <?php
 
-use yii\bootstrap\ActiveForm;
-use yii\helpers\Html;
-
 /* @var $this yii\web\View */
 /* @var $model common\models\WidgetCarouselItem */
 /* @var $form yii\bootstrap\ActiveForm */
+
+use \common\models\WidgetCarouselItem;
+use yii\bootstrap\ActiveForm;
+use yii\helpers\Html;
+
 ?>
 
 <div class="widget-carousel-item-form">
@@ -51,7 +53,7 @@ use yii\helpers\Html;
             ]
         ]) ?>
 
-    <?php echo $form->field($model, 'status')->checkbox() ?>
+    <?php echo $form->field($model, 'status')->dropDownList(WidgetCarouselItem::statuses()) ?>
 
     <div class="form-group">
         <?php echo Html::submitButton($model->isNewRecord ? Yii::t('backend', 'Create') : Yii::t('backend', 'Update'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>

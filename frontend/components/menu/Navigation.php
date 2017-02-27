@@ -40,8 +40,8 @@ class Navigation
     {
         return [
             [
-                'label' => 'О компании',
-                'url' => [ '/site/about' ],
+                'label' => Yii::t('frontend/site', 'About'),
+                'url' => [ '/' ],
             ],
             [
                 'label' => 'Доставка и оплата',

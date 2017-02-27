@@ -19,7 +19,7 @@ class WidgetCarouselItemSearch extends WidgetCarouselItem
     {
         return [
             [['id', 'carousel_id', 'status', 'order'], 'integer'],
-            [['path', 'url', 'caption'], 'safe'],
+            [['path', 'url', 'caption', 'promo'], 'safe'],
         ];
     }
 
@@ -58,6 +58,7 @@ class WidgetCarouselItemSearch extends WidgetCarouselItem
 
         $query->andFilterWhere(['like', 'path', $this->path])
             ->andFilterWhere(['like', 'url', $this->url])
+            ->andFilterWhere(['like', 'promo', $this->promo])
             ->andFilterWhere(['like', 'caption', $this->caption]);
 
         return $dataProvider;

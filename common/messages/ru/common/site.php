@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'Carousel' => 'Главный слайдер',
     'Articles' => 'Новости',
     'Article categories' => 'Категории новостей',
     'Products' => 'Товар',

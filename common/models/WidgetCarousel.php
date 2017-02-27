@@ -3,6 +3,7 @@
 namespace common\models;
 
 use common\behaviors\CacheInvalidateBehavior;
+use common\models\WidgetCarouselItem;
 use Yii;
 use yii\db\ActiveRecord;
 
@@ -75,10 +76,31 @@ class WidgetCarousel extends ActiveRecord
     }
 
     /**
+     * Returns main slider
+     */
+    static function slider()
+    {
+        return static::find()->where(['key' => 'index'])->one();
+    }
+
+    /**
      * @return \yii\db\ActiveQuery
      */
     public function getItems()
     {
-        return $this->hasMany(WidgetCarouselItem::className(), ['carousel_id' => 'id']);
+        return $this
+            ->hasMany(WidgetCarouselItem::className(), ['carousel_id' => 'id'])
+            ->orderBy(['order' => SORT_ASC])
+        ;
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getActiveItems()
+    {
+        return $this->getItems()
+            ->where(['status' => WidgetCarouselItem::STATUS_PUBLISHED])
+            ;
     }
 }

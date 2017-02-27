@@ -1,11 +1,12 @@
 <?php
 
 /* @var $this \yii\web\View */
+/* @var $carouselItems \common\models\WidgetCarousel */
 /* @var $newProducts \common\models\Product[] */
 /* @var $bestOffers \common\models\Product[] */
 /* @var $latestNews \common\models\Article[] */
 
-$this->title = 'My Yii Application';
+$this->title = Yii::t('frontend/site', 'About');
 
 use frontend\components\extensions\Html;
 use frontend\components\widgets\Carousel;
@@ -13,34 +14,14 @@ use frontend\components\widgets\ClientComment;
 use frontend\components\widgets\NewsPreview;
 use frontend\components\widgets\ProductQuickOrder;
 
+
 ?>
 
 <div class="site-index">
     <section class="site-index__carousel">
-        <?= Carousel::widget([
-            'items' => [
-                [
-                    'img' => Yii::getAlias('@img/carousel/1.png'),
-                    'title' => 'Прикормка-паста',
-                    'promo' => "\"Карп-Карась\" <br>" .
-                        "с <strong>40%</strong> скидкой",
-                    'url' => '#'
-                ],
-                [
-                    'img' => Yii::getAlias('@img/carousel/1.png'),
-                    'title' => 'Прикормка',
-                    'promo' => "\"Вобла-Карась\" <br>" .
-                        "с <strong>10%</strong> скидкой",
-                    'url' => '#'
-                ],
-                [
-                    'img' => Yii::getAlias('@img/carousel/1.png'),
-                    'title' => 'Снаряжение',
-                    'promo' => "\"Рыболов\" <strong>new</strong>",
-                    'url' => '#'
-                ]
-            ]
-        ]) ?>
+        <?php if ($carouselItems) {
+            echo Carousel::widget(['items' => $carouselItems]);
+         } ?>
     </section>
     <section class="site-index__new-products">
         <div class="new-products">

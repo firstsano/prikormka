@@ -1,6 +1,7 @@
 $cart-size: 40px;
 
 .cart {
+  @include no-link;
   color: $color-text-standart;
   display: block;
   text-align: right;

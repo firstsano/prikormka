@@ -99,6 +99,11 @@ class Navigation
                 'url'=>['/article-category/index'],
                 'icon'=>'<i class="fa fa-file-text"></i>'
             ],
+            [
+                'label'=>Yii::t('common/site', 'Carousel'),
+                'url'=>['/slider/index'],
+                'icon'=>'<i class="fa fa-film"></i>'
+            ],
         ];
     }
 

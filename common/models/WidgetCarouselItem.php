@@ -20,6 +20,7 @@ use yii\db\ActiveRecord;
  * @property string $imageUrl
  * @property string $url
  * @property string $caption
+ * @property string $promo
  * @property integer $status
  * @property integer $order
  *
@@ -27,6 +28,8 @@ use yii\db\ActiveRecord;
  */
 class WidgetCarouselItem extends ActiveRecord
 {
+    const STATUS_DRAFT = 0;
+    const STATUS_PUBLISHED = 1;
 
     /**
      * @var array|null
@@ -83,9 +86,20 @@ class WidgetCarouselItem extends ActiveRecord
         return [
             [['carousel_id'], 'required'],
             [['carousel_id', 'status', 'order'], 'integer'],
-            [['url', 'caption', 'base_url', 'path'], 'string', 'max' => 1024],
+            [['url', 'caption', 'promo', 'base_url', 'path'], 'string', 'max' => 1024],
             [['type'], 'string', 'max' => 255],
             ['image', 'safe']
+        ];
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public static function statuses()
+    {
+        return [
+            static::STATUS_DRAFT => Yii::t('common/models/carousel-item', 'status.draft'),
+            static::STATUS_PUBLISHED => Yii::t('common/models/carousel-item', 'status.published'),
         ];
     }
 
@@ -95,16 +109,17 @@ class WidgetCarouselItem extends ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => Yii::t('common', 'ID'),
-            'carousel_id' => Yii::t('common', 'Carousel ID'),
-            'image' => Yii::t('common', 'Image'),
-            'base_url' => Yii::t('common', 'Base URL'),
-            'path' => Yii::t('common', 'Path'),
-            'type' => Yii::t('common', 'File Type'),
-            'url' => Yii::t('common', 'Url'),
-            'caption' => Yii::t('common', 'Caption'),
-            'status' => Yii::t('common', 'Status'),
-            'order' => Yii::t('common', 'Order')
+            'id' => Yii::t('common/models/carousel-item', 'ID'),
+            'carousel_id' => Yii::t('common/models/carousel-item', 'Carousel ID'),
+            'image' => Yii::t('common/models/carousel-item', 'Image'),
+            'base_url' => Yii::t('common/models/carousel-item', 'Base URL'),
+            'path' => Yii::t('common/models/carousel-item', 'Path'),
+            'type' => Yii::t('common/models/carousel-item', 'File Type'),
+            'url' => Yii::t('common/models/carousel-item', 'Url'),
+            'caption' => Yii::t('common/models/carousel-item', 'Caption'),
+            'promo' => Yii::t('common/models/carousel-item', 'Promo'),
+            'status' => Yii::t('common/models/carousel-item', 'Status'),
+            'order' => Yii::t('common/models/carousel-item', 'Order')
         ];
     }
 

@@ -12,7 +12,7 @@ use frontend\components\widgets\RangeSlider;
 
 ?>
 
-<?= Html::beginForm('', 'post', ['class' => 'filter']) ?>
+<?= Html::beginForm(['/catalog/index'], 'get', ['class' => 'filter']) ?>
     <div class="filter__section">
         <div class="filter__a-title">
             Сезоны
@@ -40,7 +40,7 @@ use frontend\components\widgets\RangeSlider;
         <hr />
         <div class="filter__a-values">
             <?= Html::checkboxList('categories[]', @$params['categories'],
-                ArrayHelper::map(Category::find()->all(), 'slug', 'name'),
+                ArrayHelper::map(Category::find()->orderBy('name')->all(), 'slug', 'name'),
                 [
                     'item' => function($index, $label, $name, $checked, $value) {
                         $id = "$name-$index";

@@ -17,11 +17,12 @@ class CatalogController extends Controller
      */
     public function actionIndex()
     {
-        if (Yii::$app->request->post()) {
-            $this->redirectWithFilters();
-        }
+        $dataDisplay = Yii::$app->dataDisplay->route($this->route);
         $params = Yii::$app->request->get();
-        $searchModel = new ProductSearch();
+        $searchModel = new ProductSearch([
+            'perPage' => $dataDisplay->perPage,
+            'sortBy' => $dataDisplay->order,
+        ]);
         $searchModel->filterCategories = @$params['categories'];
         $dataProvider = $searchModel->load($params)
             ->load($params, '')

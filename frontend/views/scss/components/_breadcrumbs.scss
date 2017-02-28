@@ -1,5 +1,8 @@
 .breadcrumbs {
   color: $color-application-main;
+  content: "";
+  margin: 0;
+  padding: 20px 0;
 
   & .breadcrumbs__item {
     display: inline-block;

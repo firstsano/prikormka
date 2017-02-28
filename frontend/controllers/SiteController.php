@@ -1,6 +1,7 @@
 <?php
 namespace frontend\controllers;
 
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Yii;
 use yii\web\Response;
 use yii\filters\VerbFilter;
@@ -43,6 +44,7 @@ class SiteController extends Controller
                 'actions' => [
                     'add-product-to-cart' => ['post'],
                     'remove-all-from-cart' => ['post'],
+                    'set-data-display' => ['put']
                 ],
             ],
         ];
@@ -92,6 +94,19 @@ class SiteController extends Controller
                 'cost' => $cart->cost
             ]
         ];
+    }
+
+    public function actionSetDataDisplay()
+    {
+        $request = Yii::$app->request;
+        $loaded = Yii::$app->dataDisplay->loadData($request->post());
+        if (!$request->isAjax) {
+            return $this->goHome();
+        }
+        if ($loaded) {
+            return true;
+        }
+        return false;
     }
 
     public function actionRemoveAllFromCart()

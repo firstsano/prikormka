@@ -12,11 +12,11 @@
   }
 
   & .catalog-index__filter {
-    @extend .col-xs-4;
+    @extend .col-xs-3;
   }
 
   & .catalog-index__products {
-    @extend .col-xs-8;
+    @extend .col-xs-9;
   }
 
   & .catalog-index__products-row {
@@ -24,7 +24,8 @@
   }
 
   & .catalog-index__product {
-    @extend .col-xs-6;
+    @extend .col-xs-4;
+    margin-bottom: 30px;
   }
 
   & .catalog-index__pagination {

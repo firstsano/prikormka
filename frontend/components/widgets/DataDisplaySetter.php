@@ -12,6 +12,7 @@ use yii\helpers\ArrayHelper;
 
 class DataDisplaySetter extends \frontend\components\extensions\Widget
 {
+    public $route;
     public $options;
 
     protected function renderParams()
@@ -21,6 +22,7 @@ class DataDisplaySetter extends \frontend\components\extensions\Widget
             $this->options
         );
         return [
+            'route' => $this->route,
             'sortOptions' => $this->options['sort'],
             'paginationOptions' => $this->options['pagination']
         ];

@@ -3,6 +3,7 @@
 namespace frontend\models\search;
 
 use common\models\Category;
+use frontend\components\extensions\ArrayHelper;
 use Yii;
 use yii\data\ActiveDataProvider;
 use frontend\models\Product;
@@ -17,11 +18,11 @@ class ProductSearch extends Product
     /**
      * @var int
      */
-    public $perPage = 15;
+    public $perPage;
     /**
      * @var string
      */
-    public $sortBy = 'name';
+    public $sortBy;
     /**
      * @var float
      */
@@ -163,12 +164,23 @@ class ProductSearch extends Product
     public function load($data, $formName = null)
     {
         parent::load($data, $formName);
+        $this->setDefaults();
         return $this;
+    }
+
+    public function setDefaults()
+    {
+        if (!$this->perPage) {
+            $this->perPage = 15;
+        }
+        if (!$this->sortBy) {
+            $this->sortBy = 'name';
+        }
     }
 
     public static function perPageOptions()
     {
-        $perPage = [1, 15, 30, 50];
+        $perPage = [15, 30, 50];
         return array_combine($perPage, $perPage);
     }
 

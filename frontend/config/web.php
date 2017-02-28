@@ -42,6 +42,9 @@ $config = [
         'flash' => [
             'class' => 'frontend\components\application\FlashController',
         ],
+        'dataDisplay' => [
+            'class' => 'frontend\components\application\DataDisplay',
+        ],
     ]
 ];
 

@@ -14,22 +14,24 @@ use yii\widgets\LinkPager;
 
 $this->title = Yii::t('frontend/site', 'All products');
 $this->params['breadcrumbs'][] = $this->title;
+$currentRoute = $this->context->route;
+$dataDisplay = Yii::$app->dataDisplay->route($currentRoute);
 
 ?>
-
 <div class="catalog-index">
     <h1 class="catalog-index__title"><?= $this->title ?></h1>
     <div class="catalog-index__pre-body">
         <?= DataDisplaySetter::widget([
+            'route' => $currentRoute,
             'options' => [
                 'sort' => [
-                    'name' => 'sortBy',
-                    'selected' => Yii::$app->request->get('sortBy'),
+                    'name' => 'order',
+                    'selected' => $dataDisplay->order,
                     'options' => ProductSearch::sortByOptions()
                 ],
                 'pagination' => [
                     'name' => 'perPage',
-                    'selected' => Yii::$app->request->get('perPage'),
+                    'selected' => $dataDisplay->perPage,
                     'options' => ProductSearch::perPageOptions()
                 ]
             ]

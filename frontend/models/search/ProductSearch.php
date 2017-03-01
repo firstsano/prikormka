@@ -24,6 +24,10 @@ class ProductSearch extends Product
      */
     public $sortBy;
     /**
+     * @var boolean
+     */
+    public $isNew = false;
+    /**
      * @var float
      */
     public $priceMin;
@@ -63,6 +67,7 @@ class ProductSearch extends Product
             ['priceMax', 'compare', 'compareAttribute' => 'priceMin',
                 'operator' => '>=', 'type' => 'number', 'on' => [static::SCENARIO_SIMPLE, static::SCENARIO_DEFAULT]],
             ['sortBy', 'in', 'range' => array_keys(static::sortByOptions()), 'on' => [static::SCENARIO_SIMPLE, static::SCENARIO_DEFAULT]],
+            ['isNew', 'safe'],
 
             // Wholesale Scenario
             [['filter'], 'string', 'on' => static::SCENARIO_WHOLESALE]
@@ -93,6 +98,7 @@ class ProductSearch extends Product
     public function simpleSearch()
     {
         $query = Product::find()->published();
+
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
             'pagination' => [
@@ -106,9 +112,18 @@ class ProductSearch extends Product
             ],
         ]);
 
+        if ($this->isNew) {
+            $newProdoctsIds = Product::find()
+                ->published()
+                ->newOnes()
+                ->select('id')
+                ->column()
+            ;
+        }
         $query->innerJoin(Category::tableName(),
             Product::tableName() . ".category_id = " . Category::tableName() . ".id"
         );
+        $query->andFilterWhere(['in', Product::tableName() . '.id', @$newProdoctsIds]);
         $query->andFilterWhere(['in', 'season', $this->seasons]);
         $query->andFilterWhere(['in', Category::tableName() . '.slug', $this->filterCategories]);
         $query->andFilterWhere(['>=', 'price', $this->priceMin]);

@@ -14,6 +14,15 @@ use frontend\components\widgets\RangeSlider;
 
 <?= Html::beginForm(['/catalog/index'], 'get', ['class' => 'filter']) ?>
     <div class="filter__section">
+        <div class="filter__a-values">
+            <?= Html::checkbox('isNew', @$params['isNew'], [
+                'id' => 'isNew',
+                'class' => 'filled-in',
+            ]) ?>
+            <?= Html::label('Новинки', 'isNew') ?>
+        </div>
+    </div>
+    <div class="filter__section">
         <div class="filter__a-title">
             Сезоны
         </div>

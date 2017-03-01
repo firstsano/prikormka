@@ -3,16 +3,15 @@
 namespace frontend\components\menu;
 
 use Yii;
-use common\models\Category;
+use common\models\Product;
 
 class Navigation
 {
     public static function items()
     {
-        $someCategories = Category::find()->one();
         return [
             [
-                'label' => 'Новинки',
+                'label' => 'Главная',
                 'url' => [ '/' ],
                 'class' => ['header-menu__item-link_highlight_1']
             ],
@@ -22,16 +21,24 @@ class Navigation
                 'class' => ['header-menu__item-link_highlight_2']
             ],
             [
-                'label' => 'Общий каталог',
+                'label' => 'Каталог',
                 'url' => [ '/catalog/index' ]
+            ],
+            [
+                'label' => 'Летние прикормки',
+                'url' => [ '/catalog/index', 'seasons[]' => Product::SEASON_SUMMER ]
+            ],
+            [
+                'label' => 'Зимние прикормки',
+                'url' => [ '/catalog/index', 'seasons[]' => Product::SEASON_WINTER ]
             ],
             [
                 'label' => 'Новости',
                 'url' => [ '/news/index' ]
             ],
             [
-                'label' => $someCategories->name,
-                'url' => [ '/catalog/index', 'categories[]' => $someCategories->slug ]
+                'label' => 'Отзывы',
+                'url' => [ '/news/index' ]
             ],
         ];
     }

@@ -1,7 +1,6 @@
 <?php
 namespace frontend\controllers;
 
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Yii;
 use yii\web\Response;
 use yii\filters\VerbFilter;
@@ -30,6 +29,9 @@ class SiteController extends Controller
                 'class' => 'yii\captcha\CaptchaAction',
                 'fixedVerifyCode' => YII_ENV_TEST ? 'testme' : null
             ],
+            'download'=>[
+                'class'=>'trntv\filekit\actions\ViewAction',
+            ]
         ];
     }
 

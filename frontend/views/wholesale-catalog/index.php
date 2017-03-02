@@ -6,14 +6,13 @@
 /* @var $search \frontend\models\search\ProductSearch */
 /* @var $categories array */
 
-use yii\widgets\LinkPager;
 use yii\widgets\Pjax;
-use frontend\components\extensions\Html;
-use frontend\components\widgets\ProductWholesaleOrder;
-use frontend\components\widgets\RemoteSearch;
-use frontend\components\widgets\FlashMessages;
-use frontend\components\widgets\CategoryRadioList;
 use frontend\components\widgets\WholesaleFilter;
+use frontend\components\widgets\ProductWholesaleOrder;
+use yii\widgets\LinkPager;
+use frontend\components\extensions\Html;
+use frontend\components\widgets\FlashMessages;
+use yii\helpers\Url;
 
 $this->title = Yii::t('frontend/site', 'Wholesale catalog');
 $this->params['breadcrumbs'][] = $this->title;
@@ -36,7 +35,10 @@ $this->params['breadcrumbs'][] = $this->title;
             ]) ?>
         </div>
         <div class="site-wholesale__excel-price">
-            <?= Html::beginTag('a', ['href' => '/price.xls', 'class' => 'site-wholesale__excel-link']) ?>
+            <?= Html::beginTag('a', [
+                'href' => Url::to(['/site/download', 'path' => 'files/price.xls']),
+                'class' => 'site-wholesale__excel-link'])
+            ?>
             <div class="site-wholesale__excel-info">Скачать прайс-лист<br /> в формате Excel</div>
             <?= Html::img('@img/icons/excel.png', ['class' => 'site-wholesale__excel-img']) ?>
             <?= Html::endTag('a') ?>

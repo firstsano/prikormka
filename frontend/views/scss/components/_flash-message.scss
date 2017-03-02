@@ -3,7 +3,7 @@ $icon-size: 40px;
 
 .flash-message {
   padding: $padding;
-  padding-left: $padding * 2 + $icon-size;
+  padding-left: $padding * 2 + $icon-size !important;
   position: relative;
 
   &:before {

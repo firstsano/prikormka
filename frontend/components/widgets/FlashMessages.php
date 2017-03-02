@@ -1,13 +1,6 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: riky
- * Date: 16.02.17
- * Time: 20:02
- */
 
 namespace frontend\components\widgets;
-
 
 class FlashMessages extends \frontend\components\extensions\Widget
 {
@@ -17,12 +10,18 @@ class FlashMessages extends \frontend\components\extensions\Widget
     public $messages;
 
     /**
+     * @var array
+     */
+    public $options;
+
+    /**
      * @inheritdoc
      */
     protected function renderParams()
     {
         return [
-            'messages' => $this->messages
+            'messages' => $this->messages,
+            'options' => $this->options
         ];
     }
 }

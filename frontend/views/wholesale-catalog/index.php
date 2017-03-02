@@ -31,13 +31,14 @@ $this->params['breadcrumbs'][] = $this->title;
                         'message' => "Обращаем ваше внимание, что минимальная сумма общего заказа " .
                             "должна быть не меньше 20 000 руб."
                     ]
-                ]
+                ],
+                'options' => ['class' => 'site-wholesale__price-notice']
             ]) ?>
         </div>
         <div class="site-wholesale__excel-price">
-            <?= Html::beginTag('a', ['href' => '/price.xls', 'style' => 'white-space:nowrap;']) ?>
-            <?= Html::img('@img/icons/excel.png', ['class' => 'site-wholesale__excel-img']) ?>
+            <?= Html::beginTag('a', ['href' => '/price.xls', 'class' => 'site-wholesale__excel-link']) ?>
             <div class="site-wholesale__excel-info">Скачать прайс-лист<br /> в формате Excel</div>
+            <?= Html::img('@img/icons/excel.png', ['class' => 'site-wholesale__excel-img']) ?>
             <?= Html::endTag('a') ?>
         </div>
     </div>

@@ -21,7 +21,6 @@ class CatalogController extends Controller
             'perPage' => $dataDisplay->perPage,
             'sortBy' => $dataDisplay->order,
         ]);
-        $searchModel->filterCategories = @$params['categories'];
         $dataProvider = $searchModel->load($params)
             ->load($params, '')
             ->search()
@@ -30,7 +29,7 @@ class CatalogController extends Controller
         return $this->render('index', [
             'search' => $searchModel,
             'products' => $dataProvider->models,
-            'pages' => $dataProvider->pagination
+            'pages' => $dataProvider->pagination,
         ]);
     }
 

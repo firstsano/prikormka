@@ -7,6 +7,7 @@ use frontend\components\extensions\ArrayHelper;
 use Yii;
 use yii\data\ActiveDataProvider;
 use frontend\models\Product;
+use yii\db\ActiveQuery;
 
 class ProductSearch extends Product
 {
@@ -40,17 +41,13 @@ class ProductSearch extends Product
      */
     public $seasons = [];
     /**
-     * @var array
-     */
-    public $filterCategories = [];
-    /**
      * @var string
      */
     public $filter;
     /**
      * @var string
      */
-    public $filterCategory;
+    public $category;
 
     /**
      * @inheritdoc
@@ -67,10 +64,13 @@ class ProductSearch extends Product
             ['priceMax', 'compare', 'compareAttribute' => 'priceMin',
                 'operator' => '>=', 'type' => 'number', 'on' => [static::SCENARIO_SIMPLE, static::SCENARIO_DEFAULT]],
             ['sortBy', 'in', 'range' => array_keys(static::sortByOptions()), 'on' => [static::SCENARIO_SIMPLE, static::SCENARIO_DEFAULT]],
-            ['isNew', 'safe'],
 
             // Wholesale Scenario
-            [['filter'], 'string', 'on' => static::SCENARIO_WHOLESALE]
+            [['filter'], 'string', 'on' => static::SCENARIO_WHOLESALE],
+
+            // All scenarios
+            ['isNew', 'safe'],
+            ['category', 'exist', 'targetClass' => Category::className(), 'targetAttribute' => 'slug'],
         ];
     }
 
@@ -82,7 +82,9 @@ class ProductSearch extends Product
     public function search()
     {
         if (!$this->validate()) {
-            return new ActiveDataProvider([]);
+            return new ActiveDataProvider([
+                'query' => Product::find()->where(['<', 'id', 0])
+            ]);
         }
 
         switch ($this->scenario) {
@@ -120,12 +122,20 @@ class ProductSearch extends Product
                 ->column()
             ;
         }
+
+        if ($this->category) {
+            $category = Category::find()
+                ->where(['slug' => $this->category])
+                ->one()
+            ;
+            $query->andFilterWhere(['in', 'category_id', $category->treeIds]);
+        }
+
         $query->innerJoin(Category::tableName(),
             Product::tableName() . ".category_id = " . Category::tableName() . ".id"
         );
         $query->andFilterWhere(['in', Product::tableName() . '.id', @$newProdoctsIds]);
         $query->andFilterWhere(['in', 'season', $this->seasons]);
-        $query->andFilterWhere(['in', Category::tableName() . '.slug', $this->filterCategories]);
         $query->andFilterWhere(['>=', 'price', $this->priceMin]);
         $query->andFilterWhere(['<=', 'price', $this->priceMax]);
 

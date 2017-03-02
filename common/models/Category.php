@@ -52,6 +52,7 @@ class Category extends \yii\db\ActiveRecord
             [['name'], 'required'],
             [['description'], 'string'],
             [['name', 'slug'], 'string', 'max' => 255],
+            ['slug', 'unique'],
             [['parent_id'], 'exist', 'skipOnError' => true, 'targetClass' => Category::className(), 'targetAttribute' => ['parent_id' => 'id']],
         ];
     }
@@ -86,9 +87,24 @@ class Category extends \yii\db\ActiveRecord
         return $this->hasMany(Category::className(), ['parent_id' => 'id']);
     }
 
+    public function getSubCategories()
+    {
+        return $this->getCategories();
+    }
+
     public function getCategoriesIds()
     {
         return $this->getCategories()->select('id')->column();
+    }
+
+    public static function filters()
+    {
+        return static::find()
+            ->orderBy('name')
+            ->with('subCategories')
+            ->root()
+            ->all()
+        ;
     }
 
     /**

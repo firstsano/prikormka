@@ -9,6 +9,7 @@ use common\models\Product;
 use yii\helpers\ArrayHelper;
 use common\models\Category;
 use frontend\components\widgets\RangeSlider;
+use frontend\components\widgets\CategoryRadioList;
 
 ?>
 
@@ -48,21 +49,10 @@ use frontend\components\widgets\RangeSlider;
         </div>
         <hr />
         <div class="filter__a-values">
-            <?= Html::checkboxList('categories[]', @$params['categories'],
-                ArrayHelper::map(Category::find()->orderBy('name')->all(), 'slug', 'name'),
-                [
-                    'item' => function($index, $label, $name, $checked, $value) {
-                        $id = "$name-$index";
-                        return Html::checkbox($name, $checked, [
-                                'id' => $id,
-                                'class' => 'filled-in',
-                                'value' => $value
-                            ]) .
-                            Html::label($label, $id) .
-                            Html::tag('br');
-                    }
-                ])
-            ?>
+            <?= CategoryRadioList::widget([
+                'checked' => @$params['category'],
+                'categories' => Category::filters()
+            ]) ?>
         </div>
     </div>
     <div class="filter__section">

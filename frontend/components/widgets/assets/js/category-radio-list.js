@@ -19,6 +19,9 @@
         displaySubContainer($(selectors.radio).filter(':checked'));
 
         $('body').on('change', selectors.radio, function() {
+            $(selectors.subContainer).filter(function (i, el) {
+                return ($(el).find(selectors.radio).filter(':checked').length == 0);
+            }).removeClass('category-radio-list__sub-categories_active');
             displaySubContainer(this);
         });
     };

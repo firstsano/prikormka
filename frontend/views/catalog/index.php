@@ -7,7 +7,7 @@
 
 use frontend\components\widgets\DataDisplaySetter;
 use frontend\components\widgets\ProductQuickOrder;
-use frontend\components\widgets\Filter;
+use frontend\components\widgets\CatalogFilter;
 use frontend\components\extensions\Html;
 use frontend\models\search\ProductSearch;
 use yii\widgets\LinkPager;
@@ -39,7 +39,7 @@ $dataDisplay = Yii::$app->dataDisplay->route($currentRoute);
     </div>
     <div class="catalog-index__body">
         <div class="catalog-index__filter">
-            <?= Filter::widget([
+            <?= CatalogFilter::widget([
                 'model' => $search,
                 'params' => Yii::$app->request->get()
             ]) ?>

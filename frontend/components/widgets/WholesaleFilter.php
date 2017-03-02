@@ -8,7 +8,7 @@
 
 namespace frontend\components\widgets;
 
-class Filter extends \frontend\components\extensions\Widget
+class WholesaleFilter extends \frontend\components\extensions\Widget
 {
     public $model;
     public $params;

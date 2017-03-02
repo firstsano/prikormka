@@ -21,7 +21,6 @@ class WholesaleCatalogController extends Controller
         $searchModel = new ProductSearch([
             'scenario' => ProductSearch::SCENARIO_WHOLESALE
         ]);
-        $searchModel->filterCategory = @$request->get('category');
         $dataProvider = $searchModel
             ->load($request->get(), '')
             ->load($request->post(), '')

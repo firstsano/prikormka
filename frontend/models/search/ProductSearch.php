@@ -159,7 +159,7 @@ class ProductSearch extends Product
         ]);
 
         $category = Category::find()
-            ->where(['slug' => $this->filterCategory])
+            ->where(['slug' => $this->category])
             ->one()
         ;
         if ($category) {

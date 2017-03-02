@@ -6,7 +6,6 @@
 
 use frontend\components\extensions\Html;
 use common\models\Product;
-use yii\helpers\ArrayHelper;
 use common\models\Category;
 use frontend\components\widgets\RangeSlider;
 use frontend\components\widgets\CategoryRadioList;

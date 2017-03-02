@@ -29,21 +29,4 @@ class Html extends \yii\helpers\Html
         unset($options['icon']);
         return static::a($icon, $url, $options);
     }
-
-    public static function recursiveMenu($array, $options = [])
-    {
-        $output = static::beginTag('ul', $options);
-        foreach ($array as $element) {
-            $output .= static::beginTag('li');
-            $output .= Html::a($element['value'],
-                ['/wholesale-catalog/index', 'category' => $element['key']]
-            );
-            if (!empty($element['items'])) {
-                $output .= static::recursiveMenu($element['items'], ['class' => 'filter-menu__submenu']);
-            }
-            $output .= static::endTag('li');
-        }
-        $output .= static::endTag('ul');
-        return $output;
-    }
 }

@@ -1,6 +1,7 @@
 <?php
 
 /* @var $this \yii\web\View */
+/* @var $pages array */
 /* @var $products \common\models\Product[] */
 /* @var $search \frontend\models\search\ProductSearch */
 /* @var $categories array */
@@ -11,7 +12,8 @@ use frontend\components\extensions\Html;
 use frontend\components\widgets\ProductWholesaleOrder;
 use frontend\components\widgets\RemoteSearch;
 use frontend\components\widgets\FlashMessages;
-use frontend\components\widgets\CategoryFilter;
+use frontend\components\widgets\CategoryRadioList;
+use frontend\components\widgets\WholesaleFilter;
 
 $this->title = Yii::t('frontend/site', 'Wholesale catalog');
 $this->params['breadcrumbs'][] = $this->title;
@@ -48,14 +50,10 @@ $this->params['breadcrumbs'][] = $this->title;
                 'container' => '.site-wholesale__products',
             ]
         ]) ?>
-        <div class="site-wholesale__search">
-            <?= RemoteSearch::widget([
-                'value' => $search->filter,
-            ]) ?>
-        </div>
         <div class="site-wholesale__filter">
-            <?= CategoryFilter::widget([
-                'categories' => $categories
+            <?= WholesaleFilter::widget([
+                'model' => $search,
+                'params' => Yii::$app->request->get()
             ]) ?>
         </div>
         <div class="site-wholesale__products">

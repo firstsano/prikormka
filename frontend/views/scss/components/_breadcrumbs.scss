@@ -14,5 +14,8 @@
 
   & .breadcrumbs__separator {
     color: $color-text-background;
+    font-size: 9px;
+    font-weight: bolder;
+    margin: 0 5px;
   }
 }

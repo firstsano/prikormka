@@ -3,6 +3,7 @@
 
   & .catalog-view__title {
     @include header;
+    margin-bottom: 20px;
   }
 
   & .catalog-view__product {

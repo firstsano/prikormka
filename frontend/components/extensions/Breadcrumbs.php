@@ -14,7 +14,7 @@ class Breadcrumbs extends \yii\widgets\Breadcrumbs
         parent::init();
         $this->itemTemplate = "<li class=\"breadcrumbs__item\">" .
             "{link}" .
-            Html::icon('keyboard_arrow_right', ['class' => 'breadcrumbs__separator']) .
+            Html::icon('remove', ['class' => 'breadcrumbs__separator']) .
             "</li>"
         ;
         $this->activeItemTemplate = "<li class=\"breadcrumbs__item breadcrumbs__item_active\">{link}</li>\n";

@@ -1,18 +1,10 @@
-.product {
-  @extend .row;
+$size-image: 250px;
+$size-thumbnail: 80px;
 
+.product {
   & .product__info {
     @extend .col-xs-8;
-  }
-
-  & .product__price {
-    font-size: $font-size-large;
-    margin-bottom: (-1) * $font-size-large / 4;
-  }
-
-  & .product__item-price {
-    font-size: $font-size-big;
-    margin-bottom: (-1) * $font-size-big / 4;
+    padding-bottom: 20px;
   }
 
   & .product__info-layout {
@@ -20,19 +12,30 @@
   }
 
   & .product__main-info {
-    @extend .col-xs-6;
+    @extend .col-xs-8;
   }
 
-  & .product__price-info {
+  & .product__info-section {
+    margin-bottom: 20px;
+  }
+
+  & .product__price {
     font-weight: 400;
     font-size: $font-size-large;
+    line-height: $font-size-large;
+  }
+
+  & .product__item-price {
+    font-weight: 400;
+    font-size: $font-size-big;
+    line-height: $font-size-big;
   }
 
   & .product__attribute-label {
     color: $color-text-background;
     font-size: $font-size-standart-small;
     line-height: $font-size-standart-small;
-    margin-bottom: 10px;
+    margin-top: 2px;
   }
 
   & .product__weight {
@@ -40,29 +43,15 @@
     float: right;
   }
 
-  & .product__actions {
-    padding-bottom: 10px;
-    padding-top: 10px;
-  }
-
   & .product__quantity {
     display: inline-block;
     margin-right: 10px;
     vertical-align: middle;
-    width: 40%;
+    width: 120px;
   }
 
   & .product__images {
     @extend .col-xs-4;
-    border: solid 1px $color-border-standart;
-    height: 250px;
-    line-height: 250px;
-    text-align: center;
-  }
-
-  & .product__main-image {
-    @include max-size(100%, 100%);
-    vertical-align: middle;
   }
 
   & .product__add-to-cart {
@@ -74,30 +63,29 @@
     vertical-align: middle;
   }
 
-  & .product__description {
-    font-size: $font-size-standart;
-    margin-top: 10px;
-  }
-
   & .product__description-title {
     font-weight: 600;
     margin-bottom: 10px;
   }
 
   & .product__additional-info {
-    @extend .col-xs-6;
+    @extend .col-xs-4;
+  }
+
+  & .product__additional-info-layout {
+    padding: 20px;
     background-color: $color-border-standart;
   }
 
   & .product__additional-info-title {
     font-size: $font-size-big;
-    font-weight: 500;
+    font-weight: 400;
     text-align: center;
     margin-bottom: 20px;
     line-height: $font-size-big;
   }
 
-  & .product__additional-info-layout {
-    padding: 20px;
+  & .product__description {
+    @extend .col-xs-12;
   }
 }

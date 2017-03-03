@@ -1,12 +1,13 @@
 $font-top: 12px;
 $font-bottom: 18px;
+$image-size: ($font-top + $font-bottom);
+$additional-padding: 5px;
 
 .idv-trinity {
-  & .idv-trinity__image {
-    height: $font-top + $font-bottom;
-    margin-right: 5px;
-    vertical-align: middle;
-  }
+  background-size: $image-size $image-size;
+  background-repeat: no-repeat;
+  background-position: left center;
+  padding-left: $image-size + $additional-padding * 2;
 
   & .idv-trinity__info {
     color: $color-text-background;
@@ -24,32 +25,14 @@ $font-bottom: 18px;
     font-size: $font-bottom;
     line-height: $font-bottom;
   }
-}
 
-
-$font-top: 10px;
-$font-bottom: 18px;
-.idv-trinity.idv-trinity_product {
-  & .idv-trinity__image {
-    height: $font-top + $font-bottom;
-    margin-right: 15px;
-    vertical-align: middle;
+  &.idv-trinity_weight {
+    background-image: url('/img/icons/weight.png');
   }
-
-  & .idv-trinity__info {
-    color: $color-text-standart;
-    display: inline-block;
-    vertical-align: middle;
+  &.idv-trinity_box {
+    background-image: url('/img/icons/box.png');
   }
-
-  & .idv-trinity__description {
-    font-size: $font-top;
-    line-height: $font-top;
-    text-transform: uppercase;
-  }
-
-  & .idv-trinity__value {
-    font-size: $font-bottom;
-    line-height: $font-bottom;
+  &.idv-trinity_order {
+    background-image: url('/img/icons/shopping-basket.png');
   }
 }

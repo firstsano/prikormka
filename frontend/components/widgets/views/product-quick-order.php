@@ -23,20 +23,14 @@ use frontend\components\widgets\AddToCart;
             </div>
         </div>
         <div class="q-order__info-section">
-            <div class="q-order__description idv-trinity">
-                <?= Html::img('@img/icons/weight.png', [
-                    'class' => 'idv-trinity__image'
-                ]) ?>
+            <div class="q-order__description idv-trinity idv-trinity_weight">
                 <div class="idv-trinity__info">
                     <div class="idv-trinity__description">вес</div>
                     <div class="idv-trinity__value"><?= $product->weight ?> г</div>
                 </div>
             </div>
             <br />
-            <div class="q-order__description idv-trinity">
-                <?= Html::img('@img/icons/box.png', [
-                    'class' => 'idv-trinity__image'
-                ]) ?>
+            <div class="q-order__description idv-trinity idv-trinity_box">
                 <div class="idv-trinity__info">
                     <div class="idv-trinity__description">в упаковке</div>
                     <div class="idv-trinity__value"><?= $product->pack_quantity ?> шт</div>

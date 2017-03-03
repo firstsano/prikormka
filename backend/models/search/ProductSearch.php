@@ -18,8 +18,8 @@ class ProductSearch extends Product
     public function rules()
     {
         return [
-            [['id', 'category_id', 'pack_quantity', 'min_pack_quantity'], 'integer'],
-            [['name', 'slug', 'description', 'seasonality'], 'safe'],
+            [['id', 'category_id', 'pack_quantity', 'min_pack_quantity', 'season'], 'integer'],
+            [['name', 'slug', 'description'], 'safe'],
             [['price', 'weight'], 'number'],
         ];
     }
@@ -64,7 +64,7 @@ class ProductSearch extends Product
         $query->andFilterWhere(['like', 'name', $this->name])
             ->andFilterWhere(['like', 'slug', $this->slug])
             ->andFilterWhere(['like', 'description', $this->description])
-            ->andFilterWhere(['like', 'seasonality', $this->seasonality]);
+            ->andFilterWhere(['like', 'season', $this->season]);
 
         return $dataProvider;
     }

@@ -18,9 +18,8 @@ $size-thumbnail: 100px;
   }
 
   & .product-image__image-thumbnails {
-    @include size(100%, $size-thumbnail);
-    margin-top: 20px;
     text-align: center;
+    width: 100%;
   }
 
   & .product-image__thumbnail {
@@ -29,7 +28,7 @@ $size-thumbnail: 100px;
     cursor: pointer;
     display: inline-block;
     line-height: $size-thumbnail * 3 / 4;
-    margin: 0 10px;
+    margin: 20px 10px 0 10px;
     padding: 10px;
 
     &_active {

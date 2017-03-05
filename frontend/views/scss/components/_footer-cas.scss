@@ -1,5 +1,6 @@
 .footer-cas {
   @extend .container;
+  margin-bottom: 20px;
 
   & .footer-cas__layout {
     @extend .row;

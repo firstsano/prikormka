@@ -21,17 +21,6 @@ class ArticleQuery extends ActiveQuery
         return $this;
     }
 
-    public function news()
-    {
-        $newsCategory = ArticleCategory::find()
-            ->active()
-            ->news()
-            ->one()
-        ;
-        $this->andWhere(['category_id' => $newsCategory->id]);
-        return $this;
-    }
-
     public function newOnes($limit)
     {
         $this->addOrderBy(['published_at' => SORT_DESC])->limit($limit);

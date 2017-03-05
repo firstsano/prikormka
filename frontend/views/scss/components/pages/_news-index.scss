@@ -4,4 +4,32 @@
   & .news-index__title {
     @include header;
   }
+
+  & .news-index__item {
+    @extend .row;
+  }
+
+  & .news-index__item-thumbnail {
+    @extend .col-xs-3;
+  }
+
+  & .news-index__item-title {
+    @include no-link($color-text-standart);
+    border-bottom: solid 1px $color-border-standart;
+    display: inline-block;
+    font-size: $font-size-big;
+    font-weight: bold;
+    margin-bottom: 10px;
+    padding-bottom: 3px;
+  }
+
+  & .news-index__item-publish {
+    color: $color-text-background;
+    font-size: $font-size-standart-small;
+    font-weight: 400;
+  }
+
+  & .news-index__item-description {
+    @extend .col-xs-9;
+  }
 }

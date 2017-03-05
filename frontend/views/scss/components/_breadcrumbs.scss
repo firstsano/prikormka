@@ -19,3 +19,20 @@
     margin: 0 5px;
   }
 }
+
+.breadcrumbs.breadcrumbs_inner {
+
+  & .breadcrumbs__item {
+    a {
+      color: $color-text-inverse;
+      text-decoration: underline;
+    }
+    &.breadcrumbs__item_active {
+      color: $color-text-inverse;
+    }
+  }
+
+  & .breadcrumbs__separator {
+    color: $color-text-inverse;
+  }
+}

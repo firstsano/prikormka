@@ -105,7 +105,7 @@ class Article extends ActiveRecord
     public function rules()
     {
         return [
-            [['title', 'body', 'category_id'], 'required'],
+            [['title', 'body', 'category_id', 'thumbnail'], 'required'],
             [['slug'], 'unique'],
             [['body'], 'string'],
             [['published_at'], 'default', 'value' => function () {
@@ -141,6 +141,14 @@ class Article extends ActiveRecord
             'created_at' => Yii::t('common', 'Created At'),
             'updated_at' => Yii::t('common', 'Updated At')
         ];
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function getImageUrl()
+    {
+        return $this->thumbnail_base_url . DIRECTORY_SEPARATOR . $this->thumbnail_path;
     }
 
     /**

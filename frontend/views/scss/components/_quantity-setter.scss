@@ -32,6 +32,10 @@ $height: 40px;
     outline: none;
     padding: 0;
     text-align: center;
+
+    &_changed {
+      color: $color-application-main;
+    }
   }
 
   & .quantity-setter__remove {

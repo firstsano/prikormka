@@ -52,7 +52,7 @@ use frontend\components\widgets\AddToCart;
     <footer class="q-order__footer">
         <div class="q-order__footer-section">
             <?= QuantitySetter::widget([
-                'startValue' => 1,
+                'startValue' => $product->min_pack_quantity,
                 'options' => [
                     'client' => [
                         'step' => 1,

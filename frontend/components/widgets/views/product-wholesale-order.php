@@ -29,7 +29,7 @@ use yii\helpers\StringHelper;
                     'widget' => ['class' => 'quantity-setter_height_30'],
                     'client' => [
                         'step' => 1,
-                        'min-quantity' => $product->min_pack_quantity,
+                        'min-quantity' => 1,
                         'storage' => '.w-order'
                     ],
                 ]

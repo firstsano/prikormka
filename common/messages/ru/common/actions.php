@@ -21,4 +21,7 @@ return [
 
     'Create carousel item' => 'Создать слайд',
     'Update carousel item' => 'Обновить слайд',
+
+    'Create feedback' => 'Создать отзыв',
+    'Update feedback' => 'Обновить отзыв',
 ];

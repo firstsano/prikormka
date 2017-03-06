@@ -1,7 +1,8 @@
 <?php
 
 /* @var $this \yii\web\View */
-/* @var $carouselItems \common\models\WidgetCarousel */
+/* @var $feedbacks \common\models\Feedback[] */
+/* @var $carouselItems \common\models\WidgetCarouselItem[] */
 /* @var $newProducts \common\models\Product[] */
 /* @var $bestOffers \common\models\Product[] */
 /* @var $latestNews \common\models\Article[] */
@@ -38,15 +39,6 @@ use frontend\components\widgets\ProductQuickOrder;
             <footer class="new-products__footer">
                 <?= Html::a(Html::textPointer('Смотреть все товары'), ['catalog/index'], ['class' => 'new-products__link']); ?>
             </footer>
-        </div>
-    </section>
-    <section class="site-index__client-comments">
-        <div class="client-comments">
-            <h2 class="client-comments__title"> Клиенты о нас </h2>
-            <div class="client-comments__layout">
-                <div class="client-comments__item"> <?= ClientComment::widget([]) ?> </div>
-                <div class="client-comments__item"> <?= ClientComment::widget([]) ?> </div>
-            </div>
         </div>
     </section>
     <section class="site-index__best-offer">

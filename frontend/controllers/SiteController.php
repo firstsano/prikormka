@@ -7,6 +7,7 @@ use yii\filters\VerbFilter;
 use frontend\models\ContactForm;
 use frontend\models\Product;
 use frontend\extensions\Controller;
+use common\models\Feedback;
 use common\models\Article;
 use common\models\WidgetCarousel;
 use Exception;
@@ -58,7 +59,8 @@ class SiteController extends Controller
             'carouselItems' => @WidgetCarousel::find()->where(['key' => 'index'])->one()->activeItems,
             'newProducts' => Product::find()->newOnes()->all(),
             'bestOffers' => Product::find()->bestOffers()->all(),
-            'latestNews' => Article::find()->published()->news()->newOnes(4)->all()
+            'feedbacks' => Feedback::find()->newOnes(2)->all(),
+            'latestNews' => Article::find()->published()->newOnes(4)->all()
         ]);
     }
 

@@ -1,18 +1,18 @@
 .client-comment {
-  background-color: $color-application-light;
-  padding: 20px;
+  @extend .row;
 
-  & .client-comment__client-info {
-    @extend .row;
-  }
-
-  & .client-comment__client-image {
-    @extend .col-xs-3;
+  & .client-comment__client-image-layout {
+    @extend .col-xs-2;
     text-align: center;
   }
 
+  & .client-comment__client-image {
+    @include border-radius(50%);
+    @include max-size(100%, 100px);
+  }
+
   & .client-comment__client-desc {
-    @extend .col-xs-9;
+    @extend .col-xs-10;
   }
 
   & .client-comment__client-name {
@@ -23,10 +23,14 @@
 
   & .client-comment__client-experience {
     color: $color-text-background;
+    font-size: $font-size-standart-small;
+    margin-top: 10px;
+    max-width: 50%;
   }
 
   & .client-comment__comment {
+    @extend .col-xs-12;
     color: $color-text-background;
-    margin-top: 10px;
+    margin-top: 20px;
   }
 }

@@ -18,11 +18,15 @@ class m170305_174213_create_feedbacks_table extends Migration
         $this->createTable('feedbacks', [
             'id' => $this->primaryKey(),
             'user_id' => $this->integer(),
-            'thumbnail_base_path' => $this->string(1024),
-            'thumbnail_url' => $this->string(1024),
+            'thumbnail_path' => $this->string(1024),
+            'thumbnail_base_url' => $this->string(1024),
             'body' => $this->text(),
             'user_name' => $this->string(),
             'user_prof' => $this->string(),
+            'created_at' => $this->integer(11),
+            'updated_at' => $this->integer(11),
+            'created_by' => $this->integer(),
+            'updated_by' => $this->integer(),
         ]);
 
         // creates index for column `user_id`

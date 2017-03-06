@@ -104,6 +104,11 @@ class Navigation
                 'url'=>['/slider/index'],
                 'icon'=>'<i class="fa fa-film"></i>'
             ],
+            [
+                'label'=>Yii::t('common/site', 'Feedbacks'),
+                'url'=>['/feedback/index'],
+                'icon'=>'<i class="fa fa-commenting-o"></i>'
+            ],
         ];
     }
 

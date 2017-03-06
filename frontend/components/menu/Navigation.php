@@ -38,7 +38,7 @@ class Navigation
             ],
             [
                 'label' => 'Отзывы',
-                'url' => [ '/news/index' ]
+                'url' => [ '/feedbacks/index' ]
             ],
         ];
     }

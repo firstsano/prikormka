@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'Feedbacks' => 'Отзывы',
     'Carousel' => 'Главный слайдер',
     'Articles' => 'Новости',
     'Article categories' => 'Категории новостей',

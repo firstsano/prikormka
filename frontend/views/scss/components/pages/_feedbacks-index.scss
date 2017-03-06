@@ -1,0 +1,7 @@
+.feedbacks-index {
+  @extend .container;
+
+  & .feedbacks-index__title {
+    @include header;
+  }
+}

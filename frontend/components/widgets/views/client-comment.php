@@ -1,6 +1,7 @@
 <?php
 
 /* @var $this yii\web\View */
+/* @var $feedback \common\models\Feedback */
 
 use frontend\components\extensions\Html;
 
@@ -8,25 +9,20 @@ use frontend\components\extensions\Html;
 
 <div class="client-comment">
     <header class="client-comment__client-info">
-        <div class="client-comment__client-image">
-            <?= Html::img('@img/assets/temp1.png', [
-                'alt' => 'Артем Симохин',
+        <div class="client-comment__client-image-layout">
+            <?= Html::img($feedback->imageUrl, [
+                'alt' => $feedback->user_name,
+                'class' => 'client-comment__client-image'
             ]) ?>
         </div>
         <div class="client-comment__client-desc">
             <div class="client-comment__client-name">
-                Артем Симохин
+                <?= $feedback->user_name ?>
             </div>
             <div class="client-comment__client-experience">
-                Рыбалов-любитель
+                <?= $feedback->user_prof ?>
             </div>
         </div>
     </header>
-    <div class="client-comment__comment">
-        После того как я начал использовать эту прикормку рыбки
-        просто сами вешаются на крюбчок. Мне даже ничего не надо делать
-        я сижу на речке и думаю о вечности, и тут бац и рыбка
-        попалась. В общем крайне рекомендую, т.к. я до этого 3
-        года пользовался другой прикормколй но эффект не тот.
-    </div>
+    <div class="client-comment__comment"> <?= $feedback->body ?> </div>
 </div>

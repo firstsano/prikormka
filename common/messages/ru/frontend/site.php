@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'Feedbacks' => 'Отзывы',
     'Contact' => 'Контакты',
     'About' => 'О компании',
     'All products' => 'Все продукты',

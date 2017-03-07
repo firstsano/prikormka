@@ -48,6 +48,9 @@ class OrderController extends \yii\web\Controller
         $positions = Yii::$app->cart->positions;
         if (!empty($positions)) {
             $model = new OrderForm();
+            if (!Yii::$app->user->isGuest) {
+                $model->loadUser(Yii::$app->user->identity);
+            }
             return $this->render('new', $this->orderFormParams([
                 'model' => $model,
             ]));

@@ -128,6 +128,17 @@ class OrderForm extends Model
         return $order;
     }
 
+    /**
+     * @inheritdoc
+     */
+    public function loadUser($user)
+    {
+        $this->name = @$user->userProfile->fullUserName;
+        $this->phone = @$user->userProfile->phone;
+        $this->email = $user->email;
+        $this->address = @$user->userProfile->address;
+    }
+
     private function sendNotifications()
     {
         $this->notifyAdmin();

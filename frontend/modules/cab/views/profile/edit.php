@@ -5,6 +5,7 @@
 
 use frontend\components\extensions\StandartActiveForm;
 use common\models\UserProfile;
+use yii\widgets\MaskedInput;
 
 $this->title = Yii::t('frontend/site', 'User profile');
 $this->params['breadcrumbs'][] = $this->title;
@@ -21,7 +22,10 @@ echo $form->field($model, 'gender')->dropDownlist([
     UserProfile::GENDER_FEMALE => Yii::t('frontend/site', 'Female'),
     UserProfile::GENDER_MALE => Yii::t('frontend/site', 'Male')
 ]);
-echo $form->field($model, 'phone')->textInput();
+echo $form->field($model, 'phone')->widget(\yii\widgets\MaskedInput::className(), [
+    'mask' => '(999) 999-9999',
+    'options' => ['class' => 'standart-form__input']
+]);
 echo $form->field($model, 'address')->textInput();
 echo $form->field($model, 'site')->textInput();
 echo $form->field($model, 'organization')->textInput();

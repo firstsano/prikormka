@@ -116,6 +116,15 @@ class UserProfile extends ActiveRecord
         return null;
     }
 
+    public function getFullUserName()
+    {
+        return implode(' ', array_filter([
+            $this->firstname,
+            $this->middlename,
+            $this->lastname
+        ]));
+    }
+
     /**
      * @param null $default
      * @return bool|null|string

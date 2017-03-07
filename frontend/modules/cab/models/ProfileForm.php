@@ -60,6 +60,17 @@ class ProfileForm extends Model
     /**
      * @inheritdoc
      */
+    public function loadProfile($profile)
+    {
+        foreach (['firstname', 'middlename', 'lastname',
+                     'birthday', 'gender', 'phone', 'address', 'site', 'organization'] as $attr) {
+            $this->$attr = $profile->$attr;
+        }
+    }
+
+    /**
+     * @inheritdoc
+     */
     public function save()
     {
         $profile = $this->user->userProfile;

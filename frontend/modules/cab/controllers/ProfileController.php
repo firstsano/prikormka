@@ -51,6 +51,7 @@ class ProfileController extends Controller
     public function actionEdit()
     {
         $model = new ProfileForm();
+        $model->loadProfile(Yii::$app->user->identity->userProfile);
         return $this->render('edit', [
             'model' => $model
         ]);

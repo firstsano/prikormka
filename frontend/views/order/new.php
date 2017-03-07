@@ -8,6 +8,7 @@ use frontend\components\extensions\Html;
 use frontend\components\widgets\FlashMessages;
 use frontend\components\extensions\SimpleActiveForm;
 use common\models\Order;
+use yii\widgets\MaskedInput;
 use himiklab\yii2\recaptcha\ReCaptcha;
 
 $this->title = Yii::t('frontend/site', 'Forming order');
@@ -43,7 +44,10 @@ $this->params['breadcrumbs'][] = $this->title;
             <div class="order-new__section-title"> Данные покупателя: </div>
             <div class="order-new__section">
                 <?= $form->field($model, 'name') ?>
-                <?= $form->field($model, 'phone') ?>
+                <?= $form->field($model, 'phone')->widget(\yii\widgets\MaskedInput::className(), [
+                    'mask' => '(999) 999-9999',
+                    'options' => ['class' => 'simple-form__input']
+                ]) ?>
                 <?= $form->field($model, 'email') ?>
             </div>
             <div class="order-new__section-title"> Данные для отправки: </div>

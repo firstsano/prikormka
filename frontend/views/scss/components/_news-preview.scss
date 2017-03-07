@@ -1,24 +1,34 @@
 .news-preview {
 
-  .news-preview__date {
+  & .news-preview__date {
     color: $color-application-main;
     font-weight: bold;
     margin-bottom: 10px;
   }
 
-  .news-preview__aside-date {
+  & .news-preview__aside-date {
     color: $color-text-background;
   }
 
-  .news-preview__layout {
+  & .news-preview__layout {
     @include border-radius(3px);
     background-color: $color-application-light;
     border: solid 1px $color-border-standart;
-    padding: 10px;
+    padding: 20px;
   }
 
-  .news-preview__title {
+  & .news-preview__title {
     font-weight: bold;
     margin-bottom: 10px;
+  }
+
+  & .news-preview__body {
+    padding-bottom: 10px;
+    padding-top: 10px;
+  }
+
+  & .news-preview__footer {
+    margin-top: 10px;
+    text-align: right;
   }
 }

@@ -1,5 +1,6 @@
 .order-new {
   @extend .container;
+  @import "../../materialize/components/forms/radio-buttons";
 
   & .order-new__title {
     @include header;

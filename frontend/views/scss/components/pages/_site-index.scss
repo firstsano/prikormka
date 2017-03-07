@@ -1,4 +1,49 @@
 .site-index {
+
+  & .site-index__promo {
+    @extend .container;
+  }
+
+  & .site-index__title {
+    font-size: $font-size-large;
+    text-align: center;
+  }
+
+  & .site-index__title-sub {
+    font-size: $font-size-big;
+    font-weight: 400;
+    margin-top: 10px;
+  }
+
+  & .site-index__promo-description {
+    line-height: 2;
+    margin-top: 20px;
+    text-align: center;
+  }
+
+  & .site-index__chars-layout {
+    @extend .container;
+    padding-bottom: 80px;
+    padding-top: 80px;
+  }
+
+  & .site-index__chars {
+    @extend .row;
+  }
+
+  & .site-index__char {
+    @extend .col-xs-4;
+    text-align: center;
+  }
+
+  & .site-index__char-image {
+    height: 100px;
+  }
+
+  & .site-index__char-desc {
+    margin-top: 20px;
+  }
+
   & .site-index__new-products {
     background-image: url('/img/assets/new-products-1.png'), url('/img/assets/new-products-2.png');
     background-repeat: no-repeat, no-repeat;

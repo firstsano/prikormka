@@ -25,11 +25,14 @@ use yii\helpers\StringHelper;
         <?= Html::tag('header', $newsItem->title, ['class' => 'news-preview__title']) ?>
         <?= Html::tag('div',
             StringHelper::truncate(
-                $newsItem->body,
+                $newsItem->simpleBody,
                 $options['length'],
                 $options['suffix'],
                 null,
                 true
             ), ['class' => 'news-preview__body']) ?>
+        <div class="news-preview__footer">
+            <?= Html::a('Читать далее', ['news/view', 'id' => $newsItem->id]) ?>
+        </div>
     </article>
 </div>

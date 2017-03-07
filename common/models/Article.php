@@ -146,6 +146,14 @@ class Article extends ActiveRecord
     /**
      * @inheritdoc
      */
+    public function getSimpleBody()
+    {
+        return strip_tags($this->body);
+    }
+
+    /**
+     * @inheritdoc
+     */
     public function getImageUrl()
     {
         return $this->thumbnail_base_url . DIRECTORY_SEPARATOR . $this->thumbnail_path;

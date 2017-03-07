@@ -4,7 +4,7 @@ namespace frontend\models;
 
 use Yii;
 use yii\base\Model;
-use himiklab\yii2\recaptcha\ReCaptchaValidator;
+use common\commands\SendEmailCommand;
 use common\commands\CreateOrderCommand;
 use yii\helpers\ArrayHelper;
 use common\models\Order;
@@ -59,6 +59,13 @@ class OrderForm extends Model
             [['name', 'address', 'comment'], 'filter', 'filter' => 'strip_tags'],
             [['name', 'email', 'phone', 'address', 'comment'], 'filter', 'filter' => 'trim'],
             ['email', 'email'],
+            ['phone', function($attribute) {
+                $phone = $this->$attribute;
+                $simplePhone = preg_replace('/\D/', '', $phone);
+                if (strlen($simplePhone) !== 10) {
+                    $this->addError($attribute, Yii::t('common\models\order', 'validation.phone'));
+                }
+            }],
             [['delivery'], 'in', 'range' => array_keys(Order::deliveries())],
 //            [['reCaptcha'], ReCaptchaValidator::className(), 'on' => static::SCENARIO_GUEST],
         ];

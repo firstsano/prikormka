@@ -1,12 +1,28 @@
 .site-error {
   @extend .container;
+  padding-top: 20px;
 
   h1 {
     font-size: 20px;
     font-weight: bold;
   }
 
-  & .site-error__404 {
-    padding: 50px 0;
+  & .site-error__404-title {
+    font-size: $font-size-large;
+    font-weight: bold;
+    text-align: center;
+    margin: 10px 0;
+  }
+
+  & .site-error__404-description {
+    font-size: $font-size-big;
+    font-weight: 400;
+    text-align: center;
+  }
+
+  & .site-error__404-image {
+    height: 150px;
+    margin: 30px 0;
   }
 }
+

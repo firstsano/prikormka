@@ -1,0 +1,7 @@
+.nav-message {
+
+  & .nav-message__link {
+    color: $color-application-main;
+    text-decoration: underline;
+  }
+}

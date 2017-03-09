@@ -109,6 +109,11 @@ class Navigation
                 'url'=>['/feedback/index'],
                 'icon'=>'<i class="fa fa-commenting-o"></i>'
             ],
+            [
+                'label'=>Yii::t('common/site', 'Subscribes'),
+                'url'=>['/subscribe/index'],
+                'icon'=>'<i class="fa fa-users"></i>'
+            ],
         ];
     }
 

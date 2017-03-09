@@ -2,6 +2,7 @@
 
 return [
     'Feedbacks' => 'Отзывы',
+    'Subscribes' => 'Подписки',
     'Carousel' => 'Главный слайдер',
     'Articles' => 'Новости',
     'Article categories' => 'Категории новостей',

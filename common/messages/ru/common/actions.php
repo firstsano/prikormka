@@ -24,4 +24,6 @@ return [
 
     'Create feedback' => 'Создать отзыв',
     'Update feedback' => 'Обновить отзыв',
+
+    'Create subscribe' => 'Добавить подписчика',
 ];

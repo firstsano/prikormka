@@ -160,6 +160,14 @@ class Product extends \yii\db\ActiveRecord
     /**
      * @inheritdoc
      */
+    public function getPackWeight()
+    {
+        return $this->weight * $this->pack_quantity;
+    }
+
+    /**
+     * @inheritdoc
+     */
     public function getItemPrice()
     {
         return $this->price / $this->pack_quantity;

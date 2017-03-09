@@ -26,7 +26,7 @@ use frontend\components\widgets\AddToCart;
             <div class="q-order__description idv-trinity idv-trinity_weight">
                 <div class="idv-trinity__info">
                     <div class="idv-trinity__description">вес</div>
-                    <div class="idv-trinity__value"><?= $product->weight ?> г</div>
+                    <div class="idv-trinity__value"><?= format_w($product->packWeight) ?></div>
                 </div>
             </div>
             <br />

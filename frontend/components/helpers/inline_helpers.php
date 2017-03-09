@@ -20,6 +20,14 @@ function format_f($float, $precision = 2)
     return \Yii::$app->formatter->asDecimal($float, $precision);
 }
 
+function format_w($float)
+{
+    if ($float < 1000) {
+        return $float . " г";
+    }
+    return ($float / 1000) . " кг";
+}
+
 function format_currency($float)
 {
     return format_f($float) . " " . currency();

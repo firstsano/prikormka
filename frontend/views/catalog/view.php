@@ -83,7 +83,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         <div class="idv-trinity idv-trinity_product idv-trinity_weight">
                             <div class="idv-trinity__info">
                                 <div class="idv-trinity__description">вес упаковки</div>
-                                <div class="idv-trinity__value"><?= $model->weight ?> г</div>
+                                <div class="idv-trinity__value"><?= format_w($model->packWeight) ?></div>
                             </div>
                         </div>
                         <br />

@@ -5,6 +5,9 @@
     font-size: $font-size-standart-small;
     font-weight: 400;
     padding: 5px 0;
+    &_important {
+      font-weight: bold;
+    }
   }
 
   & .category-radio-list__radio {

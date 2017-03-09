@@ -38,11 +38,10 @@ use frontend\components\widgets\CategoryRadioList;
                     echo Html::label(
                         'Все категории',
                         'empty-category',
-                        ['class' => 'category-radio-list__label']
+                        ['class' => 'category-radio-list__label category-radio-list__label_important']
                     );
                 ?>
             </div>
-            <hr />
             <?= CategoryRadioList::widget([
                 'checked' => @$params['category'],
                 'categories' => Category::filters()

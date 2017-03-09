@@ -31,7 +31,6 @@ return [
     'selector.category' => 'Категория',
 
     'Forgot password' => 'Забыли пароль',
-    'Personal cab' => 'Личный кабинет',
     'Admin area' => 'Админка',
     'Signing up' => 'Регистрация аккаунта',
     'Activation email' => 'Активация аккаунта',
@@ -59,4 +58,6 @@ return [
     'reset-password-error.message' => 'Извините, сброс пароля для данного аккаунта невозможен',
     'reset-password-success.message' => 'Новый пароль был успешно сохранен',
     'mail-order.new' => 'У вас появился новый заказ',
+    'subscribe.title' => 'Подписка на новости',
+    'subscribe-success.message' => 'Вы успешно подписаны на новостную рассылку.',
 ];

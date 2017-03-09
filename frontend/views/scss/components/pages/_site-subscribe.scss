@@ -1,0 +1,26 @@
+.site-subscribe {
+  @extend .container;
+  padding-top: 20px;
+
+  & .site-subscribe__image-layout {
+    text-align: center;
+    padding: 40px 0;
+  }
+
+  & .site-subscribe__image {
+    height: 150px;
+  }
+
+  & .site-subscribe__title {
+    font-size: $font-size-large;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  & .site-subscribe__form {
+    margin: auto;
+    text-align: center;
+    width: 80%;
+  }
+}

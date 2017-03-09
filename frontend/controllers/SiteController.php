@@ -10,6 +10,8 @@ use frontend\extensions\Controller;
 use common\models\Feedback;
 use common\models\Article;
 use common\models\WidgetCarousel;
+use yii\base\DynamicModel;
+use frontend\models\SubscribeForm;
 use Exception;
 
 /**
@@ -47,6 +49,7 @@ class SiteController extends Controller
                 'actions' => [
                     'add-product-to-cart' => ['post'],
                     'remove-all-from-cart' => ['post'],
+                    'subscribe' => ['post'],
                     'set-data-display' => ['put']
                 ],
             ],
@@ -61,6 +64,22 @@ class SiteController extends Controller
             'bestOffers' => Product::find()->bestOffers()->all(),
             'feedbacks' => Feedback::find()->newOnes(2)->all(),
             'latestNews' => Article::find()->published()->newOnes(4)->all()
+        ]);
+    }
+
+    public function actionSubscribe()
+    {
+        $model = new SubscribeForm();
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            Yii::$app->session->setFlash('success', [
+                'type' => 'notice',
+                'title' => Yii::t('frontend/site', 'subscribe.title'),
+                'message' => Yii::t('frontend/site', 'subscribe-success.message'),
+            ]);
+            return $this->goHome();
+        }
+        return $this->render('/site/subscribe', [
+            'model' => $model
         ]);
     }
 

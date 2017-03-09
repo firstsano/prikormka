@@ -1,7 +1,36 @@
 .order-view {
   @extend .container;
+  padding-top: 20px;
 
   & .order-view__title {
-    @include header;
+    font-size: $font-size-large;
+    font-weight: bold;
+    text-align: center;
+  }
+
+  & .order-view__order-num {
+    font-size: $font-size-standart;
+    text-align: center;
+
+    &_number {
+      color: $color-application-main;
+      font-size: $font-size-standart-big;
+      font-weight: bold;
+    }
+  }
+
+  & .order-view__image-layout {
+    text-align: center;
+    padding: 40px 0;
+  }
+
+  & .order-view__image {
+    height: 150px;
+  }
+
+  & .order-view__subscribe {
+    margin: auto;
+    text-align: center;
+    width: 60%;
   }
 }

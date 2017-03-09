@@ -97,13 +97,11 @@ use frontend\components\widgets\ProductQuickOrder;
         <div class="news-previews">
             <h2 class="news-previews__title"> Новости и статьи </h2>
             <div class="news-previews__row">
-                <div class="news-previews__item">
-                    <?php foreach($latestNews as $newsItem) {
-                        echo NewsPreview::widget([
-                            'newsItem' => $newsItem
-                        ]);
-                    } ?>
-                </div>
+                <?php foreach($latestNews as $newsItem) :?>
+                    <div class="news-previews__item">
+                        <?= NewsPreview::widget(['newsItem' => $newsItem]) ?>
+                    </div>
+                <?php endforeach; ?>
             </div>
         </div>
     </section>

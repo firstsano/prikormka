@@ -1,0 +1,20 @@
+.page-about {
+  @extend .container;
+
+  & .page-about__title {
+    @include header;
+  }
+
+  & .page-about__layout {
+    @extend .row;
+    margin-bottom: 40px;
+  }
+
+  & .page-about__info {
+    @extend .col-xs-9;
+  }
+
+  & .page-about__menu {
+    @extend .col-xs-3;
+  }
+}

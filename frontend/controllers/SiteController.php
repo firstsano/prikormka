@@ -10,7 +10,6 @@ use frontend\extensions\Controller;
 use common\models\Feedback;
 use common\models\Article;
 use common\models\WidgetCarousel;
-use yii\base\DynamicModel;
 use frontend\models\SubscribeForm;
 use Exception;
 
@@ -34,7 +33,10 @@ class SiteController extends Controller
             ],
             'download'=>[
                 'class'=>'trntv\filekit\actions\ViewAction',
-            ]
+            ],
+            'page' => [
+                'class' => 'yii\web\ViewAction',
+            ],
         ];
     }
 
@@ -88,16 +90,6 @@ class SiteController extends Controller
         return $this->render('wholesale', [
             'products' => Product::find()->all(),
         ]);
-    }
-
-    public function actionPayment()
-    {
-        return $this->render('payment');
-    }
-
-    public function actionDelivery()
-    {
-        return $this->render('delivery');
     }
 
     public function actionAddProductToCart()

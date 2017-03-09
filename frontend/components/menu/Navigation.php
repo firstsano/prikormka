@@ -48,11 +48,11 @@ class Navigation
         return [
             [
                 'label' => Yii::t('frontend/site', 'About'),
-                'url' => [ '/' ],
+                'url' => ['/site/page', 'view' => 'about'],
             ],
             [
                 'label' => 'Доставка и оплата',
-                'url' => [ '/site/delivery' ]
+                'url' => ['/site/page', 'view' => 'delivery'],
             ],
             [
                 'label' => 'Контакты',
@@ -90,6 +90,24 @@ class Navigation
                 'data' => ['method' => 'POST'],
                 'visible' => !Yii::$app->user->isGuest,
             ],
+        ];
+    }
+
+    public static function contactItems()
+    {
+        return [
+            [
+                'label' => Yii::t('frontend/site', 'Delivery service'),
+                'url' => ['/site/page', 'view' => 'delivery'],
+            ],
+            [
+                'label' => Yii::t('frontend/site', 'Payment'),
+                'url' => ['/site/page', 'view' => 'payment'],
+            ],
+            [
+                'label' => Yii::t('frontend/site', 'About'),
+                'url' => ['/site/page', 'view' => 'about'],
+            ]
         ];
     }
 }

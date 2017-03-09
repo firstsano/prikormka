@@ -1,20 +1,20 @@
-.site-delivery {
+.page-payment {
   @extend .container;
 
-  & .site-delivery__title {
+  & .page-payment__title {
     @include header;
   }
 
-  & .site-delivery__layout {
+  & .page-payment__layout {
     @extend .row;
     margin-bottom: 40px;
   }
 
-  & .site-delivery__info {
+  & .page-payment__info {
     @extend .col-xs-9;
   }
 
-  & .site-delivery__menu {
+  & .page-payment__menu {
     @extend .col-xs-3;
   }
 }

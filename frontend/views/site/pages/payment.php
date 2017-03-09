@@ -3,41 +3,31 @@
 /* @var $this yii\web\View */
 
 use frontend\components\extensions\Html;
+use yii\widgets\Menu;
+use frontend\components\menu\Navigation;
 
 $this->title = Yii::t('frontend/site', 'Payment');
 $this->params['breadcrumbs'][] = $this->title;
 
 ?>
 
-<div class="site-delivery">
-    <h1 class="site-delivery__title"><?= Html::encode($this->title) ?></h1>
-    <div class="site-delivery__layout">
-        <div class="site-delivery__menu">
-            <ul class="aside-menu">
-                <li class="aside-menu__item">
-                    <?= Html::a(
-                        Yii::t('frontend/site', 'Delivery service'),
-                        ['/site/delivery'],
-                        ['class' => 'aside-menu__item-link']
-                    ) ?>
-                </li>
-                <li class="aside-menu__item">
-                    <?= Html::a(
-                        $this->title,
-                        '#',
-                        ['class' => 'aside-menu__item-link aside-menu__item-link_active']
-                    ) ?>
-                </li>
-                <li class="aside-menu__item">
-                    <?= Html::a(
-                        Yii::t('frontend/site', 'Cooperation'),
-                        ['/site/cooperate'],
-                        ['class' => 'aside-menu__item-link']
-                    ) ?>
-                </li>
-            </ul>
+<div class="page-payment">
+    <h1 class="page-payment__title"><?= Html::encode($this->title) ?></h1>
+    <div class="page-payment__layout">
+        <div class="page-payment__menu">
+            <?= Menu::widget([
+                'items' => Navigation::contactItems(),
+                'options' => [
+                    'class' => 'aside-menu'
+                ],
+                'activeCssClass' => 'aside-menu__item_active',
+                'itemOptions' => [
+                    'class' => 'aside-menu__item'
+                ],
+                'linkTemplate' => "<a href=\"{url}\" class=\"aside-menu__item-link\">{label}</a>"
+            ]) ?>
         </div>
-        <div class="site-delivery__info">
+        <div class="page-payment__info">
             <div class="payment-info">
                 <div class="payment-info__section">
                     <div class="payment-info__title">

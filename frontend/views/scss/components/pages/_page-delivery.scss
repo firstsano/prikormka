@@ -1,0 +1,20 @@
+.page-delivery {
+  @extend .container;
+
+  & .page-delivery__title {
+    @include header;
+  }
+
+  & .page-delivery__layout {
+    @extend .row;
+    margin-bottom: 40px;
+  }
+
+  & .page-delivery__info {
+    @extend .col-xs-9;
+  }
+
+  & .page-delivery__menu {
+    @extend .col-xs-3;
+  }
+}

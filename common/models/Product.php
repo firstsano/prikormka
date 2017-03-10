@@ -2,7 +2,7 @@
 
 namespace common\models;
 
-use MongoDB\BSON\Timestamp;
+use frontend\components\extensions\ArrayHelper;
 use trntv\filekit\behaviors\UploadBehavior;
 use Yii;
 use yii\behaviors\BlameableBehavior;
@@ -201,6 +201,33 @@ class Product extends \yii\db\ActiveRecord
             ;
         }
         return $this->_mainImage;
+    }
+
+    public static function previewList($params)
+    {
+        $query = ArrayHelper::getValue($params, 'query', null);
+        $limit = ArrayHelper::getValue($params, 'limit');
+        $offset = ArrayHelper::getValue($params, 'offset', 0);
+        if ($query === null) {
+            return [
+                'items' => [],
+                'total_count' => 0
+            ];
+        }
+        $totalQuery = static::find()
+            ->where(['like', 'name', $query])
+            ->orWhere(['like', 'description', $query])
+        ;
+        $itemsQuery = clone $totalQuery;
+        $items = $itemsQuery
+            ->offset($offset)
+            ->limit($limit)
+            ->all()
+        ;
+        return [
+            'items' => $items,
+            'total_count' => $totalQuery->count()
+        ];
     }
 
     /**

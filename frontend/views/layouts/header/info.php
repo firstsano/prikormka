@@ -5,7 +5,7 @@
 use yii\helpers\Url;
 use frontend\components\extensions\Html;
 use frontend\components\widgets\Cart;
-use frontend\components\widgets\Login;
+use frontend\components\widgets\RemoteSearch;
 
 ?>
 
@@ -17,29 +17,23 @@ use frontend\components\widgets\Login;
                 echo Html::a($img, Yii::$app->homeUrl);
             ?>
         </div>
-        <div class="header-info__order-phones">
-            <div>
-                <span class="header-info__order-location">Москва: </span>
-                <span class="header-info__order-phone"> 8 (903) 104-29-95 </span>
-            </div>
-            <div>
-                <span class="header-info__order-location">Регионы: </span>
-                <span class="header-info__order-phone"> 8 (960) 882-22-22 </span>
-            </div>
-            <div class="header-info__order-work-times">
-                <span class="header-info__order-work-time"> Время работы </span>
-                <span class="header-info__order-work-time header-info__order-work-time_highlight"> с 8:00 до 20:00 </span>
+        <div class="header-info__search">
+            <?= RemoteSearch::widget([]) ?>
+        </div>
+        <div class="header-info__phones">
+            <div class="header-info__contact-phone"> 8 (960) 882-22-22 </div>
+            <div class="header-info__work-time"> Работаем
+                <span class="header-info__work-time header-info__work-time_highlight">
+                    с 8:00 до 20:00
+                </span>
             </div>
         </div>
-        <div class="header-info__controls">
-            <div class="header-info__controls-item">
-                <?= Cart::widget([
-                    'url' => Url::to(['/cart/view']),
-                    'count' => Yii::$app->cart->count,
-                    'cost' => Yii::$app->cart->cost,
-                ]) ?>
-            </div>
+        <div class="header-info__cart">
+            <?= Cart::widget([
+                'url' => Url::to(['/cart/view']),
+                'count' => Yii::$app->cart->count,
+                'cost' => Yii::$app->cart->cost,
+            ]) ?>
         </div>
-
     </div>
 </div>

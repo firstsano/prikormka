@@ -9,6 +9,7 @@ use frontend\components\extensions\ArrayHelper;
 ?>
 
 <div class="header-menu header-menu_top-menu">
+    <div class="header-menu__ribbon"></div>
     <div class="header-menu__container">
         <div class="header-menu__row">
             <ul class="header-menu__layout header-menu__layout_half">

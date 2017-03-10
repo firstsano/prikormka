@@ -1,0 +1,46 @@
+.remote-search {
+
+}
+
+$height-result: 30px;
+
+// hack due to js and other staff
+
+.remote-search__result {
+  @include border-radius(2px);
+  @extend .row;
+  background: white;
+  border: solid 1px $color-application-main;
+  margin: auto;
+  overflow: hidden;
+  width: 100%;
+}
+
+.remote-search__result-link {
+  @extend .row;
+}
+
+.remote-search__result-image-layout {
+  @extend .col-xs-3;
+  height: $height-result;
+  line-height: $height-result;
+  text-align: center;
+}
+
+.remote-search__result-image {
+  @include max-size(100%, 100%);
+}
+
+.remote-search__result-name-layout {
+  @extend .col-xs-9;
+  height: $height-result;
+  line-height: $height-result;
+}
+
+.remote-search__result-name {
+  display: inline-block;
+  line-height: normal;
+  text-decoration: underline;
+  text-transform: lowercase;
+  vertical-align: middle;
+}

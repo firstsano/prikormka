@@ -5,6 +5,11 @@
   font-size: $font-size-standart;
   text-transform: uppercase;
 
+  & .header-menu__ribbon {
+    background-color: #282828;
+    height: 40px;
+  }
+
   & .header-menu__container {
     @extend .container;
   }
@@ -41,6 +46,10 @@
 
   & .header-menu__item:first-child .header-menu__item-link {
     padding-left: 0;
+  }
+
+  & .header-menu__item:last-child .header-menu__item-link {
+    padding-right: 0;
   }
 }
 
@@ -79,6 +88,10 @@
   }
 
   & .header-menu__item:first-child .header-menu__item-link {
+    padding: 20px;
+  }
+
+  & .header-menu__item:last-child .header-menu__item-link {
     padding: 20px;
   }
 }

@@ -7,10 +7,12 @@ use yii\filters\VerbFilter;
 use frontend\models\ContactForm;
 use frontend\models\Product;
 use frontend\extensions\Controller;
+use frontend\components\extensions\Url;
 use common\models\Feedback;
 use common\models\Article;
 use common\models\WidgetCarousel;
 use frontend\models\SubscribeForm;
+use frontend\components\extensions\ArrayHelper;
 use Exception;
 
 /**
@@ -90,6 +92,33 @@ class SiteController extends Controller
         return $this->render('wholesale', [
             'products' => Product::find()->all(),
         ]);
+    }
+
+    public function actionProductList($query, $limit, $page = 0) {
+        Yii::$app->response->format = Response::FORMAT_JSON;
+        $productsList = Product::previewList([
+            'query' => $query,
+            'limit' => $limit,
+            'offset' => $page
+        ]);
+        $output = [
+            'items' => [],
+            'total_count' => $productsList['total_count']
+        ];
+        foreach ($productsList['items'] as $product) {
+            $output['items'][] = ArrayHelper::toArray($product, [
+                Product::className() => [
+                    'name',
+                    'url' => function($product) {
+                        return Url::toProduct($product);
+                    },
+                    'image' => function($product) {
+                        return $product->mainImage->url;
+                    }
+                ]
+            ]);
+        }
+        return $output;
     }
 
     public function actionAddProductToCart()

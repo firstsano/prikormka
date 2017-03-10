@@ -9,7 +9,6 @@ use frontend\models\search\ProductSearch;
 use common\models\Category;
 use frontend\components\extensions\ArrayHelper;
 
-
 class WholesaleCatalogController extends Controller
 {
     /**
@@ -23,34 +22,31 @@ class WholesaleCatalogController extends Controller
         ]);
         $dataProvider = $searchModel
             ->load($request->get(), '')
-            ->load($request->post(), '')
             ->search()
         ;
+        $renderParams = [
+            'search' => $searchModel,
+            'dataProvider' => $dataProvider,
+            'pages' => $dataProvider->pagination,
+            'categories' => $this->getFilterCategories()
+        ];
 
         if ($request->isAjax) {
-            return $this->renderPartial('index', [
-                'search' => $searchModel,
-                'products' => $dataProvider->models,
-                'pages' => $dataProvider->pagination,
-                'categories' => ArrayHelper::mapRecursive(
-                    Category::find()->root()->all(),
-                    'slug',
-                    'name',
-                    'categories'
-                )
-            ]);
+            return $this->renderPartial('index', $renderParams);
         }
+        return $this->render('index', $renderParams);
+    }
 
-        return $this->render('index', [
-            'search' => $searchModel,
-            'products' => $dataProvider->models,
-            'pages' => $dataProvider->pagination,
-            'categories' => ArrayHelper::mapRecursive(
-                Category::find()->root()->all(),
-                'slug',
-                'name',
-                'categories'
-            )
-        ]);
+    /**
+     * @inheritdoc
+     */
+    protected function getFilterCategories()
+    {
+        return ArrayHelper::mapRecursive(
+            Category::find()->root()->all(),
+            'slug',
+            'name',
+            'categories'
+        );
     }
 }

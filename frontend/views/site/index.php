@@ -26,7 +26,7 @@ use frontend\components\widgets\ProductQuickOrder;
     </section>
     <section class="site-index__promo">
         <h1 class="site-index__title">
-            Мечта Рыбалова
+            Мечта Рыболова
             <div class="site-index__title-sub">&laquo;ЭкоТехнологии-Волгоград&raquo;</div>
             <br />
             <?= Html::img('@img/assets/single-fish.png', [

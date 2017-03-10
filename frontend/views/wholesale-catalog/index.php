@@ -1,6 +1,7 @@
 <?php
 
 /* @var $this \yii\web\View */
+/* @var $dataProvider \yii\data\ActiveDataProvider */
 /* @var $pages array */
 /* @var $products \common\models\Product[] */
 /* @var $search \frontend\models\search\ProductSearch */
@@ -9,10 +10,11 @@
 use yii\widgets\Pjax;
 use frontend\components\widgets\WholesaleFilter;
 use frontend\components\widgets\ProductWholesaleOrder;
-use yii\widgets\LinkPager;
 use frontend\components\extensions\Html;
 use frontend\components\widgets\FlashMessages;
 use yii\helpers\Url;
+use yii\grid\GridView;
+use kop\y2sp\ScrollPager;
 
 $this->title = Yii::t('frontend/site', 'Wholesale catalog');
 $this->params['breadcrumbs'][] = $this->title;
@@ -60,27 +62,56 @@ $this->params['breadcrumbs'][] = $this->title;
             ]) ?>
         </div>
         <div class="site-wholesale__products">
-            <?php
-                foreach ($products as $product) {
-                    echo ProductWholesaleOrder::widget(['product' => $product]);
-                }
-                if (empty($products)) {
-                    echo FlashMessages::widget([
-                        'messages' => [
-                            [
-                                'title' => 'Не найдено результатов...',
-                                'message' => "К сожалению по вашему запросу не найдео результатов. <br />" .
-                                    "Попробуйте изменить критерии запроса."
-                            ]
+            <?= GridView::widget([
+                'dataProvider' => $dataProvider,
+                'headerRowOptions' => [
+                    'class' => 'wholesale-grid__header'
+                ],
+                'tableOptions' => [
+                    'class' => 'wholesale-grid__table'
+                ],
+                'options' => [
+                    'class' => 'wholesale-grid'
+                ],
+                'rowOptions' => [
+                    'class' => 'wholesale-grid__row'
+                ],
+                'layout' => "{items}{pager}",
+                'columns' => [
+                    [
+                        'label' => false,
+                        'format' => 'raw',
+                        'value' => function($model) {
+                            return ProductWholesaleOrder::widget([
+                                'product' => $model
+                            ]);
+                        },
+                        'contentOptions' => ['class' => 'wholesale-grid__cell'],
+                    ]
+                ],
+                'emptyText' => FlashMessages::widget([
+                    'messages' => [
+                        [
+                            'title' => 'Не найдено результатов...',
+                            'message' => "К сожалению по вашему запросу не найдео результатов. <br />" .
+                                "Попробуйте изменить критерии запроса."
                         ]
-                    ]);
-                }
-            ?>
-            <?= LinkPager::widget([
-                'pagination' => $pages,
-                'prevPageLabel' => Html::icon('chevron_left'),
-                'nextPageLabel' => Html::icon('chevron_right'),
-                'pageCssClass' => 'waves-effect'
+                    ]
+                ]),
+                'pager' => [
+                    'class' => ScrollPager::className(),
+                    'container' => '.wholesale-grid tbody',
+                    'item' => 'tr',
+                    'paginationSelector' => '.wholesale-grid .pagination',
+                    'triggerOffset' => 1000,
+                    'enabledExtensions' => [
+                        ScrollPager::EXTENSION_TRIGGER,
+                        ScrollPager::EXTENSION_SPINNER,
+                        ScrollPager::EXTENSION_NONE_LEFT,
+                        ScrollPager::EXTENSION_PAGING,
+                    ],
+                    'triggerTemplate' => '<tr class="ias-trigger"><td colspan="100%" style="text-align: center"><a style="cursor: pointer">{text}</a></td></tr>',
+                ],
             ]) ?>
         </div>
         <?php Pjax::end() ?>

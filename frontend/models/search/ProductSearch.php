@@ -2,12 +2,11 @@
 
 namespace frontend\models\search;
 
-use common\models\Category;
-use frontend\components\extensions\ArrayHelper;
+
 use Yii;
 use yii\data\ActiveDataProvider;
 use frontend\models\Product;
-use yii\db\ActiveQuery;
+use common\models\Category;
 
 class ProductSearch extends Product
 {

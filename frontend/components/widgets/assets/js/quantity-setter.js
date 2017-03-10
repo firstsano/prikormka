@@ -75,6 +75,8 @@
         this.changeValue(integerValue);
     };
 
+    $.quantitySetter = quantitySetter;
+
     var initialize = function () {
         $('body').on('click', selectors.add, function(e) {
             e.preventDefault();

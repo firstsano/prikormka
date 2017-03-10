@@ -29,6 +29,9 @@
     &:first-child {
       padding-left: 0;
     }
+    &:last-child {
+      padding-right: 0;
+    }
   }
 
   & .footer-sitemap__menu-item-link {

@@ -16,6 +16,11 @@
         var data = $el.data('product-add');
         var $storage = $el.closest(data.storage);
         var storageData = $storage.data('storage');
+        if (!storageData) {
+            var input = $storage.find('.quantity-setter__input')[0];
+            (new $.quantitySetter(input)).initializeStorage();
+            storageData = $storage.data('storage');
+        }
         var params = {
             id: data.product,
             quantity: storageData.quantity

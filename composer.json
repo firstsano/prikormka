@@ -51,7 +51,8 @@
     "omnilight/yii2-shopping-cart": "*",
     "himiklab/yii2-recaptcha-widget": "*",
     "kartik-v/yii2-widget-growl": "*",
-    "kartik-v/yii2-widget-select2": "@dev"
+    "kartik-v/yii2-widget-select2": "@dev",
+    "kop/yii2-scroll-pager": "dev-master"
   },
   "require-dev": {
     "yiisoft/yii2-debug": "^2.0.0",

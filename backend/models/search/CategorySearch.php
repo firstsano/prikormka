@@ -50,6 +50,7 @@ class CategorySearch extends Category
         if (!($this->load($params) && $this->validate())) {
             return $dataProvider;
         }
+        $this->slug = $params[static::formName()]['slug'];
 
         $query->andFilterWhere([
             'id' => $this->id,

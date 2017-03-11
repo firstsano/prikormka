@@ -19,14 +19,14 @@ use frontend\components\widgets\CategoryRadioList;
                 'id' => 'isNew',
                 'class' => 'filled-in',
             ]) ?>
-            <?= Html::label('Новинки', 'isNew') ?>
+            <?= Html::label('Новинки', 'isNew', ['class' => 'filter__input-label']) ?>
         </div>
     </div>
     <div class="filter__section">
         <div class="filter__a-title">
             Сезоны
         </div>
-        <hr />
+        <hr class="filter__splitter" />
         <div class="filter__a-values">
             <?= Html::checkboxList('seasons[]', @$params['seasons'], Product::seasons(), [
                 'item' => function($index, $label, $name, $checked, $value) {
@@ -36,17 +36,17 @@ use frontend\components\widgets\CategoryRadioList;
                             'class' => 'filled-in',
                             'value' => $value
                         ]) .
-                        Html::label($label, $id) .
+                        Html::label($label, $id, ['class' => 'filter__input-label']) .
                         Html::tag('br');
                 }
             ]) ?>
         </div>
     </div>
-    <div class="filter__section">
-        <div class="filter__a-title">
+    <div class="filter__section filter__section_padding_smooth">
+        <div class="filter__a-title filter__a-title_padding_smooth">
             Категория
         </div>
-        <hr />
+        <hr class="filter__splitter filter__splitter_padding_smooth" />
         <div class="filter__a-values">
             <?= CategoryRadioList::widget([
                 'checked' => @$params['category'],
@@ -54,32 +54,32 @@ use frontend\components\widgets\CategoryRadioList;
             ]) ?>
         </div>
     </div>
-    <div class="filter__section">
+    <!--div class="filter__section">
         <div class="filter__a-title">
             Цена
         </div>
         <hr />
         <div class="filter__a-values">
             <?php
-                echo Html::hiddenInput('priceMin', @params['priceMin'], ['id' => 'product-min-price']);
-                echo Html::hiddenInput('priceMax', @params['priceMax'], ['id' => 'product-max-price']);
-                $ranges = Product::priceRanges();
-                echo RangeSlider::widget([
-                    'inputs' => [
-                        'min' => "#product-min-price",
-                        'max' => "#product-max-price"
-                    ],
-                    'range' => [
-                        'start' => $model->priceMin,
-                        'end' => $model->priceMax,
-                    ],
-                    'min' => $ranges['min'],
-                    'max' => $ranges['max'],
-                    'step' => 1
-                ])
+//                echo Html::hiddenInput('priceMin', @params['priceMin'], ['id' => 'product-min-price']);
+//                echo Html::hiddenInput('priceMax', @params['priceMax'], ['id' => 'product-max-price']);
+//                $ranges = Product::priceRanges();
+//                echo RangeSlider::widget([
+//                    'inputs' => [
+//                        'min' => "#product-min-price",
+//                        'max' => "#product-max-price"
+//                    ],
+//                    'range' => [
+//                        'start' => $model->priceMin,
+//                        'end' => $model->priceMax,
+//                    ],
+//                    'min' => $ranges['min'],
+//                    'max' => $ranges['max'],
+//                    'step' => 1
+//                ])
             ?>
         </div>
-    </div>
+    </div-->
     <div class="filter__reset">
         <?php
             echo Html::submitButton(Yii::t('frontend/site', 'Apply filter'), ['class' => 'button button_block']);

@@ -4,7 +4,7 @@
     display: block;
     font-size: $font-size-standart-small;
     font-weight: 400;
-    padding: 5px 0;
+    padding: 5px 0 5px 20px;
     &_important {
       font-weight: bold;
     }
@@ -17,7 +17,8 @@
   & .category-radio-list__sub-categories {
     border-left: solid 1px $color-application-main;
     display: none;
-    padding-left: 15px;
+    margin-left: 20px;
+    padding-left: 0;
 
     &_active {
       display: block;
@@ -26,6 +27,6 @@
 
   .category-radio-list__radio:checked + .category-radio-list__label {
     background-color: rgba(0, 0, 255, 0.05);
-    border-right: solid 5px $color-application-main;
+    border-left: solid 5px $color-application-main;
   }
 }

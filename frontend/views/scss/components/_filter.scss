@@ -6,6 +6,11 @@
     margin-bottom: 20px;
   }
 
+  & .filter__input-label {
+    font-size: $font-size-standart;
+    font-weight: normal;
+  }
+
   & .filter__a-title {
     font-weight: bold;
     margin-bottom: 15px;
@@ -15,7 +20,7 @@
     margin-top: 20px;
   }
 
-  hr {
+  .filter__splitter {
     border-color: $color-border-standart;
     border-style: solid none none none;
   }
@@ -23,5 +28,22 @@
   & .filter__reset {
     padding: 20px 0;
     color: $color-application-main;
+  }
+}
+
+.filter {
+  & .filter__section.filter__section_padding_smooth {
+    padding: 0;
+  }
+
+  & .filter__a-title.filter__a-title_padding_smooth {
+    font-weight: bold;
+    margin-bottom: 15px;
+    padding: 20px 20px 0 20px;
+  }
+
+  & .filter__splitter.filter__splitter_padding_smooth {
+    margin-left: 20px;
+    margin-right: 20px;
   }
 }

@@ -22,11 +22,11 @@ use frontend\components\widgets\CategoryRadioList;
             'placeholder' => 'Поиск...',
         ]) ?>
     </div>
-    <div class="filter__section">
-        <div class="filter__a-title">
+    <div class="filter__section filter__section_padding_smooth">
+        <div class="filter__a-title filter__a-title_padding_smooth">
             Категория
         </div>
-        <hr />
+        <hr class="filter__splitter filter__splitter_padding_smooth" />
         <div class="filter__a-values">
             <div class="category-radio-list">
                 <?php

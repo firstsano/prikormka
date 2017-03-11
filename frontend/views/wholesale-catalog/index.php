@@ -100,14 +100,14 @@ $this->params['breadcrumbs'][] = $this->title;
                 ]),
                 'pager' => [
                     'class' => ScrollPager::className(),
-                    'container' => '.wholesale-grid tbody',
-                    'item' => 'tr',
-                    'paginationSelector' => '.wholesale-grid .pagination',
+                    'container' => '.wholesale-grid',
+                    'item' => '.wholesale-grid__row',
+                    'paginationSelector' => '.pagination',
                     'triggerOffset' => 1000,
+                    'next' => '.next a',
                     'enabledExtensions' => [
                         ScrollPager::EXTENSION_TRIGGER,
                         ScrollPager::EXTENSION_SPINNER,
-                        ScrollPager::EXTENSION_NONE_LEFT,
                         ScrollPager::EXTENSION_PAGING,
                     ],
                     'triggerTemplate' => '<tr class="ias-trigger"><td colspan="100%" style="text-align: center"><a style="cursor: pointer">{text}</a></td></tr>',
@@ -117,3 +117,13 @@ $this->params['breadcrumbs'][] = $this->title;
         <?php Pjax::end() ?>
     </div>
 </div>
+
+<?php
+
+$reinitializeScroll = <<<JS
+    $('#wholesale-products').on('pjax:end', function() {
+        jQuery.ias().reinitialize();
+    });
+JS;
+
+$this->registerJs($reinitializeScroll, $this::POS_READY);

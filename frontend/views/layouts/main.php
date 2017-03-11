@@ -26,9 +26,10 @@ use frontend\components\extensions\Breadcrumbs;
     <?= $this->render('header') ?>
     <main class="main">
         <div class="main__breadcrumbs">
-            <?php if (!@$this->params['breadcrums-printed'])  {
+            <?php if (!@$this->params['breadcrumbs-printed'])  {
                 echo Breadcrumbs::widget([
                     'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
+                    'options' => ['class' => 'breadcrumbs']
                 ]);
             } ?>
         </div>

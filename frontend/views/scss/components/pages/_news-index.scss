@@ -1,3 +1,5 @@
+$height-image: 250px;
+
 .news-index {
   @extend .container;
 
@@ -11,6 +13,14 @@
 
   & .news-index__item-thumbnail {
     @extend .col-xs-3;
+    text-align: center;
+  }
+
+  & .news-index__image-thumbnail {
+    @include square($height-image);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
   }
 
   & .news-index__item-title {

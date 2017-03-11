@@ -16,9 +16,9 @@ $this->params['breadcrumbs'][] = $this->title;
         <hr />
         <div class="news-index__item">
             <div class="news-index__item-thumbnail">
-                <?= Html::img($newsItem->imageUrl, [
-                    'alt' => $newsItem->title,
-                    'class' => 'img-responsive'
+                <?= Html::tag('div', '', [
+                    'style' => "background-image: url('{$newsItem->imageUrl}')",
+                    'class' => "news-index__image-thumbnail"
                 ]) ?>
             </div>
             <div class="news-index__item-description">

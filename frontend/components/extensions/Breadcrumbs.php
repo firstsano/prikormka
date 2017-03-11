@@ -2,8 +2,6 @@
 
 namespace frontend\components\extensions;
 
-use frontend\components\extensions\Html;
-
 class Breadcrumbs extends \yii\widgets\Breadcrumbs
 {
     /**
@@ -12,7 +10,6 @@ class Breadcrumbs extends \yii\widgets\Breadcrumbs
     public function init()
     {
         parent::init();
-        $this->options = ['class' => 'breadcrumbs'];
         $this->itemTemplate = "<li class=\"breadcrumbs__item\">" .
             "{link}" .
             Html::icon('remove', ['class' => 'breadcrumbs__separator']) .

@@ -8,7 +8,7 @@ use frontend\components\extensions\Breadcrumbs;
 $this->title = $model->title;
 $this->params['breadcrumbs'][] = ['label' => Yii::t('frontend/site', 'Blog'), 'url' => ['/news/index']];
 $this->params['breadcrumbs'][] = $this->title;
-$this->params['breadcrums-printed'] = true;
+$this->params['breadcrumbs-printed'] = true;
 
 ?>
 

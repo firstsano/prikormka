@@ -6,16 +6,26 @@ use Yii;
 use yii\web\Controller;
 use common\models\Article;
 use yii\web\NotFoundHttpException;
+use yii\data\ActiveDataProvider;
 
 class NewsController extends Controller
 {
+    const NEWS_PER_PAGE = 10;
+
     /**
      * @inheritdoc
      */
     public function actionIndex()
     {
+        $dataProvider = new ActiveDataProvider([
+            'query' => Article::find()->published(),
+            'pagination' => [
+                'pageSize' => static::NEWS_PER_PAGE,
+            ],
+        ]);
+
         return $this->render('index', [
-            'news' => Article::find()->published()->all()
+            'dataProvider' => $dataProvider
         ]);
     }
 

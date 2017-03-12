@@ -1,0 +1,27 @@
+.simple-grid {
+
+  & .simple-grid__header {
+    display: none;
+  }
+
+  & .simple-grid__row {
+    border: none;
+    padding: 0;
+  }
+
+  & .simple-grid__cell {
+    border: none;
+    padding: 0;
+  }
+
+  & .simple-grid__table {
+    border: none;
+    width: 100%;
+  }
+
+  & .simple-grid__load-more {
+    @extend .button;
+    cursor: pointer;
+    margin: 20px;
+  }
+}

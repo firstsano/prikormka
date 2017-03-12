@@ -114,8 +114,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         Остались вопросы? Всегда рады помочь вам!
                     </div>
                     <div class="delivery-info__article">
-                        Москва: 8(903) 104-29-95 <br />
-                        Регионы: 8(903) 104-29-95 <br />
+                        Телефон: 8(903) 104-29-95 <br />
                         Email: etv06@mail.ru
                     </div>
                 </div>

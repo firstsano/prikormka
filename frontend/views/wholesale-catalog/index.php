@@ -69,16 +69,16 @@ $this->params['breadcrumbs'][] = $this->title;
             <?= GridView::widget([
                 'dataProvider' => $dataProvider,
                 'headerRowOptions' => [
-                    'class' => 'wholesale-grid__header'
+                    'class' => 'simple-grid__header'
                 ],
                 'tableOptions' => [
-                    'class' => 'wholesale-grid__table'
+                    'class' => 'simple-grid__table'
                 ],
                 'options' => [
-                    'class' => 'wholesale-grid'
+                    'class' => 'simple-grid'
                 ],
                 'rowOptions' => [
-                    'class' => 'wholesale-grid__row'
+                    'class' => 'simple-grid__row'
                 ],
                 'layout' => "{items}{pager}",
                 'columns' => [
@@ -90,7 +90,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                 'product' => $model
                             ]);
                         },
-                        'contentOptions' => ['class' => 'wholesale-grid__cell'],
+                        'contentOptions' => ['class' => 'simple-grid__cell'],
                     ]
                 ],
                 'emptyText' => FlashMessages::widget([
@@ -104,8 +104,8 @@ $this->params['breadcrumbs'][] = $this->title;
                 ]),
                 'pager' => [
                     'class' => ScrollPager::className(),
-                    'container' => '.wholesale-grid',
-                    'item' => '.wholesale-grid__row',
+                    'container' => '.simple-grid',
+                    'item' => '.simple-grid__row',
                     'paginationSelector' => '.pagination',
                     'triggerOffset' => 1000,
                     'next' => '.next a',

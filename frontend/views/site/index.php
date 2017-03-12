@@ -28,11 +28,10 @@ use frontend\components\widgets\ProductQuickOrder;
         <h1 class="site-index__title">
             Мечта Рыболова
             <div class="site-index__title-sub">&laquo;ЭкоТехнологии-Волгоград&raquo;</div>
-            <br />
-            <?= Html::img('@img/assets/single-fish.png', [
-                'height' => '25px'
-            ]) ?>
         </h1>
+        <?= Html::img('@img/assets/single-fish.png', [
+            'class' => 'site-index__fish-splitter'
+        ]) ?>
         <div class="site-index__promo-description">
             Компания &laquo;ЭкоТехнологии-Волгоград&raquo; является производителем и оптовым поставщиком
             рыболовных прикормок, смесей и живых наживок. Мы специализируемся на создании макисмально
@@ -43,6 +42,9 @@ use frontend\components\widgets\ProductQuickOrder;
             частью производства является и производство живых насадок, таких как опарыш и червь.
         </div>
     </section>
+    <?= Html::img('@img/assets/single-fish.png', [
+        'class' => 'site-index__fish-splitter'
+    ]) ?>
     <section class="site-index__chars-layout">
         <div class="site-index__chars">
             <div class="site-index__char">
@@ -74,8 +76,9 @@ use frontend\components\widgets\ProductQuickOrder;
             </div>
         </div>
     </section>
-
-
+    <?= Html::img('@img/assets/single-fish.png', [
+        'class' => 'site-index__fish-splitter'
+    ]) ?>
     <section class="site-index__new-products">
         <div class="new-products">
             <h2 class="new-products__title"> Новинки </h2>

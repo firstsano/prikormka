@@ -23,8 +23,6 @@
 
   & .site-index__chars-layout {
     @extend .container;
-    padding-bottom: 80px;
-    padding-top: 80px;
   }
 
   & .site-index__chars {
@@ -63,5 +61,11 @@
 
   & .site-index__news {
     background-color: $color-application-additional;
+  }
+
+  & .site-index__fish-splitter {
+    display: block;
+    height: 25px;
+    margin: 60px auto;
   }
 }

@@ -1,0 +1,36 @@
+$height-excel-section: 100px;
+
+.order-notice {
+  @extend .row;
+
+  & .order-notice__message-layout {
+    @extend .col-xs-9;
+  }
+
+  & .order-notice__message {
+    height: $height-excel-section;
+  }
+
+  & .order-notice__excel-img {
+    height: $height-excel-section;
+    vertical-align: middle;
+  }
+
+  & .order-notice__excel-price {
+    @extend .col-xs-3;
+    text-align: right;
+  }
+
+  & .order-notice__excel-link {
+    @include no-link;
+  }
+
+  & .order-notice__excel-info {
+    display: inline-block;
+    white-space: normal;
+    vertical-align: middle;
+    color: $color-excel;
+    text-decoration: underline;
+    margin-right: 10px;
+  }
+}

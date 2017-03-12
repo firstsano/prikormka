@@ -1,5 +1,3 @@
-$height-excel-section: 100px;
-
 .site-wholesale {
   @extend .container;
 
@@ -23,36 +21,5 @@ $height-excel-section: 100px;
   & .site-wholesale__search {
     @extend .col-xs-12;
     margin-bottom: 20px;
-  }
-
-  & .site-wholesale__notice {
-    @extend .col-xs-9;
-  }
-
-  & .site-wholesale__price-notice {
-    height: $height-excel-section;
-  }
-
-  & .site-wholesale__excel-img {
-    height: $height-excel-section;
-    vertical-align: middle;
-  }
-
-  & .site-wholesale__excel-price {
-    @extend .col-xs-3;
-    text-align: right;
-  }
-
-  & .site-wholesale__excel-link {
-    @include no-link;
-  }
-
-  & .site-wholesale__excel-info {
-    display: inline-block;
-    white-space: normal;
-    vertical-align: middle;
-    color: $color-excel;
-    text-decoration: underline;
-    margin-right: 10px;
   }
 }

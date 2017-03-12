@@ -26,8 +26,8 @@ $this->params['breadcrumbs'][] = $this->title;
 
 <div class="site-wholesale">
     <h1 class="site-wholesale__title"><?= Html::encode($this->title) ?></h1>
-    <div class="site-wholesale__layout">
-        <div class="site-wholesale__notice">
+    <div class="order-notice">
+        <div class="order-notice__message-layout">
             <?= FlashMessages::widget([
                 'messages' => [
                     [
@@ -36,19 +36,20 @@ $this->params['breadcrumbs'][] = $this->title;
                             "должна быть не меньше 20 000 руб."
                     ]
                 ],
-                'options' => ['class' => 'site-wholesale__price-notice']
+                'options' => ['class' => 'order-notice__message']
             ]) ?>
         </div>
-        <div class="site-wholesale__excel-price">
+        <div class="order-notice__excel-price">
             <?= Html::beginTag('a', [
                 'href' => Url::to(['/site/download', 'path' => 'files/price.xls']),
-                'class' => 'site-wholesale__excel-link'])
+                'class' => 'order-notice__excel-link'])
             ?>
-            <div class="site-wholesale__excel-info">Скачать прайс-лист<br /> в формате Excel</div>
-            <?= Html::img('@img/icons/excel.png', ['class' => 'site-wholesale__excel-img']) ?>
+            <div class="order-notice__excel-info">Скачать прайс-лист<br /> в формате Excel</div>
+            <?= Html::img('@img/icons/excel.png', ['class' => 'order-notice__excel-img']) ?>
             <?= Html::endTag('a') ?>
         </div>
     </div>
+    <br />
     <div class="site-wholesale__layout">
         <?php Pjax::begin([
             'id' => 'wholesale-products',

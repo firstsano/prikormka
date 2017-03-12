@@ -1,0 +1,23 @@
+$size-icon: 40px;
+
+.to-top {
+  @include border-radius(50%);
+  background-color: $color-application-light;
+  border: solid 2px $color-application-main;
+  cursor: pointer;
+  display: none;
+
+  & .to-top__icon {
+    color: $color-application-main;
+    font-size: $size-icon;
+    font-weight: 100;
+  }
+
+  &.pinned {
+    display: inline-block;
+    bottom: 50px;
+    right: 50px;
+    top: auto !important;
+    z-index: 100;
+  }
+}

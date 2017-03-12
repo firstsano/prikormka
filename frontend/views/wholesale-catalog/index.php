@@ -12,6 +12,7 @@ use frontend\components\widgets\WholesaleFilter;
 use frontend\components\widgets\ProductWholesaleOrder;
 use frontend\components\extensions\Html;
 use frontend\components\widgets\FlashMessages;
+use frontend\components\widgets\ToTop;
 use yii\helpers\Url;
 use yii\grid\GridView;
 use kop\y2sp\ScrollPager;
@@ -20,6 +21,8 @@ $this->title = Yii::t('frontend/site', 'Wholesale catalog');
 $this->params['breadcrumbs'][] = $this->title;
 
 ?>
+
+<?= ToTop::widget() ?>
 
 <div class="site-wholesale">
     <h1 class="site-wholesale__title"><?= Html::encode($this->title) ?></h1>

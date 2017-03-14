@@ -1,4 +1,9 @@
 (function ($) {
+
+    var events = {
+        drawn: 'radio-list-drawn'
+    };
+
     var selectors = {
         container: '.category-radio-list',
         radio: '.category-radio-list__radio',
@@ -23,6 +28,10 @@
                 return ($(el).find(selectors.radio).filter(':checked').length == 0);
             }).removeClass('category-radio-list__sub-categories_active');
             displaySubContainer(this);
+            var self = this;
+            $(this).trigger(events.drawn, {
+                triggeredElement: self
+            });
         });
     };
 

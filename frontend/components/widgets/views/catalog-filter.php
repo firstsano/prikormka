@@ -10,6 +10,8 @@ use common\models\Category;
 use frontend\components\widgets\RangeSlider;
 use frontend\components\widgets\CategoryRadioList;
 
+\frontend\components\widgets\assets\CatalogFilterAsset::register($this);
+
 ?>
 
 <?= Html::beginForm(['/catalog/index'], 'get', ['class' => 'filter']) ?>
@@ -53,6 +55,7 @@ use frontend\components\widgets\CategoryRadioList;
                 'categories' => Category::filters()
             ]) ?>
         </div>
+        <br />
     </div>
     <!--div class="filter__section">
         <div class="filter__a-title">
@@ -82,7 +85,8 @@ use frontend\components\widgets\CategoryRadioList;
     </div-->
     <div class="filter__reset">
         <?php
-            echo Html::submitButton(Yii::t('frontend/site', 'Apply filter'), ['class' => 'button button_block']);
+            echo Html::submitButton(Yii::t('frontend/site', 'Apply filter'), ['class' => 'filter__submit']);
+            echo Html::submitButton(Yii::t('frontend/site', 'Apply filter'), ['class' => 'filter__submit filter__submit_additional']);
             echo Html::tag('br');
             $icon = Html::textIcon('Сбросить', 'replay', false);
             echo Html::a($icon, ['/catalog/index'], ['class' => 'button button_block button_filtered'])

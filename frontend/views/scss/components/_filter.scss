@@ -1,4 +1,5 @@
 .filter {
+  position: relative;
 
   & .filter__section {
     background-color: $color-application-additional;
@@ -28,6 +29,36 @@
   & .filter__reset {
     padding: 20px 0;
     color: $color-application-main;
+  }
+
+  & .filter__submit {
+    @extend .button, .button_block;
+  }
+
+  & .filter__submit.filter__submit_additional {
+    display: none;
+    left: 100%;
+    margin-left: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    position: absolute;
+    white-space: nowrap;
+    width: auto;
+    z-index: 100;
+
+    &:after {
+      content: "";
+      border-bottom: 10px solid transparent;
+      border-right: 10px solid $color-application-main;
+      border-top: 10px solid transparent;
+      height: 0;
+      margin-top: -10px;
+      margin-right: -3px;
+      position: absolute;
+      right: 100%;
+      top: 50%;
+      width: 0;
+    }
   }
 }
 

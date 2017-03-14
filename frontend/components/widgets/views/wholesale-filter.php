@@ -46,6 +46,7 @@ use frontend\components\widgets\CategoryRadioList;
                 'checked' => @$params['category'],
                 'categories' => Category::filters()
             ]) ?>
+            <br />
         </div>
     </div>
 <?= Html::endForm() ?>

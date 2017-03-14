@@ -1,7 +1,7 @@
-$font-promo: 30px;
+$font-promo: 36px;
 $font-promo-large: 42px;
+$font-promo-small: 22px;
 $font-link: 18px;
-$font-weight: 300;
 
 .carousel-promo {
   @extend .container;
@@ -17,12 +17,17 @@ $font-weight: 300;
 
   & .carousel-promo__title {
     font-size: $font-promo;
-    font-weight: $font-weight;
+    font-weight: 400;
+    margin-bottom: 20px;
+    & * {
+      margin: 0;
+    }
   }
 
-  & .carousel-promo__title.carousel-promo__title_large {
-    font-size: $font-promo-large;
-    font-weight: $font-weight;
+  & .carousel-promo__title.carousel-promo__title_small {
+    font-size: $font-promo-small;
+    font-weight: 100;
+    margin-bottom: 0;
   }
 
   & .carousel-promo__link {

@@ -17,7 +17,7 @@ use frontend\components\extensions\Html;
                     <?php
                         echo Html::tag('div', @$item->caption, ['class' => 'carousel-promo__title']);
                         echo Html::tag('div', @$item->promo,
-                            ['class' => 'carousel-promo__title carousel-promo__title_large']);
+                            ['class' => 'carousel-promo__title carousel-promo__title_small']);
                         echo Html::tag('div',
                             Html::a('Подробнее', @$item->url, ['class' => 'carousel-promo__link']));
                     ?>

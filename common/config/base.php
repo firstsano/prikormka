@@ -42,13 +42,18 @@ $config = [
             'class'=>'yii\i18n\Formatter'
         ],
 
+        'image' => [
+            'class' => 'yii\image\ImageDriver',
+            'driver' => 'GD',
+        ],
+
         'glide' => [
             'class' => 'trntv\glide\components\Glide',
             'sourcePath' => '@storage/web/source',
             'cachePath' => '@storage/cache',
             'urlManager' => 'urlManagerStorage',
             'maxImageSize' => env('GLIDE_MAX_IMAGE_SIZE'),
-            'signKey' => env('GLIDE_SIGN_KEY')
+            'signKey' => false //env('GLIDE_SIGN_KEY')
         ],
 
         'mailer' => [

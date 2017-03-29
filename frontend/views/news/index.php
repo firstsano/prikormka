@@ -7,6 +7,7 @@ use frontend\components\extensions\Html;
 use frontend\components\widgets\FlashMessages;
 use kop\y2sp\ScrollPager;
 use yii\grid\GridView;
+use frontend\components\extensions\Url;
 
 $this->title = Yii::t('frontend/site', 'Blog');
 $this->params['breadcrumbs'][] = $this->title;
@@ -39,7 +40,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     $cell .= "<div class=\"news-index__item\">";
                     $cell .= "<div class=\"news-index__item-thumbnail\">";
                     $cell .= Html::tag('div', '', [
-                        'style' => "background-image: url('{$model->imageUrl}')",
+                        'style' => "background-image: url('" . Url::toImage($model->thumbnail_path, 'main') . "')",
                         'class' => "news-index__image-thumbnail"
                     ]);
                     $cell .= "</div>";

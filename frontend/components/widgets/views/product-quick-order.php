@@ -7,6 +7,7 @@
 use frontend\components\extensions\Html;
 use frontend\components\widgets\QuantitySetter;
 use frontend\components\widgets\AddToCart;
+use frontend\components\extensions\Url;
 
 ?>
 
@@ -18,8 +19,8 @@ use frontend\components\widgets\AddToCart;
     <div class="q-order__info">
         <div class="q-order__image-section">
             <div class="q-order__image-layout">
-                <?= Html::img($product->mainImage->url, [
-                    'alt' => $product->name, 'class' => 'q-order__image' ]) ?>
+                <?= Html::img(Url::toImage($product->mainImage->path),
+                    [ 'alt' => $product->name, 'class' => 'q-order__image' ]) ?>
             </div>
         </div>
         <div class="q-order__info-section">

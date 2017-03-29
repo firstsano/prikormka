@@ -6,13 +6,14 @@
 use frontend\components\extensions\Html;
 use frontend\components\widgets\QuantitySetter;
 use frontend\components\widgets\AddToCart;
-use yii\helpers\StringHelper;
+use frontend\components\extensions\Url;
 
 ?>
 
 <div class="w-order">
     <div class="w-order__product-image-container">
-        <?= Html::img($product->mainImage->url, ['class' => 'w-order__product-image']) ?>
+        <?= Html::img(Url::toImage($product->mainImage->path, 'thumb'),
+            ['class' => 'w-order__product-image']) ?>
     </div>
     <div class="w-order__product-info">
         <?= Html::a(

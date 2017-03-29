@@ -54,7 +54,8 @@ class SiteController extends Controller
                     'add-product-to-cart' => ['post'],
                     'remove-all-from-cart' => ['post'],
                     'subscribe' => ['post'],
-                    'set-data-display' => ['put']
+                    'set-data-display' => ['put'],
+                    'get-image' => ['get']
                 ],
             ],
         ];
@@ -69,6 +70,29 @@ class SiteController extends Controller
             'feedbacks' => Feedback::find()->newOnes(2)->all(),
             'latestNews' => Article::find()->published()->newOnes(4)->all()
         ]);
+    }
+
+    public function actionGetImage($path, $type = 'default')
+    {
+        $typeWidth = 150;
+        switch ($type) {
+            case 'main':
+                $typeWidth = 800;
+                break;
+            case 'thumb':
+                $typeWidth = 80;
+                break;
+        }
+        $imagePath = Yii::getAlias(Yii::$app->glide->sourcePath) . DIRECTORY_SEPARATOR . $path;
+        if (!file_exists($imagePath)) {
+            return false;
+        }
+        $image = Yii::$app->image->load($imagePath);
+        $glideConfig = [];
+        if ($image->width > $typeWidth) {
+            $glideConfig = ['w' => $typeWidth];
+        }
+        return Yii::$app->glide->outputImage($path, $glideConfig);
     }
 
     public function actionSubscribe()

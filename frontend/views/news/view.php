@@ -4,6 +4,7 @@
 /* @var $model \common\models\Article */
 
 use frontend\components\extensions\Breadcrumbs;
+use frontend\components\extensions\Url;
 
 $this->title = $model->title;
 $this->params['breadcrumbs'][] = ['label' => Yii::t('frontend/site', 'Blog'), 'url' => ['/news/index']];
@@ -13,7 +14,7 @@ $this->params['breadcrumbs-printed'] = true;
 ?>
 
 <div class="news-view">
-    <div class="news-view__title-background" style="background-image: url(<?= $model->imageUrl ?>);">
+    <div class="news-view__title-background" style="background-image: url(<?= Url::toImage($model->thumbnail_path, 'main') ?>);">
         <div class="news-view__breadcrumbs-layout">
             <div class="news-view__breadcrumbs">
                 <?= Breadcrumbs::widget([

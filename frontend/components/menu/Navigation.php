@@ -16,7 +16,7 @@ class Navigation
                 'class' => ['header-menu__item-link_highlight_1']
             ],
             [
-                'label' => 'Оптовый каталог',
+                'label' => 'Для оптовиков',
                 'url' => [ '/wholesale-catalog/index' ],
                 'class' => ['header-menu__item-link_highlight_2']
             ],

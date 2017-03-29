@@ -14,13 +14,19 @@ use yii\helpers\Url;
             <ul class="header-menu__layout">
                 <?php
                     foreach (Navigation::items() as $item) {
-                        Html::addCssClass($item, ['header-menu__item-link']);
+                        Html::addCssClass($item, ['header-menu__item-link header-menu__item-link_hoverable']);
                         echo Html::beginTag('li', ['class' => 'header-menu__item']);
                         echo Html::a($item['label'], $item['url'], [
                             'class' => $item['class']
                         ]);
                         echo Html::endTag('li');
                     }
+                    echo Html::beginTag('li', ['class' => 'header-menu__item header-menu__item_right']);
+                    echo Html::a('Скачать прайс',
+                        Url::to(['/site/download', 'path' => 'files/price.xls']), [
+                        'class' => 'header-menu__item-link header-menu__item-link_icon header-menu__item-link_highlight_3'
+                    ]);
+                    echo Html::endTag('li');
                 ?>
             </ul>
         </div>

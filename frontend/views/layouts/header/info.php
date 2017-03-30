@@ -22,9 +22,14 @@ use frontend\components\widgets\RemoteSearch;
         </div>
         <div class="header-info__phones">
             <div class="header-info__contact-phone"> 8 (960) 882-22-22 </div>
-            <div class="header-info__work-time"> Работаем
-                <span class="header-info__work-time header-info__work-time_highlight">
+            <div class="header-info__contact-info"> Работаем
+                <span class="header-info__contact-info header-info__contact-info_highlight">
                     с 8:00 до 20:00
+                </span>
+            </div>
+            <div class="header-info__contact-info header-info__contact-info_right"> Email:
+                <span class="header-info__contact-info header-info__contact-info_highlight">
+                    <?= Html::mailto(Yii::$app->params['companyEmail'], Yii::$app->params['companyEmail']) ?>
                 </span>
             </div>
         </div>

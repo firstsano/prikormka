@@ -45,9 +45,13 @@ $font-padding: $font-size-standart-small;
     font-weight: 500;
   }
 
-  & .header-info__work-time {
+  & .header-info__contact-info {
+    display: inline-block;
     font-size: $font-padding;
 
+    &_right {
+      margin-left: 30px;
+    }
     &_highlight {
       color: $color-application-main;
     }

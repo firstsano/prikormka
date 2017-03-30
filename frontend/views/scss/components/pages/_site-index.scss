@@ -5,7 +5,7 @@
   }
 
   & .site-index__title {
-    font-size: $font-size-large;
+    font-size: 30px;
     text-align: center;
   }
 
@@ -30,16 +30,20 @@
   }
 
   & .site-index__char {
-    @extend .col-xs-4;
-    text-align: center;
+    @extend .col-xs-3;
+    white-space: nowrap;
   }
 
   & .site-index__char-image {
-    height: 100px;
+    height: 70px;
+    vertical-align: middle;
   }
 
   & .site-index__char-desc {
-    margin-top: 20px;
+    display: inline-block;
+    font-size: $font-size-standart-small;
+    margin-left: 10px;
+    vertical-align: middle;
   }
 
   & .site-index__new-products {
@@ -65,7 +69,7 @@
 
   & .site-index__fish-splitter {
     display: block;
-    height: 25px;
-    margin: 60px auto;
+    height: 15px;
+    margin: 30px auto;
   }
 }

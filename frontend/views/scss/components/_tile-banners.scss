@@ -1,0 +1,84 @@
+$color-scheme-1-background: #ebfbf7;
+$color-scheme-1-title: #3681e7;
+$color-scheme-2-background: #f9f8e2;
+$color-scheme-2-title: #efa987;
+$color-scheme-3-background: #e1f5dd;
+$color-scheme-3-title: #e74736;
+$color-scheme-4-background: #fbece2;
+$color-scheme-4-title: #82bece;
+
+.tile-banners {
+  @extend .container;
+
+  & .tile-banners__row {
+    @extend .row;
+    margin-bottom: 20px;
+  }
+
+  & .tile-banners__title {
+    font-size: $font-size-standart-big;
+    font-weight: bold;
+    margin: 0;
+
+    &_color_1 {
+      color: $color-scheme-1-title;
+    }
+    &_color_2 {
+      color: $color-scheme-2-title;
+    }
+    &_color_3 {
+      color: $color-scheme-3-title;
+    }
+    &_color_4 {
+      color: $color-scheme-4-title;
+    }
+  }
+
+  & .tile-banners__description {
+    @include size(50%, 100px);
+    margin: 20px 0;
+  }
+
+  & .tile-banners__buy-link {
+    @extend .z-depth-2;
+    @include no-link($color-text-standart);
+    padding: 10px 40px;
+    background-color: white;
+    display: inline-block;
+    width: auto;
+  }
+
+  & .tile-banners__column {
+    &_small {
+      @extend .col-xs-5;
+    }
+
+    &_large {
+      @extend .col-xs-7;
+    }
+
+    &_half {
+      @extend .col-xs-6;
+    }
+  }
+
+  & .tile-banners__banner {
+    background-position: right 20px center;
+    background-repeat: no-repeat;
+    background-size: auto 90%;
+    padding: 20px;
+
+    &_color_1 {
+      background-color: $color-scheme-1-background;
+    }
+    &_color_2 {
+      background-color: $color-scheme-2-background;
+    }
+    &_color_3 {
+      background-color: $color-scheme-3-background;
+    }
+    &_color_4 {
+      background-color: $color-scheme-4-background;
+    }
+  }
+}

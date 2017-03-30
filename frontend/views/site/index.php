@@ -11,9 +11,9 @@ $this->title = Yii::t('frontend/site', 'About');
 
 use frontend\components\extensions\Html;
 use frontend\components\widgets\Carousel;
-use frontend\components\widgets\ClientComment;
 use frontend\components\widgets\NewsPreview;
 use frontend\components\widgets\ProductQuickOrder;
+use frontend\components\extensions\Url;
 
 
 ?>
@@ -24,27 +24,6 @@ use frontend\components\widgets\ProductQuickOrder;
             echo Carousel::widget(['items' => $carouselItems]);
          } ?>
     </section>
-    <section class="site-index__promo">
-        <h1 class="site-index__title">
-            Мечта Рыболова
-            <div class="site-index__title-sub">&laquo;ЭкоТехнологии-Волгоград&raquo;</div>
-        </h1>
-        <?= Html::img('@img/assets/single-fish.png', [
-            'class' => 'site-index__fish-splitter'
-        ]) ?>
-        <div class="site-index__promo-description">
-            Компания &laquo;ЭкоТехнологии-Волгоград&raquo; является производителем и оптовым поставщиком
-            рыболовных прикормок, смесей и живых наживок. Мы специализируемся на создании макисмально
-            эффективной продукции, которая позволит достигать спортсменам и любителям рыболовам высоких
-            результатов. Мы осуществляем оптовые поставки рыболовного червя, опарыша и прикормки оптом
-            в Москву, все регионы России и страны ближнего зарубежья. Продукция компании пользуется
-            заслуженным спросом и авторитетом как в России, так и на Украине и в Белоруссии. Неотъемлемой
-            частью производства является и производство живых насадок, таких как опарыш и червь.
-        </div>
-    </section>
-    <?= Html::img('@img/assets/single-fish.png', [
-        'class' => 'site-index__fish-splitter'
-    ]) ?>
     <section class="site-index__chars-layout">
         <div class="site-index__chars">
             <div class="site-index__char">
@@ -74,11 +53,90 @@ use frontend\components\widgets\ProductQuickOrder;
                     от 20000 рублей
                 </div>
             </div>
+            <div class="site-index__char">
+                <?= Html::img('@img/assets/mail-delivery.png', [
+                    'class' => 'site-index__char-image'
+                ]) ?>
+                <div class="site-index__char-desc">
+                    Доставка транспортными <br />
+                    компаниями и почтой
+                </div>
+            </div>
         </div>
     </section>
-    <?= Html::img('@img/assets/single-fish.png', [
-        'class' => 'site-index__fish-splitter'
-    ]) ?>
+    <br />
+    <br />
+    <br />
+    <section class="tile-banners">
+        <div class="tile-banners__row">
+            <div class="tile-banners__column tile-banners__column_half">
+                <div class="tile-banners__banner tile-banners__banner_color_1" style="background-image: url('<?= Yii::getAlias('@img/assets/avangard-carp-mix.png') ?>')">
+                    <h2 class="tile-banners__title tile-banners__title_color_1"> "Avangard" CARP MIX SCOPEX </h2>
+                    <div class="tile-banners__description">
+                        Крупно фракционная <br />
+                        прикормка для ловли карпа, <br />
+                        сазана
+                    </div>
+                    <?= Html::a('Купить', Url::toProduct(183), ['class' => 'tile-banners__buy-link']) ?>
+                </div>
+            </div>
+            <div class="tile-banners__column tile-banners__column_half">
+                <div class="tile-banners__banner tile-banners__banner_color_2" style="background-image: url('<?= Yii::getAlias('@img/assets/universal-motil.png') ?>')">
+                    <h2 class="tile-banners__title tile-banners__title_color_2"> Прикормка "Универсальная" (мотыль)</h2>
+                    <div class="tile-banners__description">
+                        Универсальная прикормочная смесь <br />
+                        предназначена для привлечения <br />
+                        практически любой мирной рыбы в <br />
+                        точку лова и удержания ее
+                    </div>
+                    <?= Html::a('Купить', Url::toProduct(232), ['class' => 'tile-banners__buy-link']) ?>
+                </div>
+            </div>
+        </div>
+        <div class="tile-banners__row">
+            <div class="tile-banners__column tile-banners__column_small">
+                <div class="tile-banners__banner tile-banners__banner_color_3" style="background-image: url('<?= Yii::getAlias('@img/assets/avangard-bream-native.png') ?>')">
+                    <h2 class="tile-banners__title tile-banners__title_color_3"> "Avangard" BREAM NATIVE (ЛЕЩ) </h2>
+                    <div class="tile-banners__description">
+                        Прикормка для ловли леща в <br />
+                        водоемах со слабым <br />
+                        течением и без течения
+                    </div>
+                    <?= Html::a('Купить', Url::toProduct(173), ['class' => 'tile-banners__buy-link']) ?>
+                </div>
+            </div>
+            <div class="tile-banners__column tile-banners__column_large">
+                <div class="tile-banners__banner tile-banners__banner_color_4" style="background-image: url('<?= Yii::getAlias('@img/assets/csl-ananas.png') ?>')">
+                    <h2 class="tile-banners__title tile-banners__title_color_4"> CSL - кукурузный ликер (АНАНАС) </h2>
+                    <div class="tile-banners__description">
+                        CSL предназначен в качестве добавки, <br />
+                        или пропитки ко всем рыболовным <br />
+                        смесям
+                    </div>
+                    <?= Html::a('Купить', Url::toProduct(253), ['class' => 'tile-banners__buy-link']) ?>
+                </div>
+            </div>
+        </div>
+    </section>
+    <br />
+    <section class="site-index__promo">
+        <h1 class="site-index__title">
+            Мечта Рыболова
+            <div class="site-index__title-sub">&laquo;ЭкоТехнологии-Волгоград&raquo;</div>
+        </h1>
+        <?= Html::img('@img/assets/single-fish.png', [
+            'class' => 'site-index__fish-splitter'
+        ]) ?>
+        <div class="site-index__promo-description">
+            Компания &laquo;ЭкоТехнологии-Волгоград&raquo; является производителем и оптовым поставщиком
+            рыболовных прикормок, смесей и живых наживок. Мы специализируемся на создании макисмально
+            эффективной продукции, которая позволит достигать спортсменам и любителям рыболовам высоких
+            результатов. Мы осуществляем оптовые поставки рыболовного червя, опарыша и прикормки оптом
+            в Москву, все регионы России и страны ближнего зарубежья. Продукция компании пользуется
+            заслуженным спросом и авторитетом как в России, так и на Украине и в Белоруссии. Неотъемлемой
+            частью производства является и производство живых насадок, таких как опарыш и червь.
+        </div>
+    </section>
     <section class="site-index__new-products">
         <div class="new-products">
             <h2 class="new-products__title"> Новинки </h2>

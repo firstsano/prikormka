@@ -6,6 +6,9 @@ class Url extends \yii\helpers\Url
 {
     public static function toProduct($product)
     {
+        if (is_integer($product)) {
+            return static::to(['/catalog/view', 'id' => $product]);
+        }
         return static::to(['/catalog/view', 'id' => $product->id]);
     }
 

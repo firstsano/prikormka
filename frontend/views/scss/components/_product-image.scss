@@ -3,8 +3,6 @@ $size-thumbnail: 100px;
 
 .product-image {
   border: solid 1px $color-border-standart;
-  padding: 20px;
-  text-align: center;
 
   & .product-image__main-image {
     @include size($size-image * 3 / 4, $size-image);
@@ -18,17 +16,18 @@ $size-thumbnail: 100px;
   }
 
   & .product-image__image-thumbnails {
-    text-align: center;
     width: 100%;
+    padding: 5px;
   }
 
   & .product-image__thumbnail {
-    @include size($size-thumbnail * 3 / 4, $size-thumbnail);
-    border: solid 1px transparent;
+    //@include size($size-thumbnail * 3 / 4, $size-thumbnail);
+    @include size(103px, $size-thumbnail);
+    border: solid 1px $color-border-standart;
     cursor: pointer;
     display: inline-block;
     line-height: $size-thumbnail * 3 / 4;
-    margin: 20px 10px 0 10px;
+    margin: 5px;
     padding: 10px;
 
     &_active {

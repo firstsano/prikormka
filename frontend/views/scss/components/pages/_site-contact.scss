@@ -3,6 +3,22 @@
 
   & .site-contact__title {
     @include header;
+    font-weight: 500;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  & .site-contact__title-text {
+    display: inline-block;
+  }
+
+  & .site-contact__title-decorator {
+    border-bottom: solid 1px $color-border-standart;
+    display: inline-block;
+    height: 1px;
+    margin-left: 20px;
+    vertical-align: middle;
+    width: 100%;
   }
 
   & .site-contact__layout {
@@ -11,10 +27,10 @@
   }
 
   & .site-contact__info {
-    @extend .col-xs-7;
+    @extend .col-xs-6;
   }
 
   & .site-contact__form {
-    @extend .col-xs-5;
+    @extend .col-xs-6;
   }
 }

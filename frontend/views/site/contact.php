@@ -4,7 +4,7 @@
 /* @var $form yii\widgets\ActiveForm */
 /* @var $model \frontend\models\ContactForm */
 
-use frontend\components\extensions\StandartActiveForm;
+use yii\widgets\ActiveForm;
 use frontend\components\extensions\Html;
 
 $this->title = Yii::t('frontend/site', 'Contact');
@@ -13,42 +13,88 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 
 <div class="site-contact">
-    <h1 class="site-contact__title"><?= Html::encode($this->title) ?></h1>
-
     <div class="site-contact__layout">
+        <div class="site-contact__form">
+            <h2 class="site-contact__title">
+                <div class="site-contact__title-text"> Свяжитесь с нами </div>
+                <div class="site-contact__title-decorator"></div>
+            </h2>
+            <br />
+            <?php $form = ActiveForm::begin([
+                'id' => 'contact-form',
+                'options' => [
+                    'class' => 'bootstrap-form'
+                ]
+            ]) ?>
+            <div class="row">
+                <div class="col-xs-6">
+                    <?php
+                        $field = $form->field($model, 'name');
+                        $field->inputOptions = ['class' => 'bootstrap-form__input'];
+                        $field->labelOptions = ['class' => 'bootstrap-form__label'];
+                        echo $field;
+                    ?>
+                </div>
+                <div class="col-xs-6">
+                    <?php
+                        $field = $form->field($model, 'email');
+                        $field->inputOptions = ['class' => 'bootstrap-form__input'];
+                        $field->labelOptions = ['class' => 'bootstrap-form__label'];
+                        echo $field;
+                    ?>
+                </div>
+            </div>
+            <br />
+            <?php
+                $field = $form->field($model, 'body');
+                $field->inputOptions = ['class' => 'bootstrap-form__input'];
+                $field->labelOptions = ['class' => 'bootstrap-form__label'];
+                echo $field->textArea(['rows' => 6]);
+            ?>
+            <br />
+            <?= Html::submitButton('Отправить сообщение', ['class' => 'bootstrap-form__submit']) ?>
+            <?php ActiveForm::end(); ?>
+        </div>
+
         <div class="site-contact__info">
-            <p>
-                Греб коромыслами накопили большую потенцию и обделались от него была. Бессмертный хранил свою смерть
-                в фамусовском обществе слышались. Лодке быстро греб коромыслами дождём в открытую. Форточку ворвался
-                сквозняк, шустрый. Род ходит с точками. Русскому царю телеграмму изергиль была белая мошонка животное
-                с четырьмя ногами. Висели фрукты с благодарностью виляя хвостом нередко наблюдается. Полю, слегка
-                попахивая виляя хвостом меня напала мысль забежали.
-            </p>
+            <h2 class="site-contact__title">
+                <div class="site-contact__title-text"> Информация о нас </div>
+                <div class="site-contact__title-decorator"></div>
+            </h2>
             <br />
+            <div>
+                <p>
+                    Компания &laquo;ЭкоТехнологии-Волгоград&raquo; является производителем и потовым поставщиком
+                    рыболовных прикормок, смесей и живых наживок. Мы специализируемся на создании максимально
+                    эффективной продукции, которая позволит достигать спортсменам и любителям рыболовам высоких
+                    результатов.
+                </p>
+                <p>
+                    Мы осуществляем оптовые поставки рыболовного червя, опарыша
+                    и прикормки оптом в Москву, все регионы России и страны ближнего зарубежья.
+                </p>
+                <p>
+                    Продукция компании
+                    пользуется заслуженным спросом и авторитетом как в России, так и на Украине и в Белоруссии.
+                    Неотъемлемой частью производства является и производство живых насадок, таких как опарыш и червь.
+                </p>
+            </div>
             <br />
+            <h2 class="site-contact__title">
+                <div class="site-contact__title-text"> Контакты </div>
+                <div class="site-contact__title-decorator"></div>
+            </h2>
             <ul class="icon-list">
                 <li class="icon-list__item">
-                    <?= Html::icon('pin_drop', ['class' => 'icon-list__icon']) ?>
-                    <span class="icon-list__text"> г. Волгоград, Волгоградская область. </span>
+                    <?= Html::icon('email', ['class' => 'icon-list__icon']) ?>
+                    <span class="icon-list__text"> <?= Yii::$app->params['companyEmail'] ?> </span>
                 </li>
                 <li class="icon-list__item">
                     <?= Html::icon('phone', ['class' => 'icon-list__icon']) ?>
                     <span class="icon-list__text"> <?= Yii::$app->params['mainPhone'] ?> </span>
                 </li>
-                <li class="icon-list__item">
-                    <?= Html::icon('email', ['class' => 'icon-list__icon']) ?>
-                    <span class="icon-list__text"> etv06@mail.ru </span>
-                </li>
             </ul>
         </div>
-        <div class="site-contact__form">
-            <?php $form = StandartActiveForm::begin(['id' => 'contact-form']) ?>
-            <?php echo $form->field($model, 'name') ?>
-            <?php echo $form->field($model, 'email') ?>
-            <?php echo $form->field($model, 'email') ?>
-            <?php echo $form->field($model, 'body')->textArea(['rows' => 6]) ?>
-            <?php echo $form->submit(Yii::t('frontend', 'Submit'), ['name' => 'contact-button']) ?>
-            <?php StandartActiveForm::end(); ?>
-        </div>
+
     </div>
 </div>

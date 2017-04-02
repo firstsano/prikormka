@@ -66,8 +66,6 @@ class SiteController extends Controller
         return $this->render('index', [
             'carouselItems' => @WidgetCarousel::find()->where(['key' => 'index'])->one()->activeItems,
             'newProducts' => Product::find()->newOnes()->all(),
-            'bestOffers' => Product::find()->bestOffers()->all(),
-            'feedbacks' => Feedback::find()->newOnes(2)->all(),
             'latestNews' => Article::find()->published()->newOnes(4)->all()
         ]);
     }

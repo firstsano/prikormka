@@ -4,6 +4,7 @@ namespace frontend\models;
 
 use Yii;
 use yii\base\Model;
+use common\commands\SendEmailCommand;
 
 /**
  * ContactForm is the model behind the contact form.
@@ -50,19 +51,17 @@ class ContactForm extends Model
 
     /**
      * Sends an email to the specified email address using the information collected by this model.
-     * @param  string  $email the target email address
      * @return boolean whether the model passes validation
      */
-    public function contact($email)
+    public function contact()
     {
         if ($this->validate()) {
-            return Yii::$app->mailer->compose()
-                ->setTo($email)
-                ->setFrom(Yii::$app->params['robotEmail'])
-                ->setReplyTo([$this->email => $this->name])
-                ->setSubject($this->subject)
-                ->setTextBody($this->body)
-                ->send();
+            return Yii::$app->commandBus->handle(new SendEmailCommand([
+                'to' => Yii::$app->params['contactEmails'],
+                'subject' => Yii::t('frontend/site', 'mail-contact.subject'),
+                'from' => [$this->email => $this->name],
+                'body' => $this->body,
+            ]));
         } else {
             return false;
         }

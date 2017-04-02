@@ -207,16 +207,18 @@ class SiteController extends Controller
     {
         $model = new ContactForm();
         if ($model->load(Yii::$app->request->post())) {
-            if ($model->contact(Yii::$app->params['adminEmail'])) {
-                Yii::$app->getSession()->setFlash('alert', [
-                    'body'=>Yii::t('frontend', 'Thank you for contacting us. We will respond to you as soon as possible.'),
-                    'options'=>['class'=>'alert-success']
+            if ($model->contact()) {
+                Yii::$app->session->setFlash('success', [
+                    'type' => 'notice',
+                    'title' => Yii::t('frontend/site', 'mail-contact.title'),
+                    'message' => Yii::t('frontend/site', 'mail-contact-success.message'),
                 ]);
                 return $this->refresh();
             } else {
-                Yii::$app->getSession()->setFlash('alert', [
-                    'body'=>\Yii::t('frontend', 'There was an error sending email.'),
-                    'options'=>['class'=>'alert-danger']
+                Yii::$app->session->setFlash('success', [
+                    'type' => 'warning',
+                    'title' => Yii::t('frontend/site', 'mail-contact.title'),
+                    'message' => Yii::t('frontend/site', 'mail-contact-error.message'),
                 ]);
             }
         }

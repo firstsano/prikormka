@@ -150,7 +150,7 @@ use frontend\components\extensions\Url;
                 } ?>
             </div>
             <footer class="new-products__footer">
-                <?= Html::a(Html::textPointer('Смотреть все товары'), ['catalog/index'], ['class' => 'new-products__link']); ?>
+                <?= Html::a('Смотреть все товары', ['catalog/index'], ['class' => 'new-products__link']); ?>
             </footer>
         </div>
     </section>

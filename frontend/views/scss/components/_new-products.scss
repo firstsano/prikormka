@@ -10,7 +10,7 @@
   }
 
   & .new-products__link {
-    @extend .button, .button_round;
+    text-decoration: underline;
   }
 
   & .new-products__row {

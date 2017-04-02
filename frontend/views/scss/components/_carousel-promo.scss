@@ -31,7 +31,8 @@ $font-link: 18px;
   }
 
   & .carousel-promo__link {
-    @extend .button, .button_round;
+    @extend .button, .z-depth-1;
+    @include border-radius(0);
     font-size: $font-link;
     margin-top: 30px;
     padding: 10px 30px;

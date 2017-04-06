@@ -141,6 +141,7 @@ $config = [
         'adminEmail' => env('ADMIN_EMAIL'),
         'robotEmail' => env('ROBOT_EMAIL'),
         'orderEmails' => explode(' ', env('ORDER_EMAILS')),
+        'contactEmails' => explode(' ', env('CONTACT_EMAILS')),
         'availableLocales' => [
             'ru-RU' => 'Русский (РФ)',
         ],

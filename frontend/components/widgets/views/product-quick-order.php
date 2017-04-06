@@ -13,7 +13,7 @@ use frontend\components\extensions\Url;
 
 <?= Html::beginTag('div', $options) ?>
     <header class="q-order__header">
-        <?= $product->category->name ?>
+        <?= @$product->category->name ?>
     </header>
 
     <div class="q-order__info">

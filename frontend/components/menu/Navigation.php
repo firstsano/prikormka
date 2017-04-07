@@ -13,15 +13,18 @@ class Navigation
             [
                 'label' => 'Главная',
                 'url' => [ '/' ],
+                'route' => 'site/index',
                 'class' => ['header-menu__item-link_highlight_1']
             ],
             [
                 'label' => 'Для оптовиков',
+                'route' => 'wholesale-catalog/index',
                 'url' => [ '/wholesale-catalog/index' ],
                 'class' => ['header-menu__item-link_highlight_2']
             ],
             [
                 'label' => 'Каталог',
+                'route' => 'catalog/index',
                 'url' => [ '/catalog/index' ]
             ],
             [
@@ -34,10 +37,12 @@ class Navigation
             ],
             [
                 'label' => 'Новости',
+                'route' => 'news/index',
                 'url' => [ '/news/index' ]
             ],
             [
                 'label' => 'Отзывы',
+                'route' => 'feedbacks/index',
                 'url' => [ '/feedbacks/index' ]
             ],
         ];

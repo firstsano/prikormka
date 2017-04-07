@@ -15,6 +15,9 @@ use yii\helpers\Url;
                 <?php
                     foreach (Navigation::items() as $item) {
                         Html::addCssClass($item, ['header-menu__item-link header-menu__item-link_hoverable']);
+                        if ($this->context->route == @$item['route']) {
+                            Html::addCssClass($item, ['header-menu__item-link_current']);
+                        }
                         echo Html::beginTag('li', ['class' => 'header-menu__item']);
                         echo Html::a($item['label'], $item['url'], [
                             'class' => $item['class']

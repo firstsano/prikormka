@@ -7,7 +7,7 @@
 
   & .header-menu__ribbon {
     background-color: #282828;
-    height: 40px;
+    height: 32px;
   }
 
   & .header-menu__container {
@@ -68,6 +68,8 @@
 
   & .header-menu__item-link {
     color: $color-text-inverse;
+    border-bottom: solid 4px transparent;
+    border-top: solid 4px transparent;
 
     &.header-menu__item-link_icon {
       background-image: url('/img/icons/xslx.png');
@@ -75,6 +77,10 @@
       background-repeat: no-repeat;
       background-size: auto 40px;
       padding-right: 70px !important;
+    }
+
+    &.header-menu__item-link_current {
+      border-bottom: solid 4px $color-application-light;
     }
 
     &.header-menu__item-link_highlight_1 {

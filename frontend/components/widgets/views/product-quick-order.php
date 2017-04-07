@@ -18,10 +18,13 @@ use frontend\components\extensions\Url;
 
     <div class="q-order__info">
         <div class="q-order__image-section">
-            <div class="q-order__image-layout">
+            <?= Html::beginTag('a', [
+                'href' => Url::toProduct($product),
+                'class' => 'q-order__image-layout'
+            ]) ?>
                 <?= Html::img(Url::toImage($product->mainImage->path),
                     [ 'alt' => $product->name, 'class' => 'q-order__image' ]) ?>
-            </div>
+            <?= Html::endTag('a') ?>
         </div>
         <div class="q-order__info-section">
             <div class="q-order__description idv-trinity idv-trinity_weight">

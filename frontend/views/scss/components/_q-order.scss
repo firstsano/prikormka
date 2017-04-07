@@ -25,13 +25,14 @@ $footer-height: 40px;
 
   & .q-order__image-layout {
     @include size(90px, 120px);
-    text-align: center;
+    display: block;
     line-height: 120px;
+    text-align: center;
   }
 
   & .q-order__image {
     @include max-size(100%, 100%);
-    vertical-align: initial;
+    vertical-align: top;
   }
 
   & .q-order__info-section {

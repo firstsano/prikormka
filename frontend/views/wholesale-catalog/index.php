@@ -13,10 +13,10 @@ use frontend\components\widgets\ProductWholesaleOrder;
 use frontend\components\extensions\Html;
 use frontend\components\widgets\FlashMessages;
 use frontend\components\widgets\ToTop;
-use yii\helpers\Url;
 use yii\grid\GridView;
 use kop\y2sp\ScrollPager;
 use frontend\components\widgets\RememberThisPage;
+use frontend\components\widgets\OrderNotice;
 
 $this->title = Yii::t('frontend/site', 'Wholesale catalog');
 $this->params['breadcrumbs'][] = $this->title;
@@ -28,29 +28,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
 <div class="site-wholesale">
     <h1 class="site-wholesale__title"><?= Html::encode($this->title) ?></h1>
-    <div class="order-notice">
-        <div class="order-notice__message-layout">
-            <?= FlashMessages::widget([
-                'messages' => [
-                    [
-                        'title' => 'Уважаемый покупатель!',
-                        'message' => "Обращаем ваше внимание, что минимальная сумма общего заказа " .
-                            "должна быть не меньше 20 000 руб."
-                    ]
-                ],
-                'options' => ['class' => 'order-notice__message']
-            ]) ?>
-        </div>
-        <div class="order-notice__excel-price">
-            <?= Html::beginTag('a', [
-                'href' => Url::to(['/site/download', 'path' => 'files/price.xls']),
-                'class' => 'order-notice__excel-link'])
-            ?>
-            <div class="order-notice__excel-info">Скачать прайс-лист<br /> в формате Excel</div>
-            <?= Html::img('@img/icons/excel.png', ['class' => 'order-notice__excel-img']) ?>
-            <?= Html::endTag('a') ?>
-        </div>
-    </div>
+    <?= OrderNotice::widget() ?>
     <br />
     <div class="site-wholesale__layout">
         <?php Pjax::begin([

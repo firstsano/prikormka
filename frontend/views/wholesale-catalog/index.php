@@ -16,12 +16,14 @@ use frontend\components\widgets\ToTop;
 use yii\helpers\Url;
 use yii\grid\GridView;
 use kop\y2sp\ScrollPager;
+use frontend\components\widgets\RememberThisPage;
 
 $this->title = Yii::t('frontend/site', 'Wholesale catalog');
 $this->params['breadcrumbs'][] = $this->title;
 
 ?>
 
+<?= RememberThisPage::widget() ?>
 <?= ToTop::widget() ?>
 
 <div class="site-wholesale">

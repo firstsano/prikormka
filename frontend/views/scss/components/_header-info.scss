@@ -53,6 +53,7 @@ $font-padding: $font-size-standart-small;
       margin-left: 30px;
     }
     &_highlight {
+      @include no-link($color-application-main);
       color: $color-application-main;
     }
   }

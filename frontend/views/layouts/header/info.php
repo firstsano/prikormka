@@ -27,10 +27,12 @@ use frontend\components\widgets\RemoteSearch;
                     с 8:00 до 20:00
                 </span>
             </div>
-            <div class="header-info__contact-info header-info__contact-info_right"> Email:
-                <span class="header-info__contact-info header-info__contact-info_highlight">
-                    <?= Html::mailto(Yii::$app->params['companyEmail'], Yii::$app->params['companyEmail']) ?>
-                </span>
+            <div class="header-info__contact-info header-info__contact-info_right">
+                Email:
+                <?= Html::mailto(Yii::$app->params['companyEmail'],
+                    Yii::$app->params['companyEmail'],
+                    ['class' => 'header-info__contact-info header-info__contact-info_highlight']
+                ) ?>
             </div>
         </div>
         <div class="header-info__cart">

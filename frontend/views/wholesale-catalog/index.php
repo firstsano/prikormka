@@ -15,7 +15,6 @@ use frontend\components\widgets\FlashMessages;
 use frontend\components\widgets\ToTop;
 use yii\grid\GridView;
 use kop\y2sp\ScrollPager;
-use frontend\components\widgets\RememberThisPage;
 use frontend\components\widgets\OrderNotice;
 
 $this->title = Yii::t('frontend/site', 'Wholesale catalog');
@@ -23,7 +22,6 @@ $this->params['breadcrumbs'][] = $this->title;
 
 ?>
 
-<?= RememberThisPage::widget() ?>
 <?= ToTop::widget() ?>
 
 <div class="site-wholesale">
@@ -33,7 +31,6 @@ $this->params['breadcrumbs'][] = $this->title;
     <div class="site-wholesale__layout">
         <?php Pjax::begin([
             'id' => 'wholesale-products',
-            'enablePushState' => false,
             'clientOptions' => [
                 'fragment' => '.site-wholesale__products',
                 'container' => '.site-wholesale__products',

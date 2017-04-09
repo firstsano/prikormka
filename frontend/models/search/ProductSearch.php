@@ -47,6 +47,10 @@ class ProductSearch extends Product
      * @var string
      */
     public $category;
+    /**
+     * @var array
+     */
+    public $categories = [];
 
     /**
      * @inheritdoc
@@ -63,6 +67,7 @@ class ProductSearch extends Product
             ['priceMax', 'compare', 'compareAttribute' => 'priceMin',
                 'operator' => '>=', 'type' => 'number', 'on' => [static::SCENARIO_SIMPLE, static::SCENARIO_DEFAULT]],
             ['sortBy', 'in', 'range' => array_keys(static::sortByOptions()), 'on' => [static::SCENARIO_SIMPLE, static::SCENARIO_DEFAULT]],
+            ['categories', 'each', 'rule' => ['integer'], 'on' => [static::SCENARIO_SIMPLE, static::SCENARIO_DEFAULT]],
 
             // Wholesale Scenario
             [['filter'], 'string', 'on' => static::SCENARIO_WHOLESALE],
@@ -128,6 +133,15 @@ class ProductSearch extends Product
                 ->one()
             ;
             $query->andFilterWhere(['in', 'category_id', $category->treeIds]);
+        }
+
+        if (!empty($this->categories)) {
+            $categories = Category::find()
+                ->select('id')
+                ->where(['id' => $this->categories])
+                ->column()
+            ;
+            $query->andFilterWhere(['in', 'category_id', $categories]);
         }
 
         $query->innerJoin(Category::tableName(),

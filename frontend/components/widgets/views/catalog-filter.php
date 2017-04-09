@@ -7,8 +7,7 @@
 use frontend\components\extensions\Html;
 use common\models\Product;
 use common\models\Category;
-use frontend\components\widgets\RangeSlider;
-use frontend\components\widgets\CategoryRadioList;
+use frontend\components\widgets\CategoriesCheckboxList;
 
 \frontend\components\widgets\assets\CatalogFilterAsset::register($this);
 
@@ -16,7 +15,7 @@ use frontend\components\widgets\CategoryRadioList;
 
 <?= Html::beginForm(['/catalog/index'], 'get', ['class' => 'filter']) ?>
     <div class="filter__section">
-        <div class="filter__a-values">
+        <div class="filter__a-values filter__a-values_no-margin">
             <?= Html::checkbox('isNew', @$params['isNew'], [
                 'id' => 'isNew',
                 'class' => 'filled-in',
@@ -30,59 +29,26 @@ use frontend\components\widgets\CategoryRadioList;
         </div>
         <hr class="filter__splitter" />
         <div class="filter__a-values">
-            <?= Html::checkboxList('seasons[]', @$params['seasons'], Product::seasons(), [
-                'item' => function($index, $label, $name, $checked, $value) {
-                    $id = "$name-$index";
-                    return Html::checkbox($name, $checked, [
-                            'id' => $id,
-                            'class' => 'filled-in',
-                            'value' => $value
-                        ]) .
-                        Html::label($label, $id, ['class' => 'filter__input-label']) .
-                        Html::tag('br');
-                }
-            ]) ?>
+            <?= Html::materialCheckBoxList('seasons[]', @$params['seasons'],
+                Product::seasons(), ['label' => ['class' => 'filter__input-label']]) ?>
         </div>
     </div>
-    <div class="filter__section filter__section_padding_smooth">
-        <div class="filter__a-title filter__a-title_padding_smooth">
+    <div class="filter__section">
+        <div class="filter__a-title">
             Категория
         </div>
-        <hr class="filter__splitter filter__splitter_padding_smooth" />
+        <hr class="filter__splitter" />
         <div class="filter__a-values">
-            <?= CategoryRadioList::widget([
-                'checked' => @$params['category'],
-                'categories' => Category::filters()
+            <?= CategoriesCheckboxList::widget([
+                'categories' => Category::find()->root()->all(),
+                'checked' => @$params['categories'],
+                'options' => [
+                    'label' => ['class' => 'filter__input-label']
+                ]
             ]) ?>
         </div>
         <br />
     </div>
-    <!--div class="filter__section">
-        <div class="filter__a-title">
-            Цена
-        </div>
-        <hr />
-        <div class="filter__a-values">
-            <?php
-//                echo Html::hiddenInput('priceMin', @params['priceMin'], ['id' => 'product-min-price']);
-//                echo Html::hiddenInput('priceMax', @params['priceMax'], ['id' => 'product-max-price']);
-//                $ranges = Product::priceRanges();
-//                echo RangeSlider::widget([
-//                    'inputs' => [
-//                        'min' => "#product-min-price",
-//                        'max' => "#product-max-price"
-//                    ],
-//                    'range' => [
-//                        'start' => $model->priceMin,
-//                        'end' => $model->priceMax,
-//                    ],
-//                    'min' => $ranges['min'],
-//                    'max' => $ranges['max'],
-//                    'step' => 1
-//                ])
-            ?>
-        </div>
-    </div-->
     <div class="filter__reset">
         <?php
             echo Html::submitButton(Yii::t('frontend/site', 'Apply filter'), ['class' => 'filter__submit']);

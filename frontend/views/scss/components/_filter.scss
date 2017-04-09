@@ -8,8 +8,12 @@
   }
 
   & .filter__input-label {
-    font-size: $font-size-standart;
+    display: block;
+    font-size: $font-size-standart-small;
     font-weight: normal;
+    height: auto;
+    padding-left: 0;
+    padding-right: 20px;
   }
 
   & .filter__a-title {
@@ -63,6 +67,10 @@
 }
 
 .filter {
+  & .filter__a-values.filter__a-values_no-margin {
+    margin-top: 0;
+  }
+
   & .filter__section.filter__section_padding_smooth {
     padding: 0;
   }
@@ -76,5 +84,41 @@
   & .filter__splitter.filter__splitter_padding_smooth {
     margin-left: 20px;
     margin-right: 20px;
+  }
+
+  [type="checkbox"].filled-in:not(:checked)+label:after {
+    @include square(14px);
+    border-width: 1px;
+    left: initial;
+    margin-top: -7px;
+    right: 0;
+    top: 50%;
+  }
+
+  [type="checkbox"].filled-in:checked+label:after {
+    @include square(14px);
+    border-width: 1px;
+    left: initial;
+    margin-top: -7px;
+    right: 0;
+    top: 50%;
+  }
+
+  [type="checkbox"].filled-in:checked+label:before {
+    top: 50%;
+    margin-top: -8px;
+    left: initial;
+    width: 8px;
+    height: 13px;
+    right: 8px;
+  }
+
+  [type="checkbox"].filled-in:not(:checked)+label:before {
+    top: 50%;
+    margin-top: -8px;
+    left: initial;
+    width: 8px;
+    height: 13px;
+    right: 8px;
   }
 }

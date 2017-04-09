@@ -29,4 +29,19 @@ class Html extends \yii\helpers\Html
         unset($options['icon']);
         return static::a($icon, $url, $options);
     }
+
+    public static function materialCheckBoxList($name, $values, $collection, $options)
+    {
+        return static::checkboxList($name, $values, $collection, [
+            'item' => function($index, $label, $name, $checked, $value) use($options) {
+                $id = "$name-$index";
+                return static::checkbox($name, $checked, [
+                    'id' => $id,
+                    'class' => 'filled-in',
+                    'value' => $value
+                ]) .
+                static::label($label, $id, @$options['label']);
+            }
+        ]);
+    }
 }

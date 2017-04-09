@@ -18,7 +18,7 @@
         timeoutBeforeHide -= delay;
         if (timeoutBeforeHide <= 0) {
             timeoutBeforeHide = 0;
-            // $submit.fadeOut('slow');
+            $submit.fadeOut('slow');
         }
     };
 

@@ -186,7 +186,8 @@ class Product extends \yii\db\ActiveRecord
      */
     public function getProductImages()
     {
-        return $this->hasMany(ProductImage::className(), ['product_id' => 'id']);
+        return $this->hasMany(ProductImage::className(), ['product_id' => 'id'])
+            ->orderBy(['order' => SORT_ASC]);
     }
 
     /**
@@ -195,10 +196,7 @@ class Product extends \yii\db\ActiveRecord
     public function getMainImage()
     {
         if (!$this->_mainImage) {
-            $this->_mainImage = $this->getProductImages()
-                ->addOrderBy(['order' => SORT_ASC])
-                ->one()
-            ;
+            $this->_mainImage = @$this->productImages[0];
         }
         return $this->_mainImage;
     }
@@ -237,6 +235,6 @@ class Product extends \yii\db\ActiveRecord
     public static function find()
     {
         $query = new \common\models\queries\ProductQuery(get_called_class());
-        return $query->with('category');
+        return $query->with('category')->with('productImages');
     }
 }

@@ -114,6 +114,11 @@ class Navigation
                 'url'=>['/subscribe/index'],
                 'icon'=>'<i class="fa fa-users"></i>'
             ],
+            [
+                'label' => Yii::t('backend', 'File Manager'),
+                'url' => ['/file-manager/index'],
+                'icon' => '<i class="fa fa-files-o" aria-hidden="true"></i>'
+            ],
         ];
     }
 

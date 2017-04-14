@@ -41,6 +41,8 @@
             e.preventDefault();
             $this = $(this);
             var options = getOptions($this);
+            var csrfToken = $('meta[name="csrf-token"]').attr("content");
+            $.extend(options.params, {_csrf: csrfToken});
             $.ajax({
                 url: options.url,
                 type: options.method,

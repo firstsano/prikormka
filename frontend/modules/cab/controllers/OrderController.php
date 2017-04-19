@@ -49,7 +49,7 @@ class OrderController extends \yii\web\Controller
     public function actionIndex()
     {
         return $this->render('index', [
-            'orders' => Order::findAll(['user_id' => Yii::$app->user->identity])
+            'orders' => Order::findAll(['user_id' => Yii::$app->user->identity->id])
         ]);
     }
 

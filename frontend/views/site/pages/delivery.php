@@ -114,7 +114,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         Остались вопросы? Всегда рады помочь вам!
                     </div>
                     <div class="delivery-info__article">
-                        Телефон: 8(903) 104-29-95 <br />
+                        Телефон: <?= Yii::$app->params['mainPhone'] ?> <br />
                         Email: etv06@mail.ru
                     </div>
                 </div>

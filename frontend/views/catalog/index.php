@@ -63,8 +63,7 @@ $dataDisplay = Yii::$app->dataDisplay->route($currentRoute);
                     ]),
                     'nextPageLabel' => Html::icon('chevron_right', [
                         'class' => 'pagination__icon'
-                    ]),
-                    'pageCssClass' => 'waves-effect'
+                    ])
                 ]) ?>
             </div>
         </div>

@@ -86,10 +86,9 @@ class ProductSearch extends Product
     public function search()
     {
         if (!$this->validate()) {
-            return false;
-//            return new ActiveDataProvider([
-//                'query' => Product::find()->where(['<', 'id', 0])
-//            ]);
+            return new ActiveDataProvider([
+                'query' => Product::find()->where(['<', 'id', 0])
+            ]);
         }
 
         switch ($this->scenario) {

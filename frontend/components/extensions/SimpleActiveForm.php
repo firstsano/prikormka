@@ -11,7 +11,6 @@ class SimpleActiveForm extends \yii\widgets\ActiveForm
      */
     public function init()
     {
-        parent::init();
         Html::addCssClass($this->options, ['simple-form']);
         $this->fieldConfig = ArrayHelper::merge(
             $this->fieldConfig,
@@ -30,6 +29,7 @@ class SimpleActiveForm extends \yii\widgets\ActiveForm
                 ]
             ]
         );
+        parent::init();
     }
 
     /**

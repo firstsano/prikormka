@@ -2,8 +2,6 @@
 
 namespace frontend\components\extensions;
 
-use frontend\components\extensions\Html;
-
 class StandartActiveForm extends \yii\widgets\ActiveForm
 {
     /**
@@ -11,7 +9,6 @@ class StandartActiveForm extends \yii\widgets\ActiveForm
      */
     public function init()
     {
-        parent::init();
         Html::addCssClass($this->options, ['standart-form']);
         $this->fieldConfig = array_merge(
             $this->fieldConfig,
@@ -30,6 +27,7 @@ class StandartActiveForm extends \yii\widgets\ActiveForm
                 ]
             ]
         );
+        parent::init();
     }
 
     /**

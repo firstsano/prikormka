@@ -12,7 +12,11 @@ return [
         ['pattern'=>'article/attachment-download', 'route'=>'article/attachment-download'],
         ['pattern'=>'article/<slug>', 'route'=>'article/view'],
 
-        // Products
-        ['pattern' => 'products/<category>/<slug>', 'route' => 'catalog/view']
+        // Catalog
+        ['pattern' => 'catalog', 'route' => 'catalog/index'],
+        ['pattern' => 'catalog/<category>/<slug>', 'route' => 'catalog/view'],
+
+        // WholesaleCatalog
+        ['pattern' => 'optovii-catalog', 'route' => 'wholesale-catalog/index'],
     ]
 ];

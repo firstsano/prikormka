@@ -6,7 +6,7 @@
   & .footer-sitemap__layout {
     @extend .row;
     border-color: $color-border-standart;
-    border-style: none none solid none;
+    border-style: solid none solid none;
     border-width: 1px;
     padding-top: 20px;
     padding-bottom: 20px;

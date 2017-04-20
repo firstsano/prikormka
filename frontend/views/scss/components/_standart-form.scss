@@ -25,8 +25,8 @@
   }
 
   & .standart-form__error {
-    font-size: $font-size-mini;
-    color: $color-text-background;
+    color: $color-text-error;
+    font-size: $font-size-small;
   }
 
   & .standart-form__submit {

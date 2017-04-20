@@ -1,0 +1,21 @@
+.orders-list {
+  & .orders-list__title {
+    margin-bottom: 10px;
+    font-weight: bold;
+  }
+
+  & .orders-list__item {
+    margin-bottom: 40px;
+  }
+
+  & .orders-list__order-num {
+    color: $color-application-main;
+    font-weight: normal;
+  }
+
+  & .orders-list__order-date {
+    color: $color-text-background;
+    font-style: italic;
+    font-weight: normal;
+  }
+}

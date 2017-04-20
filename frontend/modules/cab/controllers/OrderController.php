@@ -10,9 +10,12 @@ use yii\web\BadRequestHttpException;
 use frontend\models\OrderForm;
 use common\models\Order;
 use yii\filters\AccessControl;
+use yii\data\Pagination;
 
 class OrderController extends Controller
 {
+    const ORDERS_PER_PAGE = 10;
+
     /**
      * @var string
      */
@@ -47,8 +50,21 @@ class OrderController extends Controller
      */
     public function actionIndex()
     {
+        $query = Order::find()
+            ->orderBy(['created_at' => SORT_DESC])
+            ->where(['user_id' => Yii::$app->user->identity->id]);
+        $count = $query->count();
+        $pagination = new Pagination([
+            'totalCount' => $count,
+            'pageSize' => self::ORDERS_PER_PAGE
+        ]);
+        $orders = $query->offset($pagination->offset)
+            ->limit($pagination->limit)
+            ->all();
+
         return $this->render('index', [
-            'orders' => Order::findAll(['user_id' => Yii::$app->user->identity->id])
+            'orders' => $orders,
+            'pagination' => $pagination
         ]);
     }
 

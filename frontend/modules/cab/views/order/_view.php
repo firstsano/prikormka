@@ -4,12 +4,18 @@
 /* @var $model \common\models\Order */
 
 use frontend\components\extensions\Html;
-
-$this->title = Yii::t('frontend/site', 'Your order');
-$this->params['breadcrumbs'][] = $this->title;
+use frontend\components\extensions\Url;
+use yii\helpers\StringHelper;
 
 ?>
-<div>
+
+<div class="orders-list__item">
+    <div class="orders-list__title">
+        Заказ номер
+        <span class="orders-list__order-num"><?= $model->id ?></span>
+        от
+        <span class="orders-list__order-date"><?= format_d($model->created_at, 'long') ?></span>
+    </div>
     <table class="cart-details">
         <thead class="cart-details__header">
         <tr>
@@ -31,7 +37,8 @@ $this->params['breadcrumbs'][] = $this->title;
                     ]) ?>
                 </td>
                 <td class="cart-details__body-cell">
-                    <?= Html::a($product->name, ['catalog/view', 'id' => $product->id]) ?>
+                    <?= Html::a( StringHelper::truncate($product->name, 50),
+                        Url::toProduct($product->sourceProduct), ['title' => $product->name]) ?>
                 </td>
                 <td class="cart-details__body-cell"> <?= $product->price ?> руб. </td>
                 <td class="cart-details__body-cell"> <?= $product->pack_quantity ?> шт. </td>

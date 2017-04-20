@@ -18,5 +18,9 @@ return [
 
         // WholesaleCatalog
         ['pattern' => 'optovii-catalog', 'route' => 'wholesale-catalog/index'],
+
+        // News
+        ['pattern' => 'novosti', 'route' => 'news/index'],
+        ['pattern' => 'novosti/<slug>', 'route' => 'news/view'],
     ]
 ];

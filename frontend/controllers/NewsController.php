@@ -32,10 +32,10 @@ class NewsController extends Controller
     /**
      * @inheritdoc
      */
-    public function actionView($id)
+    public function actionView($slug)
     {
         return $this->render('view', [
-            'model' => $this->findModel($id)
+            'model' => $this->findModel($slug)
         ]);
     }
 
@@ -44,9 +44,9 @@ class NewsController extends Controller
      * @return $this
      * @throws NotFoundHttpException
      */
-    protected function findModel($id)
+    protected function findModel($slug)
     {
-        $model = Article::find()->published()->where(['id' => $id])->one();
+        $model = Article::find()->published()->where(['slug' => $slug])->one();
         if (!$model) {
             throw new NotFoundHttpException();
         }

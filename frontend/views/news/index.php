@@ -45,7 +45,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     ]);
                     $cell .= "</div>";
                     $cell .= "<div class=\"news-index__item-description\">";
-                    $cell .= Html::a($model->title, ['/news/view', 'id' => $model->id], [
+                    $cell .= Html::a($model->title, Url::toNews($model), [
                         'class' => 'news-index__item-title'
                     ]);
                     $cell .= "<div class=\"news-index__item-publish\">";

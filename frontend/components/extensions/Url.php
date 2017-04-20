@@ -12,6 +12,13 @@ class Url extends \yii\helpers\Url
         ]);
     }
 
+    public static function toNews($news)
+    {
+        return static::to(['/news/view',
+            'slug' => $news->slug,
+        ]);
+    }
+
     public static function toImage($path, $type = 'default')
     {
         return static::to(['/site/get-image',

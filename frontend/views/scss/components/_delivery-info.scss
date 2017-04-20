@@ -6,7 +6,7 @@
 
   & .delivery-info__title {
     font-size: $font-size-big;
-    font-weight: 500;
+    font-weight: bold;
     padding-left: 50px;
     position: relative;
     &:after {
@@ -30,6 +30,5 @@
 
   & .delivery-info__article {
     padding: 20px 0;
-    font-weight: 300;
   }
 }

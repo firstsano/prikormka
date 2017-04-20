@@ -71,6 +71,9 @@ class OrderController extends \yii\web\Controller
         if (!$model->load($app->request->post())) {
             throw new BadRequestHttpException();
         }
+        if (!Yii::$app->user->isGuest) {
+            $model->user = Yii::$app->user->identity;
+        }
         $orderCreated = $model->createOrder([
             'total' => $cart->cost,
             'products' => $cart->positionsWithQuantities

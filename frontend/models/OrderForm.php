@@ -15,6 +15,11 @@ class OrderForm extends Model
     const SCENARIO_GUEST = 'guest';
 
     /**
+     * @var mixed
+     */
+    public $user;
+
+    /**
      * @var string
      */
     public $name;
@@ -67,6 +72,7 @@ class OrderForm extends Model
                 }
             }],
             [['delivery'], 'in', 'range' => array_keys(Order::deliveries())],
+            ['user', 'safe'],
 //            [['reCaptcha'], ReCaptchaValidator::className(), 'on' => static::SCENARIO_GUEST],
         ];
     }
@@ -107,14 +113,18 @@ class OrderForm extends Model
         if (!$this->validate()) {
             return false;
         }
-        $params = ArrayHelper::merge($params, [
-            'user' => [
-                'name' => $this->name,
-                'email' => $this->email,
-                'phone' => $this->phone,
-                'address' => $this->address,
-            ]
-        ]);
+        $params = ArrayHelper::merge(
+            $params,
+            [
+                'user' => [
+                    'name' => $this->name,
+                    'email' => $this->email,
+                    'phone' => $this->phone,
+                    'address' => $this->address,
+                ]
+            ],
+            isset($this->user) ? [ 'user' => ['id' => $this->user->id] ] : []
+        );
         $order = Yii::$app->commandBus->handle(new CreateOrderCommand([
             'total' => $params['total'],
             'user' => $params['user'],

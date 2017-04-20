@@ -18,7 +18,7 @@ use frontend\components\extensions\Url;
     <div class="w-order__product-info">
         <?= Html::a(
             $product->name,
-            ['/catalog/view', 'id' => $product->id],
+            Url::toProduct($product),
             ['class' => 'w-order__product-name']
         ) ?>
     </div>

@@ -36,10 +36,10 @@ class CatalogController extends Controller
     /**
      * @inheritdoc
      */
-    public function actionView($id)
+    public function actionView($slug)
     {
         return $this->render('view', [
-            'model' => Product::find()->published()->where(['id' => $id])->one()
+            'model' => Product::find()->published()->where(['slug' => $slug])->one()
         ]);
     }
 }

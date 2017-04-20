@@ -14,6 +14,7 @@ use frontend\components\widgets\Carousel;
 use frontend\components\widgets\NewsPreview;
 use frontend\components\widgets\ProductQuickOrder;
 use frontend\components\extensions\Url;
+use common\models\Product;
 
 
 ?>
@@ -77,7 +78,7 @@ use frontend\components\extensions\Url;
                         прикормка для ловли карпа, <br />
                         сазана
                     </div>
-                    <?= Html::a('Купить', Url::toProduct(183), ['class' => 'tile-banners__buy-link']) ?>
+                    <?= Html::a('Купить', Url::toProduct(Product::findOne(183)), ['class' => 'tile-banners__buy-link']) ?>
                 </div>
             </div>
             <div class="tile-banners__column tile-banners__column_half">
@@ -89,7 +90,7 @@ use frontend\components\extensions\Url;
                         практически любой мирной рыбы в <br />
                         точку лова и удержания ее
                     </div>
-                    <?= Html::a('Купить', Url::toProduct(232), ['class' => 'tile-banners__buy-link']) ?>
+                    <?= Html::a('Купить', Url::toProduct(Product::findOne(232)), ['class' => 'tile-banners__buy-link']) ?>
                 </div>
             </div>
         </div>
@@ -102,7 +103,7 @@ use frontend\components\extensions\Url;
                         водоемах со слабым <br />
                         течением и без течения
                     </div>
-                    <?= Html::a('Купить', Url::toProduct(173), ['class' => 'tile-banners__buy-link']) ?>
+                    <?= Html::a('Купить', Url::toProduct(Product::findOne(173)), ['class' => 'tile-banners__buy-link']) ?>
                 </div>
             </div>
             <div class="tile-banners__column tile-banners__column_large">
@@ -113,7 +114,7 @@ use frontend\components\extensions\Url;
                         или пропитки ко всем рыболовным <br />
                         смесям
                     </div>
-                    <?= Html::a('Купить', Url::toProduct(253), ['class' => 'tile-banners__buy-link']) ?>
+                    <?= Html::a('Купить', Url::toProduct(Product::findOne(253)), ['class' => 'tile-banners__buy-link']) ?>
                 </div>
             </div>
         </div>

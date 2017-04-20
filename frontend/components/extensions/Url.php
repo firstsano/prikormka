@@ -6,10 +6,10 @@ class Url extends \yii\helpers\Url
 {
     public static function toProduct($product)
     {
-        if (is_integer($product)) {
-            return static::to(['/catalog/view', 'id' => $product]);
-        }
-        return static::to(['/catalog/view', 'id' => $product->id]);
+        return static::to(['/catalog/view',
+            'category' => $product->category->slug,
+            'slug' => $product->slug,
+        ]);
     }
 
     public static function toImage($path, $type = 'default')

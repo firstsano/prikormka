@@ -3,6 +3,7 @@
 namespace common\models;
 
 use Yii;
+use yii\behaviors\TimestampBehavior;
 
 /**
  * This is the model class for table "orders".
@@ -37,6 +38,16 @@ class Order extends \yii\db\ActiveRecord
     public static function tableName()
     {
         return 'orders';
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function behaviors()
+    {
+        return [
+            TimestampBehavior::className(),
+        ];
     }
 
     /**
@@ -127,6 +138,7 @@ class Order extends \yii\db\ActiveRecord
      */
     public static function find()
     {
-        return new \common\models\queries\OrderQuery(get_called_class());
+        $query = new \common\models\queries\OrderQuery(get_called_class());
+        return $query->with('orderProducts');
     }
 }

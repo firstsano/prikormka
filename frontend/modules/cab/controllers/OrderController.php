@@ -11,13 +11,12 @@ use frontend\models\OrderForm;
 use common\models\Order;
 use yii\filters\AccessControl;
 
-class OrderController extends \yii\web\Controller
+class OrderController extends Controller
 {
     /**
      * @var string
      */
     public $defaultAction = 'new';
-
 
     /**
      * @inheritdoc

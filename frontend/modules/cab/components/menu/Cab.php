@@ -12,6 +12,10 @@ class Cab
                 'url' => ['profile/view']
             ],
             [
+                'label' => 'Редактировать профиль',
+                'url' => ['profile/edit']
+            ],
+            [
                 'label' => 'Заказы',
                 'url' => ['order/index']
             ],

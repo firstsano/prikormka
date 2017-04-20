@@ -27,11 +27,3 @@ echo DetailView::widget([
         'userProfile.organization'
     ],
 ]);
-
-echo Html::tag('br');
-echo Html::tag('br');
-echo Html::a(
-    Yii::t('frontend/site', 'Edit profile'),
-    ['profile/edit'],
-    ['class' => 'button']
-);

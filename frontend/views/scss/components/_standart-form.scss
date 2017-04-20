@@ -7,10 +7,11 @@
   }
 
   & .standart-form__label {
-    display: block;
-    margin-bottom: 5px;
-    font-size: $font-size-small;
     color: $color-text-standart;
+    display: block;
+    font-size: $font-size-standart-small;
+    font-weight: normal;
+    margin-bottom: 5px;
   }
 
   & .standart-form__input {

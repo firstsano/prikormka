@@ -2,10 +2,10 @@
 
 /* @var $this yii\web\View */
 
-use yii\helpers\Url;
+use frontend\components\extensions\Url;
 use frontend\components\extensions\Html;
 use frontend\components\widgets\Cart;
-use frontend\components\widgets\RemoteSearch;
+use frontend\components\widgets\QuickSearch;
 
 ?>
 
@@ -18,7 +18,9 @@ use frontend\components\widgets\RemoteSearch;
             ?>
         </div>
         <div class="header-info__search">
-            <?= RemoteSearch::widget([]) ?>
+            <?= QuickSearch::widget([
+                'url' => Url::to(['/site/product-list'])
+            ]) ?>
         </div>
         <div class="header-info__phones">
             <div class="header-info__contact-phone"> 8 (960) 882-22-22 </div>

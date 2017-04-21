@@ -8,7 +8,7 @@ use frontend\models\ContactForm;
 use frontend\models\Product;
 use frontend\extensions\Controller;
 use frontend\components\extensions\Url;
-use common\models\Feedback;
+use yii\helpers\StringHelper;
 use common\models\Article;
 use common\models\WidgetCarousel;
 use frontend\models\SubscribeForm;
@@ -116,26 +116,26 @@ class SiteController extends Controller
         ]);
     }
 
-    public function actionProductList($query, $limit, $page = 0) {
+    public function actionProductList($query) {
         Yii::$app->response->format = Response::FORMAT_JSON;
         $productsList = Product::previewList([
             'query' => $query,
-            'limit' => $limit,
-            'offset' => $page
+            'limit' => 10,
+            'offset' => 0
         ]);
         $output = [
             'items' => [],
-            'total_count' => $productsList['total_count']
+            'total_count' => $productsList['total_count'],
+            'more_link' => Url::to(['/wholesale-catalog/index', 'filter' => $query])
         ];
         foreach ($productsList['items'] as $product) {
             $output['items'][] = ArrayHelper::toArray($product, [
                 Product::className() => [
-                    'name',
+                    'name' => function($product) {
+                        return StringHelper::truncate($product->name, 50);
+                    },
                     'url' => function($product) {
                         return Url::toProduct($product);
-                    },
-                    'image' => function($product) {
-                        return $product->mainImage->url;
                     }
                 ]
             ]);

@@ -215,6 +215,7 @@ class Product extends \yii\db\ActiveRecord
         $totalQuery = static::find()
             ->where(['like', 'name', $query])
             ->orWhere(['like', 'description', $query])
+            ->orderBy(['name' => SORT_ASC])
         ;
         $itemsQuery = clone $totalQuery;
         $items = $itemsQuery

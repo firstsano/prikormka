@@ -31,8 +31,6 @@ return [
         'frontend\components\widgets\assets\SelectorAsset',
         'frontend\components\widgets\assets\ToTopAsset',
         'frontend\components\widgets\assets\WholesaleFilterAsset',
-        'kartik\base\WidgetAsset',
-        'kartik\select2\Select2Asset',
         'kop\y2sp\assets\InfiniteAjaxScrollAsset',
         'yii\grid\GridViewAsset',
         'yii\widgets\PjaxAsset',

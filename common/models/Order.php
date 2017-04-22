@@ -18,6 +18,8 @@ use yii\behaviors\TimestampBehavior;
  * @property string $user_email
  * @property string $user_phone
  * @property string $user_address
+ * @property integer $created_at
+ * @property integer $updated_at
  *
  * @property OrderProducts[] $orderProducts
  * @property User $user
@@ -83,6 +85,9 @@ class Order extends \yii\db\ActiveRecord
             'status' => Yii::t('common/models/order', 'Status'),
             'comment' => Yii::t('common/models/order', 'Comment'),
             'delivery' => Yii::t('common/models/order', 'Delivery'),
+            'orderProducts' => Yii::t('common/models/order', 'Order Products'),
+            'created_at' => Yii::t('common/models', 'Created at'),
+            'updated_at' => Yii::t('common/models', 'Updated at'),
             'user_name' => Yii::t('common/models/order', 'User Name'),
             'user_email' => Yii::t('common/models/order', 'User Email'),
             'user_phone' => Yii::t('common/models/order', 'User Phone'),
@@ -140,5 +145,13 @@ class Order extends \yii\db\ActiveRecord
     {
         $query = new \common\models\queries\OrderQuery(get_called_class());
         return $query->with('orderProducts');
+    }
+
+    /**
+     * Remove deleting ability, set status complete
+     */
+    public function delete()
+    {
+        $this->updateAttributes(['status' => self::STATUS_COMPLETE]);
     }
 }

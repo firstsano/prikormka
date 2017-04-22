@@ -2,7 +2,7 @@
 $config = [
     'homeUrl'=>Yii::getAlias('@backendUrl'),
     'controllerNamespace' => 'backend\controllers',
-    'defaultRoute'=>'timeline-event/index',
+    'defaultRoute' => 'timeline-event/index',
     'controllerMap'=>[
         'file-manager-elfinder' => [
             'class' => 'mihaildev\elfinder\Controller',
@@ -78,6 +78,25 @@ $config = [
             [
                 'allow' => true,
                 'roles' => ['manager'],
+            ],
+            [
+                'controllers'=>['timeline-event'],
+                'allow' => false,
+                'denyCallback' => function() {
+                    $backend = Yii::getAlias('@backendUrl');
+                    return Yii::$app->controller->redirect($backend . '/order/index');
+                }
+            ],
+            [
+                'controllers'=>['order'],
+                'allow' => true,
+                'roles' => ['orders-manager']
+            ],
+            [
+                'controllers' => ['product'],
+                'actions' => ['view'],
+                'allow' => true,
+                'roles' => ['orders-manager']
             ],
             [
                 'allow' => false,

@@ -58,7 +58,24 @@ class Navigation
         if (Yii::$app->user->can('manager')) {
             $menu = ArrayHelper::merge($menu, static::managerMenu());
         }
+        if (Yii::$app->user->can('orders-manager')) {
+            $menu = ArrayHelper::merge($menu, static::ordersManagerMenu());
+        }
         return $menu;
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public static function ordersManagerMenu()
+    {
+        return [
+            [
+                'label'=>Yii::t('backend/site', 'Orders'),
+                'url'=>['/order/index'],
+                'icon' => '<i class="fa fa-first-order"></i>',
+            ],
+        ];
     }
 
     /**

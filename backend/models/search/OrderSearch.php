@@ -71,6 +71,11 @@ class OrderSearch extends Order
             ->andFilterWhere(['like', 'user_phone', $this->user_phone])
             ->andFilterWhere(['like', 'user_address', $this->user_address]);
 
+        $query->orderBy([
+            'created_at' => SORT_DESC,
+            'updated_at' => SORT_DESC
+        ]);
+
         return $dataProvider;
     }
 }

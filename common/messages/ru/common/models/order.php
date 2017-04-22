@@ -10,6 +10,7 @@ return [
     'User Email' => 'Почта заказчика',
     'User Phone' => 'Телефон заказчика',
     'User Address' => 'Адрес заказчика',
+    'Order Products' => 'Заказанные товары',
 
     'status.new' => 'Новый',
     'status.payed' => 'Оплачено',

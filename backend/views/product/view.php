@@ -15,16 +15,18 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="product-view">
 
-    <p>
-        <?php echo Html::a(Yii::t('common\actions', 'Update'), ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        <?php echo Html::a(Yii::t('common\actions', 'Delete'), ['delete', 'id' => $model->id], [
-            'class' => 'btn btn-danger',
-            'data' => [
-                'confirm' => Yii::t('backend\site', 'delete-item.confirm'),
-                'method' => 'post',
-            ],
-        ]) ?>
-    </p>
+    <?php if(Yii::$app->user->can('manager')): ?>
+        <p>
+            <?php echo Html::a(Yii::t('common\actions', 'Update'), ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+            <?php echo Html::a(Yii::t('common\actions', 'Delete'), ['delete', 'id' => $model->id], [
+                'class' => 'btn btn-danger',
+                'data' => [
+                    'confirm' => Yii::t('backend\site', 'delete-item.confirm'),
+                    'method' => 'post',
+                ],
+            ]) ?>
+        </p>
+    <?php endif; ?>
 
     <?php
         $modelImages = "";

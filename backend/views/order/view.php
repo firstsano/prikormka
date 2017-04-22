@@ -44,6 +44,21 @@ $this->params['breadcrumbs'][] = $this->title;
             'user_email:email',
             'user_phone',
             'user_address:ntext',
+            [
+                'attribute' => 'created_at',
+                'format' => 'raw',
+                'value' => Yii::$app->formatter->asDatetime($model->created_at)
+            ],
+            [
+                'attribute' => 'updated_at',
+                'format' => 'raw',
+                'value' => Yii::$app->formatter->asDatetime($model->updated_at)
+            ],
+            [
+                'attribute' => 'orderProducts',
+                'format' => 'raw',
+                'value' => $this->render('_orderProducts', ['model' => $model])
+            ],
         ],
     ]) ?>
 

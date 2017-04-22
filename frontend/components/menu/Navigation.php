@@ -82,7 +82,7 @@ class Navigation
             [
                 'label' => 'Админка',
                 'url' => [ '/admin' ],
-                'visible' => Yii::$app->user->can('manager'),
+                'visible' => (Yii::$app->user->can('manager') || Yii::$app->user->can('orders-manager')),
             ],
             [
                 'label' => 'Личный кабинет',

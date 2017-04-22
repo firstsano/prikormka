@@ -4,13 +4,14 @@
 /* @var $feedback \common\models\Feedback */
 
 use frontend\components\extensions\Html;
+use frontend\components\extensions\Url;
 
 ?>
 
 <div class="client-comment">
     <header class="client-comment__client-info">
         <div class="client-comment__client-image-layout">
-            <?= Html::img($feedback->imageUrl, [
+            <?= Html::img(Url::toImage($feedback->thumbnail_path), [
                 'alt' => $feedback->user_name,
                 'class' => 'client-comment__client-image'
             ]) ?>

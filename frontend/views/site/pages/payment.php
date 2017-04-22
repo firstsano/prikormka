@@ -49,8 +49,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         Остались вопросы? Всегда рады помочь вам!
                     </div>
                     <div class="payment-info__article">
-                        Москва: 8(903) 104-29-95 <br />
-                        Регионы: 8(903) 104-29-95 <br />
+                        Телефон: <?= Yii::$app->params['mainPhone'] ?> <br />
                         Email: etv06@mail.ru
                     </div>
                 </div>

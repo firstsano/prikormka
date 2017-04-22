@@ -4,6 +4,7 @@ namespace frontend\controllers;
 
 use Yii;
 use yii\web\Controller;
+use yii\web\NotFoundHttpException;
 use frontend\models\search\ProductSearch;
 use frontend\models\Product;
 
@@ -38,8 +39,12 @@ class CatalogController extends Controller
      */
     public function actionView($slug)
     {
+        $product = Product::find()->published()->where(['slug' => $slug])->one();
+        if (!$product) {
+            throw new NotFoundHttpException();
+        }
         return $this->render('view', [
-            'model' => Product::find()->published()->where(['slug' => $slug])->one()
+            'model' => $product
         ]);
     }
 }

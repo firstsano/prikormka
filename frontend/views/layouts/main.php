@@ -39,6 +39,7 @@ use frontend\components\extensions\Breadcrumbs;
         <?= $content ?>
     </main>
     <?= $this->render('footer') ?>
+    <?php if(YII_ENV_PROD) echo $this->render('metrics') ?>
 <?php $this->endBody() ?>
 </body>
 </html>

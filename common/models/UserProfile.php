@@ -6,6 +6,7 @@ use trntv\filekit\behaviors\UploadBehavior;
 use Yii;
 use yii\db\ActiveRecord;
 use common\models\queries\UserProfileQuery;
+use yii\helpers\Json;
 
 /**
  * This is the model class for table "user_profile".
@@ -189,5 +190,33 @@ class UserProfile extends ActiveRecord
         return $this->avatar_path
             ? Yii::getAlias($this->avatar_base_url . '/' . $this->avatar_path)
             : $default;
+    }
+
+    public function encodeTypeData()
+    {
+        if(!is_string($this->type_data)) {
+            $this->type_data = Json::encode($this->type_data);
+        }
+    }
+
+    public function decodeTypeData()
+    {
+        if(!is_array($this->type_data)) {
+            $this->type_data = Json::decode($this->type_data);
+        }
+    }
+
+    public function afterFind()
+    {
+        $this->decodeTypeData();
+        parent::afterFind();
+    }
+
+    public function save($runValidation = true, $attributeNames = null)
+    {
+        $this->encodeTypeData();
+        $saveResult = parent::save($runValidation, $attributeNames);
+        $this->decodeTypeData();
+        return $saveResult;
     }
 }

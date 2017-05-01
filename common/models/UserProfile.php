@@ -36,6 +36,8 @@ class UserProfile extends ActiveRecord
     const GENDER_MALE = 1;
     const GENDER_FEMALE = 2;
 
+    private $_attributes = [];
+
     /**
      * @var
      */
@@ -52,7 +54,8 @@ class UserProfile extends ActiveRecord
     /**
      * Hook for setting type for children
      */
-    protected static function type() {
+    protected static function type()
+    {
         if (defined('static::TYPE')) {
             return static::TYPE;
         }
@@ -194,6 +197,9 @@ class UserProfile extends ActiveRecord
 
     public function encodeTypeData()
     {
+        foreach($this->_attributes as $name => $value) {
+            $this->type_data[$name] = $this->$name;
+        }
         if(!is_string($this->type_data)) {
             $this->type_data = Json::encode($this->type_data);
         }
@@ -203,6 +209,9 @@ class UserProfile extends ActiveRecord
     {
         if(!is_array($this->type_data)) {
             $this->type_data = Json::decode($this->type_data);
+        }
+        foreach($this->typeAttributes as $name => $value) {
+            $this->$name = $this->type_data[$name];
         }
     }
 
@@ -218,5 +227,25 @@ class UserProfile extends ActiveRecord
         $saveResult = parent::save($runValidation, $attributeNames);
         $this->decodeTypeData();
         return $saveResult;
+    }
+
+    /**
+     * Override getter and setter to use dynamic attributes
+     */
+    public function __get($name)
+    {
+        if (isset($this->_attributes[$name])) {
+            return $this->_attributes[$name];
+        }
+
+        return parent::__get($name);
+    }
+
+    public function __set($name, $value)
+    {
+        if (isset($this->_attributes[$name])) {
+            return $this->_attributes[$name] = $value;
+        }
+        return parent::__set($name, $value);
     }
 }

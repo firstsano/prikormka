@@ -21,7 +21,10 @@ use yii\behaviors\TimestampBehavior;
  * @property integer $created_at
  * @property integer $updated_at
  *
- * @property OrderProducts[] $orderProducts
+ * @property OrderProduct[] $orderProducts
+ * @property OrderUserInfo $orderUserInfo
+ * @property OrderRegistrationInfo $orderRegistrationInfo
+ * @property OrderCompanyInfo $orderCompanyInfo
  * @property User $user
  */
 class Order extends \yii\db\ActiveRecord
@@ -135,6 +138,30 @@ class Order extends \yii\db\ActiveRecord
     public function getUser()
     {
         return $this->hasOne(User::className(), ['id' => 'user_id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getOrderCompanyInfo()
+    {
+        return $this->hasOne(OrderCompanyInfo::className(), ['order_id' => 'id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getOrderUserInfo()
+    {
+        return $this->hasOne(OrderUserInfo::className(), ['order_id' => 'id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getOrderRegistrationInfo()
+    {
+        return $this->hasOne(OrderRegistrationInfo::className(), ['order_id' => 'id']);
     }
 
     /**

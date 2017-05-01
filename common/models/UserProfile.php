@@ -5,6 +5,7 @@ namespace common\models;
 use trntv\filekit\behaviors\UploadBehavior;
 use Yii;
 use yii\db\ActiveRecord;
+use common\models\queries\UserProfileQuery;
 
 /**
  * This is the model class for table "user_profile".
@@ -24,6 +25,8 @@ use yii\db\ActiveRecord;
  * @property string $avatar_path
  * @property string $avatar_base_url
  * @property integer $gender
+ * @property string $type
+ * @property string $type_data
  *
  * @property User $user
  */
@@ -36,6 +39,24 @@ class UserProfile extends ActiveRecord
      * @var
      */
     public $picture;
+
+    /**
+     * @inheritdoc
+     */
+    public static function tableName()
+    {
+        return '{{%user_profile}}';
+    }
+
+    /**
+     * Hook for setting type for children
+     */
+    protected static function type() {
+        if (defined('static::TYPE')) {
+            return static::TYPE;
+        }
+        return null;
+    }
 
     /**
      * @return array
@@ -52,13 +73,47 @@ class UserProfile extends ActiveRecord
         ];
     }
 
+    public static function instantiate($row)
+    {
+        switch ($row['type']) {
+            case UserProfileIP::type():
+                return new UserProfileIP();
+            case UserProfileJur::type():
+                return new UserProfileJur();
+            case UserProfilePhys::type():
+                return new UserProfilePhys();
+            default:
+                return new self;
+        }
+    }
 
     /**
      * @inheritdoc
      */
-    public static function tableName()
+    public function init()
     {
-        return '{{%user_profile}}';
+        $this->type = self::type();
+        parent::init();
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function beforeSave($insert)
+    {
+        $this->type = self::type();
+        return parent::beforeSave($insert);
+    }
+
+    /**
+     * @return UserProfileQuery
+     */
+    public static function find()
+    {
+        return new UserProfileQuery(get_called_class(), [
+            'type' => static::type(),
+            'tableName' => self::tableName()
+        ]);
     }
 
     /**

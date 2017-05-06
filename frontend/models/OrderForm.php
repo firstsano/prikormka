@@ -14,45 +14,52 @@ class OrderForm extends Model
     const SCENARIO_USER = 'user';
     const SCENARIO_GUEST = 'guest';
 
-    /**
-     * @var mixed
-     */
+    const PHYSYCAL = 'phys';
+    const JURIDICAL = 'jur';
+    const INDIVIDUAL = 'ip';
+
+    /* System fields */
+    public $reCaptcha;
+    public $clientType;
     public $user;
 
-    /**
-     * @var string
-     */
+    /* Contact info */
     public $name;
-
-    /**
-     * @var string
-     */
     public $email;
-
-    /**
-     * @var string
-     */
     public $phone;
 
-    /**
-     * @var integer
-     */
+    /* Delivery info */
     public $delivery;
-
-    /**
-     * @var string
-     */
     public $address;
-
-    /**
-     * @var string
-     */
     public $comment;
 
-    /**
-     * @var
-     */
-    public $reCaptcha;
+    /* Company info */
+    public $companyName;
+    public $inn;
+    public $kpp;
+    public $companyAddress;
+    public $signerName;
+
+    /* Bank info */
+    public $bik;
+    public $checkingAccount;
+    public $bankName;
+    public $corAccount;
+    public $bankCity;
+
+    /* Ragistration info */
+    public $ogrnip;
+    public $series;
+    public $regNumber;
+    public $receiveDate;
+
+    public function init()
+    {
+        if (!$this->clientType) {
+            $this->clientType = static::PHYSYCAL;
+        }
+        parent::init();
+    }
 
     /**
      * @return array the validation rules.
@@ -72,6 +79,7 @@ class OrderForm extends Model
                 }
             }],
             [['delivery'], 'in', 'range' => array_keys(Order::deliveries())],
+            [['clientType'], 'in', 'range' => array_keys(self::clientTypes())],
             ['user', 'safe'],
 //            [['reCaptcha'], ReCaptchaValidator::className(), 'on' => static::SCENARIO_GUEST],
         ];
@@ -82,15 +90,28 @@ class OrderForm extends Model
      */
     public function attributeLabels()
     {
-        return [
-            'name' => Yii::t('frontend/models/order-form', 'Name'),
-            'email' => Yii::t('frontend/models/order-form', 'Email'),
-            'phone' => Yii::t('frontend/models/order-form', 'Phone'),
-            'address' => Yii::t('frontend/models/order-form', 'Address'),
-            'comment' => Yii::t('frontend/models/order-form', 'Comment'),
-            'delivery' => Yii::t('frontend/models/order-form', 'Delivery'),
-            'reCaptcha' => Yii::t('frontend/models/order-form', 'Re Captcha')
-        ];
+        $companyInfo = ['companyName', 'inn', 'kpp', 'companyAddress', 'signerName'];
+        $bankInfo = ['bik', 'checkingAccount', 'bankName', 'corAccount', 'bankCity'];
+        $registrationInfo = ['ogrnip', 'series', 'regNumber', 'receiveDate'];
+
+        $labels = array_merge($companyInfo, $bankInfo, $registrationInfo);
+        $translations = [];
+        foreach ($labels as &$label) {
+            $translations[$label] = Yii::t('frontend/models/order-form', $label);
+        }
+
+        return array_merge(
+            [
+                'name' => Yii::t('frontend/models/order-form', 'Name'),
+                'email' => Yii::t('frontend/models/order-form', 'Email'),
+                'phone' => Yii::t('frontend/models/order-form', 'Phone'),
+                'address' => Yii::t('frontend/models/order-form', 'Address'),
+                'comment' => Yii::t('frontend/models/order-form', 'Comment'),
+                'delivery' => Yii::t('frontend/models/order-form', 'Delivery'),
+                'reCaptcha' => Yii::t('frontend/models/order-form', 'Re Captcha')
+            ],
+            $translations
+        );
     }
 
     /**
@@ -102,6 +123,15 @@ class OrderForm extends Model
         return [
             self::SCENARIO_USER => Yii::t('common/models/order-form', 'User'),
             self::SCENARIO_GUEST => Yii::t('common/models/order-form', 'Guest'),
+        ];
+    }
+
+    public static function clientTypes()
+    {
+        return [
+            self::PHYSYCAL => Yii::t('frontend/models/order-form', 'Physical'),
+            self::JURIDICAL => Yii::t('frontend/models/order-form', 'Juridical'),
+            self::INDIVIDUAL => Yii::t('frontend/models/order-form', 'Individual'),
         ];
     }
 

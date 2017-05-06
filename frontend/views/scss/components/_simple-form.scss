@@ -31,6 +31,12 @@
     font-weight: 100;
   }
 
+  & .simple-form__radiolist-label {
+    &.simple-form__radiolist-label_light {
+      font-weight: 300 !important;
+    }
+  }
+
   & .simple-form__radiolist-item {
     display: inline-block;
     margin-right: 20px;

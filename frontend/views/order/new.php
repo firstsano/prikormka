@@ -8,6 +8,7 @@ use frontend\components\extensions\Html;
 use frontend\components\widgets\FlashMessages;
 use frontend\components\extensions\SimpleActiveForm;
 use common\models\Order;
+use frontend\models\OrderForm;
 use yii\widgets\MaskedInput;
 use himiklab\yii2\recaptcha\ReCaptcha;
 
@@ -41,7 +42,23 @@ $this->params['breadcrumbs'][] = $this->title;
             'action' => ['order/create']
         ]) ?>
         <div class="order-new__form">
-            <div class="order-new__section-title"> Данные покупателя: </div>
+            <div class="order-new__section-title text-center">
+                <?= $form->field($model, 'clientType')->label(false)->radioList(OrderForm::clientTypes(), [
+                    'id' => 'client-type-select',
+                    'class' => 'simple-form__radiolist',
+                    'item' => function($index, $label, $name, $checked, $value) {
+                        $id = "$name-$index";
+                        $input = Html::radio($name, $checked, [
+                            'id' => $id,
+                            'value' => $value
+                        ]);
+                        $input .= Html::label($label, $id, ['class' => 'simple-form__radiolist-label simple-form__radiolist-label_light']);
+                        return Html::tag('div', $input, ['class' => 'simple-form__radiolist-item']);
+                    }
+                ]) ?>
+            </div>
+            <hr />
+            <div class="order-new__section-title"> Контактная информация: </div>
             <div class="order-new__section">
                 <?= $form->field($model, 'name') ?>
                 <?= $form->field($model, 'phone')->widget(\yii\widgets\MaskedInput::className(), [
@@ -65,6 +82,35 @@ $this->params['breadcrumbs'][] = $this->title;
                         return Html::tag('div', $input, ['class' => 'simple-form__radiolist-item']);
                     }
                 ]) ?>
+            </div>
+            <div data-client-type="<?= implode(',', [OrderForm::JURIDICAL, OrderForm::INDIVIDUAL]) ?>">
+                <div class="order-new__section-title"> Данные компании: </div>
+                <div class="order-new__section">
+                    <?= $form->field($model, 'companyName') ?>
+                    <?= $form->field($model, 'inn') ?>
+                    <?= $form->field($model, 'kpp') ?>
+                    <?= $form->field($model, 'companyAddress') ?>
+                    <?= $form->field($model, 'signerName') ?>
+                </div>
+            </div>
+            <div data-client-type="<?= implode(',', [OrderForm::JURIDICAL, OrderForm::INDIVIDUAL]) ?>">
+                <div class="order-new__section-title"> Банковские реквизиты: </div>
+                <div class="order-new__section">
+                    <?= $form->field($model, 'bik') ?>
+                    <?= $form->field($model, 'checkingAccount') ?>
+                    <?= $form->field($model, 'bankName') ?>
+                    <?= $form->field($model, 'corAccount') ?>
+                    <?= $form->field($model, 'bankCity') ?>
+                </div>
+            </div>
+            <div data-client-type="<?= implode(',', [OrderForm::INDIVIDUAL]) ?>">
+                <div class="order-new__section-title"> Свидетельство о регистрации: </div>
+                <div class="order-new__section">
+                    <?= $form->field($model, 'ogrnip') ?>
+                    <?= $form->field($model, 'series') ?>
+                    <?= $form->field($model, 'regNumber') ?>
+                    <?= $form->field($model, 'receiveDate') ?>
+                </div>
             </div>
         </div>
 
@@ -132,3 +178,23 @@ $this->params['breadcrumbs'][] = $this->title;
         <?php SimpleActiveForm::end() ?>
     </div>
 </div>
+
+<?php
+
+$radioToggle = <<< 'JS'
+    var toggleClientType = function($radio) {
+        var value = $radio.find('input:checked').val();
+        var hideableForms = $('.order-form').find("[data-client-type]");
+        $.each(hideableForms, function(i, form) {
+            var $form = $(form);
+            var formTypes = $form.data('client-type').split(',');
+            if($.inArray(value, formTypes) === -1) { console.log(value, formTypes); $form.hide(); }
+            else { $form.show(); }
+        });
+    };
+
+    toggleClientType($('#client-type-select'));
+    $('body').on('click', '#client-type-select', function() { toggleClientType($(this)); });
+JS;
+
+echo $this->registerJs($radioToggle);

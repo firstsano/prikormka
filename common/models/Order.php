@@ -95,7 +95,7 @@ class Order extends \yii\db\ActiveRecord
             'client_type' => Yii::t('common/models/order', 'Client Type'),
             'orderCompanyInfo' => Yii::t('common/models/order', 'Company Info'),
             'orderUserInfo' => Yii::t('common/models/order', 'User Info'),
-            'registrationInfo' => Yii::t('common/models/order', 'Registration Info'),
+            'orderRegistrationInfo' => Yii::t('common/models/order', 'Registration Info'),
         ];
     }
 

@@ -104,7 +104,12 @@ class OrderForm extends Model
                     'ogrnip', 'series', 'regNumber', 'receiveDate'
                 ],
                 'required'
-            ]
+            ],
+            ['receiveDate', function($attribute) {
+                if (isset($this->$attribute)) {
+                    $this->$attribute = strtotime($this->$attribute);
+                }
+            }]
 //            [['reCaptcha'], ReCaptchaValidator::className(), 'on' => static::SCENARIO_GUEST],
         ];
     }

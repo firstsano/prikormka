@@ -12,6 +12,9 @@ echo DetailView::widget([
         'ogrnip',
         'series',
         'number',
-        'receive_date',
+        [
+            'attribute' => 'receive_date',
+            'value' =>  Yii::$app->formatter->asDate($model->receive_date)
+        ]
     ],
 ]);

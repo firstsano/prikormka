@@ -44,10 +44,10 @@ class OrderRegistrationInfo extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'ogrnip' => 'Ogrnip',
-            'series' => 'Series',
-            'number' => 'Number',
-            'receive_date' => 'Receive Date',
+            'ogrnip' => Yii::t('common/models/order-registration-info', 'Ogrnip'),
+            'series' => Yii::t('common/models/order-registration-info', 'Series'),
+            'number' => Yii::t('common/models/order-registration-info', 'Number'),
+            'receive_date' => Yii::t('common/models/order-registration-info', 'Receive Date'),
             'order_id' => 'Order ID',
         ];
     }

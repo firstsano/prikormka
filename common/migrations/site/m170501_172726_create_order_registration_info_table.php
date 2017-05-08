@@ -12,7 +12,7 @@ class m170501_172726_create_order_registration_info_table extends Migration
             'ogrnip' => $this->string(),
             'series' => $this->string(),
             'number' => $this->string(),
-            'receive_date' => $this->dateTime(),
+            'receive_date' => $this->integer(11),
 
             'order_id' => $this->integer(),
         ]);

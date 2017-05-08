@@ -9,6 +9,7 @@ use frontend\components\widgets\FlashMessages;
 use frontend\components\extensions\SimpleActiveForm;
 use common\models\Order;
 use frontend\models\OrderForm;
+use yii\jui\DatePicker;
 use yii\widgets\MaskedInput;
 use himiklab\yii2\recaptcha\ReCaptcha;
 
@@ -110,7 +111,10 @@ $this->params['breadcrumbs'][] = $this->title;
                     <?= $form->field($model, 'ogrnip') ?>
                     <?= $form->field($model, 'series') ?>
                     <?= $form->field($model, 'regNumber') ?>
-                    <?= $form->field($model, 'receiveDate') ?>
+                    <?= $form->field($model, 'receiveDate')->widget(DatePicker::classname(), [
+                        'options' => ['class' => 'simple-form__input'],
+                        'dateFormat' => 'yyyy-MM-dd',
+                    ]) ?>
                 </div>
             </div>
         </div>

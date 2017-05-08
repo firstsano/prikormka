@@ -29,6 +29,7 @@ use yii\web\IdentityInterface;
  * @property string $password write-only password
  *
  * @property \common\models\UserProfile $userProfile
+ * @property \common\models\UserAdditionalInfo $userAdditionalInfo
  */
 class User extends ActiveRecord implements IdentityInterface
 {
@@ -137,6 +138,30 @@ class User extends ActiveRecord implements IdentityInterface
     public function getUserProfile()
     {
         return $this->hasOne(UserProfile::className(), ['user_id' => 'id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getUserAdditionalInfo()
+    {
+        $additionalInfo = $this->hasOne(UserAdditionalInfo::className(), ['user_id' => 'id']);
+        if ($additionalInfo === null) {
+            $additionalInfo = new UserAdditionalInfo(['user_id' => $this->id]);
+        }
+        return $additionalInfo;
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getOrGenerateUserAdditionalInfo()
+    {
+        $additionalInfo = $this->userAdditionalInfo;
+        if ($additionalInfo === null) {
+            $additionalInfo = new UserAdditionalInfo(['user_id' => $this->id]);
+        }
+        return $additionalInfo;
     }
 
     /**

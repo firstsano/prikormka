@@ -31,6 +31,9 @@ $icon-size: 40px;
   &.flash-message_notice {
     background-color: $color-flash-info;
   }
+  &.flash-message_success {
+    background-color: $color-flash-info;
+  }
   &.flash-message_warning {
     background-color: $color-flash-warning;
   }

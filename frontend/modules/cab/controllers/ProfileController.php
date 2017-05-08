@@ -71,6 +71,14 @@ class ProfileController extends Controller
             ]);
         }
         $model->user = Yii::$app->user->identity;
+        $userAdditionalInfo = $model->user->getOrGenerateUserAdditionalInfo();
+        $attributes = ['company_name', 'client_type', 'inn', 'kpp', 'company_address',
+            'signer_name', 'bik', 'checking_account', 'bank_name', 'cor_account', 'bank_city',
+            'ogrnip', 'series', 'number', 'receive_date'];
+        foreach($attributes as $attribute) {
+            $userAdditionalInfo->$attribute = $model->$attribute;
+        }
+        $userAdditionalInfo->save();
         $model->save();
         return $this->redirect(['view']);
     }

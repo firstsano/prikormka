@@ -252,6 +252,21 @@ class OrderForm extends Model
         $this->phone = @$user->userProfile->phone;
         $this->email = $user->email;
         $this->address = @$user->userProfile->address;
+        $this->companyName = @$user->userAdditionalInfo->company_name;
+        $this->clientType  = @$user->userAdditionalInfo->client_type;
+        $this->inn  = @$user->userAdditionalInfo->inn;
+        $this->kpp  = @$user->userAdditionalInfo->kpp;
+        $this->companyAddress  = @$user->userAdditionalInfo->company_address;
+        $this->signerName  = @$user->userAdditionalInfo->signer_name;
+        $this->bik  = @$user->userAdditionalInfo->bik;
+        $this->checkingAccount  = @$user->userAdditionalInfo->checking_account;
+        $this->bankName  = @$user->userAdditionalInfo->bank_name;
+        $this->corAccount  = @$user->userAdditionalInfo->cor_account;
+        $this->bankCity  = @$user->userAdditionalInfo->bank_city;
+        $this->ogrnip  = @$user->userAdditionalInfo->ogrnip;
+        $this->series  = @$user->userAdditionalInfo->series;
+        $this->regNumber  = @$user->userAdditionalInfo->number;
+        $this->receiveDate  = @$user->userAdditionalInfo->receive_date;
     }
 
     private function sendNotifications()

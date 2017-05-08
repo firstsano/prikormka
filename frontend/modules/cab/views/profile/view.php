@@ -24,6 +24,24 @@ echo DetailView::widget([
         'userProfile.phone',
         'userProfile.address',
         'userProfile.site',
-        'userProfile.organization'
+        'userProfile.organization',
+        'userAdditionalInfo.client_type',
+        'userAdditionalInfo.company_name',
+        'userAdditionalInfo.inn',
+        'userAdditionalInfo.kpp',
+        'userAdditionalInfo.company_address',
+        'userAdditionalInfo.signer_name',
+        'userAdditionalInfo.bik',
+        'userAdditionalInfo.checking_account',
+        'userAdditionalInfo.bank_name',
+        'userAdditionalInfo.cor_account',
+        'userAdditionalInfo.bank_city',
+        'userAdditionalInfo.ogrnip',
+        'userAdditionalInfo.series',
+        'userAdditionalInfo.number',
+        [
+            'attribute' => 'userAdditionalInfo.receive_date',
+            'value' => (@$model->userAdditionalInfo->receive_date) ? Yii::$app->formatter->asDate($model->userAdditionalInfo->receive_date) : ""
+        ]
     ],
 ]);

@@ -25,6 +25,10 @@ return [
     'Female' => 'Женский',
     'Male' => 'Мужской',
 
+    'Juridical' => 'Юридическое лицо',
+    'Physical' => 'Физическое лицо',
+    'Individual' => 'Индивидуальный предприниматель',
+
     'selector.no' => 'Нет',
     'selector.price' => 'Цена',
     'selector.title' => 'Название',

@@ -26,8 +26,6 @@ use yii\helpers\Json;
  * @property string $avatar_path
  * @property string $avatar_base_url
  * @property integer $gender
- * @property string $type
- * @property string $type_data
  *
  * @property User $user
  */
@@ -35,8 +33,6 @@ class UserProfile extends ActiveRecord
 {
     const GENDER_MALE = 1;
     const GENDER_FEMALE = 2;
-
-    private $_attributes = [];
 
     /**
      * @var
@@ -52,17 +48,6 @@ class UserProfile extends ActiveRecord
     }
 
     /**
-     * Hook for setting type for children
-     */
-    protected static function type()
-    {
-        if (defined('static::TYPE')) {
-            return static::TYPE;
-        }
-        return null;
-    }
-
-    /**
      * @return array
      */
     public function behaviors()
@@ -75,49 +60,6 @@ class UserProfile extends ActiveRecord
                 'baseUrlAttribute' => 'avatar_base_url'
             ]
         ];
-    }
-
-    public static function instantiate($row)
-    {
-        switch ($row['type']) {
-            case UserProfileIP::type():
-                return new UserProfileIP();
-            case UserProfileJur::type():
-                return new UserProfileJur();
-            case UserProfilePhys::type():
-                return new UserProfilePhys();
-            default:
-                return new self;
-        }
-    }
-
-    /**
-     * @inheritdoc
-     */
-    public function init()
-    {
-        $this->type = self::type();
-        parent::init();
-    }
-
-    /**
-     * @inheritdoc
-     */
-    public function beforeSave($insert)
-    {
-        $this->type = self::type();
-        return parent::beforeSave($insert);
-    }
-
-    /**
-     * @return UserProfileQuery
-     */
-    public static function find()
-    {
-        return new UserProfileQuery(get_called_class(), [
-            'type' => static::type(),
-            'tableName' => self::tableName()
-        ]);
     }
 
     /**
@@ -193,59 +135,5 @@ class UserProfile extends ActiveRecord
         return $this->avatar_path
             ? Yii::getAlias($this->avatar_base_url . '/' . $this->avatar_path)
             : $default;
-    }
-
-    public function encodeTypeData()
-    {
-        foreach($this->_attributes as $name => $value) {
-            $this->type_data[$name] = $this->$name;
-        }
-        if(!is_string($this->type_data)) {
-            $this->type_data = Json::encode($this->type_data);
-        }
-    }
-
-    public function decodeTypeData()
-    {
-        if(!is_array($this->type_data)) {
-            $this->type_data = Json::decode($this->type_data);
-        }
-        foreach($this->typeAttributes as $name => $value) {
-            $this->$name = $this->type_data[$name];
-        }
-    }
-
-    public function afterFind()
-    {
-        $this->decodeTypeData();
-        parent::afterFind();
-    }
-
-    public function save($runValidation = true, $attributeNames = null)
-    {
-        $this->encodeTypeData();
-        $saveResult = parent::save($runValidation, $attributeNames);
-        $this->decodeTypeData();
-        return $saveResult;
-    }
-
-    /**
-     * Override getter and setter to use dynamic attributes
-     */
-    public function __get($name)
-    {
-        if (isset($this->_attributes[$name])) {
-            return $this->_attributes[$name];
-        }
-
-        return parent::__get($name);
-    }
-
-    public function __set($name, $value)
-    {
-        if (isset($this->_attributes[$name])) {
-            return $this->_attributes[$name] = $value;
-        }
-        return parent::__set($name, $value);
     }
 }

@@ -14,6 +14,7 @@ use yii\behaviors\TimestampBehavior;
  * @property integer $status
  * @property text $comment
  * @property integer $delivery
+ * @property string client_type
  * @property string $user_name
  * @property string $user_email
  * @property string $user_phone
@@ -66,7 +67,7 @@ class Order extends \yii\db\ActiveRecord
             [['status'], 'default', 'value' => static::STATUS_NEW],
             [['status', 'delivery'], 'integer'],
             [['delivery'], 'in', 'range' => array_keys(static::deliveries())],
-            [['comment'], 'string'],
+            [['comment', 'client_type'], 'string'],
             [['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['user_id' => 'id']],
             [['total'], 'compare', 'operator' => '>=', 'compareValue' => Yii::$app->params['minOrder']]
         ];
@@ -91,6 +92,10 @@ class Order extends \yii\db\ActiveRecord
             'user_email' => Yii::t('common/models/order', 'User Email'),
             'user_phone' => Yii::t('common/models/order', 'User Phone'),
             'user_address' => Yii::t('common/models/order', 'User Address'),
+            'client_type' => Yii::t('common/models/order', 'Client Type'),
+            'orderCompanyInfo' => Yii::t('common/models/order', 'Company Info'),
+            'orderUserInfo' => Yii::t('common/models/order', 'User Info'),
+            'registrationInfo' => Yii::t('common/models/order', 'Registration Info'),
         ];
     }
 

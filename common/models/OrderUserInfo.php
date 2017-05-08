@@ -43,10 +43,10 @@ class OrderUserInfo extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'name' => 'Name',
-            'email' => 'Email',
-            'phone' => 'Phone',
-            'address' => 'Address',
+            'name' => Yii::t('common/models/order-user-info', 'Name'),
+            'email' => Yii::t('common/models/order-user-info', 'Email'),
+            'phone' => Yii::t('common/models/order-user-info', 'Phone'),
+            'address' => Yii::t('common/models/order-user-info', 'Address'),
             'order_id' => 'Order ID',
         ];
     }

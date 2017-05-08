@@ -69,7 +69,8 @@ class CreateOrderCommand extends Object implements SelfHandlingCommand
                 'total' => $command->total,
                 'status' => $command->status,
                 'comment' => $command->comment,
-                'delivery' => $command->delivery
+                'delivery' => $command->delivery,
+                'client_type' => $command->clientType
             ]);
             if (key_exists('id', $command->user)) {
                 $order->user_id = $command->user['id'];
@@ -86,7 +87,7 @@ class CreateOrderCommand extends Object implements SelfHandlingCommand
             $orderUserInfo->save();
             $order->link('orderUserInfo', $orderUserInfo);
 
-            if (in_array($this->clientType, [OrderForm::INDIVIDUAL, OrderForm::JURIDICAL])) {
+            if (in_array($command->clientType, [OrderForm::INDIVIDUAL, OrderForm::JURIDICAL])) {
                 $orderCompanyInfo = new OrderCompanyInfo([
                     'name' => $command->company['name'],
                     'inn' => $command->company['inn'],
@@ -96,14 +97,14 @@ class CreateOrderCommand extends Object implements SelfHandlingCommand
                     'bik' => $command->bank['bik'],
                     'checking_account' => $command->bank['checkingAccount'],
                     'bank_name' => $command->bank['name'],
-                    'сor_account' => $command->bank['corAccount'],
+                    'cor_account' => $command->bank['corAccount'],
                     'bank_city' => $command->bank['city']
                 ]);
                 $orderCompanyInfo->save();
                 $order->link('orderCompanyInfo', $orderCompanyInfo);
             }
 
-            if (in_array($this->clientType, [OrderForm::INDIVIDUAL])) {
+            if (in_array($command->clientType, [OrderForm::INDIVIDUAL])) {
                 $orderRegistrationInfo = new OrderRegistrationInfo([
                     'ogrnip' => $command->registration['ogrnip'],
                     'series' => $command->registration['series'],

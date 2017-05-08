@@ -13,10 +13,6 @@ $this->title = Yii::t('backend\site', 'Orders');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="order-index">
-
-    <p>
-        <?= Html::a(Yii::t('backend\site', 'Create order'), ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
 <?php Pjax::begin(); ?>    <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
@@ -35,12 +31,18 @@ $this->params['breadcrumbs'][] = $this->title;
                     return Order::statuses()[$model->status];
                 },
             ],
-            'user_name',
-            'user_email:email',
-            'user_phone',
-            'user_address',
-            'created_at',
-            'updated_at',
+            [
+                'attribute' => 'created_at',
+                'value' => function($model) {
+                    return (isset($model->created_at)) ? Yii::$app->formatter->asDate($model->created_at) : "";
+                },
+            ],
+            [
+                'attribute' => 'updated_at',
+                'value' => function($model) {
+                    return (isset($model->updated_at)) ? Yii::$app->formatter->asDate($model->updated_at) : "";
+                },
+            ],
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

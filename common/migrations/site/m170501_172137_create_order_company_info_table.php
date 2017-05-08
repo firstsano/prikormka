@@ -18,7 +18,7 @@ class m170501_172137_create_order_company_info_table extends Migration
             'bik' => $this->string(),
             'checking_account' => $this->string(),
             'bank_name' => $this->string(),
-            'сor_account' => $this->string(),
+            'cor_account' => $this->string(),
             'bank_city' => $this->string(),
 
             'order_id' => $this->integer(),

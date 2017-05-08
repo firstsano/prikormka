@@ -24,9 +24,9 @@ $this->params['breadcrumbs'][] = $this->title;
         ]) ?>
     </p>
 
-    <?= DetailView::widget([
-        'model' => $model,
-        'attributes' => [
+    <?php
+
+        $attributes = [
             [
                 'attribute' => 'total',
                 'value' => format_currency($model->total)
@@ -40,26 +40,68 @@ $this->params['breadcrumbs'][] = $this->title;
                 'attribute' => 'delivery',
                 'value' => Order::deliveries()[$model->delivery]
             ],
-            'user_name',
-            'user_email:email',
-            'user_phone',
-            'user_address:ntext',
             [
-                'attribute' => 'created_at',
-                'format' => 'raw',
-                'value' => Yii::$app->formatter->asDatetime($model->created_at)
+                'attribute' => 'client_type',
+                'value' => Yii::t('common/models/order', $model->client_type)
             ],
             [
-                'attribute' => 'updated_at',
+                'attribute' => 'orderUserInfo',
                 'format' => 'raw',
-                'value' => Yii::$app->formatter->asDatetime($model->updated_at)
+                'value' => $this->render('_user-info', ['model' => $model->orderUserInfo])
             ],
-            [
-                'attribute' => 'orderProducts',
-                'format' => 'raw',
-                'value' => $this->render('_orderProducts', ['model' => $model])
-            ],
-        ],
-    ]) ?>
+        ];
 
+        if (isset($model->orderCompanyInfo))  {
+            $attributes = array_merge(
+                $attributes,
+                [
+                    [
+                        'attribute' => 'orderCompanyInfo',
+                        'format' => 'raw',
+                        'value' => $this->render('_company-info', ['model' => $model->orderCompanyInfo])
+                    ]
+                ]
+            );
+        }
+
+        if (isset($model->orderRegistrationInfo))  {
+            $attributes = array_merge(
+                $attributes,
+                [
+                    [
+                        'attribute' => 'orderRegistrationInfo',
+                        'format' => 'raw',
+                        'value' => $this->render('_registration-info', ['model' => $model->orderRegistrationInfo])
+                    ]
+                ]
+            );
+        }
+
+        $attributes = array_merge(
+            $attributes,
+            [
+                [
+                    'attribute' => 'created_at',
+                    'format' => 'raw',
+                    'value' => Yii::$app->formatter->asDatetime($model->created_at)
+                ],
+                [
+                    'attribute' => 'updated_at',
+                    'format' => 'raw',
+                    'value' => Yii::$app->formatter->asDatetime($model->updated_at)
+                ],
+                [
+                    'attribute' => 'orderProducts',
+                    'format' => 'raw',
+                    'value' => $this->render('_orderProducts', ['model' => $model])
+                ],
+            ]
+        );
+
+        echo DetailView::widget([
+            'model' => $model,
+            'template' => "<tr><th width='10%'>{label}</th><td>{value}</td></tr>",
+            'attributes' => $attributes
+        ])
+    ?>
 </div>

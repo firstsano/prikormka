@@ -15,7 +15,7 @@ use Yii;
  * @property string $bik
  * @property string $checking_account
  * @property string $bank_name
- * @property string $сor_account
+ * @property string $cor_account
  * @property string $bank_city
  * @property integer $order_id
  *
@@ -38,7 +38,7 @@ class OrderCompanyInfo extends \yii\db\ActiveRecord
     {
         return [
             [['order_id'], 'integer'],
-            [['name', 'inn', 'kpp', 'address', 'signer_name', 'bik', 'checking_account', 'bank_name', 'сor_account', 'bank_city'], 'string', 'max' => 255],
+            [['name', 'inn', 'kpp', 'address', 'signer_name', 'bik', 'checking_account', 'bank_name', 'cor_account', 'bank_city'], 'string', 'max' => 255],
             [['order_id'], 'exist', 'skipOnError' => true, 'targetClass' => Order::className(), 'targetAttribute' => ['order_id' => 'id']],
         ];
     }
@@ -49,17 +49,17 @@ class OrderCompanyInfo extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'name' => 'Name',
-            'inn' => 'Inn',
-            'kpp' => 'Kpp',
-            'address' => 'Address',
-            'signer_name' => 'Signer Name',
-            'bik' => 'Bik',
-            'checking_account' => 'Checking Account',
-            'bank_name' => 'Bank Name',
-            'сor_account' => 'сor Account',
-            'bank_city' => 'Bank City',
-            'order_id' => 'Order ID',
+            'name' => Yii::t('common/models/order-company-info', 'Name'),
+            'inn' => Yii::t('common/models/order-company-info', 'Inn'),
+            'kpp' => Yii::t('common/models/order-company-info', 'Kpp'),
+            'address' => Yii::t('common/models/order-company-info', 'Address'),
+            'signer_name' => Yii::t('common/models/order-company-info', 'Signer Name'),
+            'bik' => Yii::t('common/models/order-company-info', 'Bik'),
+            'checking_account' => Yii::t('common/models/order-company-info', 'Checking Account'),
+            'bank_name' => Yii::t('common/models/order-company-info', 'Bank Name'),
+            'cor_account' => Yii::t('common/models/order-company-info', 'Cor Account'),
+            'bank_city' => Yii::t('common/models/order-company-info', 'Bank City'),
+            'order_id' => Yii::t('common/models/order-company-info', 'Order ID'),
         ];
     }
 

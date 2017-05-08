@@ -34,6 +34,24 @@ $this->params['breadcrumbs'][] = $this->title;
             'created_at:datetime',
             'updated_at:datetime',
             'logged_at:datetime',
+            'userAdditionalInfo.client_type',
+            'userAdditionalInfo.company_name',
+            'userAdditionalInfo.inn',
+            'userAdditionalInfo.kpp',
+            'userAdditionalInfo.company_address',
+            'userAdditionalInfo.signer_name',
+            'userAdditionalInfo.bik',
+            'userAdditionalInfo.checking_account',
+            'userAdditionalInfo.bank_name',
+            'userAdditionalInfo.cor_account',
+            'userAdditionalInfo.bank_city',
+            'userAdditionalInfo.ogrnip',
+            'userAdditionalInfo.series',
+            'userAdditionalInfo.number',
+            [
+                'attribute' => 'userAdditionalInfo.receive_date',
+                'value' => (@$model->userAdditionalInfo->receive_date) ? Yii::$app->formatter->asDate($model->userAdditionalInfo->receive_date) : ""
+            ]
         ],
     ]) ?>
 

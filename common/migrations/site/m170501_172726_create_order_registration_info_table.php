@@ -8,6 +8,7 @@ class m170501_172726_create_order_registration_info_table extends Migration
     public function up()
     {
         $this->createTable('order_registration_info', [
+            'id' => $this->primaryKey(),
             'ogrnip' => $this->string(),
             'series' => $this->string(),
             'number' => $this->string(),

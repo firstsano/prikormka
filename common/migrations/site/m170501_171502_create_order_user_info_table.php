@@ -8,6 +8,7 @@ class m170501_171502_create_order_user_info_table extends Migration
     public function up()
     {
         $this->createTable('order_user_info', [
+            'id' => $this->primaryKey(),
             'name' => $this->string(),
             'email' => $this->string(),
             'phone' => $this->string(),

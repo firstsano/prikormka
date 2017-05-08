@@ -39,6 +39,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <div class="order-form__title"> Информация для оплаты и доставки заказа </div>
         <?php $form = SimpleActiveForm::begin([
             'id' => 'order-form',
+            'enableClientValidation' => false,
             'action' => ['order/create']
         ]) ?>
         <div class="order-new__form">

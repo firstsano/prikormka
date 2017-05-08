@@ -14,13 +14,17 @@ class OrderForm extends Model
     const SCENARIO_USER = 'user';
     const SCENARIO_GUEST = 'guest';
 
+    const SCENARIO_PHYSYCAL = 'phys';
+    const SCENARIO_JURIDICAL = 'jur';
+    const SCENARIO_INDIVIDUAL = 'ip';
+
     const PHYSYCAL = 'phys';
     const JURIDICAL = 'jur';
     const INDIVIDUAL = 'ip';
 
     /* System fields */
     public $reCaptcha;
-    public $clientType;
+    public $clientType = 'phys';
     public $user;
 
     /* Contact info */
@@ -53,12 +57,24 @@ class OrderForm extends Model
     public $regNumber;
     public $receiveDate;
 
-    public function init()
+    public function scenarios()
     {
-        if (!$this->clientType) {
-            $this->clientType = static::PHYSYCAL;
-        }
-        parent::init();
+        $scenarios = parent::scenarios();
+
+        $scenarios[self::SCENARIO_PHYSYCAL] = ['name', 'email', 'phone', 'delivery', 'address', 'comment', 'clientType', 'user'];
+
+        $scenarios[self::SCENARIO_JURIDICAL] = array_merge(
+            $scenarios[self::SCENARIO_PHYSYCAL],
+            ['companyName', 'inn', 'kpp', 'companyAddress', 'signerName'],
+            ['bik', 'checkingAccount', 'bankName', 'corAccount', 'bankCity']
+        );
+
+        $scenarios[self::SCENARIO_INDIVIDUAL] = array_merge(
+            $scenarios[self::SCENARIO_JURIDICAL],
+            ['ogrnip', 'series', 'regNumber', 'receiveDate']
+        );
+
+        return $scenarios;
     }
 
     /**
@@ -79,8 +95,16 @@ class OrderForm extends Model
                 }
             }],
             [['delivery'], 'in', 'range' => array_keys(Order::deliveries())],
-            [['clientType'], 'in', 'range' => array_keys(self::clientTypes())],
-            ['user', 'safe'],
+//            [['clientType'], 'in', 'range' => array_keys(self::clientTypes())],
+            [['clientType', 'user'], 'safe'],
+            [
+                [
+                    'companyName', 'inn', 'kpp', 'companyAddress', 'signerName',
+                    'bik', 'checkingAccount', 'bankName', 'corAccount', 'bankCity',
+                    'ogrnip', 'series', 'regNumber', 'receiveDate'
+                ],
+                'required'
+            ]
 //            [['reCaptcha'], ReCaptchaValidator::className(), 'on' => static::SCENARIO_GUEST],
         ];
     }
@@ -135,6 +159,13 @@ class OrderForm extends Model
         ];
     }
 
+    public function load($data, $formName = null)
+    {
+        parent::load($data, $formName);
+        $this->scenario = $this->clientType;
+        return parent::load($data, $formName);
+    }
+
     /**
      * @inheritdoc
      */
@@ -155,9 +186,48 @@ class OrderForm extends Model
             ],
             isset($this->user) ? [ 'user' => ['id' => $this->user->id] ] : []
         );
+        if (in_array($this->clientType, [static::JURIDICAL, static::INDIVIDUAL])) {
+            $params = ArrayHelper::merge(
+                $params,
+                [
+                    'company' => [
+                        'name' => $this->companyName,
+                        'inn' => $this->inn,
+                        'kpp' => $this->kpp,
+                        'address' => $this->companyAddress,
+                        'signerName' => $this->signerName
+                    ],
+                    'bank' => [
+                        'bik' => $this->bik,
+                        'checkingAccount' => $this->checkingAccount,
+                        'name' => $this->bankName,
+                        'corAccount' => $this->corAccount,
+                        'city' => $this->bankCity
+                    ]
+                ]
+            );
+        }
+        if ($this->clientType == static::INDIVIDUAL) {
+            $params = ArrayHelper::merge(
+                $params,
+                [
+                    'registration' => [
+                        'ogrnip' => $this->ogrnip,
+                        'series' => $this->series,
+                        'number' => $this->regNumber,
+                        'receiveDate' => $this->receiveDate,
+                    ],
+                ]
+            );
+        }
+
         $order = Yii::$app->commandBus->handle(new CreateOrderCommand([
             'total' => $params['total'],
+            'clientType' => $this->clientType,
             'user' => $params['user'],
+            'company' => @$params['company'],
+            'bank' => @$params['bank'],
+            'registration' => @$params['registration'],
             'comment' => $this->comment,
             'delivery' => $this->delivery,
             'products' => $params['products']

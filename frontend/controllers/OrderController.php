@@ -47,7 +47,7 @@ class OrderController extends \yii\web\Controller
     {
         $positions = Yii::$app->cart->positions;
         if (!empty($positions)) {
-            $model = new OrderForm();
+            $model = new OrderForm(['scenario' => OrderForm::SCENARIO_PHYSYCAL]);
             if (!Yii::$app->user->isGuest) {
                 $model->loadUser(Yii::$app->user->identity);
             }
@@ -66,8 +66,7 @@ class OrderController extends \yii\web\Controller
         $app = Yii::$app;
         $cart = $app->cart;
         $user = $app->user;
-//        $model = new OrderForm(['scenario' => OrderForm::SCENARIO_GUEST]);
-        $model = new OrderForm();
+        $model = new OrderForm(['scenario' => OrderForm::SCENARIO_PHYSYCAL]);
         if (!$model->load($app->request->post())) {
             throw new BadRequestHttpException();
         }

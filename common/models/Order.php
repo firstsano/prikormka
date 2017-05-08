@@ -67,11 +67,7 @@ class Order extends \yii\db\ActiveRecord
             [['status', 'delivery'], 'integer'],
             [['delivery'], 'in', 'range' => array_keys(static::deliveries())],
             [['comment'], 'string'],
-            [['user_name', 'user_email', 'user_phone', 'user_address'], 'string'],
             [['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['user_id' => 'id']],
-            [['user_name', 'user_phone'], 'required', 'when' => function($model) {
-                return empty($model->user_id);
-            }],
             [['total'], 'compare', 'operator' => '>=', 'compareValue' => Yii::$app->params['minOrder']]
         ];
     }

@@ -8,6 +8,7 @@ class m170501_172137_create_order_company_info_table extends Migration
     public function up()
     {
         $this->createTable('order_company_info', [
+            'id' => $this->primaryKey(),
             'name' => $this->string(),
             'inn' => $this->string(),
             'kpp' => $this->string(),
